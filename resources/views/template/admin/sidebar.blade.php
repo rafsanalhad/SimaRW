@@ -1,4 +1,3 @@
-
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div>
@@ -27,14 +26,14 @@
           </li>
           <li class="nav-small-cap">
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">UI COMPONENTS</span>
+            <span class="hide-menu">Menu</span>
           </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
               <span>
                 <i class="ti ti-article"></i>
               </span>
-              <span class="hide-menu">Buttons</span>
+              <span class="hide-menu">Kelola Warga</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -42,7 +41,7 @@
               <span>
                 <i class="ti ti-alert-circle"></i>
               </span>
-              <span class="hide-menu">Alerts</span>
+              <span class="hide-menu">Kelola RT</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -50,7 +49,7 @@
               <span>
                 <i class="ti ti-cards"></i>
               </span>
-              <span class="hide-menu">Card</span>
+              <span class="hide-menu">Kelola RW</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -58,7 +57,7 @@
               <span>
                 <i class="ti ti-file-description"></i>
               </span>
-              <span class="hide-menu">Forms</span>
+              <span class="hide-menu">Kelola UMKM</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -66,7 +65,7 @@
               <span>
                 <i class="ti ti-typography"></i>
               </span>
-              <span class="hide-menu">Typography</span>
+              <span class="hide-menu">Kelola Surat</span>
             </a>
           </li>
           <li class="nav-small-cap">
@@ -126,4 +125,3 @@
     </div>
     <!-- End Sidebar scroll-->
   </aside>
- 

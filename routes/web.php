@@ -18,10 +18,10 @@ Route::get('/',[HomeController::class, 'index']);
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index']);
-    Route::get('/kelola-warga', [AdminController::class, 'index']);
-    Route::get('/kelola-rt', [AdminController::class, 'index']);
-    Route::get('/kelola-rw', [AdminController::class, 'index']);
-    Route::get('/kelola-umkm', [AdminController::class, 'index']);
-    Route::get('/kelola-iuran', [AdminController::class, 'index']);
-    Route::get('/laporan-iuran', [AdminController::class, 'index']);
+    Route::get('/kelola-warga', [AdminController::class, 'kelolaWarga']);
+    Route::get('/kelola-rt', [AdminController::class, 'kelolaRt']);
+    Route::get('/kelola-rw', [AdminController::class, 'kelolaRw']);
+    Route::get('/kelola-umkm', [AdminController::class, 'kelolaUmkm']);
+    Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
+    Route::get('/laporan-iuran', [AdminController::class, 'laporanIuran']);
 });
