@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/kelola-umkm', [AdminController::class, 'kelolaUmkm']);
     Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
     Route::get('/laporan-iuran', [AdminController::class, 'laporanIuran']);
+});
+Route::prefix('warga')->group(function () {
+    Route::get('/', [WargaController::class, 'index']);
+    Route::get('/bayar-iuran', [WargaController::class, 'bayarIuran']);
+    Route::get('/kegiatan-warga', [WargaController::class, 'kegiatanWarga']);
+    Route::get('/umkm', [WargaController::class, 'umkm']);
+    Route::get('/edit-profil', [WargaController::class, 'editProfil']);
+    Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuan-bansos']);
+    Route::get('/pengaduan', [WargaController::class, 'pengaduan']);
+    Route::get('/laporan-iuran', [WargaController::class, 'laporan-iuran']);
 });
