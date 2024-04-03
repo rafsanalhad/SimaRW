@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',[HomeController::class, 'index']);
+
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
     Route::get('/dashboard', [AdminController::class, 'index']);
     Route::get('/kelola-warga', [AdminController::class, 'kelolaWarga']);
     Route::get('/kelola-rt', [AdminController::class, 'kelolaRt']);

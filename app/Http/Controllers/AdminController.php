@@ -13,4 +13,13 @@ class AdminController extends Controller
     public function kelolaWarga(){
         return view('layout.admin.kelola_warga');
     }
+    public function kelolaRt(){
+        return view('layout.admin.kelola_rt');
+    }
+    public function kelolaRw(){
+        return view('layout.admin.kelola_rw');
+    }
+    public function kelolaUmkm(){
+        return view('layout.admin.kelola_umkm');
+    }
 }

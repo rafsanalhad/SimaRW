@@ -29,7 +29,7 @@
             <span class="hide-menu">Menu</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/kelola-warga" aria-expanded="false">
               <span>
                 <i class="ti ti-article"></i>
               </span>
@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/kelola-rt" aria-expanded="false">
               <span>
                 <i class="ti ti-alert-circle"></i>
               </span>
@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/kelola-rw" aria-expanded="false">
               <span>
                 <i class="ti ti-cards"></i>
               </span>
@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/kelola-umkm" aria-expanded="false">
               <span>
                 <i class="ti ti-file-description"></i>
               </span>
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/kelola-surat" aria-expanded="false">
               <span>
                 <i class="ti ti-typography"></i>
               </span>
