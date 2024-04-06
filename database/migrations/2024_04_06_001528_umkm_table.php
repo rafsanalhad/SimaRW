@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_umkm', 255);
             $table->text('alamat_umkm');
             $table->string('kontak_umkm', 255);
+            $table->text('deskripsi_umkm');
             $table->text('gambar_umkm');
             $table->timestamps();
         });
