@@ -36,8 +36,8 @@
             <span class="hide-menu">Kelola Warga</span>
             <span class="menu-arrow"></span>
           </a>
-          <div class="collapse show" id="submenu-kelola-warga">
-            <ul class="nav flex-column sub-menu ms-5">
+          <div class="collapse" id="submenu-kelola-warga">
+            <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
               <li class="nav-item">
                 <a class="nav-link" href="/admin/kelola-warga">Submenu 1</a>
               </li>
