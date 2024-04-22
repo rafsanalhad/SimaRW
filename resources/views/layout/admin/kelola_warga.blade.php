@@ -111,4 +111,7 @@
       $('.modal_umkm').modal('hide');
     }
   </script>
+  <script>
+    new DataTable('#table-warga');
+  </script>
 @endsection
