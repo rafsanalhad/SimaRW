@@ -46,21 +46,17 @@
     </nav>
   </header>
   <div class="container-fluid">
-    {{-- <h3>Data Bansos</h3> --}}
+    {{-- <h3>Data </h3> --}}
     <div class="card shadow-lg">
         <div class="card-body">
-            <h4>Kelola Bansos</h4>
-            <table class="table">
+            <h4>Kelola Bansos</h4>          
+            <table class="table" id='table_bansos'>
                 <thead>
                     <th>No</th>
                 <th>Nama Warga</th>
-                <th>NIK</th>
-                <th>TTL</th>
-                <th>Jen. Kelamin</th>
-                <th>Agama</th>
-                <th>Alamat</th>
-                <th>Status</th>
-                <th>Pekerjaan</th>
+                <th>Alamat Warga</th>
+                <th>Pekerjaan Warga</th>
+                <th>Status</th>              
                 <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -69,18 +65,20 @@
                         <td>
                             Rizky Arifiansyah
                         </td>
-                        <td>35171310297771</td>
-                        <td>Sorong, 12 April 1989</td>
-                        <td>Laki-laki</td>
-                        <td>Islam</td>
-                        <td>Jl. Soehat, Malang RT 01 RW 07</td>
-                        <td>Belum Kawin</td>
-                        <td>Dokter</td>
-                        <td><a href="" class="btn btn-warning">Edit</a><a href="" class="btn btn-danger">Hapus</a></td>
+                        <td>Malang</td>
+                        <td>Pengusaha</td>                        
+                        <td><a href="" class="btn btn-danger">Ditolak</a></td>
+                        <td><a href="" class="btn btn-success">Verifikasi</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+   
   </div>
+ 
+  <script>
+      new DataTable('#table_bansos');
+    </script>
+
 @endsection

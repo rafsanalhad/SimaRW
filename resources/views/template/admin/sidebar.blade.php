@@ -67,6 +67,14 @@
             <span class="hide-menu">Kelola Surat</span>
           </a>
         </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ url('/admin/kelola-bansos') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-typography"></i>
+            </span>
+            <span class="hide-menu">Kelola Bansos</span>
+          </a>
+        </li>
     </nav>
     <!-- End Sidebar navigation -->
   </div>
