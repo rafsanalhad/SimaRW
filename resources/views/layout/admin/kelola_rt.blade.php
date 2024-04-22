@@ -48,7 +48,7 @@
     {{-- <h3>Data Warga</h3> --}}
     <div class="card shadow-lg">
         <div class="card-body">
-            <h4>Kelola Data Warga</h4>
+            <h4>Kelola Data RT</h4>
             <table class="table">
                 <thead>
                     <th>No</th>
