@@ -46,10 +46,10 @@
   </header>
   <div class="container-fluid">
     {{-- <h3>Data Warga</h3> --}}
-    <div class="card shadow-lg">
+    <div class="card shadow-lg" >
         <div class="card-body">
             <h4>Kelola Data Warga</h4>
-            <table class="table">
+            <table class="table" id="table-warga">
                 <thead>
                     <th>No</th>
                 <th>Nama Warga</th>
@@ -86,7 +86,29 @@
             </table>
         </div>
     </div>
+    <div class="modal modal_tambah_warga" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tambah Warga</h5>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=hideModalUmkm()>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <script>
+    function showModalUmkm(){
+      $('.modal_umkm').modal('show');
+    }
+    function hideModalUmkm(){
+      $('.modal_umkm').modal('hide');
+    }
+  </script>
 @endsection
-@push('js')
-@endpush
