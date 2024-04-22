@@ -17,7 +17,7 @@
           <span class="hide-menu">Home</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin" aria-expanded="false">
+          <a class="sidebar-link" href=" {{ url('/admin') }}" aria-expanded="false">
             <span>
               <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -51,23 +51,6 @@
             </ul>
           </div>
         </li>
-
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin/kelola-rt" aria-expanded="false">
-            <span>
-              <i class="ti ti-alert-circle"></i>
-            </span>
-            <span class="hide-menu">Kelola RT</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin/kelola-rw" aria-expanded="false">
-            <span>
-              <i class="ti ti-cards"></i>
-            </span>
-            <span class="hide-menu">Kelola RW</span>
-          </a>
-        </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{ url('/admin/kelola-umkm') }}" aria-expanded="false">
             <span>
@@ -84,47 +67,6 @@
             <span class="hide-menu">Kelola Surat</span>
           </a>
         </li>
-        <li class="nav-small-cap">
-          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">AUTH</span>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-login"></i>
-            </span>
-            <span class="hide-menu">Login</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-user-plus"></i>
-            </span>
-            <span class="hide-menu">Register</span>
-          </a>
-        </li>
-        <li class="nav-small-cap">
-          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">EXTRA</span>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-mood-happy"></i>
-            </span>
-            <span class="hide-menu">Icons</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-aperture"></i>
-            </span>
-            <span class="hide-menu">Sample Page</span>
-          </a>
-        </li>
-      </ul>
     </nav>
     <!-- End Sidebar navigation -->
   </div>
