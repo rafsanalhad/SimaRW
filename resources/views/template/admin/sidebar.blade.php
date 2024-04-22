@@ -50,7 +50,7 @@
         </li>
 
         <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin/kelola-rt" aria-expanded="false">
+          <a class="sidebar-link" href="{{ url('/admin/kelola-rt') }}" aria-expanded="false">
             <span>
               <i class="ti ti-alert-circle"></i>
             </span>
@@ -58,7 +58,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin/kelola-rw" aria-expanded="false">
+          <a class="sidebar-link" href="{{ url('/admin/kelola-rw') }}" aria-expanded="false">
             <span>
               <i class="ti ti-cards"></i>
             </span>
@@ -66,7 +66,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin/kelola-umkm" aria-expanded="false">
+          <a class="sidebar-link" href="{{ url('/admin/kelola-umkm') }}" aria-expanded="false">
             <span>
               <i class="ti ti-file-description"></i>
             </span>
@@ -74,11 +74,19 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="/admin/kelola-surat" aria-expanded="false">
+          <a class="sidebar-link" href="{{ url('/admin/kelola-surat') }}" aria-expanded="false">
             <span>
               <i class="ti ti-typography"></i>
             </span>
             <span class="hide-menu">Kelola Surat</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ url('/admin/kelola-bansos') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-typography"></i>
+            </span>
+            <span class="hide-menu">Kelola Bansos</span>
           </a>
         </li>
         <li class="nav-small-cap">

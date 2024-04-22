@@ -22,4 +22,7 @@ class AdminController extends Controller
     public function kelolaUmkm(){
         return view('layout.admin.kelola_umkm');
     }
+    public function kelolaBansos(){
+        return view('layout.admin.kelola_bansos');
+    }
 }

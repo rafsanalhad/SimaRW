@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/kelola-umkm', [AdminController::class, 'kelolaUmkm']);
     Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
     Route::get('/laporan-iuran', [AdminController::class, 'laporanIuran']);
+    Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
 });
 Route::prefix('warga')->group(function () {
     Route::get('/', [WargaController::class, 'index']);
