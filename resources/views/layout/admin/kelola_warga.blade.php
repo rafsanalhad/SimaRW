@@ -81,8 +81,8 @@
                         <td>Dokter</td>
                         <td>
                           <div style="display: flex;">
-                              <a href="" class="btn btn-warning" style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></a>
-                              <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                              <button href="" onclick=showEditWarga() class="btn btn-warning" style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
+                              <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                           </div>
                         </td>
                     </tr>
@@ -181,6 +181,97 @@
         </div>
       </div>
     </div>
+    <div class="modal modal_edit_warga" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Data Warga</h5>
+          </div>
+          <div class="modal-body">
+            <form method="POST" class="form-horizontal">
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nama: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="form-group row mb-2">
+                <label class="col-2 control-label col-form-label">NIK: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="form-group row mb-2">
+                <label class="col-2 control-label col-form-label">TTL: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Jenis Kelamin: </label>
+                <div class="col-10">
+                  <select name="jenkel" id="jenisPelanggaran" class="form-control" required>
+                    <option name="jenkel" value="">Pilih Jenis Kelamin</option>
+                    <option name="jenkel" value="L">Laki-laki</option>
+                    <option name="jenkel" value="P">Perempuan</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Agama: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Status: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Pekerjaan: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Alamat: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=hideEditWarga()>Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script>
     function showTambahWarga(){
@@ -188,6 +279,12 @@
     }
     function hideTambahWarga(){
       $('.modal_tambah_warga').modal('hide');
+    }
+    function showEditWarga(){
+      $('.modal_edit_warga').modal('show');
+    }
+    function hideEditWarga(){
+      $('.modal_edit_warga').modal('hide');
     }
   </script>
   <script>

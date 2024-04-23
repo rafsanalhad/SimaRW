@@ -48,18 +48,18 @@
     {{-- <h3>Data Warga</h3> --}}
     <div class="card shadow-lg">
         <div class="card-body">
-            <h4>Kelola Data Warga</h4>
-            <table class="table">
+          <div id="container">
+            <button class="btn btn-sm btn-primary float-end" id="tambah-data-rw" onclick=showTambahRw()><i class="bi bi-plus-lg"></i> Tambah</button>
+          </div>
+            <h4>Kelola Data RW</h4>
+            <table class="table" id="table-rw">
                 <thead>
-                    <th>No</th>
-                <th>Nama Warga</th>
-                <th>NIK</th>
-                <th>TTL</th>
-                <th>Jen. Kelamin</th>
-                <th>Agama</th>
+                <th>No</th>
+                <th>Nama RW</th>
+                <th>Nomor RW</th>
+                <th>Nomor RT</th>
+                <th>Masa Jabatan</th>
                 <th>Alamat</th>
-                <th>Status</th>
-                <th>Pekerjaan</th>
                 <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -68,23 +68,162 @@
                         <td>
                             Rizky Arifiansyah
                         </td>
-                        <td>35171310297771</td>
-                        <td>Sorong, 12 April 1989</td>
-                        <td>Laki-laki</td>
-                        <td>Islam</td>
+                        <td>007</td>
+                        <td>001 sd 005</td>
+                        <td>2023/2024</td>
                         <td>Jl. Soehat, Malang RT 01 RW 07</td>
-                        <td>Belum Kawin</td>
-                        <td>Dokter</td>
                         <td>
                           <div style="display: flex;">
-                              <a href="" class="btn btn-warning" style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></a>
-                              <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                          </div>
+                            <button href="" onclick=showEditRw() class="btn btn-warning" style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
+                            <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                        </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="modal modal_tambah_rw" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tambah Data RW</h5>
+          </div>
+          <div class="modal-body">
+            <form method="POST" class="form-horizontal">
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nama RW: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nomor RW : </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nomor RT : </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Masa Jabatan : </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Alamat: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=hideTambahRw()>Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal_edit_rw" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Data RW</h5>
+          </div>
+          <div class="modal-body">
+            <form method="POST" class="form-horizontal">
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nama RW: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nomor RW : </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Nomor RT : </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Masa Jabatan : </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label class="col-2 control-label col-form-label">Alamat: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{old('level_nama')}}" required>
+                    @error('level_nama')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+              </div>
+            </form>
+          </div>      
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=hideEditRw()>Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showTambahRw(){
+      $('.modal_tambah_rw').modal('show');
+    }
+    function hideTambahRw(){
+      $('.modal_tambah_rw').modal('hide');
+    }
+    function showEditRw(){
+      $('.modal_edit_rw').modal('show');
+    }
+    function hideEditRw(){
+      $('.modal_edit_rw').modal('hide');
+    }
+  </script>
+  <script>
+    new DataTable('#table-rw');
+  </script>
   </div>
 @endsection
