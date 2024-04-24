@@ -46,8 +46,9 @@
   </header>
   <div class="container-fluid">
     {{-- <h3>Data Warga</h3> --}}
+    <h4>Kelola UMKM</h4>
+    <a href="#" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
     <div class="row">
-      <h4>Kelola Data Warga</h4>
       <div class="col-md-4">
         <div class="card shadow-lg">
           <div class="card-body">
@@ -96,6 +97,99 @@
       </div>
       </div>
     </div>
-   
   </div>
+  <div class="modal modal_tambah_umkm" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+          <div class="card">
+           <div class="card-body">
+            <form action="" class="form">
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Nama Umkm
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Alamat
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Kontak
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Latitude
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Longtitude
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Jam Operasional
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Gambar UMKM
+                </div>
+                <div class="col-6">
+                  <input type="file" class="form-control">
+                </div>
+              </div>
+              <div class="row d-flex align-items-center mt-3">
+                <div class="col-4">
+                  Deskripsi UMKM
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              
+            
+            </form>
+           </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=hideModalTambahUmkm()>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const modalTambahUmkm = () => {
+      $('.modal_tambah_umkm').modal('show');
+    }
+    const hideModalTambahUmkm = () => {
+      $('.modal_tambah_umkm').modal('hide');
+    }
+  </script>
 @endsection
