@@ -47,40 +47,56 @@
   </header>
   <div class="container-fluid">
     {{-- <h3>Data Warga</h3> --}}
-    <div class="card shadow-lg">
-        <div class="card-body">
-            <h4>Kelola Data Warga</h4>
-            <table class="table">
-                <thead>
-                    <th>No</th>
-                <th>Nama Warga</th>
-                <th>NIK</th>
-                <th>TTL</th>
-                <th>Jen. Kelamin</th>
-                <th>Agama</th>
-                <th>Alamat</th>
-                <th>Status</th>
-                <th>Pekerjaan</th>
-                <th>Aksi</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            Rizky Arifiansyah
-                        </td>
-                        <td>35171310297771</td>
-                        <td>Sorong, 12 April 1989</td>
-                        <td>Laki-laki</td>
-                        <td>Islam</td>
-                        <td>Jl. Soehat, Malang RT 01 RW 07</td>
-                        <td>Belum Kawin</td>
-                        <td>Dokter</td>
-                        <td><a href="" class="btn btn-warning">Edit</a><a href="" class="btn btn-danger">Hapus</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="row">
+      <h4>Kelola Data Warga</h4>
+      <div class="col-md-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">UMKM Maju Jaya</h5>
+                  <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                  <p class="card-text">Pemilik: gaco razan kamil</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">UMKM Maju Jaya</h5>
+                  <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                  <p class="card-text">Pemilik: gaco razan kamil</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">UMKM Maju Jaya</h5>
+                  <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                  <p class="card-text">Pemilik: gaco razan kamil</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+          </div>
+      </div>
+      </div>
     </div>
+   
   </div>
 @endsection
