@@ -60,27 +60,6 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#submenu-kelola-iuran" data-bs-toggle="collapse"
-                        aria-expanded="false">
-                        <span>
-                            <i class="bi bi-wallet"></i>
-                        </span>
-                        <span class="hide-menu">Kelola Iuran</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="submenu-kelola-iuran">
-                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
-                            <li class="nav-item">
-                                <a class="nav-link" href=" {{ url('/admin/kelola-iuran') }}">Kelola Iuran</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/admin/laporan-iuran') }}">Laporan Iuran</a>
-                            </li>
-                            <!-- Add more submenu items as needed -->
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/admin/kelola-surat') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-typography"></i>

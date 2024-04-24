@@ -45,11 +45,14 @@
       </div>
     </nav>
   </header>
+  
   <div class="container-fluid">
-    {{-- <h3>Data </h3> --}}
-    <div class="card shadow-lg">
+    <div class="card shadow-lg">       
         <div class="card-body">
-            <h4>Kelola Bansos</h4>          
+            <h4>Kelola Bansos</h4>   
+            <div class="card-tools">
+                <a href="#" class="btn btn-sm btn-primary mt-1">Tambah</a>
+            </div>       
             <table class="table" id='table_bansos'>
                 <thead>
                     <th>No</th>
