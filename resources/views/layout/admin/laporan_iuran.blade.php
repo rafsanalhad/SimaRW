@@ -54,7 +54,7 @@
                     <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick=showTambahWarga()><i
                             class="bi bi-plus-lg"></i> Tambah</button>
                 </div>
-                <h4 class="mb-4">Kelola Data Warga</h4>
+                <h4 class="mb-4">Laporan Iuran</h4>
                 <hr>
                 <table class="table" id="table-warga">
                     <thead>
