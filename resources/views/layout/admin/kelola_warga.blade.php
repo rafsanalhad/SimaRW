@@ -70,26 +70,28 @@
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                Rizky Arifiansyah
-                            </td>
-                            <td>35171310297771</td>
-                            <td>Sorong, 12 April 1989</td>
-                            <td>Laki-laki</td>
-                            <td>Islam</td>
-                            <td>Jl. Soehat, Malang RT 01 RW 07</td>
-                            <td>Belum Kawin</td>
-                            <td>Dokter</td>
-                            <td>
-                                <div style="display: flex;">
-                                    <button href="" onclick=showEditWarga() class="btn btn-warning"
-                                        style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                    <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($dataWarga as $warga)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>
+                                    {{ $warga->nama_user }}
+                                </td>
+                                <td>{{ $warga->nik_user }}</td>
+                                <td>{{ $warga->tempat }}, {{ $warga->tanggal_lahir }}</td>
+                                <td>{{ $warga->gender }}</td>
+                                <td>{{ $warga->agama }}</td>
+                                <td>{{ $warga->kartuKeluarga->alamat_kk }}</td>
+                                <td>{{ $warga->status_kawin }}</td>
+                                <td>{{ $warga->pekerjaan_user }}</td>
+                                <td>
+                                    <div style="display: flex;">
+                                        <button href="" onclick=showEditWarga() class="btn btn-warning"
+                                            style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
+                                        <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

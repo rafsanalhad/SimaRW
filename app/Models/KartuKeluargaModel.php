@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KartuKeluargaModel extends Model
 {
@@ -19,4 +20,8 @@ class KartuKeluargaModel extends Model
         'alamat_kk',
         'jumlah_anggota_keluarga'
     ];
+
+    public function user(): HasMany {
+        return $this->hasMany(UserModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
 }
