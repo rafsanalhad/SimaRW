@@ -69,26 +69,28 @@
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                Rizky Arifiansyah
-                            </td>
-                            <td>35171310297771</td>
-                            <td>Sorong, 12 April 1989</td>
-                            <td>Laki-laki</td>
-                            <td>Islam</td>
-                            <td>Jl. Soehat, Malang RT 01 RW 07</td>
-                            <td>Belum Kawin</td>
-                            <td>Dokter</td>
-                            <td>
-                                <div style="display: flex;">
-                                    <button href="" onclick=showEditRt() class="btn btn-warning"
-                                        style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                    <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($dataRT as $rt)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>
+                                    {{ $rt->nama_user }}
+                                </td>
+                                <td>{{ $rt->nik_user }}</td>
+                                <td>{{ $rt->tempat }}, {{ $rt->tanggal_lahir }}</td>
+                                <td>{{ $rt->gender }}</td>
+                                <td>{{ $rt->agama }}</td>
+                                <td>{{ $rt->kartuKeluarga->alamat_kk }}</td>
+                                <td>{{ $rt->status_kawin }}</td>
+                                <td>{{ $rt->pekerjaan_user }}</td>
+                                <td>
+                                    <div style="display: flex;">
+                                        <button href="" onclick=showEditWarga() class="btn btn-warning"
+                                            style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
+                                        <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -231,14 +233,14 @@
         </div>
     </div>
     <script>
-      $(document).ready(function() {
-        $('.modal_tambah_rt').on("submit", function(e) {
+        $(document).ready(function() {
+            $('.modal_tambah_rt').on("submit", function(e) {
 
-          $('#modal-tittle').html() = 'edit';
-      })
-    })
+                $('#modal-tittle').html() = 'edit';
+            })
+        })
 
-      
+
         function showTambahRt() {
             $('.modal_tambah_rt').modal('show');
         }

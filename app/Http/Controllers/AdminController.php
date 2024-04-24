@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,13 +12,20 @@ class AdminController extends Controller
         return view('layout.admin.dashboard');
     }
     public function kelolaWarga(){
-        return view('layout.admin.kelola_warga');
+        // Untuk mengambil data warga yang memiliki role warga
+        $warga = UserModel::with('kartuKeluarga')->where('role_id', 4)->orderBy('user_id')->get();
+
+        return view('layout.admin.kelola_warga', ['dataWarga' => $warga, 'no' => 1]);
     }
     public function kelolaRt(){
-        return view('layout.admin.kelola_rt');
+        $rt = UserModel::with('kartuKeluarga')->where('role_id', 2)->orderBy('user_id')->get();
+
+        return view('layout.admin.kelola_rt', ['dataRT' => $rt, 'no' => 1]);
     }
     public function kelolaRw(){
-        return view('layout.admin.kelola_rw');
+        $rw = UserModel::with('kartuKeluarga')->where('role_id', 3)->orderBy('user_id')->get();
+
+        return view('layout.admin.kelola_rw', ['dataRW' => $rw, 'no' => 1]);
     }
     public function kelolaUmkm(){
         return view('layout.admin.kelola_umkm');
