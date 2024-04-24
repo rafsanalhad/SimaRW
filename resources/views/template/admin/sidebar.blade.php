@@ -70,25 +70,9 @@
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{ url('/admin/kelola-bansos') }}" aria-expanded="false">
             <span>
-               <i class="bi bi-cash-coin"></i>
+              <i class="ti ti-typography"></i>
             </span>
             <span class="hide-menu">Kelola Bansos</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="{{ url('/admin/kelola-Surat') }}" aria-expanded="false">
-            <span>
-              <i class="bi bi-envelope"></i>
-            </span>
-            <span class="hide-menu">Kelola Surat</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="{{ url('/admin/laporan-pengaduan') }}" aria-expanded="false">
-            <span>
-              <i class="bi bi-flag"></i>
-            </span>
-            <span class="hide-menu">Laporan Pengaduan</span>
           </a>
         </li>
     </nav>
