@@ -109,6 +109,14 @@
                         </ul>
                     </div>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/admin/kelola-surat') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-cash-coin"></i>
+                        </span>
+                        <span class="hide-menu">Kelola Surat</span>
+                    </a>
+                </li>
 
         </nav>
         <!-- End Sidebar navigation -->
