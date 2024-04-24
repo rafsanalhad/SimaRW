@@ -48,10 +48,10 @@
   <div class="container-fluid">
     {{-- <h3>Data Warga</h3> --}}
     <div class="row">
+      <h4>Kelola Data Warga</h4>
       <div class="col-md-4">
         <div class="card shadow-lg">
           <div class="card-body">
-              <h4>Kelola Data Warga</h4>
               <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
                 <div class="card-body">
@@ -67,7 +67,7 @@
       <div class="col-md-4">
         <div class="card shadow-lg">
           <div class="card-body">
-              <h4>Kelola Data Warga</h4>
+
               <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
                 <div class="card-body">
@@ -83,7 +83,7 @@
       <div class="col-md-4">
         <div class="card shadow-lg">
           <div class="card-body">
-              <h4>Kelola Data Warga</h4>
+
               <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
                 <div class="card-body">
