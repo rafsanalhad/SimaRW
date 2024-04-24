@@ -68,7 +68,7 @@
                         <td>Malang</td>
                         <td>Pengusaha</td>                        
                         <td><a href="" class="btn btn-danger">Ditolak</a></td>
-                        <td><a href="" class="btn btn-success">Verifikasi</a></td>
+                        <td><a href="" onclick='showTambahBansos()' class="btn btn-success">Verifikasi</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -167,8 +167,8 @@
         </div>
         
     <script>
-        function showTambahWarga() {
-            $('.modal_tambah_warga').modal('show');
+        function showTambahBansos() {
+            $('.modal_tambah_bansos').modal('show');
         }  
     </script>
 
