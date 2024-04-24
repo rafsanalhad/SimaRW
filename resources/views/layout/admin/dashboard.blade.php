@@ -238,7 +238,7 @@
     <div class="col-sm-6 col-xl-3">
       <div class="card overflow-hidden rounded-2" onclick=showModalUmkm()>
         <div class="position-relative">
-          <a href="javascript:void(0)"><img src="../assets/images/products/s4.jpg" class="card-img-top rounded-0"
+          <a href="javascript:void(0)"><img src="{{@asset('assets/images/products/s4.jpg')}}" class="card-img-top rounded-0"
               alt="..."></a>
           <a href="javascript:void(0)"
             class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"

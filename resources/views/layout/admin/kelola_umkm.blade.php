@@ -51,10 +51,53 @@
         <div class="card-body">
             <h4>Kelola Data Warga</h4>
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="{{@asset('asset/images/content/img_hero.png')}}" alt="Card image cap">
+              <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">UMKM Maju Jaya</h5>
+                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                <p class="card-text">Pemilik: gaco razan kamil</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4>Kelola Data Warga</h4>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">UMKM Maju Jaya</h5>
+                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                <p class="card-text">Pemilik: gaco razan kamil</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4>Kelola Data Warga</h4>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">UMKM Maju Jaya</h5>
+                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                <p class="card-text">Pemilik: gaco razan kamil</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4>Kelola Data Warga</h4>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png')}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">UMKM Maju Jaya</h5>
+                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
+                <p class="card-text">Pemilik: gaco razan kamil</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
