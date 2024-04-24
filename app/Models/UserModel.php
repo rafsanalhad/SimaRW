@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UserModel extends Model
@@ -27,5 +28,9 @@ class UserModel extends Model
 
     public function role(): HasMany {
         return $this->hasMany(RoleModel::class, 'role_id', 'role_id');
+    }
+
+    public function kartuKeluarga(): BelongsTo {
+        return $this->belongsTo(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
     }
 }
