@@ -60,21 +60,56 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ url('/admin/kelola-surat') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="#submenu-kelola-iuran" data-bs-toggle="collapse"
+                        aria-expanded="false">
                         <span>
-                            <i class="ti ti-typography"></i>
+                            <i class="ti ti-wallet"></i>
                         </span>
-                        <span class="hide-menu">Kelola Surat</span>
+                        <span class="hide-menu">Kelola Iuran</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="submenu-kelola-iuran">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
+                            <li class="nav-item">
+                                <a class="nav-link" href=" {{ url('/admin/kelola-iuran') }}">Kelola Iuran</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/admin/laporan-iuran') }}">Laporan Iuran</a>
+                            </li>
+                            <!-- Add more submenu items as needed -->
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/admin/kelola-bansos') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-cash-coin"></i>
+                        </span>
+                        <span class="hide-menu">Bansos</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ url('/admin/kelola-bansos') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="#submenu-laporan-pengaduan" data-bs-toggle="collapse"
+                        aria-expanded="false">
                         <span>
-                            <i class="ti ti-typography"></i>
+                            <i class="bi bi-chat-square-text"></i>
                         </span>
-                        <span class="hide-menu">Kelola Bansos</span>
+                        <span class="hide-menu">Laporan</span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="submenu-laporan-pengaduan">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
+                            <li class="nav-item">
+                                <a class="nav-link" href=" {{ url('/admin/laporan-pengaduan') }}">Laporan Pengaduan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/admin/history-pengaduan') }}">History Pengaduan</a>
+                            </li>
+                            <!-- Add more submenu items as needed -->
+                        </ul>
+                    </div>
                 </li>
+
         </nav>
         <!-- End Sidebar navigation -->
     </div>

@@ -30,6 +30,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
     Route::get('/kelola-surat', [AdminController::class, 'kelolaSurat']);
     Route::get('/laporan-pengaduan', [AdminController::class, 'laporanPengaduan']);
+    Route::get('/history-pengaduan', [AdminController::class, 'historyPengaduan']);
 });
 Route::prefix('warga')->group(function () {
     Route::get('/', [WargaController::class, 'index']);
