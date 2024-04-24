@@ -75,10 +75,10 @@
                         <div style="display: flex;">
                             <button href="#" class="btn btn-success" style="margin-right: 5px;">Setuju</button>
                             <button href="#" class="btn btn-danger">Tolak</button>
+                        </div>
                         </td>
                         <td>
-                          
-                        </div>
+                          <button href='#' class='btn btn-primary' >Download</button>
                         </td>
                     </tr>
                 </tbody>
