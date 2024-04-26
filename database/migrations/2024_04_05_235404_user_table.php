@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('password_user');
             $table->integer('gaji_user');
             $table->string('pekerjaan_user', 255);
+            $table->text('alamat_user');
             $table->timestamps();
         });
     }

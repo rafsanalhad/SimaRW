@@ -33,6 +33,7 @@ class UserModelFactory extends Factory
             'gender' => fake()->randomElement(['Laki-laki', 'Perempuan']),
             'status_kawin' => fake()->randomElement(['Kawin', 'Belum Kawin']),
             'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']),
+            'alamat_user' => fake()->address()
         ];
     }
 }
