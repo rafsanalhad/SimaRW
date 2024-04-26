@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RTRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\KartuKeluargaModel;
 use App\Models\UserModel;
@@ -73,9 +74,53 @@ class AdminController extends Controller
     // Function menampilkan data RT
     public function kelolaRt(){
         // Untuk mengambil data RT yang memiliki role RT
+        $warga = UserModel::all();
         $rt = UserModel::with('kartuKeluarga')->where('role_id', 2)->orderBy('user_id')->get();
+        $rw = UserModel::where('role_id', 3)->get();
 
-        return view('layout.admin.kelola_rt', ['dataRT' => $rt, 'no' => 1]);
+        return view('layout.admin.kelola_rt', ['dataWarga' => $warga ,'dataRT' => $rt, 'dataRW' => $rw,'no' => 1]);
+    }
+
+    // Function create rt
+    public function createRt(RTRequest $request) {
+        $request->validated();
+
+        UserModel::where('user_id', $request->rt_baru)->update([
+            'role_id' => $request->role_id,
+            'masa_jabatan_awal' => $request->masa_jabatan_awal,
+            'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
+            'nomor_rw' => $request->nomor_rw,
+            'nomor_rt' => $request->nomor_rt
+        ]);
+
+        return redirect('/admin/kelola-rt');
+    }
+
+    // function menampilkan data untuk edit RT
+    public function editRt($id) {
+        $rt = UserModel::with('kartuKeluarga')->find($id);
+
+        return response()->json($rt);
+    }
+
+    // Function update data RT
+    public function updateRt(RTRequest $request) {
+        $request->validated();
+
+        UserModel::where('user_id', $request->rt_baru)->update([
+            'masa_jabatan_awal' => $request->masa_jabatan_awal,
+            'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
+            'nomor_rw' => $request->nomor_rw,
+            'nomor_rt' => $request->nomor_rt
+        ]);
+
+        return redirect('/admin/kelola-rt');
+    }
+
+    // Function delete data RT
+    public function deleteRt($id) {
+        UserModel::destroy($id);
+        return redirect('/admin/kelola-rt');
     }
 
     // Function menampilkan data RW
