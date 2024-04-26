@@ -27,6 +27,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/kelola-warga/delete/{id}', [AdminController::class, 'deleteWarga']);
     Route::post('/kelola-warga/update/{id}', [AdminController::class, 'updateWarga'])->name('updateWarga');
     Route::get('/kelola-rt', [AdminController::class, 'kelolaRt']);
+    Route::post('kelola-rt', [AdminController::class, 'createRt']);
+    Route::get('/kelola-rt/edit/{id}', [AdminController::class, 'editRt']);
+    Route::post('/kelola-rt/update', [AdminController::class, 'updateRt']);
+    Route::get('/kelola-rt/delete/{id}', [AdminController::class, 'deleteRt']);
     Route::get('/kelola-rw', [AdminController::class, 'kelolaRw']);
     Route::get('/kelola-umkm', [AdminController::class, 'kelolaUmkm']);
     Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
