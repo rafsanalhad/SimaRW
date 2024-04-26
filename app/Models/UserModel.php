@@ -19,11 +19,17 @@ class UserModel extends Model
         'kartu_keluarga_id',
         'role_id',
         'nik_user',
+        'tempat',
+        'tanggal_lahir',
+        'gender',
+        'agama',
+        'status_kawin',
         'nama_user',
         'email_user',
         'password_user',
         'gaji_user',
         'pekerjaan_user',
+        'alamat_user'
     ];
 
     public function role(): HasMany {
