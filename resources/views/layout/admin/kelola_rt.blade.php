@@ -78,9 +78,11 @@
                                 <td>{{ $rt->alamat_user }}</td>
                                 <td>
                                     <div style="display: flex;">
-                                        <button href="" onclick=showEditRt('{{ $rt->user_id }}') class="btn btn-warning"
-                                            style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                            <button href="" onclick=showDeleteRT('{{ $rt->user_id }}') class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        <button href="" onclick=showEditRt('{{ $rt->user_id }}')
+                                            class="btn btn-warning" style="margin-right: 5px;"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button href="" onclick=showDeleteRT('{{ $rt->user_id }}')
+                                            class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -146,7 +148,16 @@
                             </div>
 
                             <input type="hidden" value="2" name="role_id">
-
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                        accept="image/*" required>
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -207,14 +218,23 @@
                                         <input type="date" class="form-control" id="masa_jabatan_awal_edit"
                                             name="masa_jabatan_awal" value="{{ old('masa_jabatan_awal') }}" required>
                                         <span class="mt-2 ms-1 me-1">s/d</span>
-                                        <input type="date" class="form-control" id="masa_jabatan_akhir_edit" name="masa_jabatan_akhir"
-                                            value="{{ old('masa_jabatan_akhir') }}" required>
+                                        <input type="date" class="form-control" id="masa_jabatan_akhir_edit"
+                                            name="masa_jabatan_akhir" value="{{ old('masa_jabatan_akhir') }}" required>
                                     </div>
                                 </div>
                             </div>
 
                             <input type="hidden" value="2" name="role_id">
-
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                        accept="image/*" required>
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"

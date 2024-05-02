@@ -147,6 +147,16 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                        accept="image/*" required>
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -211,6 +221,16 @@
                                     <input type="text" class="form-control" id="level_nama" name="level_nama"
                                         value="{{ old('level_nama') }}" required>
                                     @error('level_nama')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                        accept="image/*" required>
+                                    @error('upload_foto')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
