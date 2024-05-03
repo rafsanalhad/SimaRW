@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/login', [HomeController::class, 'login']);
+Route::get('/forgot-password', [HomeController::class, 'forgotPassword']);
+Route::get('/new-password', [HomeController::class, 'newPassword']);
+Route::get('/kode-verif', [HomeController::class, 'kodeVerif']);
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
