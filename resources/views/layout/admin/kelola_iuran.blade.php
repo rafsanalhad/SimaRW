@@ -25,7 +25,8 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                <a href="{{ url('/warga/profil-warga') }}"
+                                    class="d-flex align-items-center gap-2 dropdown-item">
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
@@ -47,270 +48,92 @@
         </nav>
     </header>
     <div class="container-fluid">
-        {{-- <h3>Data Warga</h3> --}}
+        <h1 style="font-size: 30px; font-weight: bold;">Form Lapor Keuangan</h1>
         <div class="card shadow-lg">
+            <h5 class="mt-3 ms-3">Isi Data Pengeluaran</h5>
             <div class="card-body">
-                <div id="container">
-                    <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick=showTambahWarga()><i
-                            class="bi bi-plus-lg"></i> Tambah</button>
-                </div>
-                <h4 class="mb-4">Kelola Iuran</h4>
-                <hr>
-                <table class="table" id="table-warga">
-                    <thead>
-                        <th>No</th>
-                        <th>Nama Warga</th>
-                        <th>NIK</th>
-                        <th>TTL</th>
-                        <th>Jen. Kelamin</th>
-                        <th>Agama</th>
-                        <th>Alamat</th>
-                        <th>Status</th>
-                        <th>Pekerjaan</th>
-                        <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                Rizky Arifiansyah
-                            </td>
-                            <td>35171310297771</td>
-                            <td>Sorong, 12 April 1989</td>
-                            <td>Laki-laki</td>
-                            <td>Islam</td>
-                            <td>Jl. Soehat, Malang RT 01 RW 07</td>
-                            <td>Belum Kawin</td>
-                            <td>Dokter</td>
-                            <td>
-                                <div style="display: flex;">
-                                    <button href="" onclick=showEditWarga() class="btn btn-warning"
-                                        style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                    <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="modal modal_tambah_warga" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Tambah Data Warga</h5>
+                <form action="/warga/edit-profil" method="POST" class="form-horizontal row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label for="nama_awal" class="col-form-label">Nama Pelapor:</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Masukkan Nama Lengkap Anda" type="text" class="form-control"
+                                    id="nama_awal" name="nama_awal" value="{{ old('nama_awal') }}" required>
+                                <small class="form-text text-danger"></small>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form method="POST" class="form-horizontal">
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Nama: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label for="jabatan" class="col-form-label">Jabatan:</label>
+                            <div class="col-sm-12">
+                                <select name="pilih_jabatan" id="pilih_jabatan" class="form-control" required>
+                                    <option name="pilih_jabatan" value="">-- Pilih Jabatan Anda --</option>
+                                    <option name="pilih_jabatan" value="rt">RT</option>
+                                    <option name="pilih_jabatan" value="rw">RW</option>
+                                </select>
                             </div>
-                            <div class="form-group row mb-2">
-                                <label class="col-2 control-label col-form-label">NIK: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label for="nomor_rt" class="col-form-label">RT:</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Masukkan Nomor RT" type="text" class="form-control" id="nama_awal"
+                                    name="nomor_rt" value="{{ old('nomor_rt') }}" required>
+                                <small class="form-text text-danger"></small>
                             </div>
-                            <div class="form-group row mb-2">
-                                <label class="col-2 control-label col-form-label">TTL: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label for="nomor_rw" class="col-form-label">RW:</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Masukkan Nomor RW" type="nomor_rw" class="form-control" id="nomor_rw"
+                                    name="nomor_rw" value="{{ old('nomor_rw') }}" required>
+                                <small class="form-text text-danger"></small>
                             </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Jenis Kelamin: </label>
-                                <div class="col-10">
-                                    <select name="jenkel" id="jenisPelanggaran" class="form-control" required>
-                                        <option name="jenkel" value="">Pilih Jenis Kelamin</option>
-                                        <option name="jenkel" value="L">Laki-laki</option>
-                                        <option name="jenkel" value="P">Perempuan</option>
-                                    </select>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label for="jumlah_pengeluaran" class="col-form-label">Jumlah Pengeluaran:</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Masukkan Jumlah Pengeluaran" type="jumlah_pengeluaran"
+                                    class="form-control" id="jumlah_pengeluaran" name="jumlah_pengeluaran"
+                                    value="{{ old('jumlah_pengeluaran') }}" required>
+                                <small class="form-text text-danger"></small>
                             </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Agama: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label for="bukti_struk" class="col-form-label">Upload Bukti Struk:</label>
+                            <div class="col-sm-12">
+                                <input type="file" class="form-control-file" id="bukti_struk" name="bukti_struk"
+                                    accept="image/*" required>
+                                <small class="form-text text-danger"></small>
                             </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Status: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label for="pengaduan_warga" class="col-form-label">Detail Pengeluaran:</label>
+                            <div class="col-sm-12">
+                                <textarea placeholder="Masukkan detail pengeluaran" type="pengaduan_warga" class="form-control" id="pengaduan_warga"
+                                    name="pengaduan_warga" value="{{ old('pengaduan_warga') }}" rows="7px" required></textarea>
+                                <small class="form-text text-danger"></small>
                             </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Pekerjaan: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Alamat: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
+                        </div>
+                    </div>
 
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick=hideTambahWarga()>Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal modal_edit_warga" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit Data Warga</h5>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST" class="form-horizontal">
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Nama: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
-                                <label class="col-2 control-label col-form-label">NIK: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
-                                <label class="col-2 control-label col-form-label">TTL: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Jenis Kelamin: </label>
-                                <div class="col-10">
-                                    <select name="jenkel" id="jenisPelanggaran" class="form-control" required>
-                                        <option name="jenkel" value="">Pilih Jenis Kelamin</option>
-                                        <option name="jenkel" value="L">Laki-laki</option>
-                                        <option name="jenkel" value="P">Perempuan</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Agama: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Status: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Pekerjaan: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Alamat: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick=hideEditWarga()>Tutup</button>
-                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary mt-3">Simpan</button>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function showTambahWarga() {
-            $('.modal_tambah_warga').modal('show');
-        }
-
-        function hideTambahWarga() {
-            $('.modal_tambah_warga').modal('hide');
-        }
-
-        function showEditWarga() {
-            $('.modal_edit_warga').modal('show');
-        }
-
-        function hideEditWarga() {
-            $('.modal_edit_warga').modal('hide');
-        }
-    </script>
-    <script>
-        new DataTable('#table-warga');
-    </script>
+    </div>
+    </div>
 @endsection
