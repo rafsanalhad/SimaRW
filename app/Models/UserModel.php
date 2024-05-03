@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\RoleModel;
+use App\Models\KartuKeluargaModel;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UserModel extends Model
 {
@@ -38,5 +41,9 @@ class UserModel extends Model
 
     public function kartuKeluarga(): BelongsTo {
         return $this->belongsTo(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
+
+    public function rt(): hasMany {
+        return $this->hasMany(UserModel::class, 'nomor_rw', 'nomor_rw');
     }
 }
