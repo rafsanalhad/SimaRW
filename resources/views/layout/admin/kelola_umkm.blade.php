@@ -59,7 +59,7 @@
               <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
               <p class="card-text">Pemilik: gaco razan kamil</p>
               <a href="#" class="btn btn-warning" onclick="modalEditUmkm()">Edit</a>
-              <a href="#" class="btn btn-danger">Hapus</a>
+              <a href="#" class="btn btn-danger" onclick="hapusData()">Hapus</a>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
               <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
               <p class="card-text">Pemilik: gaco razan kamil</p>
               <a href="#" class="btn btn-warning" onclick="modalEditUmkm()">Edit</a>
-              <a href="#" class="btn btn-danger">Hapus</a>
+              <a href="#" class="btn btn-danger" onclick="hapusData()">Hapus</a>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
               <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
               <p class="card-text">Pemilik: gaco razan kamil</p>
               <a href="#" class="btn btn-warning" onclick="modalEditUmkm()">Edit</a>
-              <a href="#" class="btn btn-danger">Hapus</a>
+              <a href="#" class="btn btn-danger" onclick="hapusData()">Hapus</a>
             </div>
           </div>
         </div>
@@ -191,6 +191,7 @@
 </div>
 <script>
   const modalTambahUmkm = () => {
+    $('.modal-title').html('Tambah UMKM');
       $('.modal_tambah_umkm').modal('show');
     }
     const modalEditUmkm = () => {
@@ -204,7 +205,7 @@
   icon: "warning",
   showCancelButton: true,
   confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
+  cancelButtonColor: "#d33",  
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {

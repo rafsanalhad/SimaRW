@@ -25,12 +25,14 @@ return new class extends Migration
             $table->string('agama');
             $table->string('nomor_rw')->nullable();
             $table->string('nomor_rt')->nullable();
-            $table->string('masa_jabatan')->nullable();
+            $table->string('masa_jabatan_awal')->nullable();
+            $table->string('masa_jabatan_akhir')->nullable();
             $table->string('nama_user', 255);
             $table->string('email_user', 255)->unique();
             $table->string('password_user');
             $table->integer('gaji_user');
             $table->string('pekerjaan_user', 255);
+            $table->text('alamat_user');
             $table->timestamps();
         });
     }
