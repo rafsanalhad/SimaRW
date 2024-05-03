@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UmkmRequest;
+use App\Models\LokasiUmkmModel;
 use App\Models\UmkmModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class UMKMController extends Controller
     public function createUmkm(UmkmRequest $request) {
         $request->validated();
 
-        UmkmModel::create([
+        $umkm = UmkmModel::create([
             'user_id' => $request->pemilik_umkm,
             'nama_umkm' => $request->nama_umkm,
             'alamat_umkm' => $request->alamat_umkm,
@@ -30,11 +31,17 @@ class UMKMController extends Controller
             'deskripsi_umkm' => $request->deskripsi_umkm
         ]);
 
+        LokasiUmkmModel::create([
+            'umkm_id' => $umkm->umkm_id,
+            'latitude_umkm' => $request->latitude_umkm,
+            'longitude_umkm' => $request->longitude_umkm
+        ]);
+
         return redirect('/admin/kelola-umkm');
     }
 
     public function editUmkm($id) {
-        $umkm = UmkmModel::find($id);
+        $umkm = UmkmModel::with('lokasi')->find($id);
 
         return response()->json($umkm);
     }

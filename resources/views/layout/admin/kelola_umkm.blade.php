@@ -49,7 +49,7 @@
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <h4>Kelola UMKM</h4>
-        <a href="#" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
+        <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
         <div class="row">
             @foreach ($umkm as $umkm)
                 <div class="col-md-4">
@@ -84,7 +84,8 @@
                     <div class="card">
                         <div class="card-body">
                             <form action="{{ route('createUmkm') }}" id="form_edit" method="POST" class="form">
-                                {{ csrf_field() }}
+                                @csrf
+                                @method('POST')
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Pemilik UMKM
@@ -186,10 +187,9 @@
     </div>
     <script>
         const modalTambahUmkm = () => {
-            $('input').val('');
-            $('textarea').val('');
-            $('time').val('');
-            $('select').val('');
+            $('input:not([name="_token"]), textarea, select, time').val('');
+
+            $('#form_edit').attr('action', '/admin/kelola-umkm');
 
             $('.modal-title').html('Tambah UMKM');
             $('.modal_tambah_umkm').modal('show');
@@ -218,7 +218,7 @@
 
             $('.modal_tambah_umkm').modal('show');
         }
-        
+
         const hapusData = (idUmkm) => {
             Swal.fire({
                 title: "Are you sure?",
