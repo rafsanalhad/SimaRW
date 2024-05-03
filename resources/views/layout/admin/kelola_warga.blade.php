@@ -50,10 +50,8 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <div id="container">
-                    <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick=showTambahWarga()><i
-                            class="bi bi-plus-lg"></i> Tambah</button>
-                </div>
+                <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick=showTambahWarga()><i
+                        class="bi bi-plus-lg"></i> Tambah</button>
                 <h4 class="mb-4">Kelola Data Warga</h4>
                 <hr>
                 <table class="table" id="table-warga">
@@ -85,9 +83,11 @@
                                 <td>{{ $warga->pekerjaan_user }}</td>
                                 <td>
                                     <div style="display: flex;">
-                                        <button href="" onclick=showEditWarga('{{ $warga->user_id }}') class="btn btn-warning"
-                                            style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                        <button href="" onclick=showDeleteWarga('{{ $warga->user_id }}') class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        <button href="" onclick=showEditWarga('{{ $warga->user_id }}')
+                                            class="btn btn-warning" style="margin-right: 5px;"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button href="" onclick=showDeleteWarga('{{ $warga->user_id }}')
+                                            class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -111,7 +111,8 @@
                                     <select name="kartu_keluarga_id" id="kartu_keluarga_id" class="form-control" required>
                                         <option name="kartu_keluarga_id" value="">-- Pilih KK --</option>
                                         @foreach ($dataKK as $kk)
-                                            <option name="kartu_keluarga_id" value="{{ $kk->kartu_keluarga_id }}">{{ $kk->nama_kepala_keluarga }} - {{ $kk->no_kartu_keluarga }}</option>
+                                            <option name="kartu_keluarga_id" value="{{ $kk->kartu_keluarga_id }}">
+                                                {{ $kk->nama_kepala_keluarga }} - {{ $kk->no_kartu_keluarga }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -228,6 +229,17 @@
                             </div>
                             <input type="hidden" value="4" name="role_id">
 
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                        accept="image/*" required>
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -245,15 +257,18 @@
                         <h5 class="modal-title">Edit Data Warga</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('updateWarga', $warga->user_id) }}" method="POST" class="form-horizontal">
+                        <form action="{{ route('updateWarga', $warga->user_id) }}" method="POST"
+                            class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">NKK: </label>
                                 <div class="col-10">
-                                    <select name="kartu_keluarga_id" id="kartu_keluarga_id_edit" class="form-control" required>
+                                    <select name="kartu_keluarga_id" id="kartu_keluarga_id_edit" class="form-control"
+                                        required>
                                         <option name="kartu_keluarga_id" value="">-- Pilih KK --</option>
                                         @foreach ($dataKK as $kk)
-                                            <option name="kartu_keluarga_id" value="{{ $kk->kartu_keluarga_id }}">{{ $kk->nama_kepala_keluarga }} - {{ $kk->no_kartu_keluarga }}</option>
+                                            <option name="kartu_keluarga_id" value="{{ $kk->kartu_keluarga_id }}">
+                                                {{ $kk->nama_kepala_keluarga }} - {{ $kk->no_kartu_keluarga }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -301,8 +316,8 @@
                             <div class="form-group row mb-2">
                                 <label class="col-2 control-label col-form-label">Tanggal Lahir: </label>
                                 <div class="col-10">
-                                    <input type="date" class="form-control" id="tanggal_lahir_edit" name="tanggal_lahir"
-                                        value="{{ old('tanggal_lahir') }}" required>
+                                    <input type="date" class="form-control" id="tanggal_lahir_edit"
+                                        name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required>
                                     @error('tanggal_lahir')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -341,8 +356,8 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Pekerjaan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="pekerjaan_user_edit" name="pekerjaan_user"
-                                        value="{{ old('pekerjaan_user') }}" required>
+                                    <input type="text" class="form-control" id="pekerjaan_user_edit"
+                                        name="pekerjaan_user" value="{{ old('pekerjaan_user') }}" required>
                                     @error('pekerjaan_user')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -369,7 +384,16 @@
                                 </div>
                             </div>
                             <input type="hidden" value="4" name="role_id">
-
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                        accept="image/*" required>
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -444,9 +468,7 @@
         function hideDeleteWarga() {
             $('.modal_delete_warga').modal('hide')
         }
-
-
-        </script>
+    </script>
     <script>
         new DataTable('#table-warga');
     </script>

@@ -18,14 +18,14 @@ class WargaController extends Controller
     public function umkm(){
         return view('layout.warga.umkm');
     }
-    public function editProfil(){
-        return view('layout.warga.edit_profil');
+    public function profilWarga(){
+        return view('layout.warga.profil_warga');
     }
     public function pengajuanBansos(){
         return view('layout.warga.pengajuan_bansos');
     }
-    public function pengaduan(){
-        return view('layout.warga.pengaduan');
+    public function pengaduanWarga(){
+        return view('layout.warga.pengaduan_warga');
     }
     public function laporanIuran(){
         return view('layout.warga.laporan_iuran');
