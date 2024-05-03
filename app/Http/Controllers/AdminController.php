@@ -126,7 +126,7 @@ class AdminController extends Controller
     // Function menampilkan data RW
     public function kelolaRw(){
         // Untuk mengambil data RW yang memiliki role RW
-        $rw = UserModel::with('kartuKeluarga')->where('role_id', 3)->orderBy('user_id')->get();
+        $rw = UserModel::with('rt')->where('role_id', 3)->orderBy('user_id')->get();
 
         return view('layout.admin.kelola_rw', ['dataRW' => $rw, 'no' => 1]);
     }

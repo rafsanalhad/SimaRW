@@ -73,9 +73,17 @@
                                     {{ $rw->nama_user }}
                                 </td>
                                 <td>{{ $rw->nomor_rw }}</td>
-                                <td>{{ $rw->nomor_rt }}</td>
-                                <td>{{ $rw->masa_jabatan }}</td>
-                                <td>{{ $rw->kartuKeluarga->alamat_kk }}</td>
+                                <td>
+                                    @foreach ($rw->rt as $index => $rt)
+                                        {{ $rt->nomor_rt }}
+                                        @if ($index < count($rw->rt) - 1)
+                                            {{-- Tambahkan koma jika ini bukan iterasi terakhir --}}
+                                            {{ ', ' }}
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td>{{ $rw->masa_jabatan_awal }} s/d {{ $rw->masa_jabatan_akhir }}</td>
+                                <td>{{ $rw->alamat_user }}</td>
                                 <td>
                                     <div style="display: flex;">
                                         <button href="" onclick=showEditRw() class="btn btn-warning"
