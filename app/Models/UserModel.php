@@ -43,6 +43,10 @@ class UserModel extends Model
         return $this->belongsTo(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
     }
 
+    public function umkm(): BelongsTo {
+        return $this->belongsTo(UmkmModel::class);
+    }
+
     public function rt(): hasMany {
         return $this->hasMany(UserModel::class, 'nomor_rw', 'nomor_rw');
     }

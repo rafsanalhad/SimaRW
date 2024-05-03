@@ -51,59 +51,27 @@
         <h4>Kelola UMKM</h4>
         <a href="#" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card shadow-lg">
-                    <div class="card-body">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png') }}"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">UMKM Maju Jaya</h5>
-                                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
-                                <p class="card-text">Pemilik: gaco razan kamil</p>
-                                <a href="#" class="btn btn-warning" onclick="modalEditUmkm()">Edit</a>
-                                <a href="#" class="btn btn-danger" onclick="hapusData()">Hapus</a>
+            @foreach ($umkm as $umkm)
+                <div class="col-md-4">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png') }}"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
+                                    <p class="card-text">{{ $umkm->deskripsi_umkm }}</p>
+                                    <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
+                                    <a href="#" class="btn btn-warning"
+                                        onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
+                                    <a href="#" class="btn btn-danger"
+                                        onclick="hapusData({{ $umkm->umkm_id }})">Hapus</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow-lg">
-                    <div class="card-body">
-
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png') }}"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">UMKM Maju Jaya</h5>
-                                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
-                                <p class="card-text">Pemilik: gaco razan kamil</p>
-                                <a href="#" class="btn btn-warning" onclick="modalEditUmkm()">Edit</a>
-                                <a href="#" class="btn btn-danger" onclick="hapusData()">Hapus</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow-lg">
-                    <div class="card-body">
-
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png') }}"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">UMKM Maju Jaya</h5>
-                                <p class="card-text">Umkm yang menjual sayur dan buah buahan</p>
-                                <p class="card-text">Pemilik: gaco razan kamil</p>
-                                <a href="#" class="btn btn-warning" onclick="modalEditUmkm()">Edit</a>
-                                <a href="#" class="btn btn-danger" onclick="hapusData()">Hapus</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="modal modal_tambah_umkm" tabindex="-1" role="dialog">
@@ -115,13 +83,28 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" class="form">
+                            <form action="{{ route('createUmkm') }}" id="form_edit" method="POST" class="form">
+                                {{ csrf_field() }}
+                                <div class="row d-flex align-items-center mt-3">
+                                    <div class="col-4">
+                                        Pemilik UMKM
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control" id="pemilik_umkm_edit" name="pemilik_umkm"
+                                            id="">
+                                            <option value="">-- Pilih Warga --</option>
+                                            @foreach ($warga as $warga)
+                                                <option value="{{ $warga->user_id }}">{{ $warga->nama_user }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Nama Umkm
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="nama_umkm_edit" name="nama_umkm" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -129,7 +112,8 @@
                                         Alamat
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="alamat_umkm_edit" name="alamat_umkm"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -137,7 +121,8 @@
                                         Kontak
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -145,65 +130,96 @@
                                         Latitude
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="latitude_umkm_edit" name="latitude_umkm"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Longtitude
+                                        Longitude
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="longitude_umkm_edit" name="longitude_umkm"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Jam Operasional
                                     </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control">
+                                    <div class="col-6 d-flex">
+                                        <input type="time" id="jam_operasional_awal_edit" name="jam_operasional_awal"
+                                            class="form-control">
+                                        <span class="mx-2 my-2">s/d</span>
+                                        <input type="time" id="jam_operasional_akhir_edit"
+                                            name="jam_operasional_akhir" class="form-control">
                                     </div>
                                 </div>
-                                <div class="row d-flex align-items-center mt-3">
+                                {{-- <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Gambar UMKM
                                     </div>
                                     <div class="col-6">
                                         <input type="file" class="form-control">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Deskripsi UMKM
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <textarea name="deskripsi_umkm" class="form-control" id="deskripsi_umkm_edit" cols="30" rows="5"></textarea>
                                     </div>
                                 </div>
 
-
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        onclick=hideModalTambahUmkm()>Close</button>
+                                </div>
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick=hideModalTambahUmkm()>Close</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
         const modalTambahUmkm = () => {
+            $('input').val('');
+            $('textarea').val('');
+            $('time').val('');
+            $('select').val('');
+
             $('.modal-title').html('Tambah UMKM');
             $('.modal_tambah_umkm').modal('show');
         }
-        const modalEditUmkm = () => {
-            $('.modal-title').html('Edit UMKM');
+
+        const modalEditUmkm = (idUmkm) => {
+            $.ajax({
+                url: '/admin/kelola-umkm/edit/' + idUmkm,
+                type: 'GET',
+                dataType: 'json',
+                success(data) {
+                    console.log(data)
+                    $('#pemilik_umkm_edit').val(data.user_id);
+                    $('#nama_umkm_edit').val(data.nama_umkm);
+                    $('#alamat_umkm_edit').val(data.alamat_umkm);
+                    $('#kontak_umkm_edit').val(data.kontak_umkm);
+                    $('#latitude_umkm_edit').val(data.latitude_umkm);
+                    $('#longitude_umkm_edit').val(data.longitude_umkm);
+                    $('#jam_operasional_awal_edit').val(data.jam_operasional_awal);
+                    $('#jam_operasional_akhir_edit').val(data.jam_operasional_akhir);
+                    $('#deskripsi_umkm_edit').val(data.deskripsi_umkm);
+                }
+            });
+
+            $('#form_edit').attr('action', '/admin/kelola-umkm/update/' + idUmkm);
+
             $('.modal_tambah_umkm').modal('show');
         }
-        const hapusData = () => {
+        
+        const hapusData = (idUmkm) => {
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -214,10 +230,18 @@
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
+                    $.ajax({
+                        url: '/admin/kelola-umkm/delete/' + idUmkm,
+                        type: 'GET',
+                        success: function() {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            }).then((result) => {
+                                location.reload();
+                            });
+                        }
                     });
                 }
             });

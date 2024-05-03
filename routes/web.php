@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\KelolaDataController;
+use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WargaController;
@@ -27,25 +29,31 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/dashboard', [AdminController::class, 'index']);
 
-    Route::get('/kelola-warga', [AdminController::class, 'kelolaWarga']);
-    Route::post('/kelola-warga', [AdminController::class, 'createWarga'])->name('createWarga');
-    Route::get('/kelola-warga/edit/{id}', [AdminController::class, 'editWarga']);
-    Route::get('/kelola-warga/delete/{id}', [AdminController::class, 'deleteWarga']);
-    Route::post('/kelola-warga/update/{id}', [AdminController::class, 'updateWarga'])->name('updateWarga');
+    Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
+    Route::post('/kelola-warga', [KelolaDataController::class, 'createWarga'])->name('createWarga');
+    Route::get('/kelola-warga/edit/{id}', [KelolaDataController::class, 'editWarga']);
+    Route::get('/kelola-warga/delete/{id}', [KelolaDataController::class, 'deleteWarga']);
+    Route::post('/kelola-warga/update/{id}', [KelolaDataController::class, 'updateWarga'])->name('updateWarga');
 
-    Route::get('/kelola-rt', [AdminController::class, 'kelolaRt']);
-    Route::post('kelola-rt', [AdminController::class, 'createRt']);
-    Route::get('/kelola-rt/edit/{id}', [AdminController::class, 'editRt']);
-    Route::post('/kelola-rt/update', [AdminController::class, 'updateRt']);
-    Route::get('/kelola-rt/delete/{id}', [AdminController::class, 'deleteRt']);
+    Route::get('/kelola-rt', [KelolaDataController::class, 'kelolaRt']);
+    Route::post('kelola-rt', [KelolaDataController::class, 'createRt']);
+    Route::get('/kelola-rt/edit/{id}', [KelolaDataController::class, 'editRt']);
+    Route::post('/kelola-rt/update', [KelolaDataController::class, 'updateRt']);
+    Route::get('/kelola-rt/delete/{id}', [KelolaDataController::class, 'deleteRt']);
 
-    Route::get('/kelola-rw', [AdminController::class, 'kelolaRw']);
-    Route::post('/kelola-rw', [AdminController::class, 'createRw'])->name('createRw');
-    Route::get('/kelola-rw/edit/{id}', [AdminController::class, 'editRw']);
-    Route::post('/kelola-rw/update', [AdminController::class, 'updateRw'])->name('updateRw');
-    Route::get('/kelola-rw/delete/{id}', [AdminController::class, 'deleteRw']);
+    Route::get('/kelola-rw', [KelolaDataController::class, 'kelolaRw']);
+    Route::post('/kelola-rw', [KelolaDataController::class, 'createRw'])->name('createRw');
+    Route::get('/kelola-rw/edit/{id}', [KelolaDataController::class, 'editRw']);
+    Route::post('/kelola-rw/update', [KelolaDataController::class, 'updateRw'])->name('updateRw');
+    Route::get('/kelola-rw/delete/{id}', [KelolaDataController::class, 'deleteRw']);
 
-    Route::get('/kelola-umkm', [AdminController::class, 'kelolaUmkm']);
+    Route::get('/kelola-umkm', [UMKMController::class, 'kelolaUmkm']);
+    Route::post('/kelola-umkm', [UMKMController::class, 'createUmkm'])->name('createUmkm');
+    Route::get('/kelola-umkm/edit/{id}', [UMKMController::class, 'editUmkm']);
+    Route::post('/kelola-umkm/update/{id}', [UMKMController::class, 'updateUmkm']);
+    Route::get('/kelola-umkm/delete/{id}', [UMKMController::class, 'deleteUmkm']);
+
+
     Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
     Route::get('/laporan-iuran', [AdminController::class, 'laporanIuran']);
     Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
