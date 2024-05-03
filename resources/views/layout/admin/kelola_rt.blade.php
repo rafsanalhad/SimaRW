@@ -152,7 +152,7 @@
                                 <label class="col-2 control-label col-form-label">Upload Foto: </label>
                                 <div class="col-10 mt-1">
                                     <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
-                                        accept="image/*" required>
+                                        accept="image/*" >
                                     @error('upload_foto')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror

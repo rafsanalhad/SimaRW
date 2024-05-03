@@ -86,9 +86,9 @@
                                 <td>{{ $rw->alamat_user }}</td>
                                 <td>
                                     <div style="display: flex;">
-                                        <button href="" onclick=showEditRw() class="btn btn-warning"
+                                        <button href="" onclick="showEditRw({{ $rw->user_id }})" class="btn btn-warning"
                                             style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                        <button href="" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        <button href="" onclick="showDeleteRw({{ $rw->user_id }})" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -104,12 +104,17 @@
                         <h5 class="modal-title">Tambah Data RW</h5>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" class="form-horizontal">
+                        <form action="{{ route('createRw') }}" method="POST" class="form-horizontal">
+                            {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama RW: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
+                                    <select name="rw_baru" class="form-control" id="">
+                                        <option value="">-- Pilih Nama RW --</option>
+                                        @foreach ($wargas as $warga)
+                                            <option value="{{ $warga->user_id }}">{{ $warga->nama_user }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('level_nama')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -118,19 +123,9 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor RW : </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Nomor RT : </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
+                                    <input type="text" class="form-control" id="nomor_rw" name="nomor_rw"
+                                        value="{{ old('nomor_rw') }}" required>
+                                    @error('nomor_rw')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -138,39 +133,31 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Masa Jabatan : </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
+                                    <div class="d-flex">
+                                        <input type="date" class="form-control" name="masa_jabatan_awal"
+                                            value="{{ old('masa_jabatan_awal') }}" required>
+                                        <span class="mt-2 ms-1 me-1">s/d</span>
+                                        <input type="date" class="form-control" name="masa_jabatan_akhir"
+                                            value="{{ old('masa_jabatan_akhir') }}" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Alamat: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
+                            {{-- <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Upload Foto: </label>
                                 <div class="col-10 mt-1">
-                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
-                                        accept="image/*" required>
+                                    <input type="file" class="form-control" id="upload_foto" name="upload_foto"
+                                        accept="image/*">
                                     @error('upload_foto')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                            </div> --}}
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    onclick=hideTambahRw()>Tutup</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick=hideTambahRw()>Tutup</button>
                     </div>
                 </div>
             </div>
@@ -182,12 +169,17 @@
                         <h5 class="modal-title">Edit Data RW</h5>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" class="form-horizontal">
+                        <form action="{{ route('updateRw') }}" method="POST" class="form-horizontal">
+                            {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama RW: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
+                                    <select id="rw_edit" name="rw_baru" class="form-control" id="">
+                                        <option value="">-- Pilih Nama RW --</option>
+                                        @foreach ($wargas as $warga)
+                                            <option value="{{ $warga->user_id }}">{{ $warga->nama_user }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('level_nama')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -196,19 +188,9 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor RW : </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Nomor RT : </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
+                                    <input type="text" class="form-control" id="nomor_rw_edit" name="nomor_rw"
+                                        value="{{ old('nomor_rw') }}" required>
+                                    @error('nomor_rw')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -216,24 +198,17 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Masa Jabatan : </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
+                                    <div class="d-flex">
+                                        <input type="date" id="masa_jabatan_awal_edit" class="form-control" name="masa_jabatan_awal"
+                                            value="{{ old('masa_jabatan_awal') }}" required>
+                                        <span class="mt-2 ms-1 me-1">s/d</span>
+                                        <input type="date" id="masa_jabatan_akhir_edit" class="form-control" name="masa_jabatan_akhir"
+                                            value="{{ old('masa_jabatan_akhir') }}" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Alamat: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="level_nama" name="level_nama"
-                                        value="{{ old('level_nama') }}" required>
-                                    @error('level_nama')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
+                            <input type="hidden" id="rw_lama" name="rw_lama" value="">
+                            {{-- <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Upload Foto: </label>
                                 <div class="col-10 mt-1">
                                     <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
@@ -242,17 +217,36 @@
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                            </div> --}}
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    onclick=hideEditRw()>Tutup</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick=hideEditRw()>Tutup</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal modal_delete_rw" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Hapus Data RW</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Apakah anda yakin ingin menghapus data user ini?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="hapus_rw_id btn btn-secondary">Hapus</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                            onclick=hideDeleteRw()>Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script>
         function showTambahRw() {
@@ -263,12 +257,34 @@
             $('.modal_tambah_rw').modal('hide');
         }
 
-        function showEditRw() {
+        function showEditRw(user_id) {
+            $.ajax({
+                url: '/admin/kelola-rw/edit/' + user_id,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $('#rw_edit').val(data.user_id);
+                    $('#rw_lama').val(data.user_id);
+                    $('#nomor_rw_edit').val(data.nomor_rw);
+                    $('#masa_jabatan_awal_edit').val(data.masa_jabatan_awal);
+                    $('#masa_jabatan_akhir_edit').val(data.masa_jabatan_akhir);
+                }
+            })
+
             $('.modal_edit_rw').modal('show');
         }
 
         function hideEditRw() {
             $('.modal_edit_rw').modal('hide');
+        }
+
+        function showDeleteRw(idRw) {
+            $('.hapus_rw_id').attr('href', '/admin/kelola-rw/delete/' + idRw);
+            $('.modal_delete_rw').modal('show');
+        }
+
+        function hideDeleteRw() {
+            $('.modal_delete_rw').modal('hide');
         }
     </script>
     <script>

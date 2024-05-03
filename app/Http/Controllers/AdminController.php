@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RTRequest;
+use App\Http\Requests\RwRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\KartuKeluargaModel;
 use App\Models\UserModel;
@@ -127,9 +128,67 @@ class AdminController extends Controller
     public function kelolaRw(){
         // Untuk mengambil data RW yang memiliki role RW
         $rw = UserModel::with('rt')->where('role_id', 3)->orderBy('user_id')->get();
+        $warga = UserModel::all();
 
-        return view('layout.admin.kelola_rw', ['dataRW' => $rw, 'no' => 1]);
+        return view('layout.admin.kelola_rw', ['dataRW' => $rw, 'no' => 1, 'wargas' => $warga]);
     }
+
+    public function createRw(RwRequest $request) {
+        $request->validated();
+
+        UserModel::where('user_id', $request->rw_baru)->update([
+            'role_id' => 3,
+            'nomor_rw' => $request->nomor_rw,
+            'masa_jabatan_awal' => $request->masa_jabatan_awal,
+            'masa_jabatan_akhir' => $request->masa_jabatan_akhir
+        ]);
+
+        return redirect('/admin/kelola-rw');
+    }
+
+    public function editRw($id) {
+        $rw = UserModel::find($id);
+
+        return response()->json($rw);
+    }
+
+    public function updateRw(RwRequest $request) {
+        $request->validated();
+
+        $rw_lama = $request->rw_lama;
+
+        if(UserModel::where('user_id', $rw_lama)->get('user_id') == $rw_lama) {
+            UserModel::where('user_id', $rw_lama)->update([
+                'nomor_rw' => $request->nomor_rw,
+                'masa_jabatan_awal' => $request->masa_jabatan_awal,
+                'masa_jabatan_akhir' => $request->masa_jabatan_akhir
+            ]);
+        } else {
+            UserModel::where('user_id', $rw_lama)->update([
+                'role_id' => 4,
+                'nomor_rw' => null,
+                'masa_jabatan_awal' => null,
+                'masa_jabatan_akhir' => null
+            ]);
+
+            UserModel::where('user_id', $request->rw_baru)->update([
+                'role_id' => 3,
+                'nomor_rw' => $request->nomor_rw,
+                'masa_jabatan_awal' => $request->masa_jabatan_awal,
+                'masa_jabatan_akhir' => $request->masa_jabatan_akhir
+            ]);
+        }
+
+
+
+        return redirect('/admin/kelola-rw');
+    }
+
+    public function deleteRw($id) {
+        UserModel::destroy($id);
+        return redirect('/admin/kelola-rw');
+    }
+
     public function kelolaUmkm(){
         return view('layout.admin.kelola_umkm');
     }
