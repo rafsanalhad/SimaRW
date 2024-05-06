@@ -32,7 +32,8 @@ class UserModel extends Model
         'password_user',
         'gaji_user',
         'pekerjaan_user',
-        'alamat_user'
+        'alamat_user',
+        'foto_user'
     ];
 
     public function role(): HasMany {
