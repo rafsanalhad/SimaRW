@@ -56,7 +56,7 @@
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{{ @asset('assets/images/content/img_hero.png') }}"
+                                <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
@@ -83,7 +83,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('createUmkm') }}" id="form_edit" method="POST" class="form">
+                            <form action="{{ route('createUmkm') }}" id="form_edit" method="POST" class="form" enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="row d-flex align-items-center mt-3">
@@ -156,14 +156,14 @@
                                             name="jam_operasional_akhir" class="form-control">
                                     </div>
                                 </div>
-                                {{-- <div class="row d-flex align-items-center mt-3">
+                                <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Gambar UMKM
                                     </div>
                                     <div class="col-6">
-                                        <input type="file" class="form-control">
+                                        <input name="foto_umkm" type="file" class="form-control" accept="image/*">
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Deskripsi UMKM
@@ -206,8 +206,8 @@
                     $('#nama_umkm_edit').val(data.nama_umkm);
                     $('#alamat_umkm_edit').val(data.alamat_umkm);
                     $('#kontak_umkm_edit').val(data.kontak_umkm);
-                    $('#latitude_umkm_edit').val(data.latitude_umkm);
-                    $('#longitude_umkm_edit').val(data.longitude_umkm);
+                    $('#latitude_umkm_edit').val(data.lokasi.latitude_umkm);
+                    $('#longitude_umkm_edit').val(data.lokasi.longitude_umkm);
                     $('#jam_operasional_awal_edit').val(data.jam_operasional_awal);
                     $('#jam_operasional_akhir_edit').val(data.jam_operasional_akhir);
                     $('#deskripsi_umkm_edit').val(data.deskripsi_umkm);
