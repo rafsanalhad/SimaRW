@@ -34,7 +34,8 @@ class UserRequest extends FormRequest
             'pekerjaan_user' => 'required',
             'alamat_user' => 'required',
             'email_user' => 'required',
-            'gaji_user' => 'required'
+            'gaji_user' => 'required',
+            'foto_user' => ''
         ];
     }
 }

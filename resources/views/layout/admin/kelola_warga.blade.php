@@ -65,6 +65,7 @@
                         <th>Alamat</th>
                         <th>Status</th>
                         <th>Pekerjaan</th>
+                        <th>Foto User</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -81,6 +82,7 @@
                                 <td>{{ $warga->kartuKeluarga->alamat_kk }}</td>
                                 <td>{{ $warga->status_kawin }}</td>
                                 <td>{{ $warga->pekerjaan_user }}</td>
+                                <td><img class="rounded" src="{{ asset('storage/' . $warga->foto_user) }}" alt="Foto User" width="100" height="100"></td>
                                 <td>
                                     <div style="display: flex;">
                                         <button href="" onclick=showEditWarga('{{ $warga->user_id }}')
@@ -103,7 +105,7 @@
                         <h5 class="modal-title">Tambah Data Warga</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-warga" method="POST" class="form-horizontal">
+                        <form action="/admin/kelola-warga" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">NKK: </label>
@@ -232,7 +234,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Upload Foto: </label>
                                 <div class="col-10 mt-1">
-                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
+                                    <input type="file" class="form-control" id="upload_foto" name="foto_user"
                                         accept="image/*" required>
                                     @error('upload_foto')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -257,8 +259,8 @@
                         <h5 class="modal-title">Edit Data Warga</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('updateWarga', $warga->user_id) }}" method="POST"
-                            class="form-horizontal">
+                        <form action="" id="editWarga" method="POST"
+                            class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">NKK: </label>
@@ -387,8 +389,8 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Upload Foto: </label>
                                 <div class="col-10 mt-1">
-                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
-                                        accept="image/*" required>
+                                    <input type="file" class="form-control" id="upload_foto" name="foto_user"
+                                        accept="image/*">
                                     @error('upload_foto')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -452,6 +454,8 @@
                     $('#alamat_user_edit').val(data.alamat_user);
                 }
             });
+
+            $('#editWarga').attr('action', '/admin/kelola-warga/update/' + idWarga);
 
             $('.modal_edit_warga').modal('show');
         }
