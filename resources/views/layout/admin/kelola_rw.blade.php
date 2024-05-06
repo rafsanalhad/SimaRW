@@ -63,6 +63,7 @@
                         <th>Nomor RT</th>
                         <th>Masa Jabatan</th>
                         <th>Alamat</th>
+                        <th>Foto RW</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -84,6 +85,7 @@
                                 </td>
                                 <td>{{ $rw->masa_jabatan_awal }} s/d {{ $rw->masa_jabatan_akhir }}</td>
                                 <td>{{ $rw->alamat_user }}</td>
+                                <td><img class="rounded" src="{{ asset('storage/' . $rw->foto_user) }}" width="100" alt="Foto RW"></td>
                                 <td>
                                     <div style="display: flex;">
                                         <button href="" onclick="showEditRw({{ $rw->user_id }})" class="btn btn-warning"
@@ -142,16 +144,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
-                                <div class="col-10 mt-1">
-                                    <input type="file" class="form-control" id="upload_foto" name="upload_foto"
-                                        accept="image/*">
-                                    @error('upload_foto')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div> --}}
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
