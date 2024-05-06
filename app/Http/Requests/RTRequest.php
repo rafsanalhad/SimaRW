@@ -27,7 +27,6 @@ class RTRequest extends FormRequest
             'nomor_rw' => 'required',
             'masa_jabatan_awal' => 'required',
             'masa_jabatan_akhir' => 'required',
-            'role_id' => 'required'
         ];
     }
 }

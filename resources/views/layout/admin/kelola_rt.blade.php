@@ -63,6 +63,7 @@
                         <th>Nomor RW</th>
                         <th>Masa Jabatan</th>
                         <th>Alamat</th>
+                        <th>Foto RT</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -76,6 +77,7 @@
                                 <td>{{ $rt->nomor_rw }}</td>
                                 <td>{{ $rt->masa_jabatan_awal }} s/d {{ $rt->masa_jabatan_akhir }}</td>
                                 <td>{{ $rt->alamat_user }}</td>
+                                <td><img src="{{ asset('storage/' . $rt->foto_user) }}" alt="Foto RT" width="100"></td>
                                 <td>
                                     <div style="display: flex;">
                                         <button href="" onclick=showEditRt('{{ $rt->user_id }}')
@@ -146,18 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-
                             <input type="hidden" value="2" name="role_id">
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
-                                <div class="col-10 mt-1">
-                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
-                                        accept="image/*" >
-                                    @error('upload_foto')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -177,6 +168,7 @@
                     <div class="modal-body">
                         <form action="/admin/kelola-rt/update" method="POST" class="form-horizontal">
                             {{ csrf_field() }}
+                            <input type="hidden" id="rt_lama_edit" name="rt_lama" value="">
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama RT: </label>
                                 <div class="col-10">
@@ -221,18 +213,6 @@
                                         <input type="date" class="form-control" id="masa_jabatan_akhir_edit"
                                             name="masa_jabatan_akhir" value="{{ old('masa_jabatan_akhir') }}" required>
                                     </div>
-                                </div>
-                            </div>
-
-                            <input type="hidden" value="2" name="role_id">
-                            <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
-                                <div class="col-10 mt-1">
-                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
-                                        accept="image/*" required>
-                                    @error('upload_foto')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -288,6 +268,7 @@
                 dataType: 'json',
                 success: function(data) {
                     $('#rt_baru_edit').val(data.user_id)
+                    $('#rt_lama_edit').val(data.user_id)
                     $('#nomor_rt_edit').val(data.nomor_rt)
                     $('#nomor_rw_edit').val(data.nomor_rw)
                     $('#masa_jabatan_awal_edit').val(data.masa_jabatan_awal)
