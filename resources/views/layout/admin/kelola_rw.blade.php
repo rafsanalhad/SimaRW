@@ -208,16 +208,6 @@
                                 </div>
                             </div>
                             <input type="hidden" id="rw_lama" name="rw_lama" value="">
-                            {{-- <div class="row mb-2">
-                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
-                                <div class="col-10 mt-1">
-                                    <input type="file" class="form-control-file" id="upload_foto" name="upload_foto"
-                                        accept="image/*" required>
-                                    @error('upload_foto')
-                                        <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div> --}}
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
