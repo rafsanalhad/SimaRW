@@ -22,14 +22,30 @@
                                 <div href="#" class="text-center mb-3">
                                     <img src="{{ url('/assets/images/logos/simarwlogo.png') }}" alt="">
                                 </div>
-                                <form>
+                                @if (session('loginError'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('loginError') }}
+                                    </div>
+                                @endif
+                                <form action="{{ route('authUser') }}" method="POST">
+                                    @csrf
                                     <div class="mb-3">
-                                        <label for="username_login" class="form-label">Username</label>
-                                        <input type="email" class="form-control" id="username_login">
+                                        <label for="nik_login" class="form-label">NIK</label>
+                                        <input type="text" name="nik_user" class="form-control @error('nik_user') is-invalid @enderror" id="nik_login" value="{{ old('nik_user') }}" required autofocus>
+                                        @error('nik_user')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="password_login" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password_login">
+                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password_login" required>
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="form-check">
@@ -41,9 +57,7 @@
                                         </div>
                                         <a class="text-primary fw-bold" href="./forgot-password">Forgot Password ?</a>
                                     </div>
-                                    <a href="./admin/dashboard"
-                                        class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign
-                                        In</a>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                                 </form>
                             </div>
                         </div>
