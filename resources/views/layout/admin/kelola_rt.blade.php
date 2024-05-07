@@ -1,5 +1,6 @@
 @extends('template.admin.main')
 @section('content')
+<<<<<<< HEAD
 <header class="app-header">
     <nav class="navbar navbar-expand-lg navbar-light">
         <ul class="navbar-nav">
@@ -42,6 +43,17 @@
                         </div>
                     </div>
                 </li>
+=======
+    <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item d-block d-xl-none">
+                    <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+
+>>>>>>> 7df57bb0990dc148ed9a0cf98e8d76aae847b7dd
             </ul>
         </div>
     </nav>

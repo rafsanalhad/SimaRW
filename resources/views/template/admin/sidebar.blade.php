@@ -3,7 +3,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="./index.html" class="text-nowrap logo-img">
-                <img src="{{@asset('assets/images/logos/simarwlogo.png') }}" width="180" alt="" />
+                <img src="{{ @asset('assets/images/logos/simarwlogo.png') }}" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -17,7 +17,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/admin') }}" aria-expanded="false">
+                    <a class="sidebar-link" href=" {{ url('/admin/dashboard') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
