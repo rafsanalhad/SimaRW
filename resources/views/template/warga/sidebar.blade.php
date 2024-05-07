@@ -29,7 +29,7 @@
                         <span>
                             <i class="bi bi-exclamation-circle"></i>
                         </span>
-                        <span class="hide-menu">Bayar iuran</span>
+                        <span class="hide-menu">Bayar Iuran</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -37,7 +37,7 @@
                         <span>
                             <i class="bi bi-exclamation-circle"></i>
                         </span>
-                        <span class="hide-menu">Kegiatan warga</span>
+                        <span class="hide-menu">Kegiatan Warga</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -69,6 +69,14 @@
                             <i class="bi bi-envelope-paper"></i>
                         </span>
                         <span class="hide-menu">Pengajuan Bansos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/penerima-bansos') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-envelope-paper"></i>
+                        </span>
+                        <span class="hide-menu">Penerima Bansos</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

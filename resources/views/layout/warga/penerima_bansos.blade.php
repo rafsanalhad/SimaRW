@@ -45,10 +45,7 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick="showTambahWarga()">
-                    <i class="bi bi-plus-lg"></i> Ajukan Surat
-                </button>
-                <h4 class="mb-4">History Peengajuan Surat</h4>
+                <h4 class="mb-4">Penerima Bansos</h4>
                 <hr>
                 <div class="table-responsive">
                     <table class="table" id="table-warga">
@@ -57,8 +54,8 @@
                             <th>Nama Warga</th>
                             <th>NIK</th>
                             <th>Tanggal Pengajuan</th>
-                            <th>Tipe Surat</th>
-                            <th>Download</th>
+                            <th>Pekerjaan</th>
+                            <th>Gaji</th>
                             <th>Status</th>
                         </thead>
                         <tbody>
@@ -71,8 +68,8 @@
                                     <td>22417200059</td>
                                     {{-- <td>{{ $warga->nik_user }}</td> --}}
                                     <td>20 Juni 2024</td>
-                                    <td>Surat SKTM</td>
-                                    <td><button class="btn btn-primary">Download</button><button class="btn btn-danger">Belum Disetujui</button></td>
+                                    <td>Buruh Tani</td>
+                                    <td>Rp.1000.000</td>
                                     <td><button class="btn btn-success">Diterima</button>
                                     <button class="btn btn-danger">Ditolak</button></td>
                                 </tr>

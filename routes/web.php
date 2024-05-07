@@ -74,6 +74,7 @@ Route::prefix('warga')->group(function () {
     Route::get('/umkm', [WargaController::class, 'umkm']);
     Route::get('/profil-warga', [WargaController::class, 'profilWarga']);
     Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuanBansos']);
+    Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
     Route::get('/pengajuan-surat', [WargaController::class, 'pengajuanSurat']);
     Route::get('/pengaduan', [WargaController::class, 'pengaduanWarga']);
     Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
