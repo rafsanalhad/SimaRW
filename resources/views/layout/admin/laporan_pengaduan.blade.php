@@ -224,4 +224,8 @@
     <script>
         new DataTable('#table_pengaduan');
     </script>
+    <script>
+        $('#submenu-laporan-pengaduan').addClass('show');
+        $('#menu-laporan-pengaduan').removeClass('text-dark').addClass('text-primary');
+    </script>
 @endsection
