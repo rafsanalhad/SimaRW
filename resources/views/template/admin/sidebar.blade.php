@@ -17,7 +17,8 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/admin/dashboard') }}" aria-expanded="false">
+                    <a class="sidebar-link" id="dashboard_menu" href=" {{ url('/admin/dashboard') }}"
+                        aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -29,23 +30,27 @@
                     <span class="hide-menu">Menu</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#submenu-kelola-data" data-bs-toggle="collapse" aria-expanded="false">
+                    <a class="sidebar-link menu-kelola-data" href="#submenu-kelola-data" data-bs-toggle="collapse"
+                        aria-expanded="false">
                         <span>
                             <i class="ti ti-article"></i>
                         </span>
                         <span class="hide-menu">Kelola Data</span>
-                        <span class="menu-arrow"></span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <div class="collapse" id="submenu-kelola-data">
-                        <ul class="nav flex-column sub-menu" style="margin-left: 27px;">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="menu-kelola-warga" href=" {{ url('/admin/kelola-warga') }}">Kelola Warga</a>
+                                <a class="nav-link text-dark" id="menu-kelola-warga"
+                                    href=" {{ url('/admin/kelola-warga') }}">Kelola Warga</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="menu-kelola-rt" href="{{ url('/admin/kelola-rt') }}">Kelola RT</a>
+                                <a class="nav-link text-dark" id="menu-kelola-rt"
+                                    href="{{ url('/admin/kelola-rt') }}">Kelola RT</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="menu-kelola-rw" href="{{ url('/admin/kelola-rw') }}">Kelola RW</a>
+                                <a class="nav-link text-dark" id="menu-kelola-rw"
+                                    href="{{ url('/admin/kelola-rw') }}">Kelola RW</a>
                             </li>
                             <!-- Add more submenu items as needed -->
                         </ul>
@@ -60,21 +65,23 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#submenu-kelola-iuran" data-bs-toggle="collapse"
+                    <a class="sidebar-link menu-kelola-iuran" href="#submenu-kelola-iuran" data-bs-toggle="collapse"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-wallet"></i>
                         </span>
                         <span class="hide-menu">Kelola Iuran</span>
-                        <span class="menu-arrow"></span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <div class="collapse" id="submenu-kelola-iuran">
                         <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
-                                <a class="nav-link" href=" {{ url('/admin/kelola-iuran') }}">Kelola Iuran</a>
+                                <a class="nav-link text-dark" id="menu-kelola-iuran"
+                                    href=" {{ url('/admin/kelola-iuran') }}">Kelola Iuran</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/admin/laporan-iuran') }}">Laporan Iuran</a>
+                                <a class="nav-link text-dark" id="menu-laporan-iuran"
+                                    href="{{ url('/admin/laporan-iuran') }}">Laporan Iuran</a>
                             </li>
                             <!-- Add more submenu items as needed -->
                         </ul>
@@ -89,21 +96,23 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#submenu-laporan-pengaduan" data-bs-toggle="collapse"
+                    <a class="sidebar-link menu-laporan" href="#submenu-laporan-pengaduan" data-bs-toggle="collapse"
                         aria-expanded="false">
                         <span>
                             <i class="bi bi-chat-square-text"></i>
                         </span>
                         <span class="hide-menu">Laporan</span>
-                        <span class="menu-arrow"></span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <div class="collapse" id="submenu-laporan-pengaduan">
                         <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
-                                <a class="nav-link" href=" {{ url('/admin/laporan-pengaduan') }}">Laporan Pengaduan</a>
+                                <a class="nav-link text-dark" id="menu-laporan-pengaduan"
+                                    href=" {{ url('/admin/laporan-pengaduan') }}">Laporan Pengaduan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/admin/history-pengaduan') }}">History Pengaduan</a>
+                                <a class="nav-link text-dark" id="menu-history-pengaduan"
+                                    href="{{ url('/admin/history-pengaduan') }}">History Pengaduan</a>
                             </li>
                             <!-- Add more submenu items as needed -->
                         </ul>
@@ -123,3 +132,32 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
+<script>
+    let kelolaData = document.getElementsByClassName('menu-kelola-data');
+    let kelolaIuran = document.getElementsByClassName('menu-kelola-iuran');
+    let laporan = document.getElementsByClassName('menu-laporan');
+    let sidebar = document.getElementsByClassName('sidebar-item');
+
+
+    for (let i = 0; i < kelolaData.length; i++) {
+        kelolaData[i].addEventListener('click', function() {
+            for (let j = 0; j < sidebar.length; j++) {
+                sidebar[j].classList.remove('selected');
+            }
+        });
+    }
+    for (let i = 0; i < kelolaIuran.length; i++) {
+        kelolaIuran[i].addEventListener('click', function() {
+            for (let j = 0; j < sidebar.length; j++) {
+                sidebar[j].classList.remove('selected');
+            }
+        });
+    }
+    for (let i = 0; i < laporan.length; i++) {
+        laporan[i].addEventListener('click', function() {
+            for (let j = 0; j < sidebar.length; j++) {
+                sidebar[j].classList.remove('selected');
+            }
+        });
+    }
+</script>

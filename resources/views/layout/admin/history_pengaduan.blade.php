@@ -81,4 +81,8 @@
     <script>
         new DataTable('#table_history_pengaduan');
     </script>
+      <script>
+        $('#submenu-laporan-pengaduan').addClass('show');
+        $('#menu-history-pengaduan').removeClass('text-dark').addClass('text-primary');
+    </script>
 @endsection
