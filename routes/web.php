@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\KelolaDataController;
+use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
@@ -59,8 +60,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/laporan-iuran', [AdminController::class, 'laporanIuran']);
     Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
     Route::get('/kelola-surat', [AdminController::class, 'kelolaSurat']);
-    Route::get('/laporan-pengaduan', [AdminController::class, 'laporanPengaduan']);
-    Route::get('/history-pengaduan', [AdminController::class, 'historyPengaduan']);
+
+    Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
+    Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
+    Route::get('/terima-pengaduan/{id}', [PengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
+    Route::get('/history-pengaduan', [PengaduanController::class, 'historyPengaduan']);
 });
 Route::prefix('warga')->group(function () {
     Route::get('/', [WargaController::class, 'index']);
