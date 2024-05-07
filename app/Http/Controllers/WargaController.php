@@ -24,6 +24,12 @@ class WargaController extends Controller
     public function pengajuanBansos(){
         return view('layout.warga.pengajuan_bansos');
     }
+    public function penerimaBansos(){
+        return view('layout.warga.penerima_bansos');
+    }
+    public function pengajuanSurat(){
+        return view('layout.warga.pengajuan_surat');
+    }
     public function pengaduanWarga(){
         return view('layout.warga.pengaduan_warga');
     }
