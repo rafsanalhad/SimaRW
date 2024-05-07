@@ -10,6 +10,7 @@ use App\Http\Controllers\rtrw\RtRwController;
 use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
+use App\Http\Controllers\Admin\KelolaIuranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,9 +69,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/kelola-umkm/update/{id}', [UMKMController::class, 'updateUmkm']);
             Route::get('/kelola-umkm/delete/{id}', [UMKMController::class, 'deleteUmkm']);
 
+            // Route Kelola Data Iuran
+            Route::get('/laporan-iuran', [KelolaIuranController::class, 'laporanIuran']);
+
             // Next features...
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
-            Route::get('/laporan-iuran', [AdminController::class, 'laporanIuran']);
             Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
             Route::get('/kelola-surat', [AdminController::class, 'kelolaSurat']);
 
