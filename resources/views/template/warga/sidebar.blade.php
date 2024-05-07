@@ -25,6 +25,37 @@
                     <span class="hide-menu">Menu</span>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/bayar-iuran') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-exclamation-circle"></i>
+                        </span>
+                        <span class="hide-menu">Bayar iuran</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/kegiatan-warga') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-exclamation-circle"></i>
+                        </span>
+                        <span class="hide-menu">Kegiatan warga</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/umkm') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-exclamation-circle"></i>
+                        </span>
+                        <span class="hide-menu">UMKM</span>
+                    </a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/profil-warga') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-exclamation-circle"></i>
+                        </span>
+                        <span class="hide-menu">Edit Profil</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/pengaduan') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-exclamation-circle"></i>
@@ -38,6 +69,14 @@
                             <i class="bi bi-envelope-paper"></i>
                         </span>
                         <span class="hide-menu">Pengajuan Bansos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/pengajuan-surat') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-envelope-paper"></i>
+                        </span>
+                        <span class="hide-menu">Pengajuan Surat</span>
                     </a>
                 </li>
 
