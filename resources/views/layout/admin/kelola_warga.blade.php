@@ -425,7 +425,7 @@
     </div>
     </div>
     <script>
-         $('#submenu-kelola-data').addClass('show');
+        $('#submenu-kelola-data').addClass('show');
         $('#menu-kelola-warga').removeClass('text-dark').addClass('text-primary');
         function showTambahWarga() {
             $('.modal_tambah_warga').modal('show');
