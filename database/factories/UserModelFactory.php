@@ -25,14 +25,17 @@ class UserModelFactory extends Factory
             'password_user' => fake()->password(),
             'gaji_user' => rand(1000000, 5000000),
             'pekerjaan_user' => fake()->jobTitle(),
-            'nomor_rt' => '001 s/d 004',
+            'nomor_rt' => rand(1, 5),
             'nomor_rw' => rand(1, 5),
-            'masa_jabatan' => '2022 s/d 2025',
+            'masa_jabatan_awal' => fake()->date(),
+            'masa_jabatan_akhir' => fake()->date(),
             'tempat' => fake()->city(),
             'tanggal_lahir' => fake()->date(),
             'gender' => fake()->randomElement(['Laki-laki', 'Perempuan']),
             'status_kawin' => fake()->randomElement(['Kawin', 'Belum Kawin']),
             'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']),
+            'alamat_user' => fake()->address(),
+            'foto_user' => 'User-Images/default.jpeg'
         ];
     }
 }

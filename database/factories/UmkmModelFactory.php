@@ -21,6 +21,8 @@ class UmkmModelFactory extends Factory
             'alamat_umkm' => $this->faker->address(),
             'deskripsi_umkm' => $this->faker->text(),
             'kontak_umkm' => $this->faker->phoneNumber(),
+            'jam_operasional_awal' => $this->faker->time(),
+            'jam_operasional_akhir' => $this->faker->time(),
             'gambar_umkm' => 'fotoUmkm.jpg',
             'user_id' => rand(1, count(\App\Models\UserModel::select('user_id')->get()))
         ];
