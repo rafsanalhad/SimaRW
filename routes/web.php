@@ -63,6 +63,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/history-pengaduan', [AdminController::class, 'historyPengaduan']);
 });
 Route::prefix('warga')->group(function () {
+    Route::get('/', [WargaController::class, 'index']);
     Route::get('/dashboard', [WargaController::class, 'index']);
     Route::get('/bayar-iuran', [WargaController::class, 'bayarIuran']);
     Route::get('/kegiatan-warga', [WargaController::class, 'kegiatanWarga']);
