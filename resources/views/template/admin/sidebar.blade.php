@@ -39,7 +39,7 @@
                         <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <div class="collapse" id="submenu-kelola-data">
-                        <ul class="nav flex-column sub-menu" style="margin-left: 27px;">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-kelola-warga"
                                     href=" {{ url('/admin/kelola-warga') }}">Kelola Warga</a>
