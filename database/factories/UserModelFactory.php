@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\RoleModel;
+use App\Models\KartuKeluargaModel;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,13 +19,15 @@ class UserModelFactory extends Factory
      */
     public function definition(): array
     {
+        $nik_user = fake()->nik();
+
         return [
-            'kartu_keluarga_id' => rand(1, count(\App\Models\KartuKeluargaModel::select('kartu_keluarga_id')->get())),
-            'role_id' => rand(1, count(\App\Models\RoleModel::select('role_id')->get())),
-            'nik_user' => fake()->nik(),
+            'kartu_keluarga_id' => rand(1, count(KartuKeluargaModel::select('kartu_keluarga_id')->get())),
+            'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+            'nik_user' => $nik_user,
             'nama_user' => fake()->name(),
             'email_user' => fake()->unique()->safeEmail(),
-            'password_user' => fake()->password(),
+            'password' => Hash::make($nik_user),
             'gaji_user' => rand(1000000, 5000000),
             'pekerjaan_user' => fake()->jobTitle(),
             'nomor_rt' => rand(1, 5),
