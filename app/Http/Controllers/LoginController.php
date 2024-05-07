@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class LoginController extends Controller
 {
-    public function index(){
-        return view('layout.home.main');
-    }
-    public function login(){
-        if(Auth::check()) {
+    public function authenticate(Request $request) {
+        $credentials = $request->validate([
+            'nik_user' => 'required|string|max:16',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials)) {
             $user = Auth::user();
-            
+
             if($user->role_id == 1) {
                 return redirect()->intended('/admin/dashboard');
             } else if($user->role_id == 2) {
@@ -23,17 +25,10 @@ class HomeController extends Controller
             } else if($user->role_id == 4) {
                 return redirect()->intended('/warga/dashboard');
             }
+
+            return redirect('/login');
         }
 
-        return view('layout.auth.login');
-    }
-    public function forgotPassword(){
-        return view('layout.auth.forgot_password');
-    }
-    public function kodeVerif(){
-        return view('layout.auth.input_kode_password');
-    }
-    public function newPassword(){
-        return view('layout.auth.input_new_password');
+        return back()->with('loginError', 'NIK atau Password salah!');
     }
 }

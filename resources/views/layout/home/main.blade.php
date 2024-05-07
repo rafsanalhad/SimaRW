@@ -21,7 +21,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     height: 100vh;
-    
+
 }
 .img_hero{
     width: 221px;
@@ -46,7 +46,7 @@
                     <div class="">
                         <img src="{{@asset('assets/images/logos/logo.png')}}" class="img_hero" alt="">
                         <p class="text_hero mt-4">Selamat datang di Sistem informasi <br> Manajemen warga. Kelola dan akses <br>informasi warga di SIMA.</p>
-                        <button class="btn btn-primary">Login</button>
+                        <a href="/login" class="btn btn-primary">Login</a>
                     </div>
                 </div>
                 <div class="col-md-6">
