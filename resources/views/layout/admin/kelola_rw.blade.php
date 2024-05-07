@@ -231,6 +231,8 @@
 
     </div>
     <script>
+        $('#submenu-kelola-data').addClass('show');
+        $('#menu-kelola-rw').removeClass('text-dark').addClass('text-primary');
         function showTambahRw() {
             $('.modal_tambah_rw').modal('show');
         }
@@ -238,6 +240,7 @@
         function hideTambahRw() {
             $('.modal_tambah_rw').modal('hide');
         }
+        
 
         function showEditRw(user_id) {
             $.ajax({
