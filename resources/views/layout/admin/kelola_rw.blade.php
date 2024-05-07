@@ -8,12 +8,7 @@
                         <i class="ti ti-menu-2"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                        <i class="ti ti-bell-ringing"></i>
-                        <div class="notification bg-primary rounded-circle"></div>
-                    </a>
-                </li>
+
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -85,12 +80,15 @@
                                 </td>
                                 <td>{{ $rw->masa_jabatan_awal }} s/d {{ $rw->masa_jabatan_akhir }}</td>
                                 <td>{{ $rw->alamat_user }}</td>
-                                <td><img class="rounded" src="{{ asset('storage/' . $rw->foto_user) }}" width="100" alt="Foto RW"></td>
+                                <td><img class="rounded" src="{{ asset('storage/' . $rw->foto_user) }}" width="100"
+                                        alt="Foto RW"></td>
                                 <td>
                                     <div style="display: flex;">
-                                        <button href="" onclick="showEditRw({{ $rw->user_id }})" class="btn btn-warning"
-                                            style="margin-right: 5px;"><i class="bi bi-pencil-square"></i></button>
-                                        <button href="" onclick="showDeleteRw({{ $rw->user_id }})" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        <button href="" onclick="showEditRw({{ $rw->user_id }})"
+                                            class="btn btn-warning" style="margin-right: 5px;"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button href="" onclick="showDeleteRw({{ $rw->user_id }})"
+                                            class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -191,11 +189,11 @@
                                 <label class="col-2 control-label col-form-label">Masa Jabatan : </label>
                                 <div class="col-10">
                                     <div class="d-flex">
-                                        <input type="date" id="masa_jabatan_awal_edit" class="form-control" name="masa_jabatan_awal"
-                                            value="{{ old('masa_jabatan_awal') }}" required>
+                                        <input type="date" id="masa_jabatan_awal_edit" class="form-control"
+                                            name="masa_jabatan_awal" value="{{ old('masa_jabatan_awal') }}" required>
                                         <span class="mt-2 ms-1 me-1">s/d</span>
-                                        <input type="date" id="masa_jabatan_akhir_edit" class="form-control" name="masa_jabatan_akhir"
-                                            value="{{ old('masa_jabatan_akhir') }}" required>
+                                        <input type="date" id="masa_jabatan_akhir_edit" class="form-control"
+                                            name="masa_jabatan_akhir" value="{{ old('masa_jabatan_akhir') }}" required>
                                     </div>
                                 </div>
                             </div>

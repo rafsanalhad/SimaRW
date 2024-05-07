@@ -10,9 +10,6 @@
                 </li>
                 <li class="nav-item">
                     <i class="ti ti-bell-ringing me-3" onclick="showModalPengumuman()"></i>
-                    <a href="#" class="btn btn-primary" onclick="showModalTambahPengumuman()">
-                        <div class="fs-1">Tambah Pengumuman</div>
-                    </a>
                 </li>
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
@@ -416,70 +413,6 @@
             </div>
         </div>
     </div>
-    <div class="modal modal_tambah_pengumuman" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                </div>
-                <div class="modal-body">
-                    <h3>Pengumuman </h3>
-                    <div class="card">
-                        <div class="card-body">
-                            <h3>Tambah Pengumuman</h3>
-                            <form action="" class="form">
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Judul Pengumuman
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Tanggal
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Nomor RW
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Masa Jabatan
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Alamat
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick=hideModalTambahPengumuman()>Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script>
         function showModalUmkm() {
             $('.modal_umkm').modal('show');
@@ -495,14 +428,6 @@
 
         function hideModalPengumuman() {
             $('.modal_pengumuman').modal('hide');
-        }
-
-        function showModalTambahPengumuman() {
-            $('.modal_tambah_pengumuman').modal('show');
-        }
-
-        function hideModalTambahPengumuman() {
-            $('.modal_tambah_pengumuman').modal('hide');
         }
     </script>
 @endsection
