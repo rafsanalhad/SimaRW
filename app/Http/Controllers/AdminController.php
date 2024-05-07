@@ -26,12 +26,6 @@ class AdminController extends Controller
     public function laporanIuran(){
         return view('layout.admin.laporan_iuran');
     }
-    public function laporanPengaduan(){
-        return view('layout.admin.laporan_pengaduan');
-    }
-    public function historyPengaduan(){
-        return view('layout.admin.history_pengaduan');
-    }
     public function kelolaSurat(){
         return view('layout.admin.kelola_surat');
     }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\UserModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PengaduanWargaModel extends Model
 {
@@ -19,4 +21,8 @@ class PengaduanWargaModel extends Model
         'isi_pengaduan',
         'status_pengaduan',
     ];
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
+    }
 }

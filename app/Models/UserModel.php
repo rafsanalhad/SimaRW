@@ -51,4 +51,8 @@ class UserModel extends Model
     public function rt(): hasMany {
         return $this->hasMany(UserModel::class, 'nomor_rw', 'nomor_rw');
     }
+
+    public function pengaduan(): HasMany {
+        return $this->hasMany(PengaduanWargaModel::class, 'user_id', 'user_id');
+    }
 }
