@@ -37,15 +37,15 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="submenu-kelola-data">
-                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 27px;">
                             <li class="nav-item">
-                                <a class="nav-link" href=" {{ url('/admin/kelola-warga') }}">Kelola Warga</a>
+                                <a class="nav-link text-dark" id="menu-kelola-warga" href=" {{ url('/admin/kelola-warga') }}">Kelola Warga</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/admin/kelola-rt') }}">Kelola RT</a>
+                                <a class="nav-link text-dark" id="menu-kelola-rt" href="{{ url('/admin/kelola-rt') }}">Kelola RT</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/admin/kelola-rw') }}">Kelola RW</a>
+                                <a class="nav-link text-dark" id="menu-kelola-rw" href="{{ url('/admin/kelola-rw') }}">Kelola RW</a>
                             </li>
                             <!-- Add more submenu items as needed -->
                         </ul>
