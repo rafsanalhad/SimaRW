@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         return view('layout.admin.dashboard');
     }
-    
+
     public function kelolaBansos(){
         return view('layout.admin.kelola_bansos');
     }
@@ -34,5 +34,8 @@ class AdminController extends Controller
     }
     public function kelolaSurat(){
         return view('layout.admin.kelola_surat');
+    }
+    public function profilAdmin(){
+        return view('layout.admin.profil_admin');
     }
 }

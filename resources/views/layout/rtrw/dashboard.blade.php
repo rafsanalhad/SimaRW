@@ -1,4 +1,4 @@
-@extends('template.admin.main')
+@extends('template.rt_rw.main')
 @section('content')
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -25,7 +25,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
-                                <a href="{{ url('/admin/profil-admin') }}"
+                                <a href="{{ url('/warga/profil-warga') }}"
                                     class="d-flex align-items-center gap-2 dropdown-item">
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
@@ -292,6 +292,7 @@
             </div>
 
         </div>
+
     </div>
     <div class="modal modal_umkm" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
@@ -334,10 +335,10 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Pengumuman</h5>
+                    <h5 class="modal-title">Modal title</h5>
                 </div>
                 <div class="modal-body">
-
+                    <h3>Pengumuman </h3>
                     <div class="card">
                         <div class="card-body">
                             <div class="pengumuman_item mt-3">
@@ -420,11 +421,13 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Pengumuman</h5>
+                    <h5 class="modal-title">Modal title</h5>
                 </div>
                 <div class="modal-body">
+                    <h3>Pengumuman </h3>
                     <div class="card">
                         <div class="card-body">
+                            <h3>Tambah Pengumuman</h3>
                             <form action="" class="form">
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
@@ -469,11 +472,11 @@
                             </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick=hideModalTambahPengumuman()>Close</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick=hideModalTambahPengumuman()>Close</button>
                 </div>
             </div>
         </div>
