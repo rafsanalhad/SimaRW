@@ -9,24 +9,24 @@ class RWController extends Controller
 {
     public function index()
     {
-        return view('layout.rtrw.dashboard');
+        return view('layout.rw.dashboard');
     }
     public function kelolaBansos(){
-        return view('layout.rt.kelola_bansos');
+        return view('layout.rw.kelola_bansos');
     }
     public function kelolaIuran(){
-        return view('layout.rt.kelola_iuran');
+        return view('layout.rw.kelola_iuran');
     }
     public function laporanIuran(){
-        return view('layout.rt.laporan_iuran');
+        return view('layout.rw.laporan_iuran');
     }
     public function laporanPengaduan(){
-        return view('layout.rt.laporan_pengaduan');
+        return view('layout.rw.laporan_pengaduan');
     }
     public function historyPengaduan(){
-        return view('layout.rt.history_pengaduan');
+        return view('layout.rw.history_pengaduan');
     }
     public function kelolaSurat(){
-        return view('layout.rt.kelola_surat');
+        return view('layout.rw.kelola_surat');
     }
 }
