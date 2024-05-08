@@ -30,14 +30,6 @@
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">My Account</p>
-                                </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-list-check fs-6"></i>
-                                    <p class="mb-0 fs-3">My Task</p>
-                                </a>
                                 <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
                         </div>
@@ -427,40 +419,39 @@
                         <div class="card-body">
                             <form action="" class="form">
                                 <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Judul Pengumuman
-                                    </div>
+                                    <label placeholder="" class="col-2 control-label col-form-label">Judul Pengumuman:
+                                    </label>
                                     <div class="col-6">
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Tanggal
+                                        Isi Pengumuman
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <textarea type="text" class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Nomor RW
+                                        Hari/tanggal
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="date" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Masa Jabatan
+                                        Jam
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input type="time" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Alamat
+                                        Tempat
                                     </div>
                                     <div class="col-6">
                                         <input type="text" class="form-control">

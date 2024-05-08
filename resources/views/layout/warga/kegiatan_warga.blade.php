@@ -1,5 +1,7 @@
 @extends('template.warga.main')
 @section('content')
+@include('template.warga.header')
+
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
             <ul class="navbar-nav">
@@ -95,6 +97,6 @@
             {{-- @endforeach --}}
         </div>
     </div>
-  
-   
+
+
 @endsection
