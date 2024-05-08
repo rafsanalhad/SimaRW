@@ -23,7 +23,7 @@
                             {{-- @foreach ($dataWarga as $warga) --}}
                                 <tr>
                                     {{-- <td>{{ $no++ }}</td> --}}
-                                    <td>No</td>
+                                    <td>1</td>
                                     {{-- <td>{{ $warga->nama_user }}</td> --}}
                                     <td>Rizky Arifiansyah</td>
                                     <td>22417200059</td>
@@ -32,7 +32,18 @@
                                     <td>Buruh Tani</td>
                                     <td>Rp.1000.000</td>
                                     <td><button class="btn btn-success">Diterima</button>
-                                    <button class="btn btn-danger">Ditolak</button></td>
+                                </tr>
+                                <tr>
+                                    {{-- <td>{{ $no++ }}</td> --}}
+                                    <td>2</td>
+                                    {{-- <td>{{ $warga->nama_user }}</td> --}}
+                                    <td>Rizky Arifiansyah</td>
+                                    <td>22417200059</td>
+                                    {{-- <td>{{ $warga->nik_user }}</td> --}}
+                                    <td>20 Juni 2024</td>
+                                    <td>Buruh Tani</td>
+                                    <td>Rp.1000.000</td>
+                                    <td> <button class="btn btn-danger">Ditolak</button> </td>
                                 </tr>
                             {{-- @endforeach --}}
                         </tbody>
