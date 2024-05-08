@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\RT\RTController;
+use App\Http\Controllers\RW\RWController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\rtrw\RtRwController;
 use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
@@ -82,25 +83,25 @@ Route::middleware(['auth'])->group(function () {
         });
     });
     Route::group(['middleware' => ['CekLogin:2']], function() {
-        Route::prefix('rtrw')->group(function () {
-            Route::get('/dashboard', [RtRwController::class, 'index']);
+        Route::prefix('rt')->group(function () {
+            Route::get('/dashboard', [RTController::class, 'index']);
 
-            Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
-            Route::post('/kelola-warga', [KelolaDataController::class, 'createWarga'])->name('createWarga');
-            Route::get('/kelola-warga/edit/{id}', [KelolaDataController::class, 'editWarga']);
-            Route::get('/kelola-warga/delete/{id}', [KelolaDataController::class, 'deleteWarga']);
-            Route::post('/kelola-warga/update/{id}', [KelolaDataController::class, 'updateWarga'])->name('updateWarga');
+            Route::get('/kelola-warga', [RTController::class, 'kelolaWarga']);
+            Route::post('/kelola-warga', [RTController::class, 'createWarga'])->name('createWarga');
+            Route::get('/kelola-warga/edit/{id}', [RTController::class, 'editWarga']);
+            Route::get('/kelola-warga/delete/{id}', [RTController::class, 'deleteWarga']);
+            Route::post('/kelola-warga/update/{id}', [RTController::class, 'updateWarga'])->name('updateWarga');
         });
     });
     Route::group(['middleware' => ['CekLogin:3']], function() {
-        Route::prefix('rtrw')->group(function () {
-            Route::get('/dashboard', [RtRwController::class, 'index']);
+        Route::prefix('rw')->group(function () {
+            Route::get('/dashboard', [RWController::class, 'index']);
 
-            Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
-            Route::post('/kelola-warga', [KelolaDataController::class, 'createWarga'])->name('createWarga');
-            Route::get('/kelola-warga/edit/{id}', [KelolaDataController::class, 'editWarga']);
-            Route::get('/kelola-warga/delete/{id}', [KelolaDataController::class, 'deleteWarga']);
-            Route::post('/kelola-warga/update/{id}', [KelolaDataController::class, 'updateWarga'])->name('updateWarga');
+            Route::get('/kelola-warga', [RWController::class, 'kelolaWarga']);
+            Route::post('/kelola-warga', [RWController::class, 'createWarga'])->name('createWarga');
+            Route::get('/kelola-warga/edit/{id}', [RWController::class, 'editWarga']);
+            Route::get('/kelola-warga/delete/{id}', [RWController::class, 'deleteWarga']);
+            Route::post('/kelola-warga/update/{id}', [RWController::class, 'updateWarga'])->name('updateWarga');
         });
     });
     Route::group(['middleware' => ['CekLogin:4']], function() {
