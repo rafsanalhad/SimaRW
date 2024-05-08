@@ -27,9 +27,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authUser');
-
 Route::get('/logout', [LogoutController::class, 'logout']);
-
 Route::get('/forgot-password', [HomeController::class, 'forgotPassword']);
 Route::get('/new-password', [HomeController::class, 'newPassword']);
 Route::get('/kode-verif', [HomeController::class, 'kodeVerif']);

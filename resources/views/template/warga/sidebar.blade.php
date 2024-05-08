@@ -48,14 +48,6 @@
                         <span class="hide-menu">UMKM</span>
                     </a>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/warga/profil-warga') }}" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-exclamation-circle"></i>
-                        </span>
-                        <span class="hide-menu">Edit Profil</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/pengaduan') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-exclamation-circle"></i>
