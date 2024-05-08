@@ -27,9 +27,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authUser');
-
 Route::get('/logout', [LogoutController::class, 'logout']);
-
 Route::get('/forgot-password', [HomeController::class, 'forgotPassword']);
 Route::get('/new-password', [HomeController::class, 'newPassword']);
 Route::get('/kode-verif', [HomeController::class, 'kodeVerif']);
@@ -114,6 +112,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuanBansos']);
             Route::get('/pengaduan', [WargaController::class, 'pengaduanWarga']);
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
+            Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
+            Route::get('/pengajuan-surat', [WargaController::class, 'pengajuanSurat']);
         });
     });
 });

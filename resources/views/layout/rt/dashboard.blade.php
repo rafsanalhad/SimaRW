@@ -1,4 +1,4 @@
-@extends('template.admin.main')
+@extends('template.rt.main')
 @section('content')
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -419,9 +419,8 @@
                         <div class="card-body">
                             <form action="" class="form">
                                 <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Judul
-                                    </div>
+                                    <label placeholder="" class="col-2 control-label col-form-label">Judul Pengumuman:
+                                    </label>
                                     <div class="col-6">
                                         <input type="text" class="form-control">
                                     </div>
