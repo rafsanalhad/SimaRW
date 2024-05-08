@@ -11,6 +11,7 @@ use App\Models\LokasiUmkmModel;
 use App\Models\PenerimaanBansosModel;
 use App\Models\PengaduanWargaModel;
 use App\Models\PengajuanBansosModel;
+use App\Models\PengumumanModel;
 use App\Models\SuratModel;
 use App\Models\UmkmModel;
 use App\Models\UserModel;
@@ -58,5 +59,8 @@ class DatabaseSeeder extends Seeder
 
         // Call factory for Iuran table
         IuranModel::factory(5)->create();
+
+        // Call factory for Pengumuman
+        PengumumanModel::factory(3)->create();
     }
 }
