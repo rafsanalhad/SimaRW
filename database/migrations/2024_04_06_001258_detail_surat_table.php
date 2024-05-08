@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('surat_id')->index();
             $table->foreign('surat_id')->references('surat_id')->on('surat')->onDelete('cascade');
             $table->date('tanggal_surat');
+            $table->text('keterangan_surat');
             $table->text('tanda_tangan_rt');
             $table->text('tanda_tangan_rw');
             $table->timestamps();

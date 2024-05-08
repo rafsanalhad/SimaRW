@@ -22,25 +22,25 @@
                         <th>Download</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                Rizky Arifiansyah
-                            </td>
-                            <td>Surat Pernikahan</td>
-                            <td>01-01-2028</td>
-                            <td>Rangkuman dari dalam surat</td>
-                            <td>
-                                <div style="display: flex;">
-                                    <button href="#" class="btn btn-success"
+                        @foreach ($dataSurat as $s)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $s->user->nama_user }}</td>
+                                <td>{{ $s->jenis_surat }}</td>
+                                <td>{{ $s->detail->tanggal_surat }}</td>
+                                <td>{{ $s->detail->keterangan_surat }}</td>
+                                <td>
+                                    <div style="display: flex;">
+                                        <button href="#" class="btn btn-success"
                                         style="margin-right: 5px;">Setuju</button>
-                                    <button href="#" class="btn btn-danger">Tolak</button>
-                                </div>
-                            </td>
-                            <td>
-                                <button href='#' class='btn btn-primary'>Download</button>
-                            </td>
-                        </tr>
+                                        <button href="#" class="btn btn-danger">Tolak</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button href='#' class='btn btn-primary'>Download</button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
