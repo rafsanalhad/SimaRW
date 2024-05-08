@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\PengumumanModel;
 use Illuminate\Http\Request;
+use App\Models\PengumumanModel;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class PengumumanController extends Controller
 {
     public function show() {
-        $pengumuman = PengumumanModel::all();
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+        $pengumuman = PengumumanModel::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
 
         return response()->json($pengumuman);
     }
