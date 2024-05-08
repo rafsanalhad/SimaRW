@@ -112,6 +112,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuanBansos']);
             Route::get('/pengaduan', [WargaController::class, 'pengaduanWarga']);
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
+            Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
+            Route::get('/pengajuan-surat', [WargaController::class, 'pengajuanSurat']);
         });
     });
 });
