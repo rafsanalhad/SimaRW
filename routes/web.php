@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
 use App\Http\Controllers\Admin\KelolaIuranController;
+use App\Http\Controllers\Admin\KelolaSuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,12 +71,14 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Kelola Data Iuran
             Route::get('/laporan-iuran', [KelolaIuranController::class, 'laporanIuran']);
+            
+            // Route Kelola Data Surat
+            Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
 
             // Next features...
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
             Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
-            Route::get('/kelola-surat', [AdminController::class, 'kelolaSurat']);
-
+            
             // Route Pengaduan
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
             Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');

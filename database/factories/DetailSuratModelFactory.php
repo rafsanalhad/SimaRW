@@ -19,6 +19,7 @@ class DetailSuratModelFactory extends Factory
         return [
             'surat_id' => rand(1, count(\App\Models\SuratModel::select('surat_id')->get())),
             'tanggal_surat' => fake()->date(),
+            'keterangan_surat' => fake()->sentence(),
             'tanda_tangan_rt' => 'tandaTanganRT.jpg',
             'tanda_tangan_rw' => 'tandaTanganRW.jpg'
         ];
