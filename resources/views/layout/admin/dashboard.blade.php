@@ -419,8 +419,9 @@
                         <div class="card-body">
                             <form action="" class="form">
                                 <div class="row d-flex align-items-center mt-3">
-                                    <label placeholder="" class="col-2 control-label col-form-label">Judul Pengumuman:
-                                    </label>
+                                    <div class="col-4">
+                                        Judul
+                                    </div>
                                     <div class="col-6">
                                         <input type="text" class="form-control">
                                     </div>
