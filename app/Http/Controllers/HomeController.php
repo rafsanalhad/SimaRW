@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function login(){
         if(Auth::check()) {
             $user = Auth::user();
-            
+
             if($user->role_id == 1) {
                 return redirect()->intended('/admin/dashboard');
             } else if($user->role_id == 2) {
@@ -29,11 +29,5 @@ class HomeController extends Controller
     }
     public function forgotPassword(){
         return view('layout.auth.forgot_password');
-    }
-    public function kodeVerif(){
-        return view('layout.auth.input_kode_password');
-    }
-    public function newPassword(){
-        return view('layout.auth.input_new_password');
     }
 }

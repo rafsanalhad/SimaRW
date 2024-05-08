@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PengumumanController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\RWController;
 use Illuminate\Support\Facades\Route;
@@ -31,9 +32,13 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authUser');
 Route::get('/logout', [LogoutController::class, 'logout']);
-Route::get('/forgot-password', [HomeController::class, 'forgotPassword']);
-Route::get('/new-password', [HomeController::class, 'newPassword']);
-Route::get('/kode-verif', [HomeController::class, 'kodeVerif']);
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index']);
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendEmail']);
+Route::get('/kode-verif', [ForgotPasswordController::class, 'pageKodeVerif'])->name('pageCekKode');
+Route::post('/kode-verif', [ForgotPasswordController::class, 'cekKodeVerif']);
+Route::get('/new-password', [ForgotPasswordController::class, 'pageNewPass']);
+Route::post('/new-password', [ForgotPasswordController::class, 'newPassword']);
 
 Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:1']], function() {

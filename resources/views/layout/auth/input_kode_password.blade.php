@@ -23,14 +23,15 @@
                                     <img src="{{ url('/assets/images/logos/simarwlogo.png') }}" alt="">
                                 </div>
                                 <p>Masukkan kode yang dikirimkan lewat Email anda</p>
-                                <form>
+                                <form action="/kode-verif" method="POST">
+                                    @csrf
                                     <div class="mb-3">
                                         <label for="kode_verifikasi" class="form-label">Kode Verifikasi: </label>
-                                        <input type="email" class="form-control" id="kode_verifikasi">
+                                        <input type="text" name="kode_verif" class="form-control" id="kode_verifikasi">
                                     </div>
-                                    <a href="./new-password"
+                                    <button type="submit"
                                         class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Kirim
-                                        Kode</a>
+                                        Kode</button>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Tidak Menerima Kode?</p>
                                         <a class="text-primary fw-bold ms-2" href="#">Kirim Ulang</a>
