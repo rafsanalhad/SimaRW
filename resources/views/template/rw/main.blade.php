@@ -22,7 +22,7 @@
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
 
-        @include('template.admin.sidebar')
+        @include('template.rw.sidebar')
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">

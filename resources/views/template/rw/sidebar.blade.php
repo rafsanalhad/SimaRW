@@ -17,7 +17,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" id="dashboard_menu" href=" {{ url('/admin/dashboard') }}"
+                    <a class="sidebar-link" id="dashboard_menu" href=" {{ url('/rw/dashboard') }}"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
