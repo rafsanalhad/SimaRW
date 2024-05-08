@@ -23,7 +23,7 @@
                             <td>Malang</td>
                             <td>Pengusaha</td>
                             <td><a href="" class="btn btn-danger">Ditolak</a></td>
-                            <td><a href="#" onclick='showTambahBansos()' class="btn btn-dark">Verifikasi</a></td>
+                            <td><a href="#" class="btn" style="background-color: #b4aeae; color:#ffff">Verifikasi</a></td>
                         </tr>
                         <tr>
                             <td>2</td>
