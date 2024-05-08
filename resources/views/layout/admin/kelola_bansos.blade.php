@@ -26,7 +26,7 @@
                             <td><a href="#" onclick='showTambahBansos()' class="btn btn-dark">Verifikasi</a></td>
                         </tr>
                         <tr>
-                            <td>1</td>
+                            <td>2</td>
                             <td>
                                 Rizky Arifiansyah
                             </td>
