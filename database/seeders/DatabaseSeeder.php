@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\DetailPengeluaranModel;
 use App\Models\DetailSuratModel;
 use App\Models\IuranModel;
 use App\Models\KartuKeluargaModel;
@@ -62,5 +64,8 @@ class DatabaseSeeder extends Seeder
 
         // Call factory for Pengumuman
         PengumumanModel::factory(3)->create();
+
+        // Call factory for Detail Pengeluaran table
+        DetailPengeluaranModel::factory(5)->create();
     }
 }

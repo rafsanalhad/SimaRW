@@ -15,14 +15,19 @@
                     <th>Status</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Rizky Arifiansyah</td>
-                        <td>Rp. 30.000</td>
-                        <td>
-                            <span class="badge bg-success">Lunas</span>
-                            <span class="badge bg-warning">Belum Lunas</span>
-                        </td>
-                    </tr>
+                    @foreach ($dataIuran as $i)
+                        <tr>
+                            <td>{{ $i->kartuKeluarga->nama_kepala_keluarga }}</td>
+                            <td>Rp. 30.000</td>
+                            <td>
+                                @if ($i->status == 'Lunas')
+                                    <span class="badge bg-success">Lunas</span>
+                                @else
+                                    <span class="badge bg-warning">Belum Lunas</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach      
                 </tbody>
             </table>
         </div>

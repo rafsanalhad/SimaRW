@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class IuranModel extends Model
 {
@@ -19,4 +20,8 @@ class IuranModel extends Model
         'bukti_iuran',
         'status'
     ];
+
+    public function kartuKeluarga(): HasOne {
+        return $this->hasOne(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
 }
