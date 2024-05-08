@@ -332,70 +332,8 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="pengumuman_item mt-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Bansos</h4>
-                                        <p>Silahkan mengambil bansos di Balai desa</p>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Hari/Tanggal
-                                            </div>
-                                            <div class="col-6">
-                                                : Rabu/ 27 Maret 2024
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Jam
-                                            </div>
-                                            <div class="col-6">
-                                                : 17.00 - 19.00
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Tempat
-                                            </div>
-                                            <div class="col-6">
-                                                : Balai Desa
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="pengumuman_item mt-3" id="pengumuman_alert">
 
-                            </div>
-                            <div class="pengumuman_item mt-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Bansos</h4>
-                                        <p>Silahkan mengambil bansos di Balai desa</p>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Hari/Tanggal
-                                            </div>
-                                            <div class="col-6">
-                                                : Rabu/ 27 Maret 2024
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Jam
-                                            </div>
-                                            <div class="col-6">
-                                                : 17.00 - 19.00
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Tempat
-                                            </div>
-                                            <div class="col-6">
-                                                : Balai Desa
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -480,6 +418,27 @@
         }
 
         function showModalPengumuman() {
+            $.ajax({
+                url: '/admin/pengumuman',
+                type: 'GET',
+                dataType: 'json',
+                success(data) {
+                    console.log(data)
+
+                    let pengumumanHTML = '';
+                    for(let i = 0; i < data.length; i++) {
+                        pengumumanHTML += '<div class="card"> <div class="card-body">'
+                        pengumumanHTML += '<h4>' + data[i].judul_pengumuman + '</h4>';
+                        pengumumanHTML += '<p>' + data[i].isi_pengumuman + '</p>';
+                        pengumumanHTML += '<div class="row"> <div class="col-4"> Tanggal </div> <div class="col-6"> : ' + data[i].tanggal_pengumuman + '</div> </div>';
+                        pengumumanHTML += '<div class="row"> <div class="col-4"> Jam </div> <div class="col-6"> : ' + data[i].jam_pengumuman + '</div> </div>';
+                        pengumumanHTML += '<div class="row"> <div class="col-4"> Tempat </div> <div class="col-6"> : ' + data[i].tempat_pengumuman + '</div> </div>';
+                        pengumumanHTML += '</div> </div>'
+                    }
+                    $('#pengumuman_alert').html(pengumumanHTML);
+                }
+            });
+
             $('.modal_pengumuman').modal('show');
         }
 

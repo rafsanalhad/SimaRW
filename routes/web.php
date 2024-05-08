@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\RWController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
             // Route Index dan profil
             Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboardAdmin');
             Route::get('/profil-admin', [AdminController::class, 'profilAdmin']);
+
+            // Route get pengumuman
+            Route::get('/pengumuman', [PengumumanController::class, 'show']);
 
             // Route Kelola Data Warga
             Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
