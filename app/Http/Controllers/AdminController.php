@@ -23,9 +23,6 @@ class AdminController extends Controller
     public function kelolaIuran(){
         return view('layout.admin.kelola_iuran');
     }
-    public function laporanIuran(){
-        return view('layout.admin.laporan_iuran');
-    }
     public function kelolaSurat(){
         return view('layout.admin.kelola_surat');
     }
