@@ -31,7 +31,7 @@ class UserModel extends Model implements AuthenticatableContract
         'status_kawin',
         'nama_user',
         'email_user',
-        'password_user',
+        'password',
         'gaji_user',
         'pekerjaan_user',
         'alamat_user',

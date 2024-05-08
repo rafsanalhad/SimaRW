@@ -25,7 +25,7 @@ class KelolaDataController extends Controller
     // Membuat function tambah data warga
     public function createWarga(UserRequest $request) {
         $request->validated();
-        // dd($validated);
+        // dd($request->validated());
 
         $foto_user = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
 
@@ -43,7 +43,7 @@ class KelolaDataController extends Controller
             'alamat_user' => $request->alamat_user,
             'email_user' => $request->email_user,
             'gaji_user' => $request->gaji_user,
-            'password_user' => Hash::make($request->nik_user),
+            'password' => Hash::make($request->nik_user),
             'foto_user' => $foto_user
         ]);
 
@@ -88,7 +88,7 @@ class KelolaDataController extends Controller
     // Function menampilkan data RT
     public function kelolaRt(){
         // Untuk mengambil data RT yang memiliki role RT
-        $warga = UserModel::all();
+        $warga = UserModel::all()->whereIn('role_id', [2, 3, 4]);
         $rt = UserModel::with('kartuKeluarga')->where('role_id', 2)->orderBy('user_id')->get();
         $rw = UserModel::where('role_id', 3)->get();
 
@@ -168,7 +168,7 @@ class KelolaDataController extends Controller
     public function kelolaRw(){
         // Untuk mengambil data RW yang memiliki role RW
         $rw = UserModel::with('rt')->where('role_id', 3)->orderBy('user_id')->get();
-        $warga = UserModel::all();
+        $warga = UserModel::all()->whereIn('role_id', [2, 3, 4]);
 
         return view('layout.admin.kelola_rw', ['dataRW' => $rw, 'no' => 1, 'wargas' => $warga]);
     }
