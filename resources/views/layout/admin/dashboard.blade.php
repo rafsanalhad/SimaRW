@@ -350,13 +350,14 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" class="form">
+                            <form action="/admin/tambah-pengumuman" method="POST" class="form">
+                                @csrf
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
                                         Judul
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input name="judul_pengumuman" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -364,7 +365,7 @@
                                         Isi Pengumuman
                                     </div>
                                     <div class="col-6">
-                                        <textarea type="text" class="form-control"></textarea>
+                                        <textarea name="isi_pengumuman" type="text" class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -372,7 +373,7 @@
                                         Hari/tanggal
                                     </div>
                                     <div class="col-6">
-                                        <input type="date" class="form-control">
+                                        <input name="tanggal_pengumuman" type="date" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -380,7 +381,7 @@
                                         Jam
                                     </div>
                                     <div class="col-6">
-                                        <input type="time" class="form-control">
+                                        <input name="jam_pengumuman" type="time" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -388,16 +389,17 @@
                                         Tempat
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control">
+                                        <input name="tempat_pengumuman" type="text" class="form-control">
                                     </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        onclick=hideModalTambahPengumuman()>Close</button>
                                 </div>
                             </form>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick=hideModalTambahPengumuman()>Close</button>
                     </div>
                 </div>
             </div>
