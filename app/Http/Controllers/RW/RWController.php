@@ -12,21 +12,21 @@ class RWController extends Controller
         return view('layout.rtrw.dashboard');
     }
     public function kelolaBansos(){
-        return view('layout.admin.kelola_bansos');
+        return view('layout.rt.kelola_bansos');
     }
     public function kelolaIuran(){
-        return view('layout.admin.kelola_iuran');
+        return view('layout.rt.kelola_iuran');
     }
     public function laporanIuran(){
-        return view('layout.admin.laporan_iuran');
+        return view('layout.rt.laporan_iuran');
     }
     public function laporanPengaduan(){
-        return view('layout.admin.laporan_pengaduan');
+        return view('layout.rt.laporan_pengaduan');
     }
     public function historyPengaduan(){
-        return view('layout.admin.history_pengaduan');
+        return view('layout.rt.history_pengaduan');
     }
     public function kelolaSurat(){
-        return view('layout.admin.kelola_surat');
+        return view('layout.rt.kelola_surat');
     }
 }
