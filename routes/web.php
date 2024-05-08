@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route get pengumuman
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
+            Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
 
             // Route Kelola Data Warga
             Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
@@ -75,14 +76,14 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Kelola Data Iuran
             Route::get('/laporan-iuran', [KelolaIuranController::class, 'laporanIuran']);
-            
+
             // Route Kelola Data Surat
             Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
 
             // Next features...
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
             Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
-            
+
             // Route Pengaduan
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
             Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');

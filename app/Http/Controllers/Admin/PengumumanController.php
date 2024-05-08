@@ -14,7 +14,17 @@ class PengumumanController extends Controller
         return response()->json($pengumuman);
     }
 
-    public function create() {
+    public function create(Request $request) {
+        $validated = $request->validate([
+            'judul_pengumuman' => 'required',
+            'isi_pengumuman' => 'required',
+            'tanggal_pengumuman' => 'required',
+            'jam_pengumuman' => 'required',
+            'tempat_pengumuman' => 'required'
+        ]);
 
+        PengumumanModel::create($validated);
+
+        return redirect('/admin/dashboard');
     }
 }
