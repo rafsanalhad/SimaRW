@@ -268,7 +268,7 @@
                                 class="ti ti-basket fs-4"></i></a>
                     </div>
                     <div class="card-body pt-3 p-4">
-                        <h6 class="fw-semibold fs-4">Toko Kelontong Pak Alhad wibu wibu anjay kau</h6>
+                        <h6 class="fw-semibold fs-4">Toko Kelontong Pak Alhad</h6>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="fw-semibold fs-1 mb-0">Jam Operasional: 08.00 - 19.00</p>
                             {{-- <ul class="list-unstyled d-flex align-items-center mb-0">
@@ -329,13 +329,8 @@
                     <h5 class="modal-title">Pengumuman</h5>
                 </div>
                 <div class="modal-body">
+                    <div class="pengumuman_item mt-3" id="pengumuman_alert">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="pengumuman_item mt-3" id="pengumuman_alert">
-
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -426,13 +421,19 @@
                     console.log(data)
 
                     let pengumumanHTML = '';
-                    for(let i = 0; i < data.length; i++) {
+                    for (let i = 0; i < data.length; i++) {
                         pengumumanHTML += '<div class="card"> <div class="card-body">'
                         pengumumanHTML += '<h4>' + data[i].judul_pengumuman + '</h4>';
                         pengumumanHTML += '<p>' + data[i].isi_pengumuman + '</p>';
-                        pengumumanHTML += '<div class="row"> <div class="col-4"> Tanggal </div> <div class="col-6"> : ' + data[i].tanggal_pengumuman + '</div> </div>';
-                        pengumumanHTML += '<div class="row"> <div class="col-4"> Jam </div> <div class="col-6"> : ' + data[i].jam_pengumuman + '</div> </div>';
-                        pengumumanHTML += '<div class="row"> <div class="col-4"> Tempat </div> <div class="col-6"> : ' + data[i].tempat_pengumuman + '</div> </div>';
+                        pengumumanHTML +=
+                            '<div class="row"> <div class="col-4"> Tanggal </div> <div class="col-6"> : ' + data[i]
+                            .tanggal_pengumuman + '</div> </div>';
+                        pengumumanHTML +=
+                            '<div class="row"> <div class="col-4"> Jam </div> <div class="col-6"> : ' + data[i]
+                            .jam_pengumuman + '</div> </div>';
+                        pengumumanHTML +=
+                            '<div class="row"> <div class="col-4"> Tempat </div> <div class="col-6"> : ' + data[i]
+                            .tempat_pengumuman + '</div> </div>';
                         pengumumanHTML += '</div> </div>'
                     }
                     $('#pengumuman_alert').html(pengumumanHTML);
