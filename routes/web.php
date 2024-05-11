@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\RWController;
+use App\Http\Controllers\Warga\KegiatanWargaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
 use App\Http\Controllers\Admin\KelolaIuranController;
 use App\Http\Controllers\Admin\KelolaSuratController;
+use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
+use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,12 +124,23 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [WargaController::class, 'index'])->name('dashboardWarga');
+
+            // Route Bayar Iuran
             Route::get('/bayar-iuran', [WargaController::class, 'bayarIuran']);
-            Route::get('/kegiatan-warga', [WargaController::class, 'kegiatanWarga']);
-            Route::get('/umkm', [WargaController::class, 'umkm']);
+
+            // Route Kegiatan Warga
+            Route::get('/kegiatan-warga', [KegiatanWargaController::class, 'index']);
+
+            // Route UMKM
+            Route::get('/umkm', [WargaUMKMController::class, 'index']);
+
             Route::get('/profil-warga', [WargaController::class, 'profilWarga']);
             Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuanBansos']);
-            Route::get('/pengaduan', [WargaController::class, 'pengaduanWarga']);
+
+            // Route Pengaduan Warga
+            Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);
+            Route::post('/tambah-pengaduan', [WargaPengaduanController::class, 'createPengaduan']);
+
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
             Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
             Route::get('/pengajuan-surat', [WargaController::class, 'pengajuanSurat']);

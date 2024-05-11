@@ -12,12 +12,7 @@ class WargaController extends Controller
     public function bayarIuran(){
         return view('layout.warga.bayar_iuran');
     }
-    public function kegiatanWarga(){
-        return view('layout.warga.kegiatan_warga');
-    }
-    public function umkm(){
-        return view('layout.warga.umkm');
-    }
+
     public function profilWarga(){
         return view('layout.warga.profil_warga');
     }
@@ -30,9 +25,7 @@ class WargaController extends Controller
     public function pengajuanSurat(){
         return view('layout.warga.pengajuan_surat');
     }
-    public function pengaduanWarga(){
-        return view('layout.warga.pengaduan_warga');
-    }
+
     public function laporanIuran(){
         return view('layout.warga.laporan_iuran');
     }
