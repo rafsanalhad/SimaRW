@@ -151,3 +151,17 @@ img {
         font-size: 12px;
     }
 }
+.contact {
+    padding: 0px 96px;
+}
+.kontak_header{
+    font-size: 27px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.kontak_text{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+}

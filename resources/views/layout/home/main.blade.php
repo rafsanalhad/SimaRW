@@ -229,6 +229,40 @@
       </div>
     </div>
   </section>
+  <section data-aos="zoom-in" class="contact mt-5 mb-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="kontak_header">Hubungi Kami!</h1>
+          <p class="kontak_text">Jika ada kendala masalah login atau masalah lainnya, silahkan hubungi kami</p>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="form-group mb-3">
+                <label for="nama" class="form-label m-1">Nama Anda</label>
+                <input type="text" name="nama" id="nama" class="form-control bg-white">
+              </div>
+              <div class="form-group mb-3">
+                <label for="email" class="form-label m-1">Email Anda</label>
+                <input type="email" name="email" id="email" class="form-control bg-white">
+              </div>
+              <div class="form-group mb-3">
+                <label for="subjek" class="form-label m-1">Subjek Anda</label>
+                <input type="text" name="subjek" id="subjek" class="form-control bg-white">
+              </div>
+              <div class="form-group mb-3">
+                <label for="pesan" class="form-label m-1">Pesan Anda</label>
+                <textarea type="text" name="pesan" id="pesan" class="form-control bg-white" style="height: 80px;"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </section>
   <footer class="footer bg-white shadow-lg">
     <div class="container-fluid">
       <div class="row">
@@ -243,7 +277,7 @@
           </div>
         </div>
       </div>
-    </footer>
+  </footer>
   <script>
     AOS.init({
       duration: 3000
