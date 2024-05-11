@@ -1,6 +1,6 @@
 @extends('template.warga.main')
 @section('content')
-@include('template.warga.header')
+    @include('template.warga.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
@@ -14,29 +14,31 @@
                             <table class="table" id="table-warga">
                                 <thead>
                                     <th>No</th>
-                                    <th>Nama Warga</th>
-                                    <th>NIK</th>
+                                    <th>Nama Kepala Keluarga</th>
+                                    <th>NKK</th>
                                     <th>Tanggal Bayar</th>
                                     <th>Nominal Iuran</th>
                                     <th>Yang Terbayar</th>
                                     <th>Status</th>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($dataWarga as $warga) --}}
+                                    @foreach ($iuran as $iuran)
                                         <tr>
-                                            {{-- <td>{{ $no++ }}</td> --}}
-                                            <td>No</td>
-                                            {{-- <td>{{ $warga->nama_user }}</td> --}}
-                                            <td>Rizky Arifiansyah</td>
-                                            <td>22417200059</td>
-                                            {{-- <td>{{ $warga->nik_user }}</td> --}}
-                                            <td>20 Juni 2024</td>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $iuran->kartuKeluarga->nama_kepala_keluarga }}</td>
+                                            <td>{{ $iuran->kartuKeluarga->no_kartu_keluarga }}</td>
+                                            <td>{{ $iuran->tanggal_iuran }}</td>
                                             <td>Rp. 20.000</td>
                                             <td>Rp. 20.000</td>
-                                            <td><button class="btn btn-success">Lunas</button>
-                                            <button class="btn btn-danger">Belum lunas</button></td>
+                                            <td>
+                                                @if ($iuran->status == 'Lunas')
+                                                    <p class="btn btn-success">Lunas</p>
+                                                @else
+                                                    <p class="btn btn-danger">Belum lunas</p>
+                                                @endif
+                                            </td>
                                         </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
