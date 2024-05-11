@@ -3,10 +3,11 @@
     --text-color: #455264;
     --header-color: #0b0b0b;
     --background-color: #e6e6e6;
+    --gak-tau: #908cbf;
 }
 body {
     font-family: "Poppins", sans-serif !important;
-    background: linear-gradient(to left, var(--background-color), #f7f7f7);
+    background: linear-gradient(to left, var(--background-color), #cadeff);
 }
 .text_hero {
     font-size: 50px;
@@ -20,6 +21,7 @@ img {
 }
 
 .hero {
+    margin-top: 70px;
     height: calc(100vh - 70px);
     padding: 0px 96px;
     padding-top: 36px;
@@ -125,6 +127,7 @@ img {
     }
     .hero{
         padding: 0px 30px;
+        margin-top: 100px !important;
     }
     .fitur{
         padding: 0px 30px;
@@ -147,4 +150,18 @@ img {
     .notif_hero {
         font-size: 12px;
     }
+}
+.contact {
+    padding: 0px 96px;
+}
+.kontak_header{
+    font-size: 27px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.kontak_text{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
 }
