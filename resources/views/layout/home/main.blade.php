@@ -58,8 +58,8 @@
     </nav>
     <section class="hero">
       <div class="container-fluid">
-        <div class="row align-items-center">
-          <div class="col-md-6 align-items-center" data-aos="fade-right">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 d-flex align-items-center" data-aos="fade-right">
             <div class="">
               <span class="notif_hero">Baru: Sekarang Bayar Iuran Bisa Pakai Sima</span>
               <p class="text_hero mt-4">Selamat Datang di Sistem Informasi Manajemen Warga
@@ -70,24 +70,24 @@
               <a href="/login" class="btn btn_hero">Mulai Sekarang</a>
             </div>
           </div>
-          <div class="col-md-6 d-flex justify-content-center" data-aos="fade-left">
+          <div class="col-md-6 d-flex justify-content-center align-items-center" data-aos="fade-left">
 
-              <img class="img_hero" src="{{@asset('assets/images/content/img_hero.png')}}" alt="">
-            
+            <img class="img_hero" src="{{@asset('assets/images/content/img_hero.png')}}" alt="">
+
           </div>
         </div>
       </div>
     </section>
-    <section class="section fitur">
+    <section class="section fitur mt-5">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6 d-flex align-items-center">
+          <div data-aos="fade-right" class="col-md-6 d-flex align-items-center">
             <div class="wrapper_img_fitur">
               <img class="img_fitur" src="{{@asset('assets/images/content/wargakartun.png')}}" alt="">
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="header_fitur">Nikmati Manfaat Fitur Kami Yang Sudah Terintegrasi Dengan RT dan RT setempat
+          <div class="col-md-6" data-aos="fade-left">
+            <div class="header_fitur mt-5">Nikmati Manfaat Fitur Kami Yang Sudah Terintegrasi Dengan RT dan RT setempat
             </div>
             <div class="text_fitur mb-3 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nisi quae
               officiis
@@ -133,12 +133,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="umkm_main_header mt-3 mb-3 text-center">UMKM Kami</div>
+          <div class="umkm_main_header mt-3 mb-5 text-center">UMKM Kami</div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
             <img src="{{@asset('assets/images/content/wargakartun.png')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -151,7 +151,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
             <img src="{{@asset('assets/images/content/wargakartun.png')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -164,7 +164,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
             <img src="{{@asset('assets/images/content/wargakartun.png')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -183,12 +183,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <h1 class="kegiatan_warga_main_header text-center">Kegiatan Warga</h1>
+          <h1 class="kegiatan_warga_main_header mb-5 text-center">Kegiatan Warga</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
             <img src="{{@asset('assets/images/content/wargakartun.png')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -201,7 +201,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <img src="{{@asset('assets/images/content/wargakartun.png')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -214,7 +214,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
             <img src="{{@asset('assets/images/content/wargakartun.png')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -229,23 +229,25 @@
       </div>
     </div>
   </section>
-  <section class="footer bg-white">
+  <footer class="footer bg-white shadow-lg">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between align-items-center">
             <div class="footer_left">
               <img src="{{@asset('assets/images/logos/logo.png')}}" alt="">
             </div>
             <div class="footer_right">
               @copyright2024
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
   <script>
-    AOS.init();
+    AOS.init({
+      duration: 3000
+    });
   </script>
   <script src="{{@asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{@asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
