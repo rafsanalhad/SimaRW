@@ -2,11 +2,11 @@
 :root {
     --text-color: #455264;
     --header-color: #0b0b0b;
-    --background-color: #f7f7f7;
+    --background-color: #e6e6e6;
 }
 body {
     font-family: "Poppins", sans-serif !important;
-    background: linear-gradient(to left, var(--background-color), #fff);
+    background: linear-gradient(to left, var(--background-color), #f7f7f7);
 }
 .text_hero {
     font-size: 50px;
@@ -21,7 +21,8 @@ img {
 
 .hero {
     height: calc(100vh - 70px);
-    padding: 0px 78px;
+    padding: 0px 96px;
+    padding-top: 36px;
 }
 
 .navbar {
@@ -47,7 +48,7 @@ img {
     color: #fff;
 }
 .fitur {
-    padding: 0px 78px;
+    padding: 0px 96px;
 }
 .header_fitur {
     font-size: 27px;
@@ -81,7 +82,7 @@ img {
     height: 100%;
 }
 .umkm {
-    padding: 0px 78px;
+    padding: 0px 96px;
 }
 .umkm_main_header {
     font-size: 27px;
@@ -103,8 +104,47 @@ img {
     font-weight: 500;
 }
 .kegiatan_warga {
-    padding: 0px 78px;
+    padding: 0px 96px;
 }
 .footer{
     padding: 20px;
+}
+@media (max-width: 1188px) {
+    .text_hero {
+        font-size: 35px !important;
+    }
+}
+@media (max-width: 792px) {
+   .img_hero{
+       width: 70%;
+   }
+}
+@media screen and (max-width: 992px) {
+    .img_hero{
+        width: 100%;
+    }
+    .hero{
+        padding: 0px 30px;
+    }
+    .fitur{
+        padding: 0px 30px;
+    }
+    .umkm{
+        padding: 0px 30px;
+    }
+    .kegiatan_warga{
+        padding: 0px 30px;
+    }
+}
+@media screen and (max-width: 923px) {
+    .text_hero {
+        font-size: 30px !important;
+        margin-top: 30px;
+    }
+    .hero{
+        margin-top: 30px;
+    }
+    .notif_hero {
+        font-size: 12px;
+    }
 }
