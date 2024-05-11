@@ -16,7 +16,7 @@
 
 <body>
   <div class="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent shadow-lg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top z-100">
       <div class="container-fluid px-5">
         <a class="navbar-brand" href="#"><img src="{{@asset('assets/images/logos/logo.png')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -57,9 +57,9 @@
       </div>
     </nav>
     <section class="hero">
-      <div class="container-fluid">
+      <div class="container-fluid" data-aos="fade-down">
         <div class="row d-flex align-items-center">
-          <div class="col-md-6 d-flex align-items-center" data-aos="fade-right">
+          <div class="col-md-6 d-flex align-items-center">
             <div class="">
               <span class="notif_hero">Baru: Sekarang Bayar Iuran Bisa Pakai Sima</span>
               <p class="text_hero mt-4">Selamat Datang di Sistem Informasi Manajemen Warga
@@ -70,7 +70,7 @@
               <a href="/login" class="btn btn_hero">Mulai Sekarang</a>
             </div>
           </div>
-          <div class="col-md-6 d-flex justify-content-center align-items-center" data-aos="fade-left">
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
 
             <img class="img_hero" src="{{@asset('assets/images/content/img_hero.png')}}" alt="">
 
@@ -81,12 +81,12 @@
     <section class="section fitur mt-5">
       <div class="container-fluid">
         <div class="row">
-          <div data-aos="fade-right" class="col-md-6 d-flex align-items-center">
+          <div data-aos="zoom-in" class="col-md-6 d-flex align-items-center">
             <div class="wrapper_img_fitur">
               <img class="img_fitur" src="{{@asset('assets/images/content/wargakartun.png')}}" alt="">
             </div>
           </div>
-          <div class="col-md-6" data-aos="fade-left">
+          <div class="col-md-6" data-aos="zoom-in">
             <div class="header_fitur mt-5">Nikmati Manfaat Fitur Kami Yang Sudah Terintegrasi Dengan RT dan RT setempat
             </div>
             <div class="text_fitur mb-3 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nisi quae
