@@ -29,7 +29,11 @@
                                             <td>{{ $iuran->kartuKeluarga->no_kartu_keluarga }}</td>
                                             <td>{{ $iuran->tanggal_iuran }}</td>
                                             <td>Rp. 20.000</td>
-                                            <td>Rp. 20.000</td>
+                                            @if ($iuran->status == 'Lunas')
+                                                <td>Rp. 20.000</td>
+                                            @else
+                                                <td>-</td>
+                                            @endif
                                             <td>
                                                 @if ($iuran->status == 'Lunas')
                                                     <p class="btn btn-success">Lunas</p>
@@ -45,17 +49,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Pemberitahuan</h4>
-                    </div>
-                    <div class="card-body">
-                        <p>Anda belum membayar iuran bulan ini, segera lakukan pembayaran agar tidak terkena denda.</p>
-                        <a href="#" class="btn btn-primary">Bayar Iuran</a>
+            @if ($iuranBelumLunas->isNotEmpty())
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Pemberitahuan</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Anda belum membayar iuran bulan ini, segera lakukan pembayaran agar tidak terkena denda.
+                            </p>
+                            <a href="#" class="btn btn-primary">Bayar Iuran</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
 
     </div>
