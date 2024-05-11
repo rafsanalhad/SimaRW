@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('kegiatan_warga', function (Blueprint $table) {
             $table->id('kegiatan_id');
-            $table->text('nama_kegiatan');
+            $table->string('nama_kegiatan');
+            $table->text('deskripsi_kegiatan');
             $table->date('jadwal_kegiatan');
+            $table->time('jam_awal');
+            $table->time('jam_akhir');
             $table->timestamps();
         });
     }

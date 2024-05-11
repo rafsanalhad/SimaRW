@@ -12,12 +12,7 @@ class WargaController extends Controller
     public function bayarIuran(){
         return view('layout.warga.bayar_iuran');
     }
-    public function kegiatanWarga(){
-        return view('layout.warga.kegiatan_warga');
-    }
-    public function umkm(){
-        return view('layout.warga.umkm');
-    }
+
     public function profilWarga(){
         return view('layout.warga.profil_warga');
     }

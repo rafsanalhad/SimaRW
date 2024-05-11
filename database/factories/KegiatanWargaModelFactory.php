@@ -17,8 +17,11 @@ class KegiatanWargaModelFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_kegiatan' => $this->faker->text(),
-            'jadwal_kegiatan' => $this->faker->date()
+            'nama_kegiatan' => $this->faker->word(),
+            'deskripsi_kegiatan' => $this->faker->sentence(),
+            'jadwal_kegiatan' => $this->faker->date(),
+            'jam_awal' => $this->faker->time(),
+            'jam_akhir' => $this->faker->time(),
         ];
     }
 }
