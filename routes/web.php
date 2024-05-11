@@ -124,6 +124,8 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [WargaController::class, 'index'])->name('dashboardWarga');
+
+            // Route Bayar Iuran
             Route::get('/bayar-iuran', [WargaController::class, 'bayarIuran']);
 
             // Route Kegiatan Warga
@@ -138,7 +140,7 @@ Route::middleware(['auth'])->group(function () {
             // Route Pengaduan Warga
             Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);
             Route::post('/tambah-pengaduan', [WargaPengaduanController::class, 'createPengaduan']);
-            
+
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
             Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
             Route::get('/pengajuan-surat', [WargaController::class, 'pengajuanSurat']);
