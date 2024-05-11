@@ -1,3 +1,110 @@
-.wrapper {
-    background-image: url("{{@asset('assets/images/backgrounds/bg_home.png')}}");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+    --text-color: #455264;
+    --header-color: #0b0b0b;
+    --background-color: #f7f7f7;
+}
+body {
+    font-family: "Poppins", sans-serif !important;
+    background: linear-gradient(to left, var(--background-color), #fff);
+}
+.text_hero {
+    font-size: 50px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+img {
+    pointer-events: none;
+}
+
+.hero {
+    height: calc(100vh - 70px);
+    padding: 0px 78px;
+}
+
+.navbar {
+    height: 70px;
+}
+
+.img_hero {
+    width: 80%;
+    height: 100%;
+}
+.text_content_hero {
+    font-size: 16px;
+}
+.notif_hero {
+    background-color: #c7daff;
+    color: #3057e8;
+    padding: 8px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.btn_hero {
+    background-color: #3259e8;
+    color: #fff;
+}
+.fitur {
+    padding: 0px 78px;
+}
+.header_fitur {
+    font-size: 27px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.iconFitur {
+    width: 50px;
+    height: 50px;
+    background-color: #c7daff;
+    border-radius: 50px;
+}
+.iconBootstrap {
+    font-size: 21px;
+    color: #3259e8;
+    font-weight: 800;
+}
+.subHeaderFitur {
+    font-size: 18px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.wrapper_img_fitur {
+    width: 100%;
+}
+.img_fitur {
+    width: 100%;
+    border-radius: 36px;
+    height: 100%;
+}
+.umkm {
+    padding: 0px 78px;
+}
+.umkm_main_header {
+    font-size: 27px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.ketBuka{
+    font-size: 14px;
+}
+.jamBuka{
+    font-size: 12px;
+    font-weight: 300;
+}
+.kegiatan_warga_main_header{
+    font-size: 27px;
+    color: var(--header-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.kegiatan_warga {
+    padding: 0px 78px;
+}
+.footer{
+    padding: 20px;
 }
