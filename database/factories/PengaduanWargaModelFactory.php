@@ -20,7 +20,9 @@ class PengaduanWargaModelFactory extends Factory
             'user_id' => rand(1, count(\App\Models\UserModel::select('user_id')->get())),
             'tanggal_pengaduan' => fake()->date(),
             'isi_pengaduan' => fake()->sentence(),
-            'status_pengaduan' => ['Ditolak', 'Diproses', 'Selesai'][rand(0, 2)]
+            'status_pengaduan' => ['Ditolak', 'Diproses', 'Selesai'][rand(0, 2)],
+            'nomor_rt' => rand(1, 5),
+            'nomor_rw' => 1,
         ];
     }
 }

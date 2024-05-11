@@ -12,6 +12,8 @@
                         <th>Nama Warga</th>
                         <th>Tanggal Pengaduan</th>
                         <th>Alamat</th>
+                        <th>RT</th>
+                        <th>RW</th>
                         <th>Isi Pengaduan</th>
                         <th>Aksi</th>
                     </thead>
@@ -24,6 +26,8 @@
                                 </td>
                                 <td>{{ $laporan->tanggal_pengaduan }}</td>
                                 <td>{{ $laporan->user->alamat_user }}</td>
+                                <td>{{ $laporan->nomor_rt }}</td>
+                                <td>{{ $laporan->nomor_rw }}</td>
                                 <td>{{ $laporan->isi_pengaduan }}</td>
                                 <td class="d-flex gap-2">
                                     <a href="{{ route('tolakPengaduan', $laporan->pengaduan_id) }}" class="btn btn-danger">Tolak</a>

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('user_id')->on('user');
             $table->date('tanggal_pengaduan');
             $table->text('isi_pengaduan');
+            $table->string('nomor_rt');
+            $table->string('nomor_rw');
             $table->string('status_pengaduan', 25);
             $table->timestamps();
         });

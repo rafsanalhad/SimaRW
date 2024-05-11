@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
 use App\Http\Controllers\Admin\KelolaIuranController;
 use App\Http\Controllers\Admin\KelolaSuratController;
+use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
 
 /*
@@ -133,7 +134,11 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('/profil-warga', [WargaController::class, 'profilWarga']);
             Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuanBansos']);
-            Route::get('/pengaduan', [WargaController::class, 'pengaduanWarga']);
+
+            // Route Pengaduan Warga
+            Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);
+            Route::post('/tambah-pengaduan', [WargaPengaduanController::class, 'createPengaduan']);
+            
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
             Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
             Route::get('/pengajuan-surat', [WargaController::class, 'pengajuanSurat']);

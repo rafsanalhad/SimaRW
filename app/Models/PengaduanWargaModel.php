@@ -20,6 +20,8 @@ class PengaduanWargaModel extends Model
         'tanggal_pengaduan',
         'isi_pengaduan',
         'status_pengaduan',
+        'nomor_rt',
+        'nomor_rw'
     ];
 
     public function user(): BelongsTo {
