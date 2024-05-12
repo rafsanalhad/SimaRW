@@ -29,6 +29,8 @@ img {
 
 .navbar {
     height: 70px;
+    background: linear-gradient(to left, var(--background-color), #cadeff);
+    z-index: 100 !important;
 }
 
 .img_hero {
@@ -122,6 +124,10 @@ img {
    }
 }
 @media screen and (max-width: 992px) {
+    .navbar{
+        margin: 0px !important;
+        padding: 0px !important;
+    }
     .img_hero{
         width: 100%;
     }
@@ -138,6 +144,10 @@ img {
     .kegiatan_warga{
         padding: 0px 30px;
     }
+    .contact{
+        padding: 0px 30px !important;
+    }
+    
 }
 @media screen and (max-width: 923px) {
     .text_hero {

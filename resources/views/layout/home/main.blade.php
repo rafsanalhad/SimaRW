@@ -16,7 +16,7 @@
 
 <body>
   <div class="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top z-100">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-lg fixed-top z-100" style="background: linear-gradient(to left, var(--background-color), #cadeff);">
       <div class="container-fluid px-5">
         <a class="navbar-brand" href="#"><img src="{{@asset('assets/images/logos/logo.png')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -263,7 +263,7 @@
       </div>
     </div>
   </section>
-  <footer class="footer bg-white shadow-lg">
+  <footer class="footer bg-white shadow-lg" style="background: linear-gradient(to left, var(--background-color), #cadeff);">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
