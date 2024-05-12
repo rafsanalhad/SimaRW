@@ -11,22 +11,23 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light shadow-lg fixed-top z-100" style="background: linear-gradient(to left, var(--background-color), #cadeff);">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-lg fixed-top z-100"
+      style="background: linear-gradient(to left, var(--background-color), #cadeff);">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="{{@asset('assets/images/logos/logo.png')}}" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler button_nav_mobile" type="button">
+          <span class="navbar_overlay_icon bi"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
+              <a class="nav-link" href="#home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#fitur">Fitur Kami</a>
@@ -35,10 +36,10 @@
               <a class="nav-link" href="#umkm">Umkm Kami</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#kegiatan_warga">Umkm Kami</a>
+              <a class="nav-link" href="#kegiatan_warga">Kegiatan Warga</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
+              <a class="nav-link" href="#contact">Kontak</a>
             </li>
             {{-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -65,6 +66,15 @@
         </div>
       </div>
     </nav>
+    <div class="navbar_overlay">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link nav_link_overlay">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav_link_overlay">Fitur Kami</a></li>
+        <li class="nav-item"><a class="nav-link nav_link_overlay">Umkm Kami</a></li>
+        <li class="nav-item"><a class="nav-link nav_link_overlay">Kegiatan Warga</a></li>
+        <li class="nav-item"><a class="nav-link nav_link_overlay">Kontak</a></li>
+      </ul>
+    </div>
     <section class="hero" id="home">
       <div class="container-fluid" data-aos="fade-down">
         <div class="row d-flex align-items-center">
@@ -262,17 +272,19 @@
               </div>
               <div class="form-group mb-3">
                 <label for="pesan" class="form-label m-1">Pesan Anda</label>
-                <textarea type="text" name="pesan" id="pesan" class="form-control bg-white" style="height: 80px;"></textarea>
+                <textarea type="text" name="pesan" id="pesan" class="form-control bg-white"
+                  style="height: 80px;"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Kirim Pesan</button>
             </div>
           </div>
-         
+
         </div>
       </div>
     </div>
   </section>
-  <footer class="footer bg-white shadow-lg" style="background: linear-gradient(to left, var(--background-color), #cadeff);">
+  <footer class="footer bg-white shadow-lg"
+    style="background: linear-gradient(to left, var(--background-color), #cadeff);">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -290,6 +302,38 @@
   <script>
     AOS.init({
       duration: 3000
+    });
+  </script>
+  <script>
+    let navbarOpen = false;
+    $(document).ready(function(){
+   
+    function checkScreenWidth() {
+        if ($(window).width() >= 992) {
+            $('.navbar_overlay').removeClass('active');
+            $('.navbar_overlay_icon').removeClass('bi-x');
+        $('.navbar_overlay_icon').addClass('bi-list');
+        }
+    }
+    checkScreenWidth();
+    $(window).resize(function() {
+        checkScreenWidth();
+    });
+});
+    $('.navbar_overlay_icon').addClass('bi-list');
+    $('.navbar-toggler').on('click', function () {
+      if (navbarOpen) {
+        
+        $('.navbar_overlay').removeClass('active');
+        $('.navbar_overlay_icon').removeClass('bi-x');
+        $('.navbar_overlay_icon').addClass('bi-list');
+        navbarOpen = false;
+      } else {
+        $('.navbar_overlay').addClass('active');
+        $('.navbar_overlay_icon').removeClass('bi-x');
+        $('.navbar_overlay_icon').addClass('bi-x');
+        navbarOpen = true;
+      }
     });
   </script>
   <script src="{{@asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>

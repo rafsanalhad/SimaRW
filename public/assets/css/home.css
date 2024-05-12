@@ -176,3 +176,23 @@ img {
     line-height: 1.2;
     font-weight: 500;
 }
+.navbar_overlay{
+    position: fixed;
+    transition: all ease 0.5s !important;
+    top: 70px;
+    width: 100%;
+    z-index: 200;
+    background: linear-gradient(to left, var(--background-color), #cadeff);
+    padding: 10px 28px;
+}
+.nav_link_overlay{
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--header-color);
+}
+.navbar_overlay.active{
+    display: block;
+}
+.navbar_overlay{
+    display: none;
+}
