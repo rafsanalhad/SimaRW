@@ -26,12 +26,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#fitur">Fitur Kami</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item">
+              <a class="nav-link" href="#umkm">Umkm Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kegiatan_warga">Umkm Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            {{-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Dropdown
@@ -47,7 +56,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            </li> --}}
           </ul>
           <form class="d-flex">
             <a class="btn btn-primary me-2">Login</a>
@@ -56,7 +65,7 @@
         </div>
       </div>
     </nav>
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="container-fluid" data-aos="fade-down">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 d-flex align-items-center">
@@ -78,7 +87,7 @@
         </div>
       </div>
     </section>
-    <section class="section fitur mt-5">
+    <section class="section fitur mt-5" id="fitur">
       <div class="container-fluid">
         <div class="row">
           <div data-aos="zoom-in" class="col-md-6 d-flex align-items-center">
@@ -129,7 +138,7 @@
   </div>
 
   </section>
-  <section class="umkm mt-5 mb-5">
+  <section class="umkm mt-5 mb-5" id="umkm">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -179,7 +188,7 @@
       </div>
     </div>
   </section>
-  <section class="kegiatan_warga">
+  <section class="kegiatan_warga" id="kegiatan_warga">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -229,7 +238,7 @@
       </div>
     </div>
   </section>
-  <section data-aos="zoom-in" class="contact mt-5 mb-5">
+  <section data-aos="zoom-in" class="contact mt-5 mb-5" id="contact">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
