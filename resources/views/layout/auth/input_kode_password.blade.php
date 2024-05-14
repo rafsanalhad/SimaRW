@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Input Kode SIMA</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/newlogoSima.png" />
     <link rel="stylesheet" href="{{ url('/assets/css/styles.min.css') }}" />
 </head>
 
@@ -27,10 +28,10 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="kode_verifikasi" class="form-label">Kode Verifikasi: </label>
-                                        <input type="text" name="kode_verif" class="form-control" id="kode_verifikasi">
+                                        <input type="text" name="kode_verif" class="form-control"
+                                            id="kode_verifikasi">
                                     </div>
-                                    <button type="submit"
-                                        class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Kirim
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Kirim
                                         Kode</button>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Tidak Menerima Kode?</p>
