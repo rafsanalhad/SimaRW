@@ -62,7 +62,6 @@
                     </ul>
                     <form class="d-flex">
                         <a class="btn btn-primary me-2">Login</a>
-                        <a href="" class="btn btn-outline-primary">Register</a>
                     </form>
                 </div>
             </div>
@@ -152,9 +151,10 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" style="height: 500px;">
-                        <img src="{{ @asset('assets/images/products/gambar6.jpg') }}" class="card-img-top" style="height: 250px;"
-                            alt="...">
+                    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
+                        style="height: 500px;">
+                        <img src="{{ @asset('assets/images/products/gambar6.jpg') }}" class="card-img-top"
+                            style="height: 250px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
                             <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
@@ -167,9 +167,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000" style="height: 500px;">
-                        <img src="{{ @asset('assets/images/products/gambar7.jpeg') }}" class="card-img-top" style="height: 250px;"
-                            alt="...">
+                    <div class="card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
+                        style="height: 500px;">
+                        <img src="{{ @asset('assets/images/products/gambar7.jpeg') }}" class="card-img-top"
+                            style="height: 250px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
                             <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
@@ -182,21 +183,22 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" style="height: 500px;">
-                        <img src="{{ @asset('assets/images/products/gambar8.jpg') }}" class="card-img-top" style="height: 250px;"
-                            alt="...">
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"
+                        style="height: 500px;">
+                        <img src="{{ @asset('assets/images/products/gambar8.jpg') }}" class="card-img-top"
+                            style="height: 250px;" alt="...">
                         <div class="card-body ">
-              
+
                             <div class="umkmTitleSection">
-                              <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                              <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                  sembako</p>
-                          
-                              <div class="ketUmkm">
-                                  <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                  <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
-                              </div>
-                          </div>
+                                <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
+                                <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
+                                    sembako</p>
+
+                                <div class="ketUmkm">
+                                    <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
+                                    <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -212,9 +214,10 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top" style="height: 200px;"
-                            alt="...">
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
+                        style="height: 400px;">
+                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
+                            style="height: 200px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Senam Pagi</h5>
                             <p class="">Pelaksanaan Senam Pagi di balai desa</p>
@@ -222,9 +225,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000"   data-aos-delay="300" style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar9.jpg') }}" class="card-img-top" style="height: 200px;"
-                            alt="...">
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"
+                        style="height: 400px;">
+                        <img src="{{ @asset('assets/images/products/gambar9.jpg') }}" class="card-img-top"
+                            style="height: 200px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Syukuran desa</h5>
                             <p class="">Pelaksanaan syukuran unutk desa</p>
@@ -232,9 +236,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top" style="height: 200px;"
-                            alt="...">
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"
+                        style="height: 400px;">
+                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
+                            style="height: 200px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Tanam Pohon</h5>
                             <p class="">Kegiatan penanaman pohon untuk memperingati hari jadi desa</p>
