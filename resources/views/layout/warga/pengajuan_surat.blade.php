@@ -23,32 +23,27 @@
                             <th>Status</th>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($dataWarga as $warga) --}}
-                                <tr>
-                                    {{-- <td>{{ $no++ }}</td> --}}
-                                    <td>1</td>
-                                    {{-- <td>{{ $warga->nama_user }}</td> --}}
-                                    <td>Rizky Arifiansyah</td>
-                                    <td>22417200059</td>
-                                    {{-- <td>{{ $warga->nik_user }}</td> --}}
-                                    <td>20 Juni 2024</td>
-                                    <td>Surat SKTM</td>
-                                    <td><button class="btn btn-primary">Download</button></td>
-                                    <td><button class="btn btn-success">Diterima</button></td>
-                                </tr>
-                                <tr>
-                                    {{-- <td>{{ $no++ }}</td> --}}
-                                    <td>2</td>
-                                    {{-- <td>{{ $warga->nama_user }}</td> --}}
-                                    <td>Rizky Arifiansyah</td>
-                                    <td>22417200059</td>
-                                    {{-- <td>{{ $warga->nik_user }}</td> --}}
-                                    <td>20 Juni 2024</td>
-                                    <td>Surat SKTM</td>
-                                    <td> <button class="btn btn-danger">Belum Disetujui</button></td>
-                                    <td> <button class="btn btn-danger">Ditolak</button></td>
-                                </tr>
-                            {{-- @endforeach --}}
+                            @if ($surat != null)
+                                @foreach ($surat as $s)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $s->user->nama_user }}</td>
+                                        <td>{{ $s->user->nik_user }}</td>
+                                        <td>{{ $s->detail->tanggal_surat }}</td>
+                                        <td>{{ $s->jenis_surat }}</td>
+                                        @if ($s->status_surat == 'Diterima')
+                                            <td><button class="btn btn-primary">Download</button></td>
+                                            <td><button class="btn btn-success">Diterima</button></td>
+                                        @else
+                                            <td> <button class="btn btn-danger">Belum Disetujui</button></td>
+                                            <td> <button class="btn btn-danger">Ditolak</button></td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            @else
+                                {{-- no data --}}
+                            @endif
+                            
                         </tbody>
                     </table>
                 </div>

@@ -18,7 +18,8 @@ class SuratModelFactory extends Factory
     {
         return [
             'user_id' => rand(1, count(\App\Models\UserModel::select('user_id')->get())),
-            'jenis_surat' => ['Surat Keterangan', 'Surat Izin', 'Surat Pernyataan'][rand(0, 2)]
+            'jenis_surat' => ['Surat Keterangan', 'Surat Izin', 'Surat Pernyataan'][rand(0, 2)],
+            'status_surat' => ['Diterima', 'Ditolak'][rand(0, 1)]
         ];
     }
 }
