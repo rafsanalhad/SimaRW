@@ -7,13 +7,15 @@
         <div class="card shadow-lg">
             <h5 class="mt-3 ms-3">Isi Data Pengaduan</h5>
             <div class="card-body">
-                <form action="/warga/edit-profil" method="POST" class="form-horizontal row">
+                <form action="/warga/tambah-pengaduan" method="POST" class="form-horizontal row">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->user_id }}">
                     <div class="col-md-4">
                         <div class="form-group row">
                             <label for="nama_awal" class="col-form-label">Nama Lengkap:</label>
                             <div class="col-sm-12">
                                 <input placeholder="Masukkan Nama Lengkap Anda" type="text" class="form-control"
-                                    id="nama_awal" name="nama_awal" value="{{ old('nama_awal') }}" required>
+                                    id="nama_awal" name="nama_awal" value="{{ Auth::user()->nama_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -44,7 +46,7 @@
                             <div class="col-sm-12">
                                 <input placeholder="Masukkan Alamat Lengkap Anda" type="alamat_rumah_warga"
                                     class="form-control" id="alamat_rumah_warga" name="alamat_rumah_warga"
-                                    value="{{ old('alamat_rumah_warga') }}" required>
+                                    value="{{ Auth::user()->alamat_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -54,15 +56,15 @@
                             <label for="pengaduan_warga" class="col-form-label">Isi Pengaduan:</label>
                             <div class="col-sm-12">
                                 <textarea placeholder="Masukkan detail pengaduan anda" type="pengaduan_warga" class="form-control"
-                                    id="pengaduan_warga" name="pengaduan_warga" value="{{ old('pengaduan_warga') }}" rows="7px" required></textarea>
+                                    id="pengaduan_warga" name="isi_pengaduan" value="{{ old('isi_pengaduan') }}" rows="7px" required></textarea>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary mt-3">Ajukan Pengaduan</button>
+                    </div>
                 </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary mt-3">Ajukan Pengaduan</button>
-                </div>
             </div>
         </div>
     </div>

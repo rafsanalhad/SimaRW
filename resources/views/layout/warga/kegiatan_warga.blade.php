@@ -1,6 +1,6 @@
 @extends('template.warga.main')
 @section('content')
-@include('template.warga.header')
+    @include('template.warga.header')
 
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -35,8 +35,7 @@
                                     <i class="ti ti-list-check fs-6"></i>
                                     <p class="mb-0 fs-3">My Task</p>
                                 </a>
-                                <a href="./authentication-login.html"
-                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                <a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
         </nav>
     </header>
@@ -46,57 +45,26 @@
 
         <div class="row">
             {{-- @foreach ($umkm as $umkm) --}}
+            @foreach ($kegiatan as $kegiatan)
                 <div class="col-md-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{{ asset('storage/Umkm-images/' . '3JlJ3qI1COmbaCtdXTbTht5mWqSIUyYYEWSSl3wD.png') }}"
+                                <img class="card-img-top"
+                                    src="{{ asset('storage/Umkm-images/' . '3JlJ3qI1COmbaCtdXTbTht5mWqSIUyYYEWSSl3wD.png') }}"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Kerja Bakti</h5>
-                                    <p class="card-text">Warga melakukan kerja bakti untuk membersihkan perairan selokan yang macet terkena sampah</p>
-                                    <p class="card-text">Jadwal: Setiap Minggu</p>
-                                    <p>Jam 08.00 - 10.00</p>
+                                    <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
+                                    <p class="card-text">{{ $kegiatan->deskripsi_kegiatan }}</p>
+                                    <p class="card-text">Jadwal: Hari {{ $kegiatan->jadwal_kegiatan }}</p>
+                                    <p>Jam {{ $kegiatan->jam_awal }} - {{ $kegiatan->jam_akhir }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-lg">
-                        <div class="card-body">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{{ asset('storage/Umkm-images/' . '3JlJ3qI1COmbaCtdXTbTht5mWqSIUyYYEWSSl3wD.png') }}"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Kerja Bakti</h5>
-                                    <p class="card-text">Warga melakukan kerja bakti untuk membersihkan perairan selokan yang macet terkena sampah</p>
-                                    <p class="card-text">Jadwal: Setiap Minggu</p>
-                                    <p>Jam 08.00 - 10.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-lg">
-                        <div class="card-body">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{{ asset('storage/Umkm-images/' . '3JlJ3qI1COmbaCtdXTbTht5mWqSIUyYYEWSSl3wD.png') }}"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Kerja Bakti</h5>
-                                    <p class="card-text">Warga melakukan kerja bakti untuk membersihkan perairan selokan yang macet terkena sampah</p>
-                                    <p class="card-text">Jadwal: Setiap Minggu</p>
-                                    <p>Jam 08.00 - 10.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @endforeach
             {{-- @endforeach --}}
         </div>
     </div>
-
-
 @endsection

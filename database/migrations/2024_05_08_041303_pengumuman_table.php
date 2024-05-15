@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kegiatan_warga', function (Blueprint $table) {
-            $table->id('kegiatan_id');
-            $table->string('nama_kegiatan');
-            $table->text('deskripsi_kegiatan');
-            $table->date('jadwal_kegiatan');
-            $table->time('jam_awal');
-            $table->time('jam_akhir');
+        Schema::create('pengumuman', function (Blueprint $table) {
+            $table->id('pengumuman_id');
+            $table->string('judul_pengumuman');
+            $table->text('isi_pengumuman');
+            $table->date('tanggal_pengumuman');
+            $table->time('jam_pengumuman');
+            $table->string('tempat_pengumuman');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kegiatan_warga');
+        Schema::dropIfExists('pengumuman');
     }
 };

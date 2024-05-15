@@ -9,7 +9,7 @@
                 <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick="showTambahWarga()">
                     <i class="bi bi-plus-lg"></i> Ajukan Surat
                 </button>
-                <h4 class="mb-4">History Peengajuan Surat</h4>
+                <h4 class="mb-4">History Pengajuan Surat</h4>
                 <hr>
                 <div class="table-responsive">
                     <table class="table" id="table-warga">
@@ -26,16 +26,27 @@
                             {{-- @foreach ($dataWarga as $warga) --}}
                                 <tr>
                                     {{-- <td>{{ $no++ }}</td> --}}
-                                    <td>No</td>
+                                    <td>1</td>
                                     {{-- <td>{{ $warga->nama_user }}</td> --}}
                                     <td>Rizky Arifiansyah</td>
                                     <td>22417200059</td>
                                     {{-- <td>{{ $warga->nik_user }}</td> --}}
                                     <td>20 Juni 2024</td>
                                     <td>Surat SKTM</td>
-                                    <td><button class="btn btn-primary">Download</button><button class="btn btn-danger">Belum Disetujui</button></td>
-                                    <td><button class="btn btn-success">Diterima</button>
-                                    <button class="btn btn-danger">Ditolak</button></td>
+                                    <td><button class="btn btn-primary">Download</button></td>
+                                    <td><button class="btn btn-success">Diterima</button></td>
+                                </tr>
+                                <tr>
+                                    {{-- <td>{{ $no++ }}</td> --}}
+                                    <td>2</td>
+                                    {{-- <td>{{ $warga->nama_user }}</td> --}}
+                                    <td>Rizky Arifiansyah</td>
+                                    <td>22417200059</td>
+                                    {{-- <td>{{ $warga->nik_user }}</td> --}}
+                                    <td>20 Juni 2024</td>
+                                    <td>Surat SKTM</td>
+                                    <td> <button class="btn btn-danger">Belum Disetujui</button></td>
+                                    <td> <button class="btn btn-danger">Ditolak</button></td>
                                 </tr>
                             {{-- @endforeach --}}
                         </tbody>

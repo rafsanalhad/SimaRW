@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Input Kode SIMA</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/newlogoSima.png" />
     <link rel="stylesheet" href="{{ url('/assets/css/styles.min.css') }}" />
 </head>
 
@@ -22,17 +23,19 @@
                                 <div href="#" class="text-center mb-3">
                                     <img src="{{ url('/assets/images/logos/simarwlogo.png') }}" alt="">
                                 </div>
-                                <form>
+                                <form action="/new-password" method="POST">
+                                    @csrf
                                     <div class="mb-4">
                                         <label for="password_login" class="form-label">Masukkan Password Baru: </label>
-                                        <input type="password" class="form-control" id="password_login">
+                                        <input type="password" name="password_awal" class="form-control"
+                                            id="password_login">
+                                        <label for="password_login" class="form-label">Konfirmasi Password Baru:
+                                        </label>
+                                        <input type="password" name="password_akhir" class="form-control"
+                                            id="password_login">
                                     </div>
-                                    <a href="./login" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Kirim
-                                    </a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">Sudah Punya Akun?</p>
-                                        <a class="text-primary fw-bold ms-2" href="./login">Sign In</a>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Kirim
+                                    </button>
                                 </form>
                             </div>
                         </div>
