@@ -27,7 +27,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/bayar-iuran') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-exclamation-circle"></i>
+                            <i class="bi bi-credit-card"></i>
                         </span>
                         <span class="hide-menu">Bayar Iuran</span>
                     </a>
@@ -35,7 +35,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/kegiatan-warga') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-exclamation-circle"></i>
+                            <i class="bi bi-people"></i>
                         </span>
                         <span class="hide-menu">Kegiatan Warga</span>
                     </a>
@@ -43,7 +43,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/umkm') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-exclamation-circle"></i>
+                            <i class="bi bi-shop-window"></i>
                         </span>
                         <span class="hide-menu">UMKM</span>
                     </a>
@@ -66,7 +66,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/penerima-bansos') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-envelope-paper"></i>
+                            <i class="bi bi-bookmark-check"></i>
                         </span>
                         <span class="hide-menu">Penerima Bansos</span>
                     </a>
@@ -74,7 +74,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/pengajuan-surat') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-envelope-paper"></i>
+                            <i class="bi bi-envelope-arrow-up"></i>
                         </span>
                         <span class="hide-menu">Pengajuan Surat</span>
                     </a>
