@@ -59,9 +59,6 @@ class DatabaseSeeder extends Seeder
         // Call factory for PenerimaanBansos table
         PenerimaanBansosModel::factory(5)->create();
 
-        // Call factory for Iuran table
-        IuranModel::factory(5)->create();
-
         // Call factory for Pengumuman
         PengumumanModel::factory(3)->create();
 
