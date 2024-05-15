@@ -91,7 +91,8 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-items-center">
 
-                        <img class="img_hero" src="{{ @asset('assets/images/content/img_hero.png') }}" alt="">
+                        <img style="width: 100%; height: 100%; border-radius: 36px;" class="img_hero"
+                            src="{{ @asset('assets/images/content/founder1.jpg') }}" alt="">
 
                     </div>
                 </div>

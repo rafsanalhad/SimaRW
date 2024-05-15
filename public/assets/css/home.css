@@ -95,14 +95,14 @@ img {
     line-height: 1.2;
     font-weight: 500;
 }
-.ketBuka{
+.ketBuka {
     font-size: 14px;
 }
-.jamBuka{
+.jamBuka {
     font-size: 12px;
     font-weight: 300;
 }
-.kegiatan_warga_main_header{
+.kegiatan_warga_main_header {
     font-size: 27px;
     color: var(--header-color);
     line-height: 1.2;
@@ -111,7 +111,7 @@ img {
 .kegiatan_warga {
     padding: 0px 96px;
 }
-.footer{
+.footer {
     padding: 20px;
 }
 @media (max-width: 1188px) {
@@ -120,42 +120,41 @@ img {
     }
 }
 @media (max-width: 792px) {
-   .img_hero{
-       width: 70%;
-   }
+    .img_hero {
+        width: 70%;
+    }
 }
 @media screen and (max-width: 992px) {
-    .navbar{
+    .navbar {
         margin: 0px !important;
         padding: 0px !important;
     }
-    .img_hero{
+    .img_hero {
         width: 100%;
     }
-    .hero{
+    .hero {
         padding: 0px 30px;
         margin-top: 100px !important;
     }
-    .fitur{
+    .fitur {
         padding: 0px 30px;
     }
-    .umkm{
+    .umkm {
         padding: 0px 30px;
     }
-    .kegiatan_warga{
+    .kegiatan_warga {
         padding: 0px 30px;
     }
-    .contact{
+    .contact {
         padding: 0px 30px !important;
     }
-    
 }
 @media screen and (max-width: 923px) {
     .text_hero {
         font-size: 30px !important;
         margin-top: 30px;
     }
-    .hero{
+    .hero {
         margin-top: 30px;
     }
     .notif_hero {
@@ -165,18 +164,18 @@ img {
 .contact {
     padding: 0px 96px;
 }
-.kontak_header{
+.kontak_header {
     font-size: 27px;
     color: var(--header-color);
     line-height: 1.2;
     font-weight: 500;
 }
-.kontak_text{
+.kontak_text {
     font-size: 14px;
     line-height: 1.2;
     font-weight: 500;
 }
-.navbar_overlay{
+.navbar_overlay {
     position: fixed;
     transition: all ease 0.5s !important;
     top: 70px;
@@ -185,14 +184,14 @@ img {
     background: linear-gradient(to left, var(--background-color), #cadeff);
     padding: 10px 28px;
 }
-.nav_link_overlay{
+.nav_link_overlay {
     font-size: 13px;
     font-weight: 400;
     color: var(--header-color);
 }
-.navbar_overlay.active{
+.navbar_overlay.active {
     display: block;
 }
-.navbar_overlay{
+.navbar_overlay {
     display: none;
 }
