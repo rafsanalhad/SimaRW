@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
             $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga');
             $table->date('tanggal_iuran');
-            $table->text('bukti_iuran');
+            $table->date('tanggal_bayar')->nullable();
+            $table->text('snap_token')->nullable();
             $table->string('status', 20);
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class IuranModelFactory extends Factory
         return [
             'kartu_keluarga_id' => rand(1, count(\App\Models\KartuKeluargaModel::select('kartu_keluarga_id')->get())),
             'tanggal_iuran' => fake()->date(),
-            'bukti_iuran' => 'buktiIuran.jpg',
+            'tanggal_bayar' => fake()->date(),
             'status' => fake()->randomElement(['Lunas', 'Belum Lunas'])
         ];
     }

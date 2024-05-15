@@ -128,6 +128,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Bayar Iuran
             Route::get('/bayar-iuran', [IuranController::class, 'index']);
+            Route::get('/bayar-iuran/{id}', [IuranController::class, 'bayarIuran'])->name('bayarIuran');
 
             // Route Kegiatan Warga
             Route::get('/kegiatan-warga', [KegiatanWargaController::class, 'index']);
