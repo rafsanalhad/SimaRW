@@ -103,52 +103,38 @@
                 <div class="row">
                     <div data-aos="zoom-in" class="col-md-6 d-flex align-items-center">
                         <div class="wrapper_img_fitur">
-                            <img class="img_fitur" src="{{ @asset('assets/images/content/wargakartun.png') }}"
+                            <img class="img_fitur" src="{{ @asset('assets/images/products/gambar1.jpg') }}"
                                 alt="">
                         </div>
                     </div>
                     <div class="col-md-6" data-aos="zoom-in">
                         <div class="header_fitur mt-5">Nikmati Manfaat Fitur Kami Yang Sudah Terintegrasi Dengan RT dan
-                            RT setempat
+                            RW setempat
                         </div>
-                        <div class="text_fitur mb-3 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                            nisi quae
-                            officiis
-                            quibusdam, ipsam reiciendis eos dolor, praesentium, aperiam beatae quisquam a voluptatum
-                            consectetur
-                            inventore ducimus nihil necessitatibus velit eligendi.</div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="iconFitur d-flex justify-content-center align-items-center"> <i
                                         class="bi bi-person iconBootstrap"></i></div>
-                                <div class="subHeaderFitur mb-2 mt-2">UI Yang Mudah</div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tempora expedita unde
-                                    tempore eius illo
-                                    provident incidunt fugiat iste, sit ex, natus vitae cum consequatur?</p>
+                                <div class="subHeaderFitur mb-2 mt-2">Tampilan Yang Mudah</div>
+                                <p>Tampilan yang mudah dipahami oleh pengguna sehingga nyaman saat digunakan</p>
                             </div>
                             <div class="col-md-6">
                                 <div class="iconFitur d-flex justify-content-center align-items-center"> <i
                                         class="bi bi-person iconBootstrap"></i></div>
-                                <div class="subHeaderFitur mb-2 mt-2">UI Yang Mudah</div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tempora expedita unde
-                                    tempore eius illo
-                                    provident incidunt fugiat iste, sit ex, natus vitae cum consequatur?</p>
+                                <div class="subHeaderFitur mb-2 mt-2">Informasi Tekini</div>
+                                <p>Dapatkan informasi terkini mengenai semua hal yang ada di lingkungan RT/RW</p>
                             </div>
                             <div class="col-md-6">
                                 <div class="iconFitur d-flex justify-content-center align-items-center"> <i
                                         class="bi bi-person iconBootstrap"></i></div>
-                                <div class="subHeaderFitur mb-2 mt-2">UI Yang Mudah</div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tempora expedita unde
-                                    tempore eius illo
-                                    provident incidunt fugiat iste, sit ex, natus vitae cum consequatur?</p>
+                                <div class="subHeaderFitur mb-2 mt-2">Mempermudah administrasi</div>
+                                <p>Pengurusan administrasi yang mudah untuk warga</p>
                             </div>
                             <div class="col-md-6">
                                 <div class="iconFitur d-flex justify-content-center align-items-center"> <i
                                         class="bi bi-person iconBootstrap"></i></div>
-                                <div class="subHeaderFitur mb-2 mt-2">UI Yang Mudah</div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tempora expedita unde
-                                    tempore eius illo
-                                    provident incidunt fugiat iste, sit ex, natus vitae cum consequatur?</p>
+                                <div class="subHeaderFitur mb-2 mt-2">Pelayanan yang cepat</div>
+                                <p>Pelayanan yang cepat untuk mengurus semua kebutuhan di lingkungan RT/RW</p>
                             </div>
                         </div>
                     </div>
@@ -167,7 +153,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                        <img src="{{ @asset('assets/images/content/wargakartun.png') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar6.jpg') }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -182,7 +168,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                        <img src="{{ @asset('assets/images/content/wargakartun.png') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar7.jpeg') }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -197,7 +183,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                        <img src="{{ @asset('assets/images/content/wargakartun.png') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar8.jpg') }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
@@ -223,46 +209,31 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                        <img src="{{ @asset('assets/images/content/wargakartun.png') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                            <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                sembako</p>
-                            <div class="ketKegiatanWarga">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
-                            </div>
+                            <h5 class="card-title">Senam Pagi</h5>
+                            <p class="">Pelaksanaan Senam Pagi di balai desa</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                        <img src="{{ @asset('assets/images/content/wargakartun.png') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar9.jpg') }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                            <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                sembako</p>
-                            <div class="ketKegiatanWarga">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
-                            </div>
+                            <h5 class="card-title">Syukuran desa</h5>
+                            <p class="">Pelaksanaan syukuran unutk desa</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                        <img src="{{ @asset('assets/images/content/wargakartun.png') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                            <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                sembako</p>
-                            <div class="ketKegiatanWarga">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
-                            </div>
+                            <h5 class="card-title">Tanam Pohon</h5>
+                            <p class="">Kegiatan penanaman pohon untuk memperingati hari jadi desa</p>
                         </div>
                     </div>
                 </div>
