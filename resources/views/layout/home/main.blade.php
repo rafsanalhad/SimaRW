@@ -186,12 +186,12 @@
                         <img src="{{ @asset('assets/images/products/gambar8.jpg') }}" class="card-img-top" style="height: 250px;"
                             alt="...">
                         <div class="card-body ">
-                          <div class="d-flex">
+              
                             <div class="umkmTitleSection">
                               <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
                               <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
                                   sembako</p>
-                            </div>
+                          
                               <div class="ketUmkm">
                                   <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
                                   <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
