@@ -17,8 +17,9 @@ class IuranModel extends Model
     protected $fillable = [
         'kartu_keluarga_id',
         'tanggal_iuran',
-        'bukti_iuran',
-        'status'
+        'tanggal_bayar',
+        'status',
+        'snap_token'
     ];
 
     public function kartuKeluarga(): BelongsTo {

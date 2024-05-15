@@ -25,8 +25,4 @@ class WargaController extends Controller
     public function pengajuanSurat(){
         return view('layout.warga.pengajuan_surat');
     }
-
-    public function laporanIuran(){
-        return view('layout.warga.laporan_iuran');
-    }
 }

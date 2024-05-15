@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\RWController;
+use App\Http\Controllers\Warga\IuranController;
 use App\Http\Controllers\Warga\KegiatanWargaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -127,7 +128,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/dashboard', [WargaController::class, 'index'])->name('dashboardWarga');
 
             // Route Bayar Iuran
-            Route::get('/bayar-iuran', [WargaController::class, 'bayarIuran']);
+            Route::get('/bayar-iuran', [IuranController::class, 'index']);
+            Route::get('/bayar-iuran/{id}', [IuranController::class, 'bayarIuran'])->name('bayarIuran');
 
             // Route Kegiatan Warga
             Route::get('/kegiatan-warga', [KegiatanWargaController::class, 'index']);
