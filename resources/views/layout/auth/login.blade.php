@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login SIMA</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/newlogoSima.png" />
     <link rel="stylesheet" href="{{ url('/assets/css/styles.min.css') }}" />
 </head>
 
@@ -31,7 +32,9 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="nik_login" class="form-label">NIK</label>
-                                        <input type="text" name="nik_user" class="form-control @error('nik_user') is-invalid @enderror" id="nik_login" value="{{ old('nik_user') }}" required autofocus>
+                                        <input type="text" name="nik_user"
+                                            class="form-control @error('nik_user') is-invalid @enderror" id="nik_login"
+                                            value="{{ old('nik_user') }}" required autofocus>
                                         @error('nik_user')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -40,7 +43,9 @@
                                     </div>
                                     <div class="mb-4">
                                         <label for="password_login" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password_login" required>
+                                        <input type="password" name="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            id="password_login" required>
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -57,7 +62,8 @@
                                         </div>
                                         <a class="text-primary fw-bold" href="./forgot-password">Forgot Password ?</a>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign
+                                        In</button>
                                 </form>
                             </div>
                         </div>

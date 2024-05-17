@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIMA</title>
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/logoSIMA.png" />
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/newlogoSima.png" />
     <link rel="stylesheet" href="{{ @asset('assets/css/dashboard_admin.css') }}" />
     <link rel="stylesheet" href="{{ @asset('assets/css/styles.min.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">

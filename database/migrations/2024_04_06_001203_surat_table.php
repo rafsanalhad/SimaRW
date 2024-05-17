@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('user_id')->on('user');
             $table->string('jenis_surat', 255);
+            $table->string('status_surat', 25);
             $table->timestamps();
         });
     }
