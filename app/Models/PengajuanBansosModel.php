@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PengajuanBansosModel extends Model
 {
@@ -19,4 +20,8 @@ class PengajuanBansosModel extends Model
         'bukti_pengajuan',
         'status_verif'
     ];
+
+    public function kartuKeluarga(): BelongsTo {
+        return $this->belongsTo(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
 }

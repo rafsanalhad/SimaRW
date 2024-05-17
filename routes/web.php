@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\RWController;
+use App\Http\Controllers\Warga\BansosController;
 use App\Http\Controllers\Warga\IuranController;
 use App\Http\Controllers\Warga\KegiatanWargaController;
 use Illuminate\Support\Facades\Route;
@@ -138,7 +139,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/umkm', [WargaUMKMController::class, 'index']);
 
             Route::get('/profil-warga', [WargaController::class, 'profilWarga']);
-            Route::get('/pengajuan-bansos', [WargaController::class, 'pengajuanBansos']);
+
+            // Route Bansos
+            Route::get('/pengajuan-bansos', [BansosController::class, 'pengajuanBansos']);
+            Route::get('/penerima-bansos', [BansosController::class, 'historyBansos']);
 
             // Route Pengaduan Warga
             Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);
@@ -148,7 +152,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/pengajuan-surat', [PengajuanSuratController::class, 'index']);
 
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
-            Route::get('/penerima-bansos', [WargaController::class, 'penerimaBansos']);
         });
     });
 });
