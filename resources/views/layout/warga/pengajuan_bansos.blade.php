@@ -3,9 +3,9 @@
 @include('template.warga.header')
 
     <div class="container-fluid">
-        <h1 style="font-size: 30px; font-weight: bold;">Form Pengaduan</h1>
+        <h1 style="font-size: 30px; font-weight: bold;">Form Pengajuan Bansos</h1>
         <div class="card shadow-lg">
-            <h5 class="mt-3 ms-3">Isi Data Pengaduan</h5>
+            <h5 class="mt-3 ms-3">Isi Data Pengajuan Bansos</h5>
             <div class="card-body">
                 <form action="/warga/edit-profil" method="POST" class="form-horizontal row">
                     <div class="col-md-4">
@@ -94,7 +94,7 @@
                         <div class="form-group row">
                             <label for="upload_sktm" class="col-form-label">Upload SKTM:</label>
                             <div class="col-12">
-                                <input type="file" class="form-control-file" id="upload_sktm" name="upload_sktm"
+                                <input type="file" class="form-control" id="upload_sktm" name="upload_sktm"
                                     required>
                                 <small class="form-text text-danger"></small>
                             </div>
