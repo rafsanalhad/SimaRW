@@ -151,58 +151,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                        style="height: 500px;">
-                        <img src="{{ @asset('assets/images/products/gambar6.jpg') }}" class="card-img-top"
-                            style="height: 250px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                            <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                sembako</p>
-                            <div class="ketUmkm">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
-                        style="height: 500px;">
-                        <img src="{{ @asset('assets/images/products/gambar7.jpeg') }}" class="card-img-top"
-                            style="height: 250px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                            <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                sembako</p>
-                            <div class="ketUmkm">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"
-                        style="height: 500px;">
-                        <img src="{{ @asset('assets/images/products/gambar8.jpg') }}" class="card-img-top"
-                            style="height: 250px;" alt="...">
-                        <div class="card-body ">
-
-                            <div class="umkmTitleSection">
-                                <h5 class="card-title">Toko Kelontong Pak Alhad</h5>
-                                <p class="">Toko yang menjual sayur dan buah buahan dan sayur sayuran dan aneka
-                                    sembako</p>
-
+                @foreach ($umkm as $umkm)
+                    <div class="col-md-4">
+                        <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
+                            style="height: 500px;">
+                            <img src="{{ $umkm->gambar_umkm }}" class="card-img-top" style="height: 250px;"
+                                alt="Gambar UMKM">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
+                                <p class="">{{ $umkm->deskripsi_umkm }}</p>
                                 <div class="ketUmkm">
                                     <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                    <p class="m-0 p-0 jamBuka">Jam Buka: 08.000 - 22.00</p>
+                                    <p class="m-0 p-0 jamBuka">Jam Buka: {{ $umkm->jam_operasional_awal }} -
+                                        {{ $umkm->jam_operasional_akhir }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -220,30 +186,39 @@
                         <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
                             style="height: 200px;" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Senam Pagi</h5>
-                            <p class="">Pelaksanaan Senam Pagi di balai desa</p>
+                            <h5 class="card-title">{{ $kegiatanWarga[0]->nama_kegiatan }}</h5>
+                            <p class="">{{ $kegiatanWarga[0]->deskripsi_kegiatan }}</p>
+                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[0]->jadwal_kegiatan }}</p>
+                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[0]->jam_awal }} s/d
+                                {{ $kegiatanWarga[0]->jam_akhir }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
                         style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar9.jpg') }}" class="card-img-top"
+                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
                             style="height: 200px;" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Syukuran desa</h5>
-                            <p class="">Pelaksanaan syukuran unutk desa</p>
+                            <h5 class="card-title">{{ $kegiatanWarga[1]->nama_kegiatan }}</h5>
+                            <p class="">{{ $kegiatanWarga[1]->deskripsi_kegiatan }}</p>
+                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[1]->jadwal_kegiatan }}</p>
+                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[1]->jam_awal }} s/d
+                                {{ $kegiatanWarga[1]->jam_akhir }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
                         style="height: 400px;">
                         <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
                             style="height: 200px;" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Tanam Pohon</h5>
-                            <p class="">Kegiatan penanaman pohon untuk memperingati hari jadi desa</p>
+                            <h5 class="card-title">{{ $kegiatanWarga[2]->nama_kegiatan }}</h5>
+                            <p class="">{{ $kegiatanWarga[2]->deskripsi_kegiatan }}</p>
+                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[2]->jadwal_kegiatan }}</p>
+                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[2]->jam_awal }} s/d
+                                {{ $kegiatanWarga[2]->jam_akhir }}</p>
                         </div>
                     </div>
                 </div>
@@ -261,23 +236,29 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="form-group mb-3">
-                                <label for="nama" class="form-label m-1">Nama Anda</label>
-                                <input type="text" name="nama" id="nama" class="form-control bg-white">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="email" class="form-label m-1">Email Anda</label>
-                                <input type="email" name="email" id="email" class="form-control bg-white">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="subjek" class="form-label m-1">Subjek Anda</label>
-                                <input type="text" name="subjek" id="subjek" class="form-control bg-white">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="pesan" class="form-label m-1">Pesan Anda</label>
-                                <textarea type="text" name="pesan" id="pesan" class="form-control bg-white" style="height: 80px;"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                            <form action="/hubungi-kami" method="POST">
+                                @csrf
+                                <div class="form-group mb-3">
+                                    <label for="nama" class="form-label m-1">Nama Anda</label>
+                                    <input type="text" name="nama" id="nama"
+                                        class="form-control bg-white">
+                                </div>
+                                {{-- <div class="form-group mb-3">
+                                    <label for="email" class="form-label m-1">Email Anda</label>
+                                    <input type="email" name="email" id="email"
+                                        class="form-control bg-white">
+                                </div> --}}
+                                <div class="form-group mb-3">
+                                    <label for="subjek" class="form-label m-1">Subjek Anda</label>
+                                    <input type="text" name="subjek" id="subjek"
+                                        class="form-control bg-white">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="pesan" class="form-label m-1">Pesan Anda</label>
+                                    <textarea type="text" name="pesan" id="pesan" class="form-control bg-white" style="height: 80px;"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                            </form>
                         </div>
                     </div>
 

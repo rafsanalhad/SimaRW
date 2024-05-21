@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Unsplash\Search;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +24,7 @@ class UmkmModelFactory extends Factory
             'kontak_umkm' => $this->faker->phoneNumber(),
             'jam_operasional_awal' => $this->faker->time(),
             'jam_operasional_akhir' => $this->faker->time(),
-            'gambar_umkm' => 'fotoUmkm.jpg',
+            'gambar_umkm' => Search::photos('food', rand(1, 5), rand(0, 10), 'landscape')->getResults()[0]['urls']['raw'],
             'user_id' => rand(1, count(\App\Models\UserModel::select('user_id')->get()))
         ];
     }
