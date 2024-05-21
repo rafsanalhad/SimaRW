@@ -19,8 +19,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
-                                <a href="{{ url('/admin/profil-admin') }}"
-                                    class="d-flex align-items-center gap-2 dropdown-item">
+                                <a href="{{ url('/rt/profil-rt') }}" class="d-flex align-items-center gap-2 dropdown-item">
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
@@ -41,7 +40,7 @@
         </nav>
     </header>
     <div class="container-fluid">
-        <h1 style="font-size: 30px; font-weight: bold;">Profil Admin</h1>
+        <h1 style="font-size: 30px; font-weight: bold;">Profil RT</h1>
         <div class="card shadow-lg">
             <h5 class="mt-3 ms-3">Profil Detail</h5>
             <div class="card-body">

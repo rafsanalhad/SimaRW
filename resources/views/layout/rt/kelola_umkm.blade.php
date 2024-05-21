@@ -25,14 +25,6 @@
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">My Account</p>
-                                </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-list-check fs-6"></i>
-                                    <p class="mb-0 fs-3">My Task</p>
-                                </a>
                                 <a href="./authentication-login.html"
                                     class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
@@ -106,8 +98,7 @@
                                         Alamat
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="alamat_umkm_edit" name="alamat_umkm"
-                                            class="form-control">
+                                        <input type="text" id="alamat_umkm_edit" name="alamat_umkm" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -182,7 +173,7 @@
         const modalTambahUmkm = () => {
             $('input:not([name="_token"]), textarea, select, time').val('');
 
-            $('#form_edit').attr('action', '/admin/kelola-umkm');
+            $('#form_edit').attr('action', '/rt/kelola-umkm');
 
             $('.modal-title').html('Tambah UMKM');
             $('.modal_tambah_umkm').modal('show');
@@ -190,7 +181,7 @@
 
         const modalEditUmkm = (idUmkm) => {
             $.ajax({
-                url: '/admin/kelola-umkm/edit/' + idUmkm,
+                url: '/rt/kelola-umkm/edit/' + idUmkm,
                 type: 'GET',
                 dataType: 'json',
                 success(data) {
@@ -207,7 +198,7 @@
                 }
             });
 
-            $('#form_edit').attr('action', '/admin/kelola-umkm/update/' + idUmkm);
+            $('#form_edit').attr('action', '/rt/kelola-umkm/update/' + idUmkm);
 
             $('.modal_tambah_umkm').modal('show');
         }
@@ -224,7 +215,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/kelola-umkm/delete/' + idUmkm,
+                        url: '/rt/kelola-umkm/delete/' + idUmkm,
                         type: 'GET',
                         success: function() {
                             Swal.fire({

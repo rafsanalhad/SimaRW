@@ -17,7 +17,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" id="dashboard_menu" href=" {{ url('/admin/dashboard') }}"
+                    <a class="sidebar-link" id="dashboard_menu" href=" {{ url('/rt/dashboard') }}"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
@@ -30,23 +30,12 @@
                     <span class="hide-menu">Menu</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link menu-kelola-data" href="#submenu-kelola-data" data-bs-toggle="collapse"
-                        aria-expanded="false">
+                    <a class="sidebar-link" href="{{ url('/rt/kelola-warga') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-article"></i>
+                            <i class="bi bi-people"></i>
                         </span>
-                        <span class="hide-menu">Kelola Data</span>
-                        <i class="bi bi-chevron-down ms-auto"></i>
+                        <span class="hide-menu">Kelola Warga</span>
                     </a>
-                    <div class="collapse" id="submenu-kelola-data">
-                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" id="menu-kelola-warga"
-                                    href=" {{ url('/rt/kelola-warga') }}">Kelola Warga</a>
-                            </li>
-                            <!-- Add more submenu items as needed -->
-                        </ul>
-                    </div>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/rt/kelola-umkm') }}" aria-expanded="false">
@@ -125,7 +114,6 @@
     <!-- End Sidebar scroll-->
 </aside>
 <script>
-    let kelolaData = document.getElementsByClassName('menu-kelola-data');
     let kelolaIuran = document.getElementsByClassName('menu-kelola-iuran');
     let laporan = document.getElementsByClassName('menu-laporan');
     let sidebar = document.getElementsByClassName('sidebar-item');

@@ -104,7 +104,7 @@
                     <h5 class="modal-title">Tambah Data Warga</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="/admin/kelola-warga" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    <form action="/rt/kelola-warga" method="POST" class="form-horizontal" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">NKK: </label>
@@ -427,6 +427,7 @@
     <script>
         $('#submenu-kelola-data').addClass('show');
         $('#menu-kelola-warga').removeClass('text-dark').addClass('text-primary');
+
         function showTambahWarga() {
             $('.modal_tambah_warga').modal('show');
         }
@@ -437,7 +438,7 @@
 
         function showEditWarga(idWarga) {
             $.ajax({
-                url: '/admin/kelola-warga/edit/' + idWarga,
+                url: '/rt/kelola-warga/edit/' + idWarga,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -456,7 +457,7 @@
                 }
             });
 
-            $('#editWarga').attr('action', '/admin/kelola-warga/update/' + idWarga);
+            $('#editWarga').attr('action', '/rt/kelola-warga/update/' + idWarga);
 
             $('.modal_edit_warga').modal('show');
         }
@@ -466,7 +467,7 @@
         }
 
         function showDeleteWarga(idWarga) {
-            $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+            $('.hapus_warga_id').attr('href', '/rt/kelola-warga/delete/' + idWarga)
             $('.modal_delete_warga').modal('show')
         }
 

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\ProfilAdminController;
+use App\Http\Controllers\RT\KelolaWargaController;
+use App\Http\Controllers\RT\RTUMKMController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RT\ProfileRTController;
 use App\Http\Controllers\RT\RTController;
@@ -22,6 +24,8 @@ use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
 use App\Http\Controllers\Admin\KelolaIuranController;
 use App\Http\Controllers\Admin\KelolaSuratController;
+use App\Http\Controllers\RT\RTKelolaIuranController;
+use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
 use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
@@ -118,27 +122,62 @@ Route::middleware(['auth'])->group(function () {
             // Route Profile RT
             Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
 
-            Route::get('/kelola-warga', [RTController::class, 'kelolaWarga']);
-            Route::post('/kelola-warga', [RTController::class, 'createWarga'])->name('createWarga');
-            Route::get('/kelola-warga/edit/{id}', [RTController::class, 'editWarga']);
-            Route::get('/kelola-warga/delete/{id}', [RTController::class, 'deleteWarga']);
-            Route::post('/kelola-warga/update/{id}', [RTController::class, 'updateWarga'])->name('updateWarga');
+            // Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
+
+            // // Route get pengumuman
+            // Route::get('/pengumuman', [PengumumanController::class, 'show']);
+            // Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
+
+            // kelola data Warga
+            Route::get('/kelola-warga', [KelolaWargaController::class, 'kelolaWarga']);
+            Route::post('/kelola-warga', [KelolaWargaController::class, 'createWarga'])->name('createWarga');
+            Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
+            Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
+            Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
+
+            // kelola UMKM
+            Route::get('/kelola-umkm', [RTUMKMController::class, 'kelolaUmkm']);
+            Route::post('/kelola-umkm', [RTUMKMController::class, 'createUmkm'])->name('createUmkm');
+            Route::get('/kelola-umkm/edit/{id}', [RTUMKMController::class, 'editUmkm']);
+            Route::post('/kelola-umkm/update/{id}', [RTUMKMController::class, 'updateUmkm']);
+            Route::get('/kelola-umkm/delete/{id}', [RTUMKMController::class, 'deleteUmkm']);
+
+            // iuran
+            Route::get('/kelola-iuran', [RTController::class, 'kelolaIuran']);
+            Route::get('/laporan-iuran', [RTKelolaIuranController::class, 'laporanIuran']);
+
+            // Bansos
+            Route::get('/kelola-bansos', [RTController::class, 'kelolaBansos']);
+
+            // Laporan Pengaduan
+            Route::get('/laporan-pengaduan', [RTPengaduanController::class, 'laporanPengaduan']);
+            Route::get('/tolak-pengaduan/{id}', [RTPengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
+            Route::get('/terima-pengaduan/{id}', [RTPengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
+            Route::get('/history-pengaduan', [RTPengaduanController::class, 'historyPengaduan']);
+
+            // Kelola Surat
+            // Route Kelola Data Surat
+            Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
+
+            // Pengumuman
+            Route::get('/pengumuman', [PengumumanController::class, 'show']);
+            Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
         });
     });
-    Route::group(['middleware' => ['CekLogin:3']], function() {
-        Route::prefix('rw')->group(function () {
-            Route::get('/dashboard', [RWController::class, 'index']);
+    // Route::group(['middleware' => ['CekLogin:3']], function() {
+    //     Route::prefix('rw')->group(function () {
+    //         Route::get('/dashboard', [RWController::class, 'index']);
 
-            // Route Profile RW
-            Route::get('/profil-rw', [ProfileRWController::class, 'profileRw']);
+    //         // Route Profile RW
+    //         Route::get('/profil-rw', [ProfileRWController::class, 'profileRw']);
 
-            Route::get('/kelola-warga', [RWController::class, 'kelolaWarga']);
-            Route::post('/kelola-warga', [RWController::class, 'createWarga'])->name('createWarga');
-            Route::get('/kelola-warga/edit/{id}', [RWController::class, 'editWarga']);
-            Route::get('/kelola-warga/delete/{id}', [RWController::class, 'deleteWarga']);
-            Route::post('/kelola-warga/update/{id}', [RWController::class, 'updateWarga'])->name('updateWarga');
-        });
-    });
+    //         Route::get('/kelola-warga', [RWController::class, 'kelolaWarga']);
+    //         Route::post('/kelola-warga', [RWController::class, 'createWarga'])->name('createWarga');
+    //         Route::get('/kelola-warga/edit/{id}', [RWController::class, 'editWarga']);
+    //         Route::get('/kelola-warga/delete/{id}', [RWController::class, 'deleteWarga']);
+    //         Route::post('/kelola-warga/update/{id}', [RWController::class, 'updateWarga'])->name('updateWarga');
+    //     });
+    // });
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [WargaController::class, 'index'])->name('dashboardWarga');
