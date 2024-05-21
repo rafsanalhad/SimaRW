@@ -39,6 +39,9 @@ use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
 
 Route::get('/', [HomeController::class, 'index']);
 
+//Route Mengirim Hubungi Kami
+Route::post('/hubungi-kami', [HomeController::class, 'pengaduan']);
+
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authUser');
 Route::get('/logout', [LogoutController::class, 'logout']);
