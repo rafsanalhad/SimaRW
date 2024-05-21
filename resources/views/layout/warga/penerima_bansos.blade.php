@@ -28,7 +28,7 @@
                                     <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
                                     {{-- <td>{{ $warga->nik_user }}</td> --}}
                                     <td>{{ $bansos->tanggal_pengajuan }}</td>
-                                    <td>Rp. {{ $rerataGaji }}, 00</td>
+                                    <td>Rp. {{ $rerataGaji }}, 00 </td>
                                     <td>
                                         @if ($bansos->status_verif == 'Terverifikasi')
                                             <button class="btn btn-success">Diterima</button>

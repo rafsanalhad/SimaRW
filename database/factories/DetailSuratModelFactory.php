@@ -14,10 +14,12 @@ class DetailSuratModelFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    private $counter = 1;
     public function definition(): array
     {
+
         return [
-            'surat_id' => rand(1, count(\App\Models\SuratModel::select('surat_id')->get())),
+            'surat_id' => $this->counter++,
             'tanggal_surat' => fake()->date(),
             'keterangan_surat' => fake()->sentence(),
             'tanda_tangan_rt' => 'tandaTanganRT.jpg',

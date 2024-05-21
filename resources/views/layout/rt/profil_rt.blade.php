@@ -1,4 +1,4 @@
-@extends('template.rw.main')
+@extends('template.rt.main')
 @section('content')
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -32,7 +32,7 @@
                                     <i class="ti ti-list-check fs-6"></i>
                                     <p class="mb-0 fs-3">My Task</p>
                                 </a>
-                                <a href="{{ url('/login') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
                         </div>
                     </li>
@@ -51,7 +51,7 @@
                             <label for="nama_awal" class="col-form-label">Nama Lengkap:</label>
                             <div class="col-sm-12">
                                 <input placeholder="Rizky Arifiansyah" type="text" class="form-control" id="nama_awal"
-                                    name="nama_awal" value="{{ old('nama_awal') }}" required>
+                                    name="nama_awal" value="{{ $profil->nama_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <label for="nkk_warga" class="col-form-label">NKK:</label>
                             <div class="col-sm-12">
                                 <input placeholder="3517133241560002" type="nkk_warga" class="form-control" id="nkk_warga"
-                                    name="nkk_warga" value="{{ old('nkk_warga') }}" required>
+                                    name="nkk_warga" value="{{ $profil->kartuKeluarga->no_kartu_keluarga }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <label for="nik_warga" class="col-form-label">NIK:</label>
                             <div class="col-sm-12">
                                 <input placeholder="3517133241760001" type="nik_warga" class="form-control" id="nik_warga"
-                                    name="nik_warga" value="{{ old('nik_warga') }}" required>
+                                    name="nik_warga" value="{{ $profil->nik_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             <label for="email_warga" class="col-form-label">Alamat Email:</label>
                             <div class="col-sm-12">
                                 <input placeholder="aryarafsan@gmail.com" type="email_warga" class="form-control"
-                                    id="email_warga" name="email_warga" value="{{ old('email_warga') }}" required>
+                                    id="email_warga" name="email_warga" value="{{ $profil->email_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                             <label for="nomor_rt" class="col-form-label">RT:</label>
                             <div class="col-sm-12">
                                 <input placeholder="003" type="text" class="form-control" id="nama_awal"
-                                    name="nomor_rt" value="{{ old('nomor_rt') }}" required>
+                                    name="nomor_rt" value="{{ $profil->rt_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                             <label for="nomor_rw" class="col-form-label">RW:</label>
                             <div class="col-sm-12">
                                 <input placeholder="005" type="nomor_rw" class="form-control" id="nomor_rw"
-                                    name="nomor_rw" value="{{ old('nomor_rw') }}" required>
+                                    name="nomor_rw" value="{{ $profil->rw_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -112,15 +112,15 @@
                             <div class="col-sm-12">
                                 <input placeholder="Jl.Mawar no.01 KedungLosari Jawa Tengah" type="alamat_rumah_warga"
                                     class="form-control" id="alamat_rumah_warga" name="alamat_rumah_warga"
-                                    value="{{ old('alamat_rumah_warga') }}" required>
+                                    value="{{ $profil->alamat_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
                     </div>
                 </form>
-                <div class="modal-footer">
+                {{-- <div class="modal-footer">
                     <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
