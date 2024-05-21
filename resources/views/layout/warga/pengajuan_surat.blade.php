@@ -59,7 +59,8 @@
                     <h5 class="modal-title">Pengajuan Surat</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="POST" class="form-horizontal">
+                    <form action="/warga/tambah-surat" method="POST" class="form-horizontal">
+                        @csrf
                         <div class="row mb-2">
                             <span class="col-2 control-label col-form-label">Pilih tipe Surat : </span>
                             <div class="col-12">
@@ -67,7 +68,7 @@
                                     <option value="pengantar">Surat Pengantar</option>
                                     <option value="bansos">Surat Bansos</option>
                                 </select>
-                                @error('nomor_surat')
+                                @error('tipe_surat')
                                     <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -75,8 +76,8 @@
                         <div class="row mb-2">
                             <span class="col-5 control-label col-form-label">Alasan Mengajukan Surat</span>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="tipe_surat" name="tipe_surat">
-                                @error('nomor_surat')
+                                <input type="text" class="form-control" id="keterangan_surat" name="keterangan_surat">
+                                @error('keterangan_surat')
                                     <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
