@@ -120,14 +120,14 @@
                             <h5 class="card-title fw-semibold">Detail Pengeluaran Baru</h5>
                         </div>
                         <ul class="timeline-widget mb-0 position-relative mb-n5">
-                            @foreach ($pengeluaran as $p)
+                            @foreach ($pengeluaranTerbaru as $pt)
                                 <li class="timeline-item d-flex position-relative overflow-hidden">
-                                    <div class="timeline-time text-dark flex-shrink-0 text-end">{{ Carbon::parse($p->created_at)->format('d/m/Y') }}</div>
+                                    <div class="timeline-time text-dark flex-shrink-0 text-end">{{ Carbon::parse($pt->created_at)->format('d/m/Y') }}</div>
                                     <div class="timeline-badge-wrap d-flex flex-column align-items-center">
                                         <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                                         <span class="timeline-badge-border d-block flex-shrink-0"></span>
                                     </div>
-                                    <div class="timeline-desc fs-3 text-dark mt-n1">{{ Str::of($p->detail_pengeluaran)->limit(30) }}</div>
+                                    <div class="timeline-desc fs-3 text-dark mt-n1">{{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
                                 </li>
                             @endforeach
                         </ul>
