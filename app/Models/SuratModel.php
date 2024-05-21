@@ -18,6 +18,7 @@ class SuratModel extends Model
     protected $fillable = [
         'user_id',
         'jenis_surat',
+        'status_surat'
     ];
 
     public function user(): BelongsTo {

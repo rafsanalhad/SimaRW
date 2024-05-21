@@ -165,6 +165,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Pengajuan Surat
             Route::get('/pengajuan-surat', [PengajuanSuratController::class, 'index']);
+            Route::post('/tambah-surat', [PengajuanSuratController::class, 'createSurat']);
 
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
         });
