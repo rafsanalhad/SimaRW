@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\PengumumanController;
+use App\Http\Controllers\Admin\ProfilAdminController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\RT\ProfileRTController;
 use App\Http\Controllers\RT\RTController;
+use App\Http\Controllers\RW\ProfileRWController;
 use App\Http\Controllers\RW\RWController;
 use App\Http\Controllers\Warga\BansosController;
 use App\Http\Controllers\Warga\IuranController;
 use App\Http\Controllers\Warga\KegiatanWargaController;
+use App\Http\Controllers\Warga\ProfilWargaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -49,9 +53,11 @@ Route::post('/new-password', [ForgotPasswordController::class, 'newPassword']);
 Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:1']], function() {
         Route::prefix('admin')->group(function () {
-            // Route Index dan profil
+            // Route Index admin
             Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboardAdmin');
-            Route::get('/profil-admin', [AdminController::class, 'profilAdmin']);
+
+            // Route profil admin
+            Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
 
             // Route get pengumuman
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
@@ -106,6 +112,9 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('rt')->group(function () {
             Route::get('/dashboard', [RTController::class, 'index']);
 
+            // Route Profile RT
+            Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
+
             Route::get('/kelola-warga', [RTController::class, 'kelolaWarga']);
             Route::post('/kelola-warga', [RTController::class, 'createWarga'])->name('createWarga');
             Route::get('/kelola-warga/edit/{id}', [RTController::class, 'editWarga']);
@@ -116,6 +125,9 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:3']], function() {
         Route::prefix('rw')->group(function () {
             Route::get('/dashboard', [RWController::class, 'index']);
+
+            // Route Profile RW
+            Route::get('/profil-rw', [ProfileRWController::class, 'profileRw']);
 
             Route::get('/kelola-warga', [RWController::class, 'kelolaWarga']);
             Route::post('/kelola-warga', [RWController::class, 'createWarga'])->name('createWarga');
@@ -138,7 +150,7 @@ Route::middleware(['auth'])->group(function () {
             // Route UMKM
             Route::get('/umkm', [WargaUMKMController::class, 'index']);
 
-            Route::get('/profil-warga', [WargaController::class, 'profilWarga']);
+            Route::get('/profil-warga', [ProfilWargaController::class, 'profilWarga']);
 
             // Route Bansos
             Route::get('/pengajuan-bansos', [BansosController::class, 'pengajuanBansos']);
