@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\KelolaIuranController;
 use App\Http\Controllers\Admin\KelolaSuratController;
 use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTPengaduanController;
+use App\Http\Controllers\Warga\DashboardController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
 use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
@@ -180,7 +181,7 @@ Route::middleware(['auth'])->group(function () {
     // });
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
-            Route::get('/dashboard', [WargaController::class, 'index'])->name('dashboardWarga');
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardWarga');
 
             // Route Bayar Iuran
             Route::get('/bayar-iuran', [IuranController::class, 'index']);
