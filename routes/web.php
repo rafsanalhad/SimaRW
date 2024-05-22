@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\KelolaDataController;
 use App\Http\Controllers\Admin\KelolaIuranController;
 use App\Http\Controllers\Admin\KelolaSuratController;
 use App\Http\Controllers\RT\RTKelolaIuranController;
+use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\Warga\DashboardController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
@@ -158,7 +159,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Kelola Surat
             // Route Kelola Data Surat
-            Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
+            Route::get('/kelola-surat', [RTKelolaSuratController::class, 'kelolaSurat']);
 
             // Pengumuman
             Route::get('/pengumuman', [PengumumanController::class, 'show']);

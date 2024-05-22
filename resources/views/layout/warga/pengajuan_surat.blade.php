@@ -34,16 +34,19 @@
                                         @if ($s->status_surat == 'Diterima')
                                             <td><button class="btn btn-primary">Download</button></td>
                                             <td><button class="btn btn-success">Diterima</button></td>
-                                        @else
-                                            <td> <button class="btn btn-danger">Belum Disetujui</button></td>
+                                        @elseif ($s->jenis_surat == 'Ditolak')
+                                            <td> <button class="btn btn-danger">Download</button></td>
                                             <td> <button class="btn btn-danger">Ditolak</button></td>
+                                        @else
+                                            <td><button class="btn btn-danger">Download</button></td>
+                                            <td><button class="btn btn-warning">Pending</button></td>
                                         @endif
                                     </tr>
                                 @endforeach
                             @else
                                 {{-- no data --}}
                             @endif
-                            
+
                         </tbody>
                     </table>
                 </div>
