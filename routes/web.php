@@ -153,8 +153,8 @@ Route::middleware(['auth'])->group(function () {
 
             // Laporan Pengaduan
             Route::get('/laporan-pengaduan', [RTPengaduanController::class, 'laporanPengaduan']);
-            Route::get('/tolak-pengaduan/{id}', [RTPengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
-            Route::get('/terima-pengaduan/{id}', [RTPengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
+            Route::get('/tolak-pengaduan/{id}', [RTPengaduanController::class, 'updateTolakPengaduan'])->name('RTtolakPengaduan');
+            Route::get('/terima-pengaduan/{id}', [RTPengaduanController::class, 'updateTerimaPengaduan'])->name('RT terimaPengaduan');
             Route::get('/history-pengaduan', [RTPengaduanController::class, 'historyPengaduan']);
 
             // Kelola Surat
