@@ -48,7 +48,7 @@
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
+                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
