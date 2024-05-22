@@ -28,7 +28,7 @@
                                 <i class="ti ti-user fs-6"></i>
                                 <p class="mb-0 fs-3">My Profile</p>
                             </a>
-                            <a href="{{ url('/login') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                            <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                         </div>
                     </div>
                 </li>
