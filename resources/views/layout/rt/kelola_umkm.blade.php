@@ -39,7 +39,7 @@
                 <div class="col-md-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" style="width: 18rem; height: 400px;">
                                 <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
                                     alt="Card image cap">
                                 <div class="card-body">
