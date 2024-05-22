@@ -127,7 +127,7 @@
                                         <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                                         <span class="timeline-badge-border d-block flex-shrink-0"></span>
                                     </div>
-                                    <div class="timeline-desc fs-3 text-dark mt-n1">{{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
+                                    <div class="timeline-desc fs-3 text-dark mt-n1" id="pengeluaran">{{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
                                 </li>
                             @endforeach
                         </ul>
@@ -384,6 +384,7 @@
             </div>
         </div>
     </div>
+    <script src="{{ @asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script>
         function showModalUmkm() {
             $('.modal_umkm').modal('show');
