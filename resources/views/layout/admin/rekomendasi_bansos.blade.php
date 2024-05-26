@@ -1,4 +1,4 @@
-@extends('template.warga.main')
+@extends('template.admin.main')
 @section('content')
     @include('template.admin.header')
     <div class="container-fluid">
