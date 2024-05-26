@@ -41,6 +41,10 @@
                     <div class="collapse" id="submenu-kelola-data">
                         <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-kelola-nkk"
+                                    href=" {{ url('/admin/kelola-nkk') }}">Kelola NKK</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-kelola-warga"
                                     href=" {{ url('/admin/kelola-warga') }}">Kelola Warga</a>
                             </li>
@@ -92,7 +96,23 @@
                         <span>
                             <i class="bi bi-cash-coin"></i>
                         </span>
-                        <span class="hide-menu">Bansos</span>
+                        <span class="hide-menu">Kelola Bansos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/admin/penerima-bansos') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-bookmark-check"></i>
+                        </span>
+                        <span class="hide-menu">History Pengajuan Bansos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/admin/rekomendasi-bansos') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-person-check"></i>
+                        </span>
+                        <span class="hide-menu">Penerima Bansos</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

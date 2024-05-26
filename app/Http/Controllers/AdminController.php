@@ -26,4 +26,10 @@ class AdminController extends Controller
     public function kelolaSurat(){
         return view('layout.admin.kelola_surat');
     }
+    public function historyBansos(){
+        return view('layout.admin.history_bansos');
+    }
+    public function rekomendasiBansos(){
+        return view('layout.admin.rekomendasi_bansos');
+    }
 }

@@ -72,6 +72,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
             Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
 
+            // Route Kelola NKK
+            Route::get('/kelola-nkk', [KelolaDataController::class, 'kelolaNKK']);
+            Route::post('/kelola-nkk', [KelolaDataController::class, 'createNKK'])->name('createNKK');
+            Route::get('/kelola-nkk/edit/{id}', [KelolaDataController::class, 'editNKK']);
+            Route::get('/kelola-nkk/delete/{id}', [KelolaDataController::class, 'deleteNKK']);
+            Route::post('/kelola-nkk/update/{id}', [KelolaDataController::class, 'updateNKK'])->name('updateNKK');
+
             // Route Kelola Data Warga
             Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
             Route::post('/kelola-warga', [KelolaDataController::class, 'createWarga'])->name('createWarga');
@@ -108,7 +115,10 @@ Route::middleware(['auth'])->group(function () {
 
             // Next features...
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
+            // bansos
             Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
+            Route::get('/penerima-bansos', [AdminController::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [AdminController::class, 'rekomendasiBansos']);
 
             // Route Pengaduan
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
@@ -150,6 +160,8 @@ Route::middleware(['auth'])->group(function () {
 
             // Bansos
             Route::get('/kelola-bansos', [RTController::class, 'kelolaBansos']);
+            Route::get('/penerima-bansos', [RTController::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [RTController::class, 'rekomendasiBansos']);
 
             // Laporan Pengaduan
             Route::get('/laporan-pengaduan', [RTPengaduanController::class, 'laporanPengaduan']);
@@ -199,6 +211,7 @@ Route::middleware(['auth'])->group(function () {
             // Route Bansos
             Route::get('/pengajuan-bansos', [BansosController::class, 'pengajuanBansos']);
             Route::get('/penerima-bansos', [BansosController::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [BansosController::class, 'rekomendasiBansos']);
 
             // Route Pengaduan Warga
             Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);
