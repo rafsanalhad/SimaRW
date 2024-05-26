@@ -31,6 +31,7 @@ use App\Http\Controllers\Warga\DashboardController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
 use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
+use App\Services\UpdateSPKBansosService;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
 
 Route::get('/', [HomeController::class, 'index']);
 
