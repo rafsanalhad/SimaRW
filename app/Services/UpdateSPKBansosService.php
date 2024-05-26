@@ -21,6 +21,7 @@ class UpdateSPKBansosService
                 'kartu_keluarga_id' => $kriteriaBansos->kartu_keluarga_id,
                 'jumlah_anggota_keluarga' => $kriteriaBansos->jumlah_anggota_keluarga,
                 'total_gaji' => UserModel::where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->sum('gaji_user'),
+                // Jumlah Tanggungan Masih Dummy alias belum ditambah ke dalam database masih dari count user
                 'jumlah_tanggungan' => UserModel::where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->count(),
             ];
 
