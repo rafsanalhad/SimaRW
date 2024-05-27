@@ -29,4 +29,10 @@ class RTController extends Controller
     public function kelolaSurat(){
         return view('layout.rt.kelola_surat');
     }
+    public function historyBansos(){
+        return view('layout.rt.history_bansos');
+    }
+    public function rekomendasiBansos(){
+        return view('layout.rt.rekomendasi_bansos');
+    }
 }

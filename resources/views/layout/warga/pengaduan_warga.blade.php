@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="alamat_rumah_warga" class="col-form-label">Alamat Rumah:</label>
                                 <div class="col-sm-12">
@@ -85,6 +85,14 @@
                                         class="form-control" id="alamat_rumah_warga" name="alamat_rumah_warga"
                                         value="{{ Auth::user()->alamat_user }}" disabled>
                                     <small class="form-text text-danger"></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="bukti_pengaduan" class="col-form-label">Bukti Pengaduan:</label>
+                                <div class="col-sm-12">
+                                    <input type="file" name="bukti_pengaduan" id="bukti_pengaduan" class="form-control">
                                 </div>
                             </div>
                         </div>

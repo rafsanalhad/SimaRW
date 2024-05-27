@@ -59,7 +59,7 @@ class IuranController extends Controller
             $params = array(
                 'transaction_details' => array(
                     'order_id' => rand(),
-                    'gross_amount' => 20000,
+                    'gross_amount' => 30000,
                 )
             );
 

@@ -30,9 +30,9 @@
                                             <td>{{ $iuran->kartuKeluarga->no_kartu_keluarga }}</td>
                                             <td>{{ $iuran->tanggal_iuran }}</td>
                                             <td>{{ $iuran->tanggal_bayar }}</td>
-                                            <td>Rp. 20.000</td>
+                                            <td>Rp. 30.000</td>
                                             @if ($iuran->status == 'Lunas')
-                                                <td>Rp. 20.000</td>
+                                                <td>Rp. 3 0.000</td>
                                             @else
                                                 <td>-</td>
                                             @endif
@@ -82,7 +82,8 @@
                     onSuccess: function(result) {
                         // /* You may add your own js here, this is just example */
                         // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                        window.location.href = 'http://127.0.0.1:8000/warga/bayar-iuran/' + '{{ $iuranBelumLunas[0]->iuran_id }}'
+                        window.location.href = 'http://127.0.0.1:8000/warga/bayar-iuran/' +
+                            '{{ $iuranBelumLunas[0]->iuran_id }}'
                     },
                     // Optional
                     onPending: function(result) {
