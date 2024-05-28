@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\KelolaSuratController;
 use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
+use App\Http\Controllers\RT\KelolaNKKController;
 use App\Http\Controllers\Warga\DashboardController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
@@ -168,8 +169,14 @@ Route::middleware(['auth'])->group(function () {
             // kelola data Warga
             Route::get('/kelola-warga', [KelolaWargaController::class, 'kelolaWarga']);
             Route::post('/kelola-warga', [KelolaWargaController::class, 'createWarga'])->name('createWarga');
+            Route::get('/kelola-nkk', [KelolaNKKController::class, 'showKK']);
+            Route::post('/kelola-nkk', [KelolaNKKController::class, 'createNKK'])->name('createNKK');
+            Route::get('/kelola-nkk/edit/{id}', [KelolaNKKController::class, 'editNKK']);
+            Route::post('/kelola-nkk/update/{id}', [KelolaNKKController::class, 'updateNKK'])->name('updateNKK');
+            Route::get('/kelola-nkk/delete/{id}', [KelolaNKKController::class, 'deleteNKK']);
             Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
+            
             Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
 
             // kelola UMKM

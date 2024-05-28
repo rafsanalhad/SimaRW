@@ -157,7 +157,7 @@
     let kelolaIuran = document.getElementsByClassName('menu-kelola-iuran');
     let laporan = document.getElementsByClassName('menu-laporan');
     let sidebar = document.getElementsByClassName('sidebar-item');
-
+    console.log(kelolaData);
 
     for (let i = 0; i < kelolaData.length; i++) {
         kelolaData[i].addEventListener('click', function() {
