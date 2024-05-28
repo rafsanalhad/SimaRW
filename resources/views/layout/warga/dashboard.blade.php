@@ -1,7 +1,7 @@
 @extends('template.warga.main')
 @php
-    use \Illuminate\Support\Str;
-    use \Carbon\Carbon;
+    use Illuminate\Support\Str;
+    use Carbon\Carbon;
 @endphp
 @section('content')
     <header class="app-header">
@@ -30,14 +30,6 @@
                                     class="d-flex align-items-center gap-2 dropdown-item">
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
-                                </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">My Account</p>
-                                </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-list-check fs-6"></i>
-                                    <p class="mb-0 fs-3">My Task</p>
                                 </a>
                                 <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
@@ -122,12 +114,15 @@
                         <ul class="timeline-widget mb-0 position-relative mb-n5">
                             @foreach ($pengeluaranTerbaru as $pt)
                                 <li class="timeline-item d-flex position-relative overflow-hidden">
-                                    <div class="timeline-time text-dark flex-shrink-0 text-end">{{ Carbon::parse($pt->created_at)->format('d/m/Y') }}</div>
+                                    <div class="timeline-time text-dark flex-shrink-0 text-end">
+                                        {{ Carbon::parse($pt->created_at)->format('d/m/Y') }}</div>
                                     <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                        <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                                        <span
+                                            class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                                         <span class="timeline-badge-border d-block flex-shrink-0"></span>
                                     </div>
-                                    <div class="timeline-desc fs-3 text-dark mt-n1" id="pengeluaran">{{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
+                                    <div class="timeline-desc fs-3 text-dark mt-n1" id="pengeluaran">
+                                        {{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
                                 </li>
                             @endforeach
                         </ul>

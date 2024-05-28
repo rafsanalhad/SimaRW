@@ -6,11 +6,19 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <div id="container">
-                    <button class="btn btn-sm btn-primary float-end" id="tambah-data-kk" onclick=showTambahKK()><i
-                            class="bi bi-plus-lg"></i> Tambah</button>
+                <div class="container d-flex justify-content-end align-items-center mb-2" style="position: relative;">
+                    <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
+                        <a href="#">
+                            <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
+                                alt="gambar convert excel">
+                        </a>
+                        <button class="btn btn-sm btn-primary ms-2" id="tambah-data-kk" onclick="showTambahKK()">
+                            <i class="bi bi-plus-lg"></i> Tambah
+                        </button>
+                    </div>
                 </div>
                 <h4>Kelola NKK</h4>
+                <hr>
                 <table class="table" id="table-rt">
                     <thead>
                         <th>No</th>

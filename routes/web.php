@@ -211,6 +211,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardWarga');
+            Route::get('/dashboard/getBarChart', [DashboardController::class, 'getBarChart'])->name('getBarChart');
 
             // Route Bayar Iuran
             Route::get('/bayar-iuran', [IuranController::class, 'index']);

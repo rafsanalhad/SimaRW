@@ -1,16 +1,24 @@
 @extends('template.admin.main')
 @section('content')
-@include('template.admin.header')
+    @include('template.admin.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <div id="container">
-                    <button class="btn btn-sm btn-primary float-end" id="tambah-data-rw" onclick=showTambahRt()><i
-                            class="bi bi-plus-lg"></i> Tambah</button>
+                <div class="container d-flex justify-content-end align-items-center mb-2" style="position: relative;">
+                    <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
+                        <a href="#">
+                            <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
+                                alt="gambar convert excel">
+                        </a>
+                        <button class="btn btn-sm btn-primary ms-2" id="tambah-data-warga" onclick="showTambahWarga()">
+                            <i class="bi bi-plus-lg"></i> Tambah
+                        </button>
+                    </div>
                 </div>
                 <h4>Kelola Data RT</h4>
+                <hr>
                 <table class="table" id="table-rt">
                     <thead>
                         <th>No</th>
@@ -96,8 +104,8 @@
                                 <label class="col-2 control-label col-form-label">Masa Jabatan : </label>
                                 <div class="col-10">
                                     <div class="d-flex">
-                                        <input type="date" class="form-control" id="level_nama"
-                                            name="masa_jabatan_awal" value="{{ old('masa_jabatan_awal') }}" required>
+                                        <input type="date" class="form-control" id="level_nama" name="masa_jabatan_awal"
+                                            value="{{ old('masa_jabatan_awal') }}" required>
                                         <span class="mt-2 ms-1 me-1">s/d</span>
                                         <input type="date" class="form-control" name="masa_jabatan_akhir"
                                             value="{{ old('masa_jabatan_akhir') }}" required>

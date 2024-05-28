@@ -1,6 +1,6 @@
 @extends('template.admin.main')
 @section('content')
-@include('template.admin.header')
+    @include('template.admin.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
@@ -15,12 +15,13 @@
                             <div class="card" style="width: 18rem; height: 540px;">
 
 
-                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}"
-                                    alt="Card image cap">
+                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
                                     <p class="card-text ">{{ $umkm->deskripsi_umkm }}</p>
                                     <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
+                                    <p class="card-text">Jam Buka: {{ $umkm->jam_operasional_awal }} -
+                                        {{ $umkm->jam_operasional_akhir }}</p>
                                     <a href="#" class="btn btn-warning"
                                         onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
                                     <a href="#" class="btn btn-danger"
@@ -73,8 +74,7 @@
                                         Alamat
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="alamat_umkm_edit" name="alamat_umkm"
-                                            class="form-control">
+                                        <input type="text" id="alamat_umkm_edit" name="alamat_umkm" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -82,8 +82,7 @@
                                         Kontak
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm"
-                                            class="form-control">
+                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -112,8 +111,8 @@
                                         <input type="time" id="jam_operasional_awal_edit" name="jam_operasional_awal"
                                             class="form-control">
                                         <span class="mx-2 my-2">s/d</span>
-                                        <input type="time" id="jam_operasional_akhir_edit"
-                                            name="jam_operasional_akhir" class="form-control">
+                                        <input type="time" id="jam_operasional_akhir_edit" name="jam_operasional_akhir"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
