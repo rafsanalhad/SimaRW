@@ -116,13 +116,30 @@ $(function () {
         chart.render();
       
       
+        
+      },
+      error: function() {
+        console.log('gagal ambil data');  
+        // alert('Gagal mengambil data pengguna dan postingan');
+      }
+  });
+
+
+  $.ajax({
+    url: '/warga/dashboard/getPieChart',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
         // =====================================
         // Breakup
         // =====================================
+        var a = data.iuran[0];
+        var b = parseInt(data.iuran[1]);
+        
         var breakup = {
           color: "#adb5bd",
-          series: [38, 40, 25],
-          labels: ["2022", "2021", "2020"],
+          series: [a, b],
+          labels: data.category,
           chart: {
             width: 180,
             type: "donut",
@@ -169,62 +186,58 @@ $(function () {
       
         var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
         chart.render();
-      },
-      error: function() {
-        console.log('gagal ambil data');  
-        // alert('Gagal mengambil data pengguna dan postingan');
-      }
+
+        // =====================================
+        // Earning
+        // =====================================
+        var earning = {
+          chart: {
+            id: "sparkline3",
+            type: "area",
+            height: 60,
+            sparkline: {
+              enabled: true,
+            },
+            group: "sparklines",
+            fontFamily: "Plus Jakarta Sans', sans-serif",
+            foreColor: "#adb0bb",
+          },
+          series: [
+            {
+              name: "Earnings",
+              color: "#49BEFF",
+              data: [25, 66, 20, 40, 12, 58, 20],
+            },
+          ],
+          stroke: {
+            curve: "smooth",
+            width: 2,
+          },
+          fill: {
+            colors: ["#f3feff"],
+            type: "solid",
+            opacity: 0.05,
+          },
+
+          markers: {
+            size: 0,
+          },
+          tooltip: {
+            theme: "dark",
+            fixed: {
+              enabled: true,
+              position: "right",
+            },
+            x: {
+              show: false,
+            },
+          },
+        };
+        new ApexCharts(document.querySelector("#earning"), earning).render();
+    },
+    error: function() {
+      console.log('gagal ambil data pie chart');  
+      // alert('Gagal mengambil data pengguna dan postingan');
+    }
   });
-
-  
-
-
-
-  // =====================================
-  // Earning
-  // =====================================
-  var earning = {
-    chart: {
-      id: "sparkline3",
-      type: "area",
-      height: 60,
-      sparkline: {
-        enabled: true,
-      },
-      group: "sparklines",
-      fontFamily: "Plus Jakarta Sans', sans-serif",
-      foreColor: "#adb0bb",
-    },
-    series: [
-      {
-        name: "Earnings",
-        color: "#49BEFF",
-        data: [25, 66, 20, 40, 12, 58, 20],
-      },
-    ],
-    stroke: {
-      curve: "smooth",
-      width: 2,
-    },
-    fill: {
-      colors: ["#f3feff"],
-      type: "solid",
-      opacity: 0.05,
-    },
-
-    markers: {
-      size: 0,
-    },
-    tooltip: {
-      theme: "dark",
-      fixed: {
-        enabled: true,
-        position: "right",
-      },
-      x: {
-        show: false,
-      },
-    },
-  };
-  new ApexCharts(document.querySelector("#earning"), earning).render();
 })

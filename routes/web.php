@@ -220,6 +220,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardWarga');
             Route::get('/dashboard/getBarChart', [DashboardController::class, 'getBarChart'])->name('getBarChart');
+            Route::get('/dashboard/getPieChart', [DashboardController::class, 'getPieChart'])->name('getPieChart');
 
             // Route Bayar Iuran
             Route::get('/bayar-iuran', [IuranController::class, 'index']);
