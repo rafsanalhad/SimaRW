@@ -85,7 +85,7 @@ class UpdateSPKBansosService
 
         // Melakukan input pada database
         foreach ($hasil as $kriteria) {
-            if($kriteria['hasil'] < 0.4) {
+            if($kriteria['hasil'] < 0.5) {
                 RekomendasiBansosModel::create([
                     'kartu_keluarga_id' => $kriteria['kartu_keluarga_id'],
                     'jumlah_anggota' => $kriteria['jumlah_anggota_keluarga'],
