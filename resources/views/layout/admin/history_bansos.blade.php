@@ -13,26 +13,31 @@
                             <th>No</th>
                             <th>Nama Kepala Keluarga</th>
                             <th>NKK</th>
+                            <th>Tanggungan Keluarga</th>
+                            <th>Pendapatan Keluarga</th>
                             <th>Tanggal Pengajuan</th>
-                            <th>Rerata Gaji Keluarga</th>
+                            <th>Alasan Pengajuan Bansos</th>
                             <th>Status</th>
                         </thead>
                         <tbody>
-                            @foreach ($bansos as $bansos)
+                            @foreach ($pengajuanBansos as $bansos)
                                 <tr>
                                     {{-- <td>{{ $no++ }}</td> --}}
                                     <td>{{ $no++ }}</td>
                                     {{-- <td>{{ $warga->nama_user }}</td> --}}
                                     <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
                                     <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
-                                    {{-- <td>{{ $warga->nik_user }}</td> --}}
+                                    <td>{{ $bansos->tanggungan_warga }}</td>
+                                    <td>{{ $bansos->pendapatan_keluarga }}</td>
                                     <td>{{ $bansos->tanggal_pengajuan }}</td>
-                                    <td>Rp. {{ $rerataGaji }}, 00 </td>
+                                    <td>{{ $bansos->alasan_warga }}</td>
                                     <td>
                                         @if ($bansos->status_verif == 'Terverifikasi')
-                                            <button class="btn btn-success">Diterima</button>
+                                            <button class="btn btn-success">Pengajuan Diterima</button>
+                                        @elseif($bansos->status_verif == 'Belum Terverifikasi')
+                                            <button class="btn btn-info">Menunggu Konfirmasi</button>
                                         @else
-                                            <button class="btn btn-danger">Ditolak</button>
+                                            <button class="btn btn-danger">Pengajuan Ditolak</button>
                                         @endif
                                     </td>
                                 </tr>

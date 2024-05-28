@@ -14,20 +14,29 @@
                             <th>No</th>
                             <th>Nama Kepala Keluarga</th>
                             <th>NKK</th>
-                            <th>Rerata Gaji Keluarga</th>
+                            <th>Total Pendapatan Keluarga</th>
+                            <th>Jumlah Anggota Keluarga</th>
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
                         <tbody>
-                            <td>1</td>
-                            <td>Rizky Arifiansyah</td>
-                            <td>37826842897490</td>
-                            <td>Rp. 5.000.000</td>
-                            <td>3 orang</td>
-                            <td>
-                                <div class="badge bg-success">Menerima Bansos</div>
-                                <div class="badge bg-danger">Tidak Menerima Bansos</div>
-                            </td>
+                            @foreach ($rekomBansosSPK as $bansos)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
+                                    <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
+                                    <td>Rp. {{ $bansos->total_gaji }}</td>
+                                    <td>{{ $bansos->user_count }}</td>
+                                    <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }} Tanggungan</td>
+                                    <td>
+                                        @if ($bansos->status == 'Layak')
+                                            <div class="btn btn-success">Layak Menerima Bansos</div>
+                                        @else
+                                            <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

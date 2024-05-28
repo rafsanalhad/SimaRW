@@ -1,5 +1,7 @@
 @extends('template.rt.main')
 @section('content')
+@include('template.rt.header')
+
     <div class="container-fluid">
         <div class="card shadow-lg">
             <div class="card-body">
@@ -7,9 +9,9 @@
                 <table class="table" id='table_bansos'>
                     <thead>
                         <th>No</th>
-                        <th>Nama Warga</th>
-                        <th>Alamat Warga</th>
-                        <th>Pekerjaan Warga</th>
+                        <th>Nama Kepala Keluarga</th>
+                        <th>Alamat KK</th>
+                        {{-- <th>Pekerjaan Warga</th> --}}
                         <th>Status</th>
                         <th>Aksi</th>
                     </thead>
