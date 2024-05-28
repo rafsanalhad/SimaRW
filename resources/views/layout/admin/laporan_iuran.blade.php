@@ -11,7 +11,7 @@
                         <img style="height: 30px; width: 30px; margin-right: 10px;" src="../assets/images/logos/excel.png"
                             alt="gambar convert excel">
                     </a>
-                    <span class="badge bg-light text-dark"><strong>Total Iuran:</strong> Rp. 10.000.000</span>
+                    <span class="badge bg-light text-dark"><strong>Total Iuran:</strong> Rp. {{ $totalSaldo->sisa_saldo }}</span>
                 </div>
             </div>
             <div class="card-body">
@@ -28,7 +28,7 @@
                         @foreach ($dataIuran as $i)
                             <tr>
                                 <td>{{ $i->kartuKeluarga->nama_kepala_keluarga }}</td>
-                                <td>12-05-2024 14:31</td>
+                                <td>{{ $i->tanggal_iuran }}</td>
                                 <td>Rp. 30.000</td>
                                 <td>
                                     @if ($i->status == 'Lunas')
