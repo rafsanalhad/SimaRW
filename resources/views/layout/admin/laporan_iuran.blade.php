@@ -5,6 +5,14 @@
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
+            <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
+                <div style="position: absolute; top: 30px; right: 25px;" class="d-flex align-items-center">
+                    <a href="#">
+                        <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
+                            alt="gambar convert excel">
+                    </a>
+                </div>
+            </div>
             <div class="card-body">
                 <h4 class="mb-4">Laporan Iuran</h4>
                 <hr>
