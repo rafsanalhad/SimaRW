@@ -36,7 +36,6 @@
     <script src="{{ @asset('assets/js/app.min.js') }}"></script>
     <script src="{{ @asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ @asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
-    <script src="{{ @asset('assets/js/dashboard.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('js')
 </body>
