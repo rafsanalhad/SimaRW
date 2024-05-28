@@ -1,5 +1,7 @@
 @extends('template.rt.main')
 @section('content')
+@include('template.rt.header')
+
     <div class="container-fluid">
         <div class="card shadow-lg">
             <div class="card-body">
