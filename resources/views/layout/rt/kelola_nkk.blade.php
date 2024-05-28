@@ -212,7 +212,7 @@
 
         function showEditKK(idKK) {
             $.ajax({
-                url: '/admin/kelola-nkk/edit/' + idKK,
+                url: '/rt/kelola-nkk/edit/' + idKK,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
