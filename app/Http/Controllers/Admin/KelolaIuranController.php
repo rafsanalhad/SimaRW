@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\IuranModel;
+use App\Models\MigrasiIuran;
 use Illuminate\Http\Request;
 use App\Exports\ExportIuranExcel;
 use App\Http\Controllers\Controller;
@@ -14,8 +15,9 @@ class KelolaIuranController extends Controller
     public function laporanIuran(){
         // Untuk mengambil semua data iuran
         $iuran = IuranModel::with('kartuKeluarga')->get();
+        $totalSaldo = MigrasiIuran::orderBy('migrasi_iuran_id', 'desc')->first();
 
-        return view('layout.admin.laporan_iuran', ['dataIuran' => $iuran]);
+        return view('layout.admin.laporan_iuran', ['dataIuran' => $iuran, 'totalSaldo' => $totalSaldo]);
     }
 
     // Function Download Excel
