@@ -6,6 +6,7 @@ use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\RTRequest;
 use App\Http\Requests\RwRequest;
+use App\Http\Requests\NKKRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\KartuKeluargaModel;
 use App\Http\Controllers\Controller;
@@ -235,7 +236,37 @@ class KelolaDataController extends Controller
         return redirect('/admin/kelola-rw');
     }
 
-    public function kelolankk(){
-        return view('layout.admin.kelola_nkk');
+    public function showKK(){
+        $kk = KartuKeluargaModel::withCount('user')->get();
+
+        return view('layout.admin.kelola_nkk', ['dataKK' => $kk, 'no' => 1]);
+    }
+
+    public function createNKK(NKKRequest $request) {
+        $request->validated;
+        // dd($debug);
+
+        KartuKeluargaModel::create([
+            'no_kartu_keluarga' => $request->no_kartu_keluarga,
+            'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
+            'alamat_kk' => $request->alamat_kk,
+            'jumlah_tanggungan' => $request->jumlah_tanggungan
+        ]);
+
+        return redirect('/admin/kelola-nkk');
+    }
+
+    public function editNKK($id) {
+        return redirect('/admin/kelola-nkk');
+    }
+
+    public function updateNKK(NKKRequest $request) {
+        return redirect('/admin/kelola-nkk');
+    }
+
+    public function deleteNKK($id) {
+        KartuKeluargaModel::destroy($id);
+
+        return redirect('/admin/kelola-nkk');
     }
 }

@@ -7,7 +7,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
                 <div id="container">
-                    <button class="btn btn-sm btn-primary float-end" id="tambah-data-rw" onclick=showTambahRt()><i
+                    <button class="btn btn-sm btn-primary float-end" id="tambah-data-kk" onclick=showTambahKK()><i
                             class="bi bi-plus-lg"></i> Tambah</button>
                 </div>
                 <h4>Kelola NKK</h4>
@@ -17,19 +17,33 @@
                         <th>Nomor NKK</th>
                         <th>Nama Kepala Keluarga</th>
                         <th>Alamat KK</th>
+                        <th>Jumlah Anggota Keluarga</th>
                         <th>Jumlah Tanggungan</th>
+                        <th>Aksi</th>
                     </thead>
-                    <tbody>
-                        <td>1</td>
-                        <td>63227846239649</td>
-                        <td>Rizky Arifiansyah</td>
-                        <td>Jl. Jombang Rt 01 RW 02 Malang</td>
-                        <td>3 Orang</td>
-                    </tbody>
+                    @foreach ($dataKK as $kkPerKeluarga)
+                        <tbody>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $kkPerKeluarga->no_kartu_keluarga }}</td>
+                            <td>{{ $kkPerKeluarga->nama_kepala_keluarga }}</td>
+                            <td>{{ $kkPerKeluarga->alamat_kk }}</td>
+                            <td>{{ $kkPerKeluarga->user_count }} Orang</td>
+                            <td>{{ $kkPerKeluarga->jumlah_tanggungan }} Orang</td>
+                            <td>
+                                <div style="display: flex;">
+                                    <button href="" onclick=showEditKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
+                                        class="btn btn-warning" style="margin-right: 5px;"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                    <button href="" onclick=showDeleteKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
+                                        class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tbody>
+                    @endforeach
                 </table>
             </div>
         </div>
-        <div class="modal modal_tambah_rt" tabindex="-1" role="dialog">
+        <div class="modal modal_tambah_kk" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -41,7 +55,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor NKK: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nomor_nkk" name="nomor_nkk"
+                                    <input type="text" class="form-control" id="nomor_nkk" name="no_kartu_keluarga"
                                         value="{{ old('nomor_nkk') }}" required>
                                     @error('nomor_nkk')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -51,7 +65,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama Kepala Keluarga: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nama_kepala" name="nama_kepala"
+                                    <input type="text" class="form-control" id="nama_kepala" name="nama_kepala_keluarga"
                                         value="{{ old('nama_kepala') }}" required>
                                     @error('nama_kepala')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -82,14 +96,14 @@
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    onclick=hideTambahRt()>Tutup</button>
+                                    onclick=hideTambahKK()>Tutup</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal modal_edit_rt" tabindex="-1" role="dialog">
+        <div class="modal modal_edit_kk" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -142,7 +156,7 @@
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    onclick=hideTambahRt()>Tutup</button>
+                                    onclick=hideTambahKK()>Tutup</button>
                             </div>
                         </form>
                     </div>
@@ -150,7 +164,7 @@
             </div>
         </div>
 
-        <div class="modal modal_delete_rt" tabindex="-1" role="dialog">
+        <div class="modal modal_delete_kk" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -160,9 +174,9 @@
                         <h4>Apakah anda yakin ingin menghapus data user ini?</h4>
                     </div>
                     <div class="modal-footer">
-                        <a href="" class="hapus_rt_id btn btn-secondary">Hapus</a>
+                        <a href="" class="hapus_kk_id btn btn-secondary">Hapus</a>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            onclick=hideDeleteRT()>Tutup</button>
+                            onclick=hideDeleteKK()>Tutup</button>
                     </div>
                 </div>
             </div>
@@ -180,15 +194,15 @@
 
 
 
-        function showTambahRt() {
-            $('.modal_tambah_rt').modal('show');
+        function showTambahKK() {
+            $('.modal_tambah_kk').modal('show');
         }
 
-        function hideTambahRt() {
-            $('.modal_tambah_rt').modal('hide');
+        function hideTambahKK() {
+            $('.modal_tambah_kk').modal('hide');
         }
 
-        function showEditRt(idRT) {
+        function showEditKK(idRT) {
             $.ajax({
                 url: '/admin/kelola-rt/edit/' + idRT,
                 type: 'GET',
@@ -203,20 +217,20 @@
                 }
             });
 
-            $('.modal_edit_rt').modal('show');
+            $('.modal_edit_kk').modal('show');
         }
 
-        function hideEditRt() {
-            $('.modal_edit_rt').modal('hide');
+        function hideEditKK() {
+            $('.modal_edit_kk').modal('hide');
         }
 
-        function showDeleteRT(idRT) {
-            $('.hapus_rt_id').attr('href', '/admin/kelola-rt/delete/' + idRT);
-            $('.modal_delete_rt').modal('show');
+        function showDeleteKK(idKK) {
+            $('.hapus_kk_id').attr('href', '/admin/kelola-nkk/delete/' + idKK);
+            $('.modal_delete_kk').modal('show');
         }
 
-        function hideDeleteRT() {
-            $('.modal_delete_rt').modal('hide');
+        function hideDeleteKK() {
+            $('.modal_delete_kk').modal('hide');
         }
     </script>
     <script>

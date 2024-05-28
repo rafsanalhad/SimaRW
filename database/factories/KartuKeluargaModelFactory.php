@@ -20,7 +20,7 @@ class KartuKeluargaModelFactory extends Factory
             'no_kartu_keluarga' => fake()->nik(),
             'nama_kepala_keluarga' => fake()->name('male'),
             'alamat_kk' => fake()->address(),
-            'jumlah_anggota_keluarga' => rand(1, 5)
+            'jumlah_tanggungan' => rand(1, 5)
         ];
     }
 }

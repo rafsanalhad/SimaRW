@@ -19,7 +19,7 @@ class KartuKeluargaModel extends Model
         'no_kartu_keluarga',
         'nama_kepala_keluarga',
         'alamat_kk',
-        'jumlah_anggota_keluarga'
+        'jumlah_tanggungan'
     ];
 
     public function user(): HasMany {
