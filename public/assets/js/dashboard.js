@@ -17,8 +17,8 @@ $(function () {
       success: function(response) {
         var chart = {
           series: [
-            { name: "Earnings this month:", data: response.pemasukan },
-            { name: "Expense this month:", data: response.pengeluaran },
+            { name: "Pemasukan bulan ini:", data: response.pemasukan },
+            { name: "Pengeluaran bulan ini:", data: response.pengeluaran },
           ],
       
           chart: {
@@ -135,7 +135,7 @@ $(function () {
         // =====================================
         var a = data.iuran[0];
         var b = parseInt(data.iuran[1]);
-        
+
         var breakup = {
           color: "#adb5bd",
           series: [a, b],
