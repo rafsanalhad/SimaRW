@@ -234,4 +234,8 @@ class KelolaDataController extends Controller
 
         return redirect('/admin/kelola-rw');
     }
+
+    public function kelolankk(){
+        return view('layout.admin.kelola_nkk');
+    }
 }

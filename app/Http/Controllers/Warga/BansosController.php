@@ -21,4 +21,8 @@ class BansosController extends Controller
 
         return view('layout.warga.penerima_bansos', ['bansos' => $bansos, 'rerataGaji' => $rerataGaji ,'no' => 1]);
     }
+
+    public function rekomendasiBansos(){
+        return view('layout.warga.rekomendasi_bansos');
+    }
 }

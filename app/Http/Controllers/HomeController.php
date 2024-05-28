@@ -46,7 +46,9 @@ class HomeController extends Controller
             'pesan' => 'required|string',
         ]);
 
-        $message = "Nama : *$request->nama*\n\nSubjek : *$request->subjek*\n\nPengaduan : $request->pesan";
+        $tanggal = Carbon::now();
+
+        $message = "Nama : *$request->nama*\n\nSubjek : *$request->subjek*\n\nTanggal Pengaduan : $tanggal\n\nPengaduan : $request->pesan";
 
         $this->twilio->sendWhatsAppMessage($message);
 

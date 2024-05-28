@@ -68,6 +68,14 @@
                         <span>
                             <i class="bi bi-bookmark-check"></i>
                         </span>
+                        <span class="hide-menu">History Pengajuan Bansos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/rekomendasi-bansos') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-person-check"></i>
+                        </span>
                         <span class="hide-menu">Penerima Bansos</span>
                     </a>
                 </li>
