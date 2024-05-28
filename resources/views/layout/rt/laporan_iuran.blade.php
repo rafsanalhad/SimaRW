@@ -1,10 +1,19 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
+            <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
+                <div style="position: absolute; top: 30px; right: 25px;" class="d-flex align-items-center">
+                    <a href="#">
+                        <img style="height: 30px; width: 30px; margin-right: 10px;" src="../assets/images/logos/excel.png"
+                            alt="gambar convert excel">
+                    </a>
+                    <span class="badge bg-light text-dark"><strong>Total Iuran:</strong> Rp. 10.000.000</span>
+                </div>
+            </div>
             <div class="card-body">
                 <h4 class="mb-4">Laporan Iuran</h4>
                 <hr>

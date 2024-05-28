@@ -1,13 +1,21 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <button class="btn btn-sm btn-primary float-end" id="tambah-data-warga" onclick="showTambahWarga()">
-                    <i class="bi bi-plus-lg"></i> Tambah
-                </button>
+                <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
+                    <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
+                        <a href="#">
+                            <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
+                                alt="gambar convert excel">
+                        </a>
+                        <button class="btn btn-sm btn-primary ms-2" id="tambah-data-warga" onclick="showTambahWarga()">
+                            <i class="bi bi-plus-lg"></i> Tambah
+                        </button>
+                    </div>
+                </div>
                 <h4 class="mb-4">Kelola Data Warga</h4>
                 <hr>
                 <div class="table-responsive">
