@@ -9,7 +9,8 @@ use App\Http\Controllers\RT\ProfileRTController;
 use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\ProfileRWController;
 use App\Http\Controllers\RW\RWController;
-use App\Http\Controllers\Warga\BansosController;
+use App\Http\Controllers\Admin\BansosController as AdminBansos;
+use App\Http\Controllers\Warga\BansosController as WargaBansos;
 use App\Http\Controllers\Warga\IuranController;
 use App\Http\Controllers\Warga\KegiatanWargaController;
 use App\Http\Controllers\Warga\ProfilWargaController;
@@ -131,9 +132,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
 
             // Route Kelola Bansos
-            Route::get('/kelola-bansos', [BansosController::class, 'kelolaBansos']);
-            Route::get('/penerima-bansos', [BansosController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [BansosController::class, 'rekomendasiBansos']);
+            Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
+            Route::get('/penerima-bansos', [AdminBansos::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [AdminBansos::class, 'rekomendasiBansos']);
 
             // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
@@ -227,9 +228,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/profil-warga', [ProfilWargaController::class, 'profilWarga']);
 
             // Route Bansos
-            Route::get('/pengajuan-bansos', [BansosController::class, 'pengajuanBansos']);
-            Route::get('/penerima-bansos', [BansosController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [BansosController::class, 'rekomendasiBansos']);
+            Route::get('/pengajuan-bansos', [WargaBansos::class, 'pengajuanBansos']);
+            Route::get('/penerima-bansos', [WargaBansos::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [WargaBansos::class, 'rekomendasiBansos']);
 
             // Route Pengaduan Warga
             Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);

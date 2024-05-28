@@ -397,4 +397,5 @@
             $('.modal_pengumuman').modal('hide');
         }
     </script>
+    <script src="{{ @asset('assets/js/dashboard.js') }}"></script>
 @endsection

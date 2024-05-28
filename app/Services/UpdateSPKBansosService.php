@@ -12,17 +12,16 @@ class UpdateSPKBansosService
     {
         RekomendasiBansosModel::truncate();
 
-        $keluarga = KartuKeluargaModel::all();
+        $keluarga = KartuKeluargaModel::withCount('user')->get();
         $minMax = [];
 
         // Input data ke dalam array asosiatif
         foreach ($keluarga as $kriteriaBansos) {
             $kriteria = [
                 'kartu_keluarga_id' => $kriteriaBansos->kartu_keluarga_id,
-                'jumlah_anggota_keluarga' => $kriteriaBansos->jumlah_anggota_keluarga,
+                'jumlah_anggota_keluarga' => $kriteriaBansos->user_count,
                 'total_gaji' => UserModel::where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->sum('gaji_user'),
-                // Jumlah Tanggungan Masih Dummy alias belum ditambah ke dalam database masih dari count user
-                'jumlah_tanggungan' => UserModel::where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->count(),
+                'jumlah_tanggungan' => $kriteriaBansos->jumlah_tanggungan,
             ];
 
             $kriteriaList[] = $kriteria;
