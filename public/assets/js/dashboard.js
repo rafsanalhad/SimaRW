@@ -171,7 +171,8 @@ $(function () {
         chart.render();
       },
       error: function() {
-          alert('Gagal mengambil data pengguna dan postingan');
+        console.log('gagal ambil data');  
+        // alert('Gagal mengambil data pengguna dan postingan');
       }
   });
 

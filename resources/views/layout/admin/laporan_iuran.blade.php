@@ -8,9 +8,10 @@
             <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
                 <div style="position: absolute; top: 30px; right: 25px;" class="d-flex align-items-center">
                     <a href="/admin/download-iuran">
-                        <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
+                        <img style="height: 30px; width: 30px; margin-right: 10px;" src="../assets/images/logos/excel.png"
                             alt="gambar convert excel">
                     </a>
+                    <span class="badge bg-light text-dark"><strong>Total Iuran:</strong> Rp. 10.000.000</span>
                 </div>
             </div>
             <div class="card-body">
