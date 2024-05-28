@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no_kartu_keluarga', 16)->unique();
             $table->string('nama_kepala_keluarga', 255);
             $table->text('alamat_kk');
-            $table->integer('jumlah_anggota_keluarga');
+            $table->integer('jumlah_tanggungan');
             $table->timestamps();
         });
     }

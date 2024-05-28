@@ -44,25 +44,36 @@ use App\Services\UpdateSPKBansosService;
 |
 */
 
-Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
+// Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
 
 Route::get('/', [HomeController::class, 'index']);
 
 //Route Mengirim Hubungi Kami
 Route::post('/hubungi-kami', [HomeController::class, 'pengaduan']);
 
+// Route Login dan Autentikasi
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authUser');
+
+// Route User Logout
 Route::get('/logout', [LogoutController::class, 'logout']);
 
+// Route Forgot Password
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendEmail']);
+
+// Route Get Kode Verifikasi Reset Password
 Route::get('/kode-verif', [ForgotPasswordController::class, 'pageKodeVerif'])->name('pageCekKode');
 Route::post('/kode-verif', [ForgotPasswordController::class, 'cekKodeVerif']);
+
+// Route New Password
 Route::get('/new-password', [ForgotPasswordController::class, 'pageNewPass']);
 Route::post('/new-password', [ForgotPasswordController::class, 'newPassword']);
 
+// Route Check Role
 Route::middleware(['auth'])->group(function () {
+
+    // Route Role Admin
     Route::group(['middleware' => ['CekLogin:1']], function() {
         Route::prefix('admin')->group(function () {
             // Route Index admin
@@ -76,11 +87,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
 
             // Route Kelola NKK
-            Route::get('/kelola-nkk', [KelolaDataController::class, 'kelolaNKK']);
+            Route::get('/kelola-nkk', [KelolaDataController::class, 'showKK']);
             Route::post('/kelola-nkk', [KelolaDataController::class, 'createNKK'])->name('createNKK');
             Route::get('/kelola-nkk/edit/{id}', [KelolaDataController::class, 'editNKK']);
-            Route::get('/kelola-nkk/delete/{id}', [KelolaDataController::class, 'deleteNKK']);
             Route::post('/kelola-nkk/update/{id}', [KelolaDataController::class, 'updateNKK'])->name('updateNKK');
+            Route::get('/kelola-nkk/delete/{id}', [KelolaDataController::class, 'deleteNKK']);
 
             // Route Kelola Data Warga
             Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
@@ -118,12 +129,13 @@ Route::middleware(['auth'])->group(function () {
 
             // Next features...
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
-            // bansos
-            Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
-            Route::get('/penerima-bansos', [AdminController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [AdminController::class, 'rekomendasiBansos']);
 
-            // Route Pengaduan
+            // Route Kelola Bansos
+            Route::get('/kelola-bansos', [BansosController::class, 'kelolaBansos']);
+            Route::get('/penerima-bansos', [BansosController::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [BansosController::class, 'rekomendasiBansos']);
+
+            // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
             Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
             Route::get('/terima-pengaduan/{id}', [PengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
@@ -132,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::group(['middleware' => ['CekLogin:2']], function() {
         Route::prefix('rt')->group(function () {
+            // Route Dashboard admin
             Route::get('/dashboard', [RTController::class, 'index']);
 
             // Route Profile RT
@@ -210,6 +223,7 @@ Route::middleware(['auth'])->group(function () {
             // Route UMKM
             Route::get('/umkm', [WargaUMKMController::class, 'index']);
 
+            // Route Profil Warga
             Route::get('/profil-warga', [ProfilWargaController::class, 'profilWarga']);
 
             // Route Bansos
@@ -225,6 +239,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/pengajuan-surat', [PengajuanSuratController::class, 'index']);
             Route::post('/tambah-surat', [PengajuanSuratController::class, 'createSurat']);
 
+            // Route Laporan Iuran
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
         });
     });
