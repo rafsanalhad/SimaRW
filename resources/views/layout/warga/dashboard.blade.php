@@ -75,7 +75,7 @@
                                         <div class="d-flex justify-content-center">
                                             <div id="breakup"></div>
                                         </div>
-                                        <h4 class="fw-semibold mb-3">Rp. 10.000.000</h4>
+                                        <h4 class="fw-semibold mb-3">Rp. {{ $total }}</h4>
                                         <div class="d-flex align-items-center mb-3">
                                             <span
                                                 class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -87,12 +87,12 @@
                                         <div class="d-flex align-items-center">
                                             <div class="me-4">
                                                 <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                                <span class="fs-2">2023</span>
+                                                <span class="fs-2">{{ $category[0] }}</span>
                                             </div>
                                             <div>
                                                 <span
                                                     class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                                                <span class="fs-2">2023</span>
+                                                <span class="fs-2">{{ $category[1] }}</span>
                                             </div>
                                         </div>
                                     </div>

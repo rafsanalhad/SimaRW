@@ -15,7 +15,24 @@ class DashboardController extends Controller
         $pengeluaran = DetailPengeluaranModel::with('user')->take(5)->get();
         $pengeluaranDesc = DetailPengeluaranModel::orderBy('detail_pengeluaran_id', 'DESC')->take(5)->get();
 
-        return view('layout.warga.dashboard', ['no' => 1, 'pengeluaran' => $pengeluaran, 'pengeluaranTerbaru' => $pengeluaranDesc]);
+        $resultsPemasukan = IuranModel::selectRaw('COUNT(*) as total')
+            ->where('status', 'Lunas')
+            ->distinct()
+            ->count();
+        $pemasukanTotal = $resultsPemasukan * 30000;
+        
+        $resultsPengeluaran = DetailPengeluaranModel::selectRaw('SUM(jumlah_pengeluaran) as total')
+            ->distinct()
+            ->get();
+        $pengeluaranTotal = 0;
+        foreach ($resultsPengeluaran as $r) {
+            $pengeluaranTotal = $r->total;
+        }
+        $total = 0;
+        $total = ($total + $pemasukanTotal) - $pengeluaranTotal;
+        $formattedTotal = number_format($total, 0, '', '.');
+
+        return view('layout.warga.dashboard', ['no' => 1, 'pengeluaran' => $pengeluaran, 'pengeluaranTerbaru' => $pengeluaranDesc, 'total' => $formattedTotal, 'category' => ['Pemasukan', 'Pengeluaran']]);
     }
 
     public function getBarChart() {
@@ -68,4 +85,34 @@ class DashboardController extends Controller
         
         return response()->json($data);    
     }
+
+    public function getPieChart()
+    {
+        // A. Pemasukan 
+        // lunas dalam 1 bulan
+        $resultsPemasukan = IuranModel::selectRaw('COUNT(*) as total')
+            ->where('status', 'Lunas')
+            ->distinct()
+            ->count();
+        $pemasukan = $resultsPemasukan * 30000;
+        
+        // B. Pengeluaran 
+        // pengeluaran 1 bulan
+        $resultsPengeluaran = DetailPengeluaranModel::selectRaw('SUM(jumlah_pengeluaran) as total')
+            ->distinct()
+            ->get();
+        $pengeluaran = 0;
+        foreach ($resultsPengeluaran as $r) {
+            $pengeluaran = $r->total;
+        }
+        $iuran = [$pemasukan, $pengeluaran];
+        // dd($pengeluaran);
+        
+        $data = [
+            'iuran' => $iuran,
+            'category' => ['Pemasukan','Pengeluaran']
+        ];
+        
+        return response()->json($data);    
+    }    
 }
