@@ -124,6 +124,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Kelola Data Iuran
             Route::get('/laporan-iuran', [KelolaIuranController::class, 'laporanIuran']);
+            Route::get('/download-iuran', [KelolaIuranController::class, 'downloadExcel']);
 
             // Route Kelola Data Surat
             Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
