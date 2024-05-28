@@ -28,7 +28,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $iuran->kartuKeluarga->nama_kepala_keluarga }}</td>
                                     <td>{{ $iuran->kartuKeluarga->no_kartu_keluarga }}</td>
-                                    <td id="tanggalIuran">{{ $iuran->tanggal_iuran }}</td>
+                                    <td class="tanggalIuran">{{ $iuran->tanggal_iuran }}</td>
                                     <td>{{ $iuran->tanggal_bayar }}</td>
                                     <td>Rp. 30.000</td>
                                     @if ($iuran->status == 'Lunas')
@@ -46,6 +46,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -74,24 +75,26 @@
 </div>
 <script>
     const checkLunas = () => {
-    let tanggalIuran = document.getElementById('tanggalIuran').innerText;
+const tanggalIuran = document.querySelector('.tanggalIuran').innerText;
+
    let statusBayar = document.getElementById('status_bayar').innerText;
    console.log(tanggalIuran)
-   var tanggalSaatIni = new Date();
-var tanggalSekarang = tanggalSaatIni.toISOString().split('T')[0];
+//    var tanggalSaatIni = new Date();
+// var tanggalSekarang = tanggalSaatIni.toISOString().split('T')[0];
 console.log(statusBayar)
-if(tanggalIuran == tanggalSekarang){
+// if(tanggalIuran == tanggalSekarang){
     if(statusBayar == 'Belum lunas'){
         document.getElementById('belumLunasContainer').style.display = 'block';
         document.getElementById('tableIuranContainer').classList.remove('col-md-12');
         document.getElementById('tableIuranContainer').classList.add('col-md-9');
-    }else{
+    }else if(statusBayar == 'lunas'){
         document.getElementById('belumLunasContainer').style.display = 'none';
         document.getElementById('tableIuranContainer').classList.remove('col-md-9');
         document.getElementById('tableIuranContainer').classList.add('col-md-12');
     }
+
 }
-   }
+//    }
 
     checkLunas();
 </script>
