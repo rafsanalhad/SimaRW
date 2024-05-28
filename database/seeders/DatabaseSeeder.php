@@ -57,10 +57,10 @@ class DatabaseSeeder extends Seeder
         LokasiUmkmModel::factory(10)->create();
 
         // Call factory for PengajuanBansos table
-        PengajuanBansosModel::factory(5)->create();
+        // PengajuanBansosModel::factory(5)->create();
 
         // Call factory for PenerimaanBansos table
-        PenerimaanBansosModel::factory(5)->create();
+        // PenerimaanBansosModel::factory(5)->create();
 
         // Call factory for Pengumuman
         PengumumanModel::factory(3)->create();

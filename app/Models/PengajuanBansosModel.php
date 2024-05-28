@@ -16,8 +16,13 @@ class PengajuanBansosModel extends Model
 
     protected $fillable = [
         'kartu_keluarga_id',
+        'pendapatan_keluarga',
+        'tanggungan_warga',
+        'nomor_rt',
+        'nomor_rw',
+        'alasan_warga',
         'tanggal_pengajuan',
-        'bukti_pengajuan',
+        'file_sktm',
         'status_verif'
     ];
 

@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id('pengajuan_id');
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
             $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga');
+            $table->string('pendapatan_keluarga');
+            $table->string('tanggungan_warga');
+            $table->string('nomor_rt');
+            $table->string('nomor_rw');
+            $table->text('alasan_warga');
             $table->date('tanggal_pengajuan');
-            $table->text('bukti_pengajuan');
+            $table->text('file_sktm');
             $table->string('status_verif', 20);
             $table->timestamps();
         });

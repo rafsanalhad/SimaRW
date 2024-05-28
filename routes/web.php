@@ -133,7 +133,14 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Kelola Bansos
             Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
+            Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
+            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
+            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+
+            // Route History Bansos
             Route::get('/penerima-bansos', [AdminBansos::class, 'historyBansos']);
+
+            // Route Rekomendasi SPK Bansos
             Route::get('/rekomendasi-bansos', [AdminBansos::class, 'rekomendasiBansos']);
 
             // Route Pengaduan User
@@ -229,6 +236,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Bansos
             Route::get('/pengajuan-bansos', [WargaBansos::class, 'pengajuanBansos']);
+            Route::post('/pengajuan-bansos', [WargaBansos::class, 'createPengajuanBansos']);
             Route::get('/penerima-bansos', [WargaBansos::class, 'historyBansos']);
             Route::get('/rekomendasi-bansos', [WargaBansos::class, 'rekomendasiBansos']);
 

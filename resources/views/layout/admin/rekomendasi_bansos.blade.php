@@ -18,7 +18,7 @@
                             <th>No</th>
                             <th>Nama Kepala Keluarga</th>
                             <th>NKK</th>
-                            <th>Total Gaji Keluarga</th>
+                            <th>Total Pendapatan Keluarga</th>
                             <th>Jumlah Anggota Keluarga</th>
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
