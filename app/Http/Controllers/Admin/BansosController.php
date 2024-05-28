@@ -18,9 +18,33 @@ class BansosController extends Controller
         return view('layout.admin.kelola_bansos', ['ajuanBansos' => $pengajuanBansos, 'no' => 1]);
     }
 
+    public function getPDFPengajuan($idPengajuan) {
+        $file = PengajuanBansosModel::find($idPengajuan);
+
+        return response()->file(storage_path('app/' . $file->file_sktm));
+    }
+
+    public function terimaPengajuan($id) {
+        PengajuanBansosModel::where('pengajuan_id', $id)->update([
+            'status_verif' => 'Terverifikasi'
+        ]);
+
+        return redirect('/admin/kelola-bansos');
+    }
+
+    public function tolakPengajuan($id) {
+        PengajuanBansosModel::where('pengajuan_id', $id)->update([
+            'status_verif' => 'Ditolak'
+        ]);
+
+        return redirect('/admin/kelola-bansos');
+    }
+
     // Funtion sidebar history bansos
     public function historyBansos(){
-        return view('layout.admin.history_bansos');
+        $historyBansos = PengajuanBansosModel::orderBy('pengajuan_id', 'asc')->get();
+
+        return view('layout.admin.history_bansos', ['pengajuanBansos' => $historyBansos, 'no' => 1]);
     }
 
     // Function show rekomendasi spk untuk bansos
