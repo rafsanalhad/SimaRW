@@ -17,6 +17,7 @@ use App\Models\PengumumanModel;
 use App\Models\SuratModel;
 use App\Models\UmkmModel;
 use App\Models\UserModel;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
+    use WithoutModelEvents;
+
     public function run(): void
     {
         // Call factory for KartuKeluarga table
