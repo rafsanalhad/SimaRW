@@ -28,7 +28,7 @@
                             <td>{{ $kkPerKeluarga->nama_kepala_keluarga }}</td>
                             <td>{{ $kkPerKeluarga->alamat_kk }}</td>
                             <td>{{ $kkPerKeluarga->user_count }} Orang</td>
-                            <td>{{ $kkPerKeluarga->jumlah_tanggungan }} Orang</td>
+                            <td>{{ $kkPerKeluarga->jumlah_tanggungan }} Tanggungan</td>
                             <td>
                                 <div style="display: flex;">
                                     <button href="" onclick=showEditKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
@@ -47,7 +47,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id='modal-title'>Tambah NKK</h5>
+                        <h5 class="modal-title" id='modal-title'>Tambah KK</h5>
                     </div>
                     <div class="modal-body">
                         <form action="/admin/kelola-nkk" method="POST" class="form-horizontal">
@@ -107,15 +107,15 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit NKK</h5>
+                        <h5 class="modal-title">Edit KK</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-nkk/update" method="POST" class="form-horizontal">
+                        <form action="/admin/kelola-nkk/update/" id="edit_kk_form" method="POST" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor NKK: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nomor_nkk" name="nomor_nkk"
+                                    <input type="text" class="form-control" id="nomor_nkk_edit" name="no_kartu_keluarga"
                                         value="{{ old('nomor_nkk') }}" required>
                                     @error('nomor_nkk')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -125,7 +125,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama Kepala Keluarga: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nama_kepala" name="nama_kepala"
+                                    <input type="text" class="form-control" id="nama_kepala_edit" name="nama_kepala_keluarga"
                                         value="{{ old('nama_kepala') }}" required>
                                     @error('nama_kepala')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -135,7 +135,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Alamat KK: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="alamat_kk" name="alamat_kk"
+                                    <input type="text" class="form-control" id="alamat_kk_edit" name="alamat_kk"
                                         value="{{ old('alamat_kk') }}" required>
                                     @error('alamat_kk')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -145,7 +145,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan"
+                                    <input type="text" class="form-control" id="jumlah_tanggungan_edit"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -156,7 +156,7 @@
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    onclick=hideTambahKK()>Tutup</button>
+                                    onclick=hideEditKK()>Tutup</button>
                             </div>
                         </form>
                     </div>
@@ -168,7 +168,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Hapus Data RT</h5>
+                        <h5 class="modal-title">Hapus Data KK</h5>
                     </div>
                     <div class="modal-body">
                         <h4>Apakah anda yakin ingin menghapus data user ini?</h4>
@@ -202,20 +202,20 @@
             $('.modal_tambah_kk').modal('hide');
         }
 
-        function showEditKK(idRT) {
+        function showEditKK(idKK) {
             $.ajax({
-                url: '/admin/kelola-rt/edit/' + idRT,
+                url: '/admin/kelola-nkk/edit/' + idKK,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                    $('#rt_baru_edit').val(data.user_id)
-                    $('#rt_lama_edit').val(data.user_id)
-                    $('#nomor_rt_edit').val(data.nomor_rt)
-                    $('#nomor_rw_edit').val(data.nomor_rw)
-                    $('#masa_jabatan_awal_edit').val(data.masa_jabatan_awal)
-                    $('#masa_jabatan_akhir_edit').val(data.masa_jabatan_akhir)
+                    $('#nomor_nkk_edit').val(data.no_kartu_keluarga)
+                    $('#nama_kepala_edit').val(data.nama_kepala_keluarga)
+                    $('#alamat_kk_edit').val(data.alamat_kk)
+                    $('#jumlah_tanggungan_edit').val(data.jumlah_tanggungan)
                 }
             });
+
+            $('#edit_kk_form').attr('action', '/admin/kelola-nkk/update/' + idKK)
 
             $('.modal_edit_kk').modal('show');
         }

@@ -257,10 +257,21 @@ class KelolaDataController extends Controller
     }
 
     public function editNKK($id) {
-        return redirect('/admin/kelola-nkk');
+        $kk = KartuKeluargaModel::find($id);
+
+        return response()->json($kk);
     }
 
-    public function updateNKK(NKKRequest $request) {
+    public function updateNKK(NKKRequest $request, $id) {
+        $request->validated();
+
+        KartuKeluargaModel::where('kartu_keluarga_id', $id)->update([
+            'no_kartu_keluarga' => $request->no_kartu_keluarga,
+            'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
+            'alamat_kk' => $request->alamat_kk,
+            'jumlah_tanggungan' => $request->jumlah_tanggungan
+        ]);
+
         return redirect('/admin/kelola-nkk');
     }
 
