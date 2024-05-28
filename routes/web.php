@@ -131,9 +131,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
 
             // Route Kelola Bansos
-            Route::get('/kelola-bansos', [AdminController::class, 'kelolaBansos']);
-            Route::get('/penerima-bansos', [AdminController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [AdminController::class, 'rekomendasiBansos']);
+            Route::get('/kelola-bansos', [BansosController::class, 'kelolaBansos']);
+            Route::get('/penerima-bansos', [BansosController::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [BansosController::class, 'rekomendasiBansos']);
 
             // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
