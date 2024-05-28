@@ -38,6 +38,14 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ url('/rt/kelola-nkk') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-people"></i>
+                        </span>
+                        <span class="hide-menu">Kelola NKK</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/rt/kelola-umkm') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>

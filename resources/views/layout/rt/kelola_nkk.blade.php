@@ -1,4 +1,4 @@
-@extends('template.admin.main')
+@extends('template.rt.main')
 @section('content')
     @include('template.admin.header')
 
@@ -58,7 +58,7 @@
                         <h5 class="modal-title" id='modal-title'>Tambah KK</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-nkk" method="POST" class="form-horizontal">
+                        <form action="/rt/kelola-nkk" method="POST" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor NKK: </label>
@@ -118,7 +118,7 @@
                         <h5 class="modal-title">Edit KK</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-nkk/update/" id="edit_kk_form" method="POST" class="form-horizontal">
+                        <form action="/rt/kelola-nkk/update/" id="edit_kk_form" method="POST" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor NKK: </label>
