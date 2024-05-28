@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\IuranModel;
+use App\Models\MigrasiIuran;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -15,7 +16,8 @@ class ExportIuranExcel implements FromView, ShouldAutoSize
     public function view(): View
     {
         return view('exports.iuran', [
-            'dataIuran' => IuranModel::with('kartuKeluarga')->get()
+            'dataIuran' => IuranModel::with('kartuKeluarga')->get(),
+            'totalSaldo' => MigrasiIuran::orderBy('migrasi_iuran_id', 'desc')->first(),
         ]);
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\IuranModel;
 use App\Models\KartuKeluargaModel;
 use App\Models\UserModel;
 use App\Observers\UpdateBansosObserver;
+use App\Observers\UpdateSisaSaldoIuran;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use Unsplash\HttpClient;
@@ -33,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Observer Update SPK Bansos
         UserModel::observe(UpdateBansosObserver::class);
+
+        // Observer Update Migrasi Iuran Every Updated IuranModel
+        IuranModel::observe(UpdateSisaSaldoIuran::class);
     }
 }

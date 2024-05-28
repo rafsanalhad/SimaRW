@@ -23,10 +23,16 @@ class IuranController extends Controller
     }
 
     public function bayarIuran($id) {
-        IuranModel::where('iuran_id', $id)->update([
-            'tanggal_bayar' => Carbon::now(),
-            'status' => 'Lunas'
-        ]);
+        // IuranModel::where('iuran_id', $id)->update([
+        //     'tanggal_bayar' => Carbon::now(),
+        //     'status' => 'Lunas'
+        // ]);
+        $iuran = IuranModel::where('iuran_id', $id)->first();
+        if ($iuran) {
+            $iuran->tanggal_bayar = Carbon::now();
+            $iuran->status = 'Lunas';
+            $iuran->save();
+        }
 
         return redirect('/warga/bayar-iuran');
     }
