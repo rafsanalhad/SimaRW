@@ -8,34 +8,27 @@
                 <table class="table" id='table_bansos'>
                     <thead>
                         <th>No</th>
-                        <th>Nama Warga</th>
-                        <th>Alamat Warga</th>
-                        <th>Pekerjaan Warga</th>
+                        <th>Nama Kepala Keluarga</th>
+                        <th>Alamat KK</th>
+                        <th>Tanggal Pengajuan</th>
+                        {{-- <th>Pekerjaan Warga</th> --}}
                         <th>Status</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                Rizky Arifiansyah
-                            </td>
-                            <td>Malang</td>
-                            <td>Pengusaha</td>
-                            <td><a href="" class="btn btn-danger">Ditolak</a></td>
-                            <td><a href="#" class="btn" style="background-color: #b4aeae; color:#ffff">Verifikasi</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                Rizky Arifiansyah
-                            </td>
-                            <td>Malang</td>
-                            <td>Pengusaha</td>
-                            <td><a href="" class="btn btn-info">Menunggu</a></td>
-                            <td><a href="#" onclick='showTambahBansos()' class="btn btn-success">Verifikasi</a></td>
-                        </tr>
+                        @foreach ($ajuanBansos as $pengajuan)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>
+                                    {{ $pengajuan->kartuKeluarga->nama_kepala_keluarga }}
+                                </td>
+                                <td>{{ $pengajuan->kartuKeluarga->alamat_kk }}</td>
+                                <td>{{ $pengajuan->tanggal_pengajuan }}</td>
+                                {{-- <td>Pengusaha</td> --}}
+                                <td><a href="" class="btn btn-info">Menunggu</a></td>
+                                <td><a href="#" onclick='showTambahBansos()' class="btn btn-success">Verifikasi</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
