@@ -1,6 +1,6 @@
-@extends('template.admin.main')
+@extends('template.rt.main')
 @section('content')
-    @include('template.admin.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}

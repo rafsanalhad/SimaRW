@@ -31,6 +31,7 @@ use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\RT\KelolaNKKController;
+use App\Http\Controllers\RT\RTKelolaKegiatanController;
 use App\Http\Controllers\Warga\DashboardController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
@@ -156,6 +157,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
             Route::get('/terima-pengaduan/{id}', [PengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
             Route::get('/history-pengaduan', [PengaduanController::class, 'historyPengaduan']);
+
+            // kelola kegiatan warga
+            Route::get('/kegiatan-warga', [KelolaDataController::class, 'kelolaKegiatan']);
+            // Route::get('/kegiatan-warga', [KelolaDataController::class, 'createKegiatan'])->name('createKegiatan');
+            // Route::get('/kegiatan-warga/edit/{id}', [KelolaDataController::class, 'editKegiatan']);
+            // Route::get('/kegiatan-warga/update/{id}', [KelolaDataController::class, 'updateKegiatan']);
+            // Route::get('/kegiatan-warga/delete/{id}', [KelolaDataController::class, 'deleteKegiatan']);
+
         });
     });
     Route::group(['middleware' => ['CekLogin:2']], function() {
@@ -182,7 +191,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-nkk/delete/{id}', [KelolaNKKController::class, 'deleteNKK']);
             Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
-            
+
             Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
 
             // kelola UMKM
@@ -214,6 +223,13 @@ Route::middleware(['auth'])->group(function () {
             // Pengumuman
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
             Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
+
+            // kelola kegiatan warga
+            Route::get('/kegiatan-warga', [RTKelolaKegiatanController::class, 'kelolaKegiatan']);
+            // Route::get('/kegiatan-warga', [KelolaDataController::class, 'createKegiatan'])->name('createKegiatan');
+            // Route::get('/kegiatan-warga/edit/{id}', [KelolaDataController::class, 'editKegiatan']);
+            // Route::get('/kegiatan-warga/update/{id}', [KelolaDataController::class, 'updateKegiatan']);
+            // Route::get('/kegiatan-warga/delete/{id}', [KelolaDataController::class, 'deleteKegiatan']);
         });
     });
     // Route::group(['middleware' => ['CekLogin:3']], function() {

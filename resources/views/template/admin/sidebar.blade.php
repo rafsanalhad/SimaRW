@@ -69,6 +69,14 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/admin/kegiatan-warga') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-cash-coin"></i>
+                        </span>
+                        <span class="hide-menu">Kelola Kegiatan Warga</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link menu-kelola-iuran" href="#submenu-kelola-iuran" data-bs-toggle="collapse"
                         aria-expanded="false">
                         <span>

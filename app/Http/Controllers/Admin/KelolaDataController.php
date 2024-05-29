@@ -280,4 +280,8 @@ class KelolaDataController extends Controller
 
         return redirect('/admin/kelola-nkk');
     }
+
+    public function kelolaKegiatan(){
+        return view('layout.admin.kegiatan_warga');
+    }
 }
