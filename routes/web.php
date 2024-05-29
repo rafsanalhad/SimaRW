@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\KelolaDataController;
 use App\Http\Controllers\Admin\KelolaIuranController;
 use App\Http\Controllers\Admin\KelolaSuratController;
+use App\Http\Controllers\RT\DashboardController as RTDashboardController;
 use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
@@ -72,6 +73,10 @@ Route::post('/kode-verif', [ForgotPasswordController::class, 'cekKodeVerif']);
 Route::get('/new-password', [ForgotPasswordController::class, 'pageNewPass']);
 Route::post('/new-password', [ForgotPasswordController::class, 'newPassword']);
 
+// Route get data chart dashboard (sementara)
+Route::get('/dashboard/getBarChart', [DashboardController::class, 'getBarChart'])->name('getBarChart');
+Route::get('/dashboard/getPieChart', [DashboardController::class, 'getPieChart'])->name('getPieChart');
+
 // Route Check Role
 Route::middleware(['auth'])->group(function () {
 
@@ -79,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:1']], function() {
         Route::prefix('admin')->group(function () {
             // Route Index admin
-            Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboardAdmin');
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardAdmin');
 
             // Route profil admin
             Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
@@ -155,7 +160,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:2']], function() {
         Route::prefix('rt')->group(function () {
             // Route Dashboard admin
-            Route::get('/dashboard', [RTController::class, 'index']);
+            Route::get('/dashboard', [DashboardController::class, 'index']);
 
             // Route Profile RT
             Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
@@ -227,8 +232,6 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardWarga');
-            Route::get('/dashboard/getBarChart', [DashboardController::class, 'getBarChart'])->name('getBarChart');
-            Route::get('/dashboard/getPieChart', [DashboardController::class, 'getPieChart'])->name('getPieChart');
 
             // Route Bayar Iuran
             Route::get('/bayar-iuran', [IuranController::class, 'index']);

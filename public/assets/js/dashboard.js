@@ -11,7 +11,7 @@ $(function () {
   // =====================================
 
   $.ajax({
-      url: '/warga/dashboard/getBarChart',
+      url: '/dashboard/getBarChart',
       type: 'GET',
       dataType: 'json',
       success: function(response) {
@@ -126,7 +126,7 @@ $(function () {
 
 
   $.ajax({
-    url: '/warga/dashboard/getPieChart',
+    url: '/dashboard/getPieChart',
     type: 'GET',
     dataType: 'json',
     success: function(data) {
