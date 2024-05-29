@@ -13,10 +13,8 @@
                         <div class="form-group row">
                             <label for="nama_kepala_keluarga" class="col-form-label">Nama Kepala Keluarga:</label>
                             <div class="col-sm-12">
-                                <select class="form-control" name="kartu_keluarga_id" id="kartu_keluarga_id" disabled>
-                                    <option value="{{ $kepalaKeluarga->kartu_keluarga_id }}">{{ $kepalaKeluarga->no_kartu_keluarga }} -
-                                        {{ $kepalaKeluarga->nama_kepala_keluarga }}</option>
-                                </select>
+                                <input type="hidden" name="kartu_keluarga_id" value="{{ $kepalaKeluarga->kartu_keluarga_id }}">
+                                <input type="text" class="form-control" value="{{ $kepalaKeluarga->no_kartu_keluarga }} - {{ $kepalaKeluarga->nama_kepala_keluarga }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -83,8 +81,8 @@
                         <div class="form-group row">
                             <label for="upload_sktm" class="col-form-label">Alamat Rumah (Berdasarkan KK):</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control"
-                                    id="alamat_rumah_warga" value="{{ $kepalaKeluarga->alamat_kk }}" disabled>
+                                <input type="text" class="form-control" id="alamat_rumah_warga"
+                                    value="{{ $kepalaKeluarga->alamat_kk }}" disabled>
                             </div>
                         </div>
                     </div>
