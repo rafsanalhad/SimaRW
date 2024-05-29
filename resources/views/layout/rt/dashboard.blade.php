@@ -73,7 +73,7 @@
                                         <div class="d-flex justify-content-center">
                                             <div id="breakup"></div>
                                         </div>
-                                        <h4 class="fw-semibold mb-3">Rp. 10.000.000</h4>
+                                        <h4 class="fw-semibold mb-3">Rp. {{ $total }}</h4>
                                         <div class="d-flex align-items-center mb-3">
                                             <span
                                                 class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -85,12 +85,12 @@
                                         <div class="d-flex align-items-center">
                                             <div class="me-4">
                                                 <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                                <span class="fs-2">2023</span>
+                                                <span class="fs-2">{{ $category[0] }}</span>
                                             </div>
                                             <div>
                                                 <span
                                                     class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                                                <span class="fs-2">2023</span>
+                                                <span class="fs-2">{{ $category[1] }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -110,59 +110,19 @@
                             <h5 class="card-title fw-semibold">Detail Pengeluaran Baru</h5>
                         </div>
                         <ul class="timeline-widget mb-0 position-relative mb-n5">
-                            <li class="timeline-item d-flex position-relative overflow-hidden">
-                                <div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
-                                <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                    <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
-                                    <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                                </div>
-                                <div class="timeline-desc fs-3 text-dark mt-n1">beli semen buat bangun pos ronda</div>
-                            </li>
-                            <li class="timeline-item d-flex position-relative overflow-hidden">
-                                <div class="timeline-time text-dark flex-shrink-0 text-end">10:00 am</div>
-                                <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                    <span class="timeline-badge border-2 border border-info flex-shrink-0 my-8"></span>
-                                    <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                                </div>
-                                <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">beli semen buat bangun pos
-                                    ronda
-                                    <a href="javascript:void(0)" class="text-primary d-block fw-normal"></a>
-                                </div>
-                            </li>
-                            <li class="timeline-item d-flex position-relative overflow-hidden">
-                                <div class="timeline-time text-dark flex-shrink-0 text-end">12:00 am</div>
-                                <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                    <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-                                    <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                                </div>
-                                <div class="timeline-desc fs-3 text-dark mt-n1">beli semen buat bangun pos rond</div>
-                            </li>
-                            <li class="timeline-item d-flex position-relative overflow-hidden">
-                                <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
-                                <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                    <span class="timeline-badge border-2 border border-warning flex-shrink-0 my-8"></span>
-                                    <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                                </div>
-                                <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">beli semen buat bangun pos rond
-                                    <a href="javascript:void(0)" class="text-primary d-block fw-normal"></a>
-                                </div>
-                            </li>
-                            <li class="timeline-item d-flex position-relative overflow-hidden">
-                                <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
-                                <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                    <span class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"></span>
-                                    <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                                </div>
-                                <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">beli semen buat bangun pos rond
-                                </div>
-                            </li>
-                            <li class="timeline-item d-flex position-relative overflow-hidden">
-                                <div class="timeline-time text-dark flex-shrink-0 text-end">12:00 am</div>
-                                <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                    <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-                                </div>
-                                <div class="timeline-desc fs-3 text-dark mt-n1">beli semen buat bangun pos rond</div>
-                            </li>
+                            @foreach ($pengeluaranTerbaru as $pt)
+                                <li class="timeline-item d-flex position-relative overflow-hidden">
+                                    <div class="timeline-time text-dark flex-shrink-0 text-end">
+                                        {{ Carbon::parse($pt->created_at)->format('d/m/Y') }}</div>
+                                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                                        <span
+                                            class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                                        <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                                    </div>
+                                    <div class="timeline-desc fs-3 text-dark mt-n1" id="pengeluaran">
+                                        {{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -191,22 +151,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">1</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1">Sunil Joshi</h6>
+                                    @foreach ($pengeluaran as $p)
+                                        <tr>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-1">{{ $p->user->nama_user }}</h6>
 
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">RT</p>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">Rp. 10000000</h6>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                @if ($p->user->role_id == 1)
+                                                    <p class="mb-0 fw-normal">Admin</p>
+                                                @elseif ($p->user->role_id == 2)
+                                                    <p class="mb-0 fw-normal">RT</p>
+                                                @elseif ($p->user->role_id == 3)
+                                                    <p class="mb-0 fw-normal">RW</p>
+                                                @else
+                                                    <p class="mb-0 fw-normal">Warga</p>
+                                                @endif
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0 fs-4">RP. {{ $p->jumlah_pengeluaran }}</h6>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">2</h6>
                                         </td>
@@ -247,7 +217,7 @@
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0 fs-4">Rp.100000</h6>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
