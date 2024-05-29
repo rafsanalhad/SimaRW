@@ -1,4 +1,8 @@
 @extends('template.admin.main')
+@php
+    use Illuminate\Support\Str;
+    use Carbon\Carbon;
+@endphp
 @section('content')
 <header class="app-header">
     <nav class="navbar navbar-expand-lg navbar-light">
