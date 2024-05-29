@@ -10,6 +10,7 @@ use App\Http\Controllers\RT\RTController;
 use App\Http\Controllers\RW\ProfileRWController;
 use App\Http\Controllers\RW\RWController;
 use App\Http\Controllers\Admin\BansosController as AdminBansos;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Warga\BansosController as WargaBansos;
 use App\Http\Controllers\Warga\IuranController;
 use App\Http\Controllers\Warga\KegiatanWargaController;
@@ -84,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:1']], function() {
         Route::prefix('admin')->group(function () {
             // Route Index admin
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardAdmin');
+            Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboardAdmin');
 
             // Route profil admin
             Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
@@ -160,7 +161,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:2']], function() {
         Route::prefix('rt')->group(function () {
             // Route Dashboard admin
-            Route::get('/dashboard', [DashboardController::class, 'index']);
+            Route::get('/dashboard', [RTDashboardController::class, 'index']);
 
             // Route Profile RT
             Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
