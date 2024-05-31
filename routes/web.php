@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminUbahPassword;
+use App\Http\Controllers\Admin\AdminUbahPasswordController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\ProfilAdminController;
 use App\Http\Controllers\RT\KelolaWargaController;
@@ -32,10 +34,12 @@ use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\RT\KelolaNKKController;
 use App\Http\Controllers\RT\RTKelolaKegiatanController;
+use App\Http\Controllers\RT\RTUbahPasswordController;
 use App\Http\Controllers\Warga\DashboardController;
 use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
 use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
+use App\Http\Controllers\Warga\WargaUbahPasswordController;
 use App\Services\UpdateSPKBansosService;
 
 /*
@@ -90,6 +94,10 @@ Route::middleware(['auth'])->group(function () {
 
             // Route profil admin
             Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
+
+            // Route Ubah Password
+            Route::get('/ubah-password', [AdminUbahPasswordController::class, 'ubahPassword']);
+
 
             // Route get pengumuman
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
@@ -174,6 +182,10 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Profile RT
             Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
+
+            // Route Ubah Password
+            Route::get('/ubah-password', [RTUbahPasswordController::class, 'ubahPassword']);
+
 
             // Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
 
@@ -262,6 +274,9 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Profil Warga
             Route::get('/profil-warga', [ProfilWargaController::class, 'profilWarga']);
+
+            // Route Ubah Password Warga
+            Route::get('/ubah-password', [WargaUbahPasswordController::class, 'ubahPassword']);
 
             // Route Bansos
             Route::get('/pengajuan-bansos', [WargaBansos::class, 'pengajuanBansos']);

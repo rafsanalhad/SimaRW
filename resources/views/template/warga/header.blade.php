@@ -6,12 +6,12 @@
                     <i class="ti ti-menu-2"></i>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)">
                     <i class="ti ti-bell-ringing"></i>
                     <div class="notification bg-primary rounded-circle"></div>
                 </a>
-            </li>
+            </li> --}}
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -27,6 +27,11 @@
                                 class="d-flex align-items-center gap-2 dropdown-item">
                                 <i class="ti ti-user fs-6"></i>
                                 <p class="mb-0 fs-3">My Profile</p>
+                            </a>
+                            <a href="{{ url('/warga/ubah-password') }}"
+                                class="d-flex align-items-center gap-2 dropdown-item">
+                                <i class="ti ti-lock fs-6"></i>
+                                <p class="mb-0 fs-3">Ubah Password</p>
                             </a>
                             <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                         </div>

@@ -33,6 +33,11 @@
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
+                                <a href="{{ url('/rt/ubah-password') }}"
+                                    class="d-flex align-items-center gap-2 dropdown-item">
+                                    <i class="ti ti-lock fs-6"></i>
+                                    <p class="mb-0 fs-3">Ubah Password</p>
+                                </a>
                                 <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
                         </div>
