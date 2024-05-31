@@ -21,14 +21,23 @@
                             <th>Status</th>
                         </thead>
                         <tbody>
-                            <th>Arya Rafsan</th>
-                            <th>Jl. Semanggi Barat</th>
-                            <th>21-05-2024</th>
-                            <th>Gaduh di malam hari</th>
-                            <th>
-                                <a href="#" class="btn btn-success">Diterima</a>
-                                <a href="#" class="btn btn-danger">Ditolak</a>
-                            </th>
+                            @foreach ($pengaduan as $pengaduan)
+                            <tr>
+                                <td>{{$pengaduan->user_id}}</td>
+                                <td>alamat</td>
+                                <td>{{$pengaduan->tanggal_pengaduan}}</td>
+                                <td>{{$pengaduan->isi_pengaduan}}</td>
+                                <td>
+                                @if ($pengaduan->status_pengaduan == 'Diproses')
+                                    <a href="#" class="btn btn-primary">Diproses</a>
+                                @elseif ($pengaduan->status_pengaduan == 'Selesai')
+                                    <a href="#" class="btn btn-success">Diterima</a>
+                                @else
+                                    <a href="#" class="btn btn-danger">Ditolak</a>
+                                @endif
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -116,6 +125,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal">
+
     </div>
 
     <script>
