@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Ubah Password
             Route::get('/ubah-password', [AdminUbahPasswordController::class, 'ubahPassword']);
+            Route::post('/ubah-password', [AdminUbahPasswordController::class, 'updatePassword']);
 
 
             // Route get pengumuman
