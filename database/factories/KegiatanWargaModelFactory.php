@@ -18,6 +18,7 @@ class KegiatanWargaModelFactory extends Factory
     {
         return [
             'nama_kegiatan' => $this->faker->word(),
+            'tempat_kegiatan' => $this->faker->word(),
             'deskripsi_kegiatan' => $this->faker->sentence(),
             'jadwal_kegiatan' => $this->faker->date(),
             'jam_awal' => $this->faker->time(),
