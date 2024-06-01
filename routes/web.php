@@ -280,6 +280,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Ubah Password Warga
             Route::get('/ubah-password', [WargaUbahPasswordController::class, 'ubahPassword']);
+            Route::post('/ubah-password', [WargaUbahPasswordController::class, 'updatePassword']);
 
             // Route Bansos
             Route::get('/pengajuan-bansos', [WargaBansos::class, 'pengajuanBansos']);
