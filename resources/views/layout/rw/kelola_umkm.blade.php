@@ -41,7 +41,7 @@
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <h4>Kelola UMKM</h4>
-        <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
+        <a href="#" id="test" class="btn btn-success mb-3">Tambah Baru</a>
         <div class="row">
             @foreach ($umkm as $umkm)
                 <div class="col-md-4">
@@ -55,6 +55,7 @@
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
                                     <p class="card-text">{{ $umkm->deskripsi_umkm }}</p>
                                     <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
+                                    <a href="#" class="btn btn-primary" onclick="showModalUmkm()">Detail</a>
                                     <a href="#" class="btn btn-warning"
                                         onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
                                     <a href="#" class="btn btn-danger"

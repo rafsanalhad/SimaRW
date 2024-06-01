@@ -9,7 +9,7 @@
         <div class="row">
             @foreach ($umkm as $umkm)
                 <div class="col-md-4">
-                    <div class="card shadow-lg" onclick="showModalUmkm()">
+                    <div class="card shadow-lg">
                         <div class="card-body">
 
                             <div class="card" style="width: 18rem; height: 540px;">
@@ -20,6 +20,7 @@
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
                                     <p class="card-text">{{ $umkm->deskripsi_umkm }}</p>
                                     <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
+                                    <a href="#" class="btn btn-primary" onclick="showModalUmkm()">Detail</a>
                                     <a href="#" class="btn btn-warning"
                                         onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
                                     <a href="#" class="btn btn-danger"
