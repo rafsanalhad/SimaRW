@@ -17,7 +17,7 @@
                                     <h5 class="card-title">Nama Kegiatan : {{ $kegiatan->nama_kegiatan }}</h5>
                                     <p class="card-text ">Deskripsi Kegiatan : {{ $kegiatan->deskripsi_kegiatan }}</p>
                                     <p class="card-text ">Tempat Kegiatan : {{ $kegiatan->tempat_kegiatan }}</p>
-                                    <p class="card-text">Hari/Tanggal : {{ $kegiatan->jadwal_kegiatan }}</p>
+                                    <p class="card-text">Hari/Tanggal : {{ $kegiatan->hari_kegiatan }}/{{ $kegiatan->jadwal_kegiatan }}</p>
                                     <p class="card-text">Jam : {{ $kegiatan->jam_awal }} -
                                         {{ $kegiatan->jam_akhir }}</p>
                                     <a href="#" class="btn btn-warning"
@@ -106,43 +106,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal modal_kegiatan" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Kegiatan Warga</h5>
-                </div>
-                <div class="modal-body">
-                    <img src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
-                    <h3>Toko Kelontong Pak Alhad</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut fringilla magna, non molestie
-                        enim.
-                        Donec convallis sagittis lacinia. Morbi eu semper erat, eget tempor libero. Sed ac risus vitae nulla
-                        semper
-                        imperdiet et non sem. Sed convallis viverra elit in varius. Integer non nisi ac eros ullamcorper
-                        finibus at
-                        pulvinar ex. Proin euismod tincidunt molestie. Fusce vestibulum elit aliquet placerat condimentum.
-                        Curabitur
-                        in libero nisi. Maecenas accumsan nec ipsum at vestibulum.</p>
-                    <div class="row">
-                        <div class="col-6">
-                            <h3 class="fs-4">Jam Operasi:</h3>
-                            <p>Setiap Hari jam 08.00 - 19.00</p>
-                        </div>
-                        <div class="col-6">
-                            <h3 class="fs-4">Kontak:</h3>
-                            <p>085763357188275</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick=hideModalKegiatan()>Close</button>
                 </div>
             </div>
         </div>

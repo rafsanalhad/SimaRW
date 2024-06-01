@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\KegiatanWargaRequest;
-use App\Models\KegiatanWargaModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\KegiatanWargaModel;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\KegiatanWargaRequest;
 
 class KegiatanWargaController extends Controller
 {
     public function kelolaKegiatan(){
-        $kegiatan = KegiatanWargaModel::all();
+        Carbon::setLocale('id');
+        
+        $kegiatan = KegiatanWargaModel::all()->map(function($kegiatan) {
+            $kegiatan->hari_kegiatan = Carbon::parse($kegiatan->jadwal_kegiatan)->isoFormat('dddd');
+            $kegiatan->jam_awal = Carbon::parse($kegiatan->jam_awal)->format('H:i');
+            $kegiatan->jam_akhir = Carbon::parse($kegiatan->jam_akhir)->format('H:i');
+
+            return $kegiatan;
+        });
 
         return view('layout.admin.kegiatan_warga', ['kegiatan' => $kegiatan]);
     }
