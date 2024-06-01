@@ -41,6 +41,7 @@ use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
 use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
 use App\Http\Controllers\Warga\WargaUbahPasswordController;
+use \App\Http\Controllers\Admin\KegiatanWargaController as AdminKegiatanWargaController;
 use App\Services\UpdateSPKBansosService;
 
 /*
@@ -168,11 +169,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/history-pengaduan', [PengaduanController::class, 'historyPengaduan']);
 
             // kelola kegiatan warga
-            Route::get('/kegiatan-warga', [KelolaDataController::class, 'kelolaKegiatan']);
-            // Route::get('/kegiatan-warga', [KelolaDataController::class, 'createKegiatan'])->name('createKegiatan');
-            // Route::get('/kegiatan-warga/edit/{id}', [KelolaDataController::class, 'editKegiatan']);
-            // Route::get('/kegiatan-warga/update/{id}', [KelolaDataController::class, 'updateKegiatan']);
-            // Route::get('/kegiatan-warga/delete/{id}', [KelolaDataController::class, 'deleteKegiatan']);
+            Route::get('/kegiatan-warga', [AdminKegiatanWargaController::class, 'kelolaKegiatan']);
+            Route::post('/kegiatan-warga', [AdminKegiatanWargaController::class, 'createKegiatan'])->name('createKegiatan');
+            Route::get('/kegiatan-warga/edit/{id}', [AdminKegiatanWargaController::class, 'editKegiatan']);
+            Route::post('/kegiatan-warga/update/{id}', [AdminKegiatanWargaController::class, 'updateKegiatan']);
+            Route::get('/kegiatan-warga/delete/{id}', [AdminKegiatanWargaController::class, 'deleteKegiatan']);
 
         });
     });
