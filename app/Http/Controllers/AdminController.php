@@ -16,9 +16,7 @@ class AdminController extends Controller
     {
         return view('layout.admin.dashboard');
     }
-    public function kelolaIuran(){
-        return view('layout.admin.kelola_iuran');
-    }
+
     public function kelolaSurat(){
         return view('layout.admin.kelola_surat');
     }

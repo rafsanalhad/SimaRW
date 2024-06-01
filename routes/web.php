@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminIuranController;
 use App\Http\Controllers\Admin\AdminUbahPassword;
 use App\Http\Controllers\Admin\AdminUbahPasswordController;
 use App\Http\Controllers\Admin\PengumumanController;
@@ -139,14 +140,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-umkm/delete/{id}', [UMKMController::class, 'deleteUmkm']);
 
             // Route Kelola Data Iuran
+            Route::get('/kelola-iuran', [AdminIuranController::class, 'kelolaIuran']);
+            Route::post('/kelola-iuran', [AdminIuranController::class, 'createPengeluaranIuran']);
             Route::get('/laporan-iuran', [KelolaIuranController::class, 'laporanIuran']);
             Route::get('/download-iuran', [KelolaIuranController::class, 'downloadExcel']);
 
             // Route Kelola Data Surat
             Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
 
-            // Next features...
-            Route::get('/kelola-iuran', [AdminController::class, 'kelolaIuran']);
 
             // Route Kelola Bansos
             Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
