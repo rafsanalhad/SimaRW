@@ -30,21 +30,30 @@
                     <span class="hide-menu">Menu</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ url('/rt/kelola-warga') }}" aria-expanded="false">
+                    <a class="sidebar-link menu-kelola-data" href="#submenu-kelola-data" data-bs-toggle="collapse"
+                        aria-expanded="false">
                         <span>
-                            <i class="bi bi-people"></i>
+                            <i class="ti ti-wallet"></i>
                         </span>
-                        <span class="hide-menu">Kelola Warga</span>
+                        <span class="hide-menu">Kelola Data</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
+                    <div class="collapse" id="submenu-kelola-data">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-kelola-warga"
+                                    href=" {{ url('/rt/kelola-warga') }}">Kelola Warga</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-kelola-nkk"
+                                    href="{{ url('/rt/kelola-nkk') }}">Kelola NKK</a>
+                            </li>
+                           
+                            <!-- Add more submenu items as needed -->
+                        </ul>
+                    </div>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ url('/rt/kelola-nkk') }}" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-people"></i>
-                        </span>
-                        <span class="hide-menu">Kelola NKK</span>
-                    </a>
-                </li>
+               
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/rt/kelola-umkm') }}" aria-expanded="false">
                         <span>
@@ -152,6 +161,7 @@
 <script>
     let kelolaIuran = document.getElementsByClassName('menu-kelola-iuran');
     let kelolaBansos = document.getElementsByClassName('menu-kelola-bansos');
+    let kelolaBansos = document.getElementsByClassName('menu-kelola-data');
     let laporan = document.getElementsByClassName('menu-laporan');
     let sidebar = document.getElementsByClassName('sidebar-item');
 
@@ -165,6 +175,13 @@
     }
     for (let i = 0; i < kelolaBansos.length; i++) {
         kelolaBansos[i].addEventListener('click', function() {
+            for (let j = 0; j < sidebar.length; j++) {
+                sidebar[j].classList.remove('selected');
+            }
+        });
+    }
+    for (let i = 0; i < kelolaData.length; i++) {
+        kelolaData[i].addEventListener('click', function() {
             for (let j = 0; j < sidebar.length; j++) {
                 sidebar[j].classList.remove('selected');
             }
