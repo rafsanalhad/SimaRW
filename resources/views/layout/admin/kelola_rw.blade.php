@@ -12,7 +12,7 @@
                             <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
                                 alt="gambar convert excel">
                         </a>
-                        <button class="btn btn-sm btn-primary ms-2" id="tambah-data-warga" onclick="showTambahWarga()">
+                        <button class="btn btn-sm btn-primary ms-2" id="tambah-data-warga" onclick="showTambahRw()">
                             <i class="bi bi-plus-lg"></i> Tambah
                         </button>
                     </div>

@@ -14,6 +14,13 @@ class MigrasiIuran extends Model
     protected $primaryKey = 'migrasi_iuran_id';
 
     protected $fillable = [
+        'nama_pelapor',
+        'jabatan_pelapor',
+        'nomor_rt',
+        'nomor_rw',
+        'jumlah_pengeluaran',
+        'bukti_struk',
+        'keterangan_pengeluaran',
         'tanggal_migrasi',
         'dana_keluar',
         'dana_masuk',

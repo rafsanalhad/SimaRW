@@ -6,11 +6,14 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\PengaduanWargaModel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PengaduanController extends Controller
 {
     public function index(){
-        return view('layout.warga.pengaduan_warga');
+        $pengaduan = PengaduanWargaModel::where('user_id', Auth::user()->user_id)->get();
+
+        return view('layout.warga.pengaduan_warga',['pengaduan' => $pengaduan]);
     }
 
     public function createPengaduan(Request $request) {

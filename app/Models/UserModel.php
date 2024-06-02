@@ -35,7 +35,8 @@ class UserModel extends Model implements AuthenticatableContract
         'gaji_user',
         'pekerjaan_user',
         'alamat_user',
-        'foto_user'
+        'foto_user',
+        'is_first_login'
     ];
 
     public function role(): HasMany {

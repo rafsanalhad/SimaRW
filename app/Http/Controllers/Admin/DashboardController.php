@@ -18,7 +18,7 @@ class DashboardController extends Controller
             ->distinct()
             ->count();
         $pemasukanTotal = $resultsPemasukan * 30000;
-        
+
         $resultsPengeluaran = DetailPengeluaranModel::selectRaw('SUM(jumlah_pengeluaran) as total')
             ->distinct()
             ->get();

@@ -31,6 +31,11 @@
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
+                                <a href="{{ url('/warga/ubah-password') }}"
+                                    class="d-flex align-items-center gap-2 dropdown-item">
+                                    <i class="ti ti-lock fs-6"></i>
+                                    <p class="mb-0 fs-3">Ubah Password</p>
+                                </a>
                                 <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
                         </div>
@@ -226,34 +231,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-xl-3">
-                <div class="card overflow-hidden rounded-2" onclick=showModalUmkm()>
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="{{ @asset('assets/images/products/s4.jpg') }}"
-                                class="card-img-top rounded-0" alt="..."></a>
-                        <a href="javascript:void(0)"
-                            class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                class="ti ti-basket fs-4"></i></a>
-                    </div>
-                    <div class="card-body pt-3 p-4">
-                        <h6 class="fw-semibold fs-4">Toko Kelontong Pak Alhad wibu wibu anjay kau</h6>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-semibold fs-1 mb-0">Jam Operasional: 08.00 - 19.00</p>
-                            {{-- <ul class="list-unstyled d-flex align-items-center mb-0">
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-            </ul> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
     <div class="modal modal_umkm" tabindex="-1" role="dialog">

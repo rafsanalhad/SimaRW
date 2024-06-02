@@ -50,13 +50,19 @@
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top"
-                                    src="{{ asset('storage/Umkm-images/' . '3JlJ3qI1COmbaCtdXTbTht5mWqSIUyYYEWSSl3wD.png') }}"
-                                    alt="Card image cap">
+                                @if ($kegiatan->foto_kegiatan != null)
+                                    <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}"
+                                        alt="Card image cap">
+                                @else
+                                    <img class="card-img-top"
+                                        src="{{ asset('storage/Umkm-images/' . '3JlJ3qI1COmbaCtdXTbTht5mWqSIUyYYEWSSl3wD.png') }}"
+                                        alt="Card image cap">
+                                @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
+                                    <p class="card-text">{{ $kegiatan->tempat_kegiatan }}</p>
                                     <p class="card-text">{{ $kegiatan->deskripsi_kegiatan }}</p>
-                                    <p class="card-text">Jadwal: Hari {{ $kegiatan->jadwal_kegiatan }}</p>
+                                    <p class="card-text">Hari/Tanggal : {{ $kegiatan->hari_kegiatan }}/{{ $kegiatan->jadwal_kegiatan }}</p>
                                     <p>Jam {{ $kegiatan->jam_awal }} - {{ $kegiatan->jam_akhir }}</p>
                                 </div>
                             </div>

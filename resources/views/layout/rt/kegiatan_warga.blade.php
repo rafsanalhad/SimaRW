@@ -1,28 +1,26 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
-        <h4>Kelola UMKM</h4>
-        <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
+        <h4>Kelola Kegiatan Warga</h4>
+        <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahKegiatan()">Tambah Baru</a>
         <div class="row">
             @foreach ($umkm as $umkm)
                 <div class="col-md-4">
-                    <div class="card shadow-lg">
+                    <div class="card shadow-lg" onclick="showModalKegiatan()">
                         <div class="card-body">
-
                             <div class="card" style="width: 18rem; height: 540px;">
-
-                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}"
-                                    alt="Card image cap">
+                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
-                                    <p class="card-text">{{ $umkm->deskripsi_umkm }}</p>
-                                    <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
-                                    <a href="#" class="btn btn-primary" onclick="showModalUmkm()">Detail</a>
+                                    <h5 class="card-title">Judul Kegiatan : {{ $umkm->nama_umkm }}</h5>
+                                    <p class="card-text ">Deskripsi Kegiatan : {{ $umkm->deskripsi_umkm }}</p>
+                                    <p class="card-text">Hari : {{ $umkm->user->nama_user }}</p>
+                                    <p class="card-text">Jam : {{ $umkm->jam_operasional_awal }} -
+                                        {{ $umkm->jam_operasional_akhir }}</p>
                                     <a href="#" class="btn btn-warning"
-                                        onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
+                                        onclick="modalEditKegiatan({{ $umkm->umkm_id }})">Edit</a>
                                     <a href="#" class="btn btn-danger"
                                         onclick="hapusData({{ $umkm->umkm_id }})">Hapus</a>
                                 </div>
@@ -33,16 +31,16 @@
             @endforeach
         </div>
     </div>
-    <div class="modal modal_tambah_umkm" tabindex="-1" role="dialog">
+    <div class="modal modal_tambah_kegiatan" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="modal-title">Tambah UMKM</div>
+                    <div class="modal-title">Tambah Kegiatan Warga</div>
                 </div>
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('createUmkm') }}" id="form_edit" method="POST" class="form"
+                            <form action="{{ url('/admin/kegiatan-warga') }}" id="form_edit" method="POST" class="form"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
@@ -81,8 +79,7 @@
                                         Kontak
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm"
-                                            class="form-control">
+                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -111,13 +108,13 @@
                                         <input type="time" id="jam_operasional_awal_edit" name="jam_operasional_awal"
                                             class="form-control">
                                         <span class="mx-2 my-2">s/d</span>
-                                        <input type="time" id="jam_operasional_akhir_edit"
-                                            name="jam_operasional_akhir" class="form-control">
+                                        <input type="time" id="jam_operasional_akhir_edit" name="jam_operasional_akhir"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Gambar UMKM
+                                        Gambar Kegiatan
                                     </div>
                                     <div class="col-6">
                                         <input name="foto_umkm" type="file" class="form-control" accept="image/*">
@@ -125,7 +122,7 @@
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Deskripsi UMKM
+                                        Deskripsi Kegiatan
                                     </div>
                                     <div class="col-6">
                                         <textarea name="deskripsi_umkm" class="form-control" id="deskripsi_umkm_edit" cols="30" rows="5"></textarea>
@@ -135,7 +132,7 @@
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        onclick=hideModalTambahUmkm()>Close</button>
+                                        onclick=hideModalTambahKegiatan()>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -144,11 +141,11 @@
             </div>
         </div>
     </div>
-    <div class="modal modal_umkm" tabindex="-1" role="dialog">
+    <div class="modal modal_kegiatan" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Kegiatan Warga</h5>
                 </div>
                 <div class="modal-body">
                     <img src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
@@ -176,32 +173,32 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick=hideModalUmkm()>Close</button>
+                        onclick=hideModalKegiatan()>Close</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
-            function showModalUmkm() {
+        function showModalKegiatan() {
             $('.modal_umkm').modal('show');
         }
-        function hideModalUmkm() {
+
+        function hideModalKegiatan() {
             $('.modal_umkm').modal('hide');
         }
-        </script>
-    <script>
-        const modalTambahUmkm = () => {
+
+        const modalTambahKegiatan = () => {
             $('input:not([name="_token"]), textarea, select, time').val('');
 
-            $('#form_edit').attr('action', '/rt/kelola-umkm');
+            $('#form_edit').attr('action', '/admin/kegiatan-warga');
 
             $('.modal-title').html('Tambah UMKM');
-            $('.modal_tambah_umkm').modal('show');
+            $('.modal_tambah_kegiatan').modal('show');
         }
 
-        const modalEditUmkm = (idUmkm) => {
+        const modalEditKegiatan = (idUmkm) => {
             $.ajax({
-                url: '/rt/kelola-umkm/edit/' + idUmkm,
+                url: '/admin/kelola-kegiatan/edit/' + idUmkm,
                 type: 'GET',
                 dataType: 'json',
                 success(data) {
@@ -218,9 +215,9 @@
                 }
             });
 
-            $('#form_edit').attr('action', '/rt/kelola-umkm/update/' + idUmkm);
+            $('#form_edit').attr('action', '/admin/kelola-kegiatan/update/' + idUmkm);
 
-            $('.modal_tambah_umkm').modal('show');
+            $('.modal_tambah_kegiatan').modal('show');
         }
 
         const hapusData = (idUmkm) => {
@@ -235,7 +232,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/rt/kelola-umkm/delete/' + idUmkm,
+                        url: '/admin/kelola-kegiatan/delete/' + idUmkm,
                         type: 'GET',
                         success: function() {
                             Swal.fire({
@@ -250,8 +247,8 @@
                 }
             });
         }
-        const hideModalTambahUmkm = () => {
-            $('.modal_tambah_umkm').modal('hide');
+        const hideModalTambahKegiatan = () => {
+            $('.modal_tambah_kegiatan').modal('hide');
         }
     </script>
 @endsection

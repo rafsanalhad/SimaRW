@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('pekerjaan_user', 255);
             $table->text('alamat_user');
             $table->text('foto_user');
+            $table->boolean('is_first_login')->default(true);
             $table->timestamps();
         });
     }

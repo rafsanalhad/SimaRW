@@ -61,7 +61,7 @@
             </li> --}}
                     </ul>
                     <form class="d-flex">
-                        <a class="btn btn-primary me-2">Login</a>
+                        <a href="/login" class="btn btn-primary me-2">Login</a>
                     </form>
                 </div>
             </div>
