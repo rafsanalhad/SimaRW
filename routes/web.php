@@ -187,6 +187,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Ubah Password
             Route::get('/ubah-password', [RTUbahPasswordController::class, 'ubahPassword']);
+            Route::post('/ubah-password', [RTUbahPasswordController::class, 'updatePassword']);
 
 
             // Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
