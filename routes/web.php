@@ -111,6 +111,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-nkk/edit/{id}', [KelolaDataController::class, 'editNKK']);
             Route::post('/kelola-nkk/update/{id}', [KelolaDataController::class, 'updateNKK'])->name('updateNKK');
             Route::get('/kelola-nkk/delete/{id}', [KelolaDataController::class, 'deleteNKK']);
+            Route::get('/download-nkk', [KelolaDataController::class, 'downloadExcelNKK']);
 
             // Route Kelola Data Warga
             Route::get('/kelola-warga', [KelolaDataController::class, 'kelolaWarga']);
@@ -118,6 +119,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-warga/edit/{id}', [KelolaDataController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaDataController::class, 'deleteWarga']);
             Route::post('/kelola-warga/update/{id}', [KelolaDataController::class, 'updateWarga'])->name('updateWarga');
+            Route::get('/download-warga', [KelolaDataController::class, 'downloadExcelWarga']);
 
             // Route Kelola Data RT
             Route::get('/kelola-rt', [KelolaDataController::class, 'kelolaRt']);
@@ -199,15 +201,16 @@ Route::middleware(['auth'])->group(function () {
             // kelola data Warga
             Route::get('/kelola-warga', [KelolaWargaController::class, 'kelolaWarga']);
             Route::post('/kelola-warga', [KelolaWargaController::class, 'createWarga'])->name('createWarga');
+            Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
+            Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
+            Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
+
+            // Route Kelola NKK
             Route::get('/kelola-nkk', [KelolaNKKController::class, 'showKK']);
             Route::post('/kelola-nkk', [KelolaNKKController::class, 'createNKK'])->name('createNKK');
             Route::get('/kelola-nkk/edit/{id}', [KelolaNKKController::class, 'editNKK']);
             Route::post('/kelola-nkk/update/{id}', [KelolaNKKController::class, 'updateNKK'])->name('updateNKK');
             Route::get('/kelola-nkk/delete/{id}', [KelolaNKKController::class, 'deleteNKK']);
-            Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
-            Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
-
-            Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
 
             // kelola UMKM
             Route::get('/kelola-umkm', [RTUMKMController::class, 'kelolaUmkm']);

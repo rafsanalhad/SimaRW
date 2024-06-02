@@ -19,6 +19,7 @@
                         </div>
                     </div>
                     <form action="/rt/ubah-password" method="POST" class="form-horizontal row">
+                        @csrf
                         <div class="col-md-4">
                             <div class="form-group row">
                                 <label for="password-baru" class="col-form-label">Masukkan Password Baru:</label>
@@ -46,10 +47,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mt-3 position-relative bottom-0 start-2">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
                     </form>
-                    <div class="mt-3 position-relative bottom-0 start-2">
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                    </div>
                 </div>
             </div>
         </div>
