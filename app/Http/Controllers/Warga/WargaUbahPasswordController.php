@@ -22,6 +22,12 @@ class WargaUbahPasswordController extends Controller
 
         $user = Auth::user();
 
+        if($user->is_first_login) {
+            UserModel::where('user_id', $user->user_id)->update([
+                'is_first_login' => false
+            ]);
+        }
+
         UserModel::where('user_id', $user->user_id)->update([
             'password' => Hash::make($request->konfirmasi_password)
         ]);

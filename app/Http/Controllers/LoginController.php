@@ -17,13 +17,29 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if($user->role_id == 1) {
-                return redirect()->intended('/admin/dashboard');
+                if($user->is_first_login) {
+                    return redirect('/admin/ubah-password');
+                } else {
+                    return redirect()->intended('/admin/dashboard');
+                }
             } else if($user->role_id == 2) {
-                return redirect()->intended('/rt/dashboard');
+                if($user->is_first_login) {
+                    return redirect('/rt/ubah-password');
+                } else {
+                    return redirect()->intended('/rt/dashboard');
+                }
             } else if($user->role_id == 3) {
-                return redirect()->intended('/rw/dashboard');
+                if($user->is_first_login) {
+                    return redirect('/rw/ubah-password');
+                } else {
+                    return redirect()->intended('/rw/dashboard');
+                }
             } else if($user->role_id == 4) {
-                return redirect()->intended('/warga/dashboard');
+                if($user->is_first_login) {
+                    return redirect('/warga/ubah-password');
+                } else {
+                    return redirect()->intended('/warga/dashboard');
+                }
             }
 
             return redirect('/login');
