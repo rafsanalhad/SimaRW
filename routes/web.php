@@ -101,7 +101,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/ubah-password', [AdminUbahPasswordController::class, 'ubahPassword']);
             Route::post('/ubah-password', [AdminUbahPasswordController::class, 'updatePassword']);
 
-
             // Route get pengumuman
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
             Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
