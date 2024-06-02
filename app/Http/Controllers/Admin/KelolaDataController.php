@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\NKKExportExcel;
+use App\Exports\WargaExportExcel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\RTRequest;
@@ -12,6 +14,7 @@ use App\Models\KartuKeluargaModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KelolaDataController extends Controller
 {
@@ -84,6 +87,11 @@ class KelolaDataController extends Controller
 
         UserModel::destroy($id);
         return redirect('/admin/kelola-warga');
+    }
+
+    // Function download rekap excel Warga
+    public function downloadExcelWarga() {
+        return Excel::download(new WargaExportExcel, 'rekap_warga.xlsx');
     }
 
     // Function menampilkan data RT
@@ -279,5 +287,10 @@ class KelolaDataController extends Controller
         KartuKeluargaModel::destroy($id);
 
         return redirect('/admin/kelola-nkk');
+    }
+
+    // Function download rekap excel NKK
+    public function downloadExcelNKK() {
+        return Excel::download(new NKKExportExcel, 'rekap_nkk.xlsx');
     }
 }
