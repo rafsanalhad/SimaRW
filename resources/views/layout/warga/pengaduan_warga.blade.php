@@ -23,8 +23,8 @@
                         <tbody>
                             @foreach ($pengaduan as $pengaduan)
                             <tr>
-                                <td>{{$pengaduan->user_id}}</td>
-                                <td>alamat</td>
+                                <td>{{$pengaduan->user->nama_user}}</td>
+                                <td>{{$pengaduan->user->kartuKeluarga->alamat_kk}}</td>
                                 <td>{{$pengaduan->tanggal_pengaduan}}</td>
                                 <td>{{$pengaduan->isi_pengaduan}}</td>
                                 <td>
