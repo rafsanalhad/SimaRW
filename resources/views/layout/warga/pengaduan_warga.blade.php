@@ -23,22 +23,22 @@
                         </thead>
                         <tbody>
                             @foreach ($pengaduan as $pengaduan)
-                            <tr>
-                                <td>{{$pengaduan->user->nama_user}}</td>
-                                <td>{{$pengaduan->user->kartuKeluarga->alamat_kk}}</td>
-                                <td>{{$pengaduan->tanggal_pengaduan}}</td>
-                                <td>{{$pengaduan->isi_pengaduan}}</td>
-                                <td>{{ $pengaduan->alasan_tolak }}</td>
-                                <td>
-                                @if ($pengaduan->status_pengaduan == 'Diproses')
-                                    <a href="#" class="btn btn-primary">Diproses</a>
-                                @elseif ($pengaduan->status_pengaduan == 'Selesai')
-                                    <a href="#" class="btn btn-success">Diterima</a>
-                                @else
-                                    <a href="#" onclick="showTolak()" class="btn btn-danger">Ditolak</a>
-                                @endif
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $pengaduan->user->nama_user }}</td>
+                                    <td>{{ $pengaduan->user->kartuKeluarga->alamat_kk }}</td>
+                                    <td>{{ $pengaduan->tanggal_pengaduan }}</td>
+                                    <td>{{ $pengaduan->isi_pengaduan }}</td>
+                                    <td>{{ $pengaduan->alasan_tolak }}</td>
+                                    <td>
+                                        @if ($pengaduan->status_pengaduan == 'Diproses')
+                                            <a href="#" class="btn btn-primary">Diproses</a>
+                                        @elseif ($pengaduan->status_pengaduan == 'Selesai')
+                                            <a href="#" class="btn btn-success">Diterima</a>
+                                        @else
+                                            <a href="#" onclick="showTolak()" class="btn btn-danger">Ditolak</a>
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -55,7 +55,8 @@
                     <h5 class="modal-title">Tambah Pengaduan</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="/warga/tambah-pengaduan" method="POST" class="form-horizontal row" enctype="multipart/form-data">
+                    <form action="/warga/tambah-pengaduan" method="POST" class="form-horizontal row"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->user_id }}">
                         <div class="col-md-4">
@@ -103,7 +104,8 @@
                             <div class="form-group row">
                                 <label for="bukti_pengaduan" class="col-form-label">Bukti Pengaduan:</label>
                                 <div class="col-sm-12">
-                                    <input type="file" name="bukti_pengaduan" id="bukti_pengaduan" class="form-control" accept="image/*">
+                                    <input type="file" name="bukti_pengaduan" id="bukti_pengaduan" class="form-control"
+                                        accept="image/*">
                                 </div>
                             </div>
                         </div>
@@ -136,14 +138,14 @@
                     <h5 class="modal-title">Alasan penolakan</h5>
                 </div>
                 <div class="modal-body">
-                        <div class="row mb-5">
-                            Data yang dimasukan tidak valid
-                        </div>
+                    <div class="row mb-5">
+                        Data yang dimasukan tidak valid
+                    </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                onclick=hideTolak()>Tutup</button>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            onclick=hideTolak()>Tutup</button>
+                    </div>
                 </div>
             </div>
         </div>
