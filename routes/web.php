@@ -34,6 +34,7 @@ use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\RT\KelolaNKKController;
+use App\Http\Controllers\Warga\TemplateSurat;
 use App\Http\Controllers\RT\RTKelolaKegiatanController;
 use App\Http\Controllers\RT\RTUbahPasswordController;
 use App\Http\Controllers\Warga\DashboardController;
@@ -298,6 +299,9 @@ Route::middleware(['auth'])->group(function () {
             // Route Pengajuan Surat
             Route::get('/pengajuan-surat', [PengajuanSuratController::class, 'index']);
             Route::post('/tambah-surat', [PengajuanSuratController::class, 'createSurat']);
+            Route::get('/template-surat', [TemplateSurat::class, 'index']);
+
+            Route::get('/download-surat-kk', [TemplateSurat::class, 'downloadSuratKk'])->name('downloadSuratKk');
 
             // Route Laporan Iuran
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);
