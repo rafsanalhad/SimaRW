@@ -7,13 +7,14 @@ use App\Models\DetailPengeluaranModel;
 use App\Models\IuranModel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     //
     public function index() {
         $pengeluaran = DetailPengeluaranModel::with('user')->orderBy('detail_pengeluaran_id', 'DESC')->take(5)->get();
         $pengeluaranDesc = DetailPengeluaranModel::orderBy('detail_pengeluaran_id', 'DESC')->take(5)->get();
+        $user = Auth::user();
 
         $resultsPemasukan = IuranModel::selectRaw('COUNT(*) as total')
             ->where('status', 'Lunas')
@@ -32,7 +33,7 @@ class DashboardController extends Controller
         $total = ($total + $pemasukanTotal) - $pengeluaranTotal;
         $formattedTotal = number_format($total, 0, '', '.');
 
-        return view('layout.warga.dashboard', ['no' => 1, 'pengeluaran' => $pengeluaran, 'pengeluaranTerbaru' => $pengeluaranDesc, 'total' => $formattedTotal, 'category' => ['Pemasukan', 'Pengeluaran']]);
+        return view('layout.warga.dashboard', ['user' => $user, 'no' => 1, 'pengeluaran' => $pengeluaran, 'pengeluaranTerbaru' => $pengeluaranDesc, 'total' => $formattedTotal, 'category' => ['Pemasukan', 'Pengeluaran']]);
     }
 
     public function getBarChart() {
