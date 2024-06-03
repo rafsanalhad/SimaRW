@@ -71,6 +71,8 @@
     </div>
 
     <script>
+        $('#submenu-kelola-bansos').addClass('show');
+        $('#menu-kelola-bansos').removeClass('text-dark').addClass('text-primary');
         function showTambahBansos(idPengajuan) {
             $.ajax({
                 url: '/admin/get-file/' + idPengajuan,

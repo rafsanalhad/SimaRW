@@ -56,6 +56,8 @@
     </div>
 
     <script>
+        $('#submenu-kelola-bansos').addClass('show');
+        $('#menu-history-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-warga');
     </script>
 @endsection

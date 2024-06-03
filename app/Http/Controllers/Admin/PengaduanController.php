@@ -14,8 +14,15 @@ class PengaduanController extends Controller
         return view('layout.admin.laporan_pengaduan', ['laporan' => $laporan, 'no' => 1]);
     }
 
-    public function updateTolakPengaduan($id) {
-        PengaduanWargaModel::where('pengaduan_id', $id)->update(['status_pengaduan' => 'Ditolak']);
+    public function updateTolakPengaduan(Request $request, $id) {
+        $request->validate([
+            'alasan_penolakan' => 'required'
+        ]);
+
+        PengaduanWargaModel::where('pengaduan_id', $id)->update([
+            'status_pengaduan' => 'Ditolak',
+            'alasan_tolak' => $request->alasan_penolakan
+        ]);
 
         return redirect('/admin/laporan-pengaduan');
     }

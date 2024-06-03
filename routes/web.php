@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminUbahPasswordController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\ProfilAdminController;
 use App\Http\Controllers\RT\KelolaWargaController;
+use App\Http\Controllers\RT\RTBansosController;
 use App\Http\Controllers\RT\RTUMKMController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RT\ProfileRTController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTKelolaSuratController;
 use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\RT\KelolaNKKController;
+use App\Http\Controllers\Warga\TemplateSurat;
 use App\Http\Controllers\RT\RTKelolaKegiatanController;
 use App\Http\Controllers\RT\RTUbahPasswordController;
 use App\Http\Controllers\Warga\DashboardController;
@@ -166,7 +168,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
-            Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
+            Route::post('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
             Route::get('/terima-pengaduan/{id}', [PengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
             Route::get('/history-pengaduan', [PengaduanController::class, 'historyPengaduan']);
 
@@ -204,6 +206,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
             Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
+            Route::get('/download-warga', [KelolaWargaController::class, 'downloadExcelWarga']);
 
             // Route Kelola NKK
             Route::get('/kelola-nkk', [KelolaNKKController::class, 'showKK']);
@@ -211,6 +214,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-nkk/edit/{id}', [KelolaNKKController::class, 'editNKK']);
             Route::post('/kelola-nkk/update/{id}', [KelolaNKKController::class, 'updateNKK'])->name('updateNKK');
             Route::get('/kelola-nkk/delete/{id}', [KelolaNKKController::class, 'deleteNKK']);
+            Route::get('/download-nkk', [KelolaNKKController::class, 'downloadExcelNKK']);
 
             // kelola UMKM
             Route::get('/kelola-umkm', [RTUMKMController::class, 'kelolaUmkm']);
@@ -220,17 +224,22 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-umkm/delete/{id}', [RTUMKMController::class, 'deleteUmkm']);
 
             // iuran
-            Route::get('/kelola-iuran', [RTController::class, 'kelolaIuran']);
+            Route::get('/kelola-iuran', [RTKelolaIuranController::class, 'kelolaIuran']);
+            Route::post('kelola-iuran', [RTKelolaIuranController::class, 'createIuran']);
             Route::get('/laporan-iuran', [RTKelolaIuranController::class, 'laporanIuran']);
+            Route::get('/download-iuran', [RTKelolaIuranController::class, 'downloadExcel']);
 
             // Bansos
-            Route::get('/kelola-bansos', [RTController::class, 'kelolaBansos']);
-            Route::get('/penerima-bansos', [RTController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [RTController::class, 'rekomendasiBansos']);
+            Route::get('/kelola-bansos', [RTBansosController::class, 'kelolaBansos']);
+            Route::get('/penerima-bansos', [RTBansosController::class, 'historyBansos']);
+            Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
+            Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
+            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
+            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
 
             // Laporan Pengaduan
             Route::get('/laporan-pengaduan', [RTPengaduanController::class, 'laporanPengaduan']);
-            Route::get('/tolak-pengaduan/{id}', [RTPengaduanController::class, 'updateTolakPengaduan'])->name('RTtolakPengaduan');
+            Route::post('/tolak-pengaduan/{id}', [RTPengaduanController::class, 'updateTolakPengaduan'])->name('RTtolakPengaduan');
             Route::get('/terima-pengaduan/{id}', [RTPengaduanController::class, 'updateTerimaPengaduan'])->name('RT terimaPengaduan');
             Route::get('/history-pengaduan', [RTPengaduanController::class, 'historyPengaduan']);
 
@@ -244,10 +253,10 @@ Route::middleware(['auth'])->group(function () {
 
             // kelola kegiatan warga
             Route::get('/kegiatan-warga', [RTKelolaKegiatanController::class, 'kelolaKegiatan']);
-            // Route::get('/kegiatan-warga', [KelolaDataController::class, 'createKegiatan'])->name('createKegiatan');
-            // Route::get('/kegiatan-warga/edit/{id}', [KelolaDataController::class, 'editKegiatan']);
-            // Route::get('/kegiatan-warga/update/{id}', [KelolaDataController::class, 'updateKegiatan']);
-            // Route::get('/kegiatan-warga/delete/{id}', [KelolaDataController::class, 'deleteKegiatan']);
+            Route::post('/kegiatan-warga', [RTKelolaKegiatanController::class, 'createKegiatan'])->name('createKegiatan');
+            Route::get('/kegiatan-warga/edit/{id}', [RTKelolaKegiatanController::class, 'editKegiatan']);
+            Route::get('/kegiatan-warga/update/{id}', [RTKelolaKegiatanController::class, 'updateKegiatan']);
+            Route::get('/kegiatan-warga/delete/{id}', [RTKelolaKegiatanController::class, 'deleteKegiatan']);
         });
     });
     // Route::group(['middleware' => ['CekLogin:3']], function() {
@@ -298,6 +307,9 @@ Route::middleware(['auth'])->group(function () {
             // Route Pengajuan Surat
             Route::get('/pengajuan-surat', [PengajuanSuratController::class, 'index']);
             Route::post('/tambah-surat', [PengajuanSuratController::class, 'createSurat']);
+            Route::get('/template-surat', [TemplateSurat::class, 'index']);
+
+            Route::get('/download-surat-kk', [TemplateSurat::class, 'downloadSuratKk'])->name('downloadSuratKk');
 
             // Route Laporan Iuran
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);

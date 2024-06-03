@@ -26,8 +26,6 @@ class UmkmRequest extends FormRequest
             'nama_umkm' => 'required',
             'alamat_umkm' => 'required',
             'kontak_umkm' => 'required',
-            'latitude_umkm' => 'required',
-            'longitude_umkm' => 'required',
             'jam_operasional_awal' => 'required',
             'jam_operasional_akhir' => 'required',
             'deskripsi_umkm' => 'required',
