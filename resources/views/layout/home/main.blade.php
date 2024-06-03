@@ -276,7 +276,7 @@
                             <img src="{{ @asset('assets/images/logos/logo.png') }}" alt="">
                         </div>
                         <div class="footer_right">
-                            @copyright2024
+                            @Copyright Kelompok 5 TI-2G
                         </div>
                     </div>
                 </div>
