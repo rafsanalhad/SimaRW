@@ -54,11 +54,10 @@
                                 <h5 class="card-title fw-semibold">Grafik Pengeluaran Iuran</h5>
                             </div>
                             <div>
-                                <select class="form-select">
-                                    <option value="1">March 2023</option>
-                                    <option value="2">April 2023</option>
-                                    <option value="3">May 2023</option>
-                                    <option value="4">June 2023</option>
+                                <select class="form-select" id="filterTahun">
+                                    @foreach ($tahun as $t)
+                                        <option value="{{ $t->tahun }}">{{ $t->tahun }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -84,7 +83,7 @@
                                                 class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
                                                 <i class="ti ti-arrow-up-left text-success"></i>
                                             </span>
-                                            <p class="text-dark me-1 fs-3 mb-0">+9%</p>
+                                            <p class="text-dark me-1 fs-3 mb-0" id="percen">+9%</p>
                                             <p class="fs-3 mb-0">last year</p>
                                         </div>
                                         <div class="d-flex align-items-center">
@@ -107,6 +106,9 @@
                 </div>
             </div>
         </div>
+        @if ($pengeluaranTerbaru->isEmpty())
+        {{-- <p>no data</p> --}}
+        @else
         <div class="row">
             <div class="col-lg-4 d-flex align-items-stretch">
                 <div class="card w-100">
@@ -230,7 +232,7 @@
                 </div>
             </div>
         </div>
-       
+        @endif
     </div>
     <div class="modal modal_umkm" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
