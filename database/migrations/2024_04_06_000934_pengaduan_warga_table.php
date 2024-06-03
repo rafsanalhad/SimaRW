@@ -19,7 +19,9 @@ return new class extends Migration
             $table->text('isi_pengaduan');
             $table->string('nomor_rt');
             $table->string('nomor_rw');
+            $table->text('gambar_pengaduan')->nullable();
             $table->string('status_pengaduan', 25);
+            $table->text('alasan_tolak')->nullable();
             $table->timestamps();
         });
     }
