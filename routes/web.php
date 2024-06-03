@@ -167,7 +167,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
-            Route::get('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
+            Route::post('/tolak-pengaduan/{id}', [PengaduanController::class, 'updateTolakPengaduan'])->name('tolakPengaduan');
             Route::get('/terima-pengaduan/{id}', [PengaduanController::class, 'updateTerimaPengaduan'])->name('terimaPengaduan');
             Route::get('/history-pengaduan', [PengaduanController::class, 'historyPengaduan']);
 
