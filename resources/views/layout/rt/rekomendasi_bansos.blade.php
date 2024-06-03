@@ -39,6 +39,8 @@
     </div>
     </div>
     <script>
+             $('#submenu-kelola-bansos').addClass('show');
+        $('#menu-penerima-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-bansos');
     </script>
 @endsection

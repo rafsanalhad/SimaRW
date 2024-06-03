@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class PengaduanController extends Controller
 {
     public function index(){
-        $pengaduan = PengaduanWargaModel::where('user_id', Auth::user()->user_id)->get();
+        $pengaduan = PengaduanWargaModel::with(['user.kartuKeluarga'])->where('user_id', Auth::user()->user_id)->get();
 
         return view('layout.warga.pengaduan_warga',['pengaduan' => $pengaduan]);
     }

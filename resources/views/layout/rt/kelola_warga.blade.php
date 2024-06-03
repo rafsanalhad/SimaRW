@@ -444,6 +444,8 @@
         }
     </script>
     <script>
+            $('#submenu-kelola-data').addClass('show');
+        $('#menu-kelola-warga').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-warga');
     </script>
 @endsection

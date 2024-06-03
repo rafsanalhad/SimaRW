@@ -100,29 +100,33 @@
                     </div>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/admin/kelola-bansos') }}" aria-expanded="false">
+                    <a class="sidebar-link menu-kelola-bansos" href="#submenu-kelola-bansos" data-bs-toggle="collapse"
+                        aria-expanded="false">
                         <span>
-                            <i class="bi bi-cash-coin"></i>
+                            <i class="ti ti-wallet"></i>
                         </span>
-                        <span class="hide-menu">Kelola Bansos</span>
+                        <span class="hide-menu">Bansos</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
+                    <div class="collapse" id="submenu-kelola-bansos">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-kelola-bansos"
+                                    href=" {{ url('/admin/kelola-bansos') }}">Kelola Bansos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-history-bansos"
+                                    href="{{ url('/admin/penerima-bansos') }}">History Pengajuan Bansos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-penerima-bansos"
+                                    href="{{ url('/admin/rekomendasi-bansos') }}">Penerima Bansos</a>
+                            </li>
+                            <!-- Add more submenu items as needed -->
+                        </ul>
+                    </div>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/admin/penerima-bansos') }}" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-bookmark-check"></i>
-                        </span>
-                        <span class="hide-menu">History Pengajuan Bansos</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/admin/rekomendasi-bansos') }}" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-person-check"></i>
-                        </span>
-                        <span class="hide-menu">Penerima Bansos</span>
-                    </a>
-                </li>
+               
                 <li class="sidebar-item">
                     <a class="sidebar-link menu-laporan" href="#submenu-laporan-pengaduan" data-bs-toggle="collapse"
                         aria-expanded="false">
@@ -163,6 +167,7 @@
 <script>
     let kelolaData = document.getElementsByClassName('menu-kelola-data');
     let kelolaIuran = document.getElementsByClassName('menu-kelola-iuran');
+    let kelolaBansos = document.getElementsByClassName('menu-kelola-bansos');
     let laporan = document.getElementsByClassName('menu-laporan');
     let sidebar = document.getElementsByClassName('sidebar-item');
     console.log(kelolaData);
@@ -176,6 +181,13 @@
     }
     for (let i = 0; i < kelolaIuran.length; i++) {
         kelolaIuran[i].addEventListener('click', function() {
+            for (let j = 0; j < sidebar.length; j++) {
+                sidebar[j].classList.remove('selected');
+            }
+        });
+    }
+    for (let i = 0; i < kelolaBansos.length; i++) {
+        kelolaBansos[i].addEventListener('click', function() {
             for (let j = 0; j < sidebar.length; j++) {
                 sidebar[j].classList.remove('selected');
             }

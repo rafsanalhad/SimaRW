@@ -56,29 +56,33 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/warga/pengajuan-bansos') }}" aria-expanded="false">
+                    <a class="sidebar-link menu-kelola-bansos" href="#submenu-kelola-bansos" data-bs-toggle="collapse"
+                        aria-expanded="false">
                         <span>
-                            <i class="bi bi-envelope-paper"></i>
+                            <i class="ti ti-wallet"></i>
                         </span>
-                        <span class="hide-menu">Pengajuan Bansos</span>
+                        <span class="hide-menu">Bansos</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
+                    <div class="collapse" id="submenu-kelola-bansos">
+                        <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-pengajuan-bansos"
+                                    href=" {{ url('/warga/pengajuan-bansos') }}">Pengajuan Bansos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-history-bansos"
+                                    href="{{ url('/warga/penerima-bansos') }}">History Pengajuan Bansos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-penerima-bansos"
+                                    href="{{ url('/warga/rekomendasi-bansos') }}">Penerima Bansos</a>
+                            </li>
+                            <!-- Add more submenu items as needed -->
+                        </ul>
+                    </div>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/warga/penerima-bansos') }}" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-bookmark-check"></i>
-                        </span>
-                        <span class="hide-menu">History Pengajuan Bansos</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href=" {{ url('/warga/rekomendasi-bansos') }}" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-person-check"></i>
-                        </span>
-                        <span class="hide-menu">Penerima Bansos</span>
-                    </a>
-                </li>
+               
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/pengajuan-surat') }}" aria-expanded="false">
                         <span>
@@ -87,9 +91,27 @@
                         <span class="hide-menu">Pengajuan Surat</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/warga/template-surat') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-envelope-arrow-up"></i>
+                        </span>
+                        <span class="hide-menu">Template Surat</span>
+                    </a>
+                </li>
 
         </nav>
         <!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->
 </aside>
+<script>
+    let kelolaBansos = document.getElementsByClassName('menu-kelola-bansos');
+          for (let i = 0; i < kelolaBansos.length; i++) {
+        kelolaBansos[i].addEventListener('click', function() {
+            for (let j = 0; j < sidebar.length; j++) {
+                sidebar[j].classList.remove('selected');
+            }
+        });
+    }
+</script>

@@ -23,8 +23,8 @@
                         <tbody>
                             @foreach ($pengaduan as $pengaduan)
                             <tr>
-                                <td>{{$pengaduan->user_id}}</td>
-                                <td>alamat</td>
+                                <td>{{$pengaduan->user->nama_user}}</td>
+                                <td>{{$pengaduan->user->kartuKeluarga->alamat_kk}}</td>
                                 <td>{{$pengaduan->tanggal_pengaduan}}</td>
                                 <td>{{$pengaduan->isi_pengaduan}}</td>
                                 <td>
@@ -33,7 +33,7 @@
                                 @elseif ($pengaduan->status_pengaduan == 'Selesai')
                                     <a href="#" class="btn btn-success">Diterima</a>
                                 @else
-                                    <a href="#" class="btn btn-danger">Ditolak</a>
+                                    <a href="#" onclick="showTolak()" class="btn btn-danger">Ditolak</a>
                                 @endif
                                 </td>
                             </tr>
@@ -127,8 +127,24 @@
         </div>
     </div>
 
-    <div class="modal">
+    <div class="modal modal_tolak" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Alasan penolakan</h5>
+                </div>
+                <div class="modal-body">
+                        <div class="row mb-5">
+                            Data yang dimasukan tidak valid
+                        </div>
 
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                onclick=hideTolak()>Tutup</button>
+                        </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -141,6 +157,14 @@
 
         function hideTambahPengaduan() {
             $('.modal_tambah_pengaduan').modal('hide');
+        }
+
+        function showTolak() {
+            $('.modal_tolak').modal('show');
+        }
+
+        function hideTolak() {
+            $('.modal_tolak').modal('hide');
         }
     </script>
 @endsection

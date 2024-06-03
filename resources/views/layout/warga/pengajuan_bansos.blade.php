@@ -108,6 +108,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+          $('#submenu-kelola-bansos').addClass('show');
+        $('#menu-pengajuan-bansos').removeClass('text-dark').addClass('text-primary');
         document.getElementById("btnAjukanBansos").addEventListener("click", function() {
             Swal.fire({
                 title: "Berhasil!",

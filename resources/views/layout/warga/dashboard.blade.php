@@ -19,11 +19,7 @@
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ url('/assets/images/profile/user-1.jpg') }}" alt="" width="35"
-                                height="35" class="rounded-circle">
-                        </a>
+                        @include('components.profil')
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
                                 <a href="{{ url('/warga/profil-warga') }}"
@@ -232,34 +228,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-xl-3">
-                <div class="card overflow-hidden rounded-2" onclick=showModalUmkm()>
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="{{ @asset('assets/images/products/s4.jpg') }}"
-                                class="card-img-top rounded-0" alt="..."></a>
-                        <a href="javascript:void(0)"
-                            class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                class="ti ti-basket fs-4"></i></a>
-                    </div>
-                    <div class="card-body pt-3 p-4">
-                        <h6 class="fw-semibold fs-4">Toko Kelontong Pak Alhad wibu wibu anjay kau</h6>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-semibold fs-1 mb-0">Jam Operasional: 08.00 - 19.00</p>
-                            {{-- <ul class="list-unstyled d-flex align-items-center mb-0">
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-              <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-            </ul> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
     <div class="modal modal_umkm" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
@@ -384,7 +352,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ @asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script>
         function showModalUmkm() {
             $('.modal_umkm').modal('show');
