@@ -1,6 +1,6 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         <div class="card shadow-lg">
@@ -12,7 +12,10 @@
                         <th>Nama Warga</th>
                         <th>Tanggal Pengaduan</th>
                         <th>Alamat</th>
+                        <th>RT</th>
+                        <th>RW</th>
                         <th>Isi Pengaduan</th>
+                        <th>Bukti Pengaduan</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -24,10 +27,16 @@
                                 </td>
                                 <td>{{ $laporan->tanggal_pengaduan }}</td>
                                 <td>{{ $laporan->user->alamat_user }}</td>
+                                <td>{{ $laporan->nomor_rt }}</td>
+                                <td>{{ $laporan->nomor_rw }}</td>
                                 <td>{{ $laporan->isi_pengaduan }}</td>
+                                <td><img width="200px" src="{{ asset('storage/' . $laporan->gambar_pengaduan) }}"
+                                        alt="Gambar Bukti Pengaduan"></td>
                                 <td class="d-flex gap-2">
-                                    <button class="btn btn-danger" onclick="showTolak()">Tolak</button>
-                                    <a href="{{ route('terimaPengaduan', $laporan->pengaduan_id) }}" class="btn btn-success">Terima</a>
+                                    <a href="#" onclick="showTolak({{ $laporan->pengaduan_id }})"
+                                        class="btn btn-danger">Tolak</a>
+                                    <a href="/rt/terima-pengaduan/{{ $laporan->pengaduan_id }}"
+                                        class="btn btn-success">Terima</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -35,6 +44,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 
     <div class="modal modal_tolak" tabindex="-1" role="dialog">
@@ -44,15 +54,12 @@
                     <h5 class="modal-title">Alasan penolakan</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('tolakPengaduan', $laporan->pengaduan_id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
-
+                    <form action="" id="alasanPenolakanPengaduan" method="POST" class="form-horizontal">
+                        @csrf
                         <div class="row mb-2">
                             <label class="col-12 control-label col-form-label">Masukan Alasan Penolakan : </label>
-                            <div class="col-10">
-                                <textarea name="alasan_penolakan" id="alasan_penolakan" cols="100" rows="10"></textarea>
-                                @error('nama_user')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
+                            <div class="col-12">
+                                <textarea class="form-control" name="alasan_penolakan" id="alasan_penolakan" cols="100" rows="10"></textarea>
                             </div>
                         </div>
 
@@ -74,7 +81,9 @@
         $('#submenu-laporan-pengaduan').addClass('show');
         $('#menu-laporan-pengaduan').removeClass('text-dark').addClass('text-primary');
 
-        function showTolak() {
+        function showTolak(idPengaduan) {
+            $('#alasanPenolakanPengaduan').attr('action', '/rt/tolak-pengaduan/' + idPengaduan);
+
             $('.modal_tolak').modal('show');
         }
 
@@ -83,4 +92,3 @@
         }
     </script>
 @endsection
-

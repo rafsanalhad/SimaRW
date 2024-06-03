@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\rt;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Exports\NKKExportExcel;
 use App\Http\Requests\NKKRequest;
 use App\Models\KartuKeluargaModel;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KelolaNKKController extends Controller
 {
@@ -52,5 +54,10 @@ class KelolaNKKController extends Controller
         KartuKeluargaModel::destroy($id);
 
         return redirect('/rt/kelola-nkk');
+    }
+
+    // Function download nkk excel
+    public function downloadExcelNKK() {
+        return Excel::download(new NKKExportExcel, 'rekap_data_nkk.xlsx');
     }
 }

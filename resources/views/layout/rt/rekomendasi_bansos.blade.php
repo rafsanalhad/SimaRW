@@ -1,5 +1,6 @@
 @extends('template.rt.main')
 @section('content')
+    @include('template.rt.header')
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
@@ -17,21 +18,28 @@
                             <th>No</th>
                             <th>Nama Kepala Keluarga</th>
                             <th>NKK</th>
-                            <th>Rerata Gaji Keluarga</th>
+                            <th>Total Pendapatan Keluarga</th>
+                            <th>Jumlah Anggota Keluarga</th>
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
-                        <tbody>
-                            <td>1</td>
-                            <td>Rizky Arifiansyah</td>
-                            <td>37826842897490</td>
-                            <td>Rp. 5.000.000</td>
-                            <td>3 orang</td>
-                            <td>
-                                <div class="badge bg-success">Menerima Bansos</div>
-                                <div class="badge bg-danger">Tidak Menerima Bansos</div>
-                            </td>
-                        </tbody>
+                        @foreach ($bansosRekom as $bansos)
+                            <tbody>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
+                                <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
+                                <td>Rp. {{ $bansos->total_gaji }}</td>
+                                <td>{{ $bansos->user_count }} Orang</td>
+                                <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
+                                <td>
+                                    @if ($bansos->status == 'Layak')
+                                        <div class="btn btn-success">Layak Menerima Bansos</div>
+                                    @else
+                                        <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
+                                    @endif
+                                </td>
+                            </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>
@@ -39,7 +47,7 @@
     </div>
     </div>
     <script>
-             $('#submenu-kelola-bansos').addClass('show');
+        $('#submenu-kelola-bansos').addClass('show');
         $('#menu-penerima-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-bansos');
     </script>
