@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RT;
 use App\Http\Controllers\Controller;
 use App\Models\DetailPengeluaranModel;
 use App\Models\IuranModel;
+use App\Models\MigrasiIuran;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,24 +13,11 @@ class DashboardController extends Controller
     public function index() {
         $pengeluaran = DetailPengeluaranModel::with('user')->orderBy('detail_pengeluaran_id', 'DESC')->take(5)->get();
         $pengeluaranDesc = DetailPengeluaranModel::orderBy('detail_pengeluaran_id', 'DESC')->take(5)->get();
+        $tahun = MigrasiIuran::selectRaw('YEAR(tanggal_migrasi) as tahun')->orderBy('tahun', 'DESC')->distinct()->get();
+        $resultSaldo = MigrasiIuran::orderBy('migrasi_iuran_id', 'DESC')->first();
 
-        $resultsPemasukan = IuranModel::selectRaw('COUNT(*) as total')
-            ->where('status', 'Lunas')
-            ->distinct()
-            ->count();
-        $pemasukanTotal = $resultsPemasukan * 30000;
-        
-        $resultsPengeluaran = DetailPengeluaranModel::selectRaw('SUM(jumlah_pengeluaran) as total')
-            ->distinct()
-            ->get();
-        $pengeluaranTotal = 0;
-        foreach ($resultsPengeluaran as $r) {
-            $pengeluaranTotal = $r->total;
-        }
-        $total = 0;
-        $total = ($total + $pemasukanTotal) - $pengeluaranTotal;
-        $formattedTotal = number_format($total, 0, '', '.');
+        $formattedTotal = number_format($resultSaldo->sisa_saldo, 0, '', '.');
 
-        return view('layout.rt.dashboard', ['no' => 1, 'pengeluaran' => $pengeluaran, 'pengeluaranTerbaru' => $pengeluaranDesc, 'total' => $formattedTotal, 'category' => ['Pemasukan', 'Pengeluaran']]);
+        return view('layout.rt.dashboard', ['no' => 1, 'pengeluaran' => $pengeluaran, 'pengeluaranTerbaru' => $pengeluaranDesc, 'total' => $formattedTotal, 'category' => ['Pemasukan', 'Pengeluaran'], 'tahun' => $tahun]);
     }
 }

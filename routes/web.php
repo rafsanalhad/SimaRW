@@ -82,8 +82,8 @@ Route::get('/new-password', [ForgotPasswordController::class, 'pageNewPass']);
 Route::post('/new-password', [ForgotPasswordController::class, 'newPassword']);
 
 // Route get data chart dashboard (sementara)
-Route::get('/dashboard/getBarChart', [DashboardController::class, 'getBarChart'])->name('getBarChart');
-Route::get('/dashboard/getPieChart', [DashboardController::class, 'getPieChart'])->name('getPieChart');
+Route::get('/dashboard/getBarChart/{tahun}', [DashboardController::class, 'getBarChart'])->name('getBarChart');
+Route::get('/dashboard/getPieChart/{tahun}', [DashboardController::class, 'getPieChart'])->name('getPieChart');
 
 // Route Check Role
 Route::middleware(['auth'])->group(function () {

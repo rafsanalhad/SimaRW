@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
         PengumumanModel::factory(3)->create();
 
         // Call factory for Detail Pengeluaran table
-        DetailPengeluaranModel::factory(5)->create();
+        // DetailPengeluaranModel::factory(5)->create();
 
         // Create Seed Migrasi Iuran Table
         DB::table('migrasi_iuran')->insert([
