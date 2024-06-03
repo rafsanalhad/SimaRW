@@ -352,7 +352,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ @asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script>
         function showModalUmkm() {
             $('.modal_umkm').modal('show');
