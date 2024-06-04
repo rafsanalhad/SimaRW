@@ -157,8 +157,8 @@ Route::middleware(['auth'])->group(function () {
             // Route Kelola Bansos
             Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
             Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
-            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
-            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+            Route::get('/terima-bansos/{id}', [AdminBansos::class, 'terimaPengajuan']);
+            Route::post('/tolak-bansos/{id}', [AdminBansos::class, 'tolakPengajuan']);
 
             // Route History Bansos
             Route::get('/penerima-bansos', [AdminBansos::class, 'historyBansos']);

@@ -95,6 +95,9 @@
         $('#submenu-kelola-bansos').addClass('show');
         $('#menu-kelola-bansos').removeClass('text-dark').addClass('text-primary');
         function showTambahBansos(idPengajuan) {
+            $('#alasanPenolakanPengaduan').hide();
+            $('#terimaPengajuan').show();
+            $('#tolakPengajuan').show();
             $.ajax({
                 url: '/admin/get-file/' + idPengajuan,
                 type: 'GET',
@@ -112,16 +115,13 @@
                     });
 
                     $('#pdfViewer').attr('src', fileURL);
-
-                    $('#alasanPenolakanPengaduan').hide();
-                    $('#terimaPengajuan').show();
-                    $('#tolakPengajuan').show();
                 }
             })
 
             $('.modal_bansos').modal('show');
 
             $('#terimaPengajuan').attr('href', '/admin/pengajuan/terima/' + idPengajuan);
+            $('#alasanPenolakanPengaduan').attr('action', '/admin/tolak-bansos/' + idPengajuan);
 
             $('#tolakPengajuan').click(function(){
                 $('#alasanPenolakanPengaduan').show();
@@ -133,7 +133,6 @@
                 $('#alasanPenolakanPengaduan').hide();
                 $('#terimaPengajuan').show();
                 $('#tolakPengajuan').show();
-                console.log("Tombol kembaliModal ditekan");
             });
         }
 
