@@ -30,7 +30,7 @@
     <script src="{{ @asset('assets/js/app.min.js') }}"></script>
     <script src="{{ @asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ @asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
-    <script src="{{ @asset('assets/js/dashboard.js') }}"></script>
+    {{-- <script src="{{ @asset('assets/js/dashboard.js') }}"></script> --}}
     <script src="{{ url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css') }}"></script>
 </body>
 

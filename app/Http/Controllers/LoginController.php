@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -15,6 +16,11 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $user = Auth::user();
+            $session = [
+                'nama' => $user->nama_user,
+                'role_id' => $user->role_id,
+            ];
+            Session::put($session);
 
             if($user->role_id == 1) {
                 if($user->is_first_login) {

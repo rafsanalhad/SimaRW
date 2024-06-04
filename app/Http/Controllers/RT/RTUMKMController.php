@@ -35,17 +35,11 @@ class RTUMKMController extends Controller
             'gambar_umkm' => $foto_umkm
         ]);
 
-        LokasiUmkmModel::create([
-            'umkm_id' => $umkm->umkm_id,
-            'latitude_umkm' => $request->latitude_umkm,
-            'longitude_umkm' => $request->longitude_umkm
-        ]);
-
         return redirect('/rt/kelola-umkm');
     }
 
     public function editUmkm($id) {
-        $umkm = UmkmModel::with('lokasi')->find($id);
+        $umkm = UmkmModel::find($id);
 
         return response()->json($umkm);
     }
@@ -58,18 +52,28 @@ class RTUMKMController extends Controller
             Storage::disk('public')->delete('Umkm-Images/' . $old_foto);
 
             $foto_umkm = Storage::disk('public')->put('Umkm-Images', $request->file('foto_umkm'));
-        }
 
-        UmkmModel::where('umkm_id', $id)->update([
-            'user_id' => $request->pemilik_umkm,
-            'nama_umkm' => $request->nama_umkm,
-            'alamat_umkm' => $request->alamat_umkm,
-            'kontak_umkm' => $request->kontak_umkm,
-            'jam_operasional_awal' => $request->jam_operasional_awal,
-            'jam_operasional_akhir' => $request->jam_operasional_akhir,
-            'deskripsi_umkm' => $request->deskripsi_umkm,
-            'gambar_umkm' => $foto_umkm
-        ]);
+            UmkmModel::where('umkm_id', $id)->update([
+                'user_id' => $request->pemilik_umkm,
+                'nama_umkm' => $request->nama_umkm,
+                'alamat_umkm' => $request->alamat_umkm,
+                'kontak_umkm' => $request->kontak_umkm,
+                'jam_operasional_awal' => $request->jam_operasional_awal,
+                'jam_operasional_akhir' => $request->jam_operasional_akhir,
+                'deskripsi_umkm' => $request->deskripsi_umkm,
+                'gambar_umkm' => $foto_umkm
+            ]);
+        } else {
+            UmkmModel::where('umkm_id', $id)->update([
+                'user_id' => $request->pemilik_umkm,
+                'nama_umkm' => $request->nama_umkm,
+                'alamat_umkm' => $request->alamat_umkm,
+                'kontak_umkm' => $request->kontak_umkm,
+                'jam_operasional_awal' => $request->jam_operasional_awal,
+                'jam_operasional_akhir' => $request->jam_operasional_akhir,
+                'deskripsi_umkm' => $request->deskripsi_umkm,
+            ]);
+        }
 
         return redirect('/rt/kelola-umkm');
     }

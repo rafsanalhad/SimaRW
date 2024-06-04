@@ -1,6 +1,6 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         <div class="card shadow-lg">
@@ -23,7 +23,19 @@
                                 </td>
                                 <td>{{ $pengaduanWarga->tanggal_pengaduan }}</td>
                                 <td>{{ $pengaduanWarga->user->alamat_user }}</td>
-                                <td>{{ $pengaduanWarga->status_pengaduan }}</td>
+                                @if ($pengaduanWarga->status_pengaduan == 'Selesai')
+                                    <td>
+                                        <span class="btn btn-success">{{ $pengaduanWarga->status_pengaduan }}</span>
+                                    </td>
+                                @elseif($pengaduanWarga->status_pengaduan == 'Ditolak')
+                                    <td>
+                                        <span class="btn btn-danger">{{ $pengaduanWarga->status_pengaduan }}</span>
+                                    </td>
+                                @else
+                                    <td>
+                                        <span class="btn btn-warning">{{ $pengaduanWarga->status_pengaduan }}</span>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -35,7 +47,7 @@
     <script>
         new DataTable('#table_history_pengaduan');
     </script>
-      <script>
+    <script>
         $('#submenu-laporan-pengaduan').addClass('show');
         $('#menu-history-pengaduan').removeClass('text-dark').addClass('text-primary');
     </script>

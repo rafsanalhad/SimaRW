@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\RT;
 
+use App\Exports\WargaExportExcel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -9,6 +10,7 @@ use App\Models\KartuKeluargaModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KelolaWargaController extends Controller
 {
@@ -80,5 +82,10 @@ class KelolaWargaController extends Controller
 
         UserModel::destroy($id);
         return redirect('/rt/kelola-warga');
+    }
+
+    // Function download excel
+    public function downloadExcelWarga() {
+        return Excel::download(new WargaExportExcel, 'rekap_data_warga.xlsx');
     }
 }

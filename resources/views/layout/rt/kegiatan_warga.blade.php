@@ -7,22 +7,23 @@
         <h4>Kelola Kegiatan Warga</h4>
         <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahKegiatan()">Tambah Baru</a>
         <div class="row">
-            @foreach ($umkm as $umkm)
+            @foreach ($kegiatan as $kegiatan)
                 <div class="col-md-4">
                     <div class="card shadow-lg" onclick="showModalKegiatan()">
                         <div class="card-body">
                             <div class="card" style="width: 18rem; height: 540px;">
-                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}" alt="Card image cap">
+                                <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Judul Kegiatan : {{ $umkm->nama_umkm }}</h5>
-                                    <p class="card-text ">Deskripsi Kegiatan : {{ $umkm->deskripsi_umkm }}</p>
-                                    <p class="card-text">Hari : {{ $umkm->user->nama_user }}</p>
-                                    <p class="card-text">Jam : {{ $umkm->jam_operasional_awal }} -
-                                        {{ $umkm->jam_operasional_akhir }}</p>
+                                    <h5 class="card-title">Nama Kegiatan : {{ $kegiatan->nama_kegiatan }}</h5>
+                                    <p class="card-text ">Deskripsi Kegiatan : {{ $kegiatan->deskripsi_kegiatan }}</p>
+                                    <p class="card-text ">Tempat Kegiatan : {{ $kegiatan->tempat_kegiatan }}</p>
+                                    <p class="card-text">Hari/Tanggal : {{ $kegiatan->hari_kegiatan }}/{{ $kegiatan->jadwal_kegiatan }}</p>
+                                    <p class="card-text">Jam : {{ $kegiatan->jam_awal }} -
+                                        {{ $kegiatan->jam_akhir }}</p>
                                     <a href="#" class="btn btn-warning"
-                                        onclick="modalEditKegiatan({{ $umkm->umkm_id }})">Edit</a>
+                                        onclick="modalEditKegiatan({{ $kegiatan->kegiatan_id }})">Edit</a>
                                     <a href="#" class="btn btn-danger"
-                                        onclick="hapusData({{ $umkm->umkm_id }})">Hapus</a>
+                                        onclick="hapusData({{ $kegiatan->kegiatan_id }})">Hapus</a>
                                 </div>
                             </div>
                         </div>
@@ -31,84 +32,53 @@
             @endforeach
         </div>
     </div>
+
     <div class="modal modal_tambah_kegiatan" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="modal-title">Tambah Kegiatan Warga</div>
+                    <div class="modal-title"></div>
                 </div>
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ url('/admin/kegiatan-warga') }}" id="form_edit" method="POST" class="form"
+                            <form action="{{ url('/rt/kegiatan-warga') }}" id="form_edit" method="POST" class="form"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Pemilik UMKM
+                                        Nama Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <select class="form-control" id="pemilik_umkm_edit" name="pemilik_umkm"
-                                            id="">
-                                            <option value="">-- Pilih Warga --</option>
-                                            @foreach ($warga as $warga)
-                                                <option value="{{ $warga->user_id }}">{{ $warga->nama_user }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" id="nama_kegiatan_edit" name="nama_kegiatan" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Nama Umkm
+                                        Tempat Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="nama_umkm_edit" name="nama_umkm" class="form-control">
+                                        <input type="text" id="tempat_kegiatan_edit" name="tempat_kegiatan" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Alamat
+                                        Jadwal Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="alamat_umkm_edit" name="alamat_umkm" class="form-control">
+                                        <input type="date" id="jadwal_kegiatan_edit" name="jadwal_kegiatan" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
                                     <div class="col-4">
-                                        Kontak
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Latitude
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" id="latitude_umkm_edit" name="latitude_umkm"
-                                            class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Longitude
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" id="longitude_umkm_edit" name="longitude_umkm"
-                                            class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center mt-3">
-                                    <div class="col-4">
-                                        Jam Operasional
+                                        Jam Kegiatan
                                     </div>
                                     <div class="col-6 d-flex">
-                                        <input type="time" id="jam_operasional_awal_edit" name="jam_operasional_awal"
+                                        <input type="time" id="jam_awal_edit" name="jam_awal"
                                             class="form-control">
                                         <span class="mx-2 my-2">s/d</span>
-                                        <input type="time" id="jam_operasional_akhir_edit" name="jam_operasional_akhir"
+                                        <input type="time" id="jam_akhir_edit" name="jam_akhir"
                                             class="form-control">
                                     </div>
                                 </div>
@@ -117,7 +87,7 @@
                                         Gambar Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <input name="foto_umkm" type="file" class="form-control" accept="image/*">
+                                        <input name="foto_kegiatan" type="file" class="form-control" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -125,7 +95,7 @@
                                         Deskripsi Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <textarea name="deskripsi_umkm" class="form-control" id="deskripsi_umkm_edit" cols="30" rows="5"></textarea>
+                                        <textarea name="deskripsi_kegiatan" class="form-control" id="deskripsi_kegiatan_edit" cols="30" rows="5"></textarea>
                                     </div>
                                 </div>
 
@@ -137,43 +107,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal modal_kegiatan" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Kegiatan Warga</h5>
-                </div>
-                <div class="modal-body">
-                    <img src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
-                    <h3>Toko Kelontong Pak Alhad</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut fringilla magna, non molestie
-                        enim.
-                        Donec convallis sagittis lacinia. Morbi eu semper erat, eget tempor libero. Sed ac risus vitae nulla
-                        semper
-                        imperdiet et non sem. Sed convallis viverra elit in varius. Integer non nisi ac eros ullamcorper
-                        finibus at
-                        pulvinar ex. Proin euismod tincidunt molestie. Fusce vestibulum elit aliquet placerat condimentum.
-                        Curabitur
-                        in libero nisi. Maecenas accumsan nec ipsum at vestibulum.</p>
-                    <div class="row">
-                        <div class="col-6">
-                            <h3 class="fs-4">Jam Operasi:</h3>
-                            <p>Setiap Hari jam 08.00 - 19.00</p>
-                        </div>
-                        <div class="col-6">
-                            <h3 class="fs-4">Kontak:</h3>
-                            <p>085763357188275</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick=hideModalKegiatan()>Close</button>
                 </div>
             </div>
         </div>
@@ -190,40 +123,39 @@
         const modalTambahKegiatan = () => {
             $('input:not([name="_token"]), textarea, select, time').val('');
 
-            $('#form_edit').attr('action', '/admin/kegiatan-warga');
+            $('#form_edit').attr('action', '/rt/kegiatan-warga');
 
-            $('.modal-title').html('Tambah UMKM');
+            $('.modal-title').html('Tambah Kegiatan Warga');
             $('.modal_tambah_kegiatan').modal('show');
         }
 
-        const modalEditKegiatan = (idUmkm) => {
+        const modalEditKegiatan = (idKegiatan) => {
             $.ajax({
-                url: '/admin/kelola-kegiatan/edit/' + idUmkm,
+                url: '/rt/kegiatan-warga/edit/' + idKegiatan,
                 type: 'GET',
                 dataType: 'json',
                 success(data) {
                     console.log(data)
-                    $('#pemilik_umkm_edit').val(data.user_id);
-                    $('#nama_umkm_edit').val(data.nama_umkm);
-                    $('#alamat_umkm_edit').val(data.alamat_umkm);
-                    $('#kontak_umkm_edit').val(data.kontak_umkm);
-                    $('#latitude_umkm_edit').val(data.lokasi.latitude_umkm);
-                    $('#longitude_umkm_edit').val(data.lokasi.longitude_umkm);
-                    $('#jam_operasional_awal_edit').val(data.jam_operasional_awal);
-                    $('#jam_operasional_akhir_edit').val(data.jam_operasional_akhir);
-                    $('#deskripsi_umkm_edit').val(data.deskripsi_umkm);
+                    $('#nama_kegiatan_edit').val(data.nama_kegiatan);
+                    $('#tempat_kegiatan_edit').val(data.tempat_kegiatan);
+                    $('#jadwal_kegiatan_edit').val(data.jadwal_kegiatan);
+                    $('#jam_awal_edit').val(data.jam_awal);
+                    $('#jam_akhir_edit').val(data.jam_akhir);
+                    $('#deskripsi_kegiatan_edit').val(data.deskripsi_kegiatan);
                 }
             });
 
-            $('#form_edit').attr('action', '/admin/kelola-kegiatan/update/' + idUmkm);
+            $('.modal-title').html('Edit Kegiatan Warga');
+
+            $('#form_edit').attr('action', '/rt/kegiatan-warga/update/' + idKegiatan);
 
             $('.modal_tambah_kegiatan').modal('show');
         }
 
-        const hapusData = (idUmkm) => {
+        const hapusData = (idKegiatan) => {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Yakin ingin menghapus kegiatan ini?",
+                text: "Anda tidak akan bisa mengembalikan kegiatan yang telah dihapus!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -232,7 +164,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/kelola-kegiatan/delete/' + idUmkm,
+                        url: '/rt/kegiatan-warga/delete/' + idKegiatan,
                         type: 'GET',
                         success: function() {
                             Swal.fire({
