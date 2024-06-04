@@ -38,7 +38,7 @@
                                         @elseif($bansos->status_verif == 'Belum Terverifikasi')
                                             <button class="btn btn-info">Menunggu Konfirmasi</button>
                                         @else
-                                            <button class="btn btn-danger" onclick="showTolak()">Pengajuan Ditolak</button>
+                                            <button class="btn btn-danger" onclick="showTolak('{{ $bansos->alasan_tolak}}')">Pengajuan Ditolak</button>
                                         @endif
                                     </td>
                                 </tr>
@@ -57,8 +57,8 @@
                     <h5 class="modal-title">Alasan penolakan</h5>
                 </div>
                 <div class="modal-body">
-                        <div class="row mb-5">
-                            Data yang dimasukan tidak valid
+                        <div class="row mb-5" id="alasan_tolak_content">
+
                         </div>
 
                         <div class="modal-footer">
@@ -78,7 +78,8 @@
         $('#menu-history-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-warga');
 
-        function showTolak() {
+        function showTolak(alasanTolak) {
+            $('#alasan_tolak_content').text(alasanTolak);
             $('.modal_tolak').modal('show');
         }
 

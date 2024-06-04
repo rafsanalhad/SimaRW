@@ -18,7 +18,6 @@
                             <th>Alamat</th>
                             <th>Tanggal Pengaduan</th>
                             <th>Isi Pengaduan</th>
-                            <th>Alasan Penolakan</th>
                             <th>Status</th>
                         </thead>
                         <tbody>
@@ -28,14 +27,13 @@
                                     <td>{{ $pengaduan->user->kartuKeluarga->alamat_kk }}</td>
                                     <td>{{ $pengaduan->tanggal_pengaduan }}</td>
                                     <td>{{ $pengaduan->isi_pengaduan }}</td>
-                                    <td>{{ $pengaduan->alasan_tolak }}</td>
                                     <td>
                                         @if ($pengaduan->status_pengaduan == 'Diproses')
                                             <a href="#" class="btn btn-primary">Diproses</a>
                                         @elseif ($pengaduan->status_pengaduan == 'Selesai')
                                             <a href="#" class="btn btn-success">Diterima</a>
                                         @else
-                                            <a href="#" onclick="showTolak()" class="btn btn-danger">Ditolak</a>
+                                            <a href="#" onclick="showTolak('{{ $pengaduan->alasan_tolak }}')" class="btn btn-danger">Ditolak</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -138,8 +136,8 @@
                     <h5 class="modal-title">Alasan penolakan</h5>
                 </div>
                 <div class="modal-body">
-                    <div class="row mb-5">
-                        Data yang dimasukan tidak valid
+                    <div class="row mb-5" id="alasan_tolak_content">
+
                     </div>
 
                     <div class="modal-footer">
@@ -163,7 +161,8 @@
             $('.modal_tambah_pengaduan').modal('hide');
         }
 
-        function showTolak() {
+        function showTolak(alasanTolak) {
+            $('#alasan_tolak_content').text(alasanTolak);
             $('.modal_tolak').modal('show');
         }
 
