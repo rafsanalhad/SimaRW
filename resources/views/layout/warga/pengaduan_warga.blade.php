@@ -33,7 +33,8 @@
                                         @elseif ($pengaduan->status_pengaduan == 'Selesai')
                                             <a href="#" class="btn btn-success">Diterima</a>
                                         @else
-                                            <a href="#" onclick="showTolak('{{ $pengaduan->alasan_tolak }}')" class="btn btn-danger">Ditolak</a>
+                                            <a href="#" onclick="showTolak('{{ $pengaduan->alasan_tolak }}')"
+                                                class="btn btn-danger">Ditolak</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -132,14 +133,10 @@
     <div class="modal modal_tolak" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Alasan penolakan</h5>
-                </div>
                 <div class="modal-body">
-                    <div class="row mb-5" id="alasan_tolak_content">
-
-                    </div>
-
+                    <h5 class="modal-title">Alasan penolakan</h5>
+                    <hr class="w-100">
+                    <p id="alasan_tolak_content"></p>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             onclick=hideTolak()>Tutup</button>
