@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('alasan_warga');
             $table->date('tanggal_pengajuan');
             $table->text('file_sktm');
+            $table->text('alasan_tolak')->nullable();
             $table->string('status_verif', 20);
             $table->timestamps();
         });
