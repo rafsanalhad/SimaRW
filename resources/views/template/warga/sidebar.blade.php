@@ -82,7 +82,7 @@
                         </ul>
                     </div>
                 </li>
-               
+                {{--
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/pengajuan-surat') }}" aria-expanded="false">
                         <span>
@@ -90,7 +90,7 @@
                         </span>
                         <span class="hide-menu">Pengajuan Surat</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/template-surat') }}" aria-expanded="false">
                         <span>
@@ -107,7 +107,7 @@
 </aside>
 <script>
     let kelolaBansos = document.getElementsByClassName('menu-kelola-bansos');
-          for (let i = 0; i < kelolaBansos.length; i++) {
+    for (let i = 0; i < kelolaBansos.length; i++) {
         kelolaBansos[i].addEventListener('click', function() {
             for (let j = 0; j < sidebar.length; j++) {
                 sidebar[j].classList.remove('selected');

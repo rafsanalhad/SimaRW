@@ -126,7 +126,7 @@
                         </ul>
                     </div>
                 </li>
-               
+
                 <li class="sidebar-item">
                     <a class="sidebar-link menu-laporan" href="#submenu-laporan-pengaduan" data-bs-toggle="collapse"
                         aria-expanded="false">
@@ -150,14 +150,14 @@
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/admin/kelola-surat') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-cash-coin"></i>
                         </span>
                         <span class="hide-menu">Kelola Surat</span>
                     </a>
-                </li>
+                </li> --}}
 
         </nav>
         <!-- End Sidebar navigation -->
