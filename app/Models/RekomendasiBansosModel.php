@@ -16,7 +16,9 @@ class RekomendasiBansosModel extends Model
 
     protected $fillable = [
         'kartu_keluarga_id',
-        'jumlah_anggota',
+        'usia',
+        'kondisi_rumah',
+        'pekerjaan',
         'jumlah_tanggungan',
         'total_gaji',
         'total_pembobotan',
