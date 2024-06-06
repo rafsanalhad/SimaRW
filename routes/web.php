@@ -85,8 +85,8 @@ Route::get('/new-password', [ForgotPasswordController::class, 'pageNewPass']);
 Route::post('/new-password', [ForgotPasswordController::class, 'newPassword']);
 
 // Route get data chart dashboard (sementara)
-Route::get('/dashboard/getBarChart', [DashboardController::class, 'getBarChart'])->name('getBarChart');
-Route::get('/dashboard/getPieChart', [DashboardController::class, 'getPieChart'])->name('getPieChart');
+Route::get('/dashboard/getBarChart/{tahun}', [DashboardController::class, 'getBarChart'])->name('getBarChart');
+Route::get('/dashboard/getPieChart/{tahun}', [DashboardController::class, 'getPieChart'])->name('getPieChart');
 
 // Route Check Role
 Route::middleware(['auth'])->group(function () {
@@ -158,8 +158,8 @@ Route::middleware(['auth'])->group(function () {
             // Route Kelola Bansos
             Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
             Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
-            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
-            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+            Route::get('/terima-bansos/{id}', [AdminBansos::class, 'terimaPengajuan']);
+            Route::post('/tolak-bansos/{id}', [AdminBansos::class, 'tolakPengajuan']);
 
             // Route History Bansos
             Route::get('/penerima-bansos', [AdminBansos::class, 'historyBansos']);

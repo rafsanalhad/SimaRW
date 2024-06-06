@@ -63,7 +63,24 @@
                     <div class="col-7">
                         <h4>Silahkan Melakukan Verifikasi Bansos</h4>
                         <a href="" id="terimaPengajuan" class="btn btn-success" style="margin-right: 5px;">Setuju</a>
-                        <a href="" id="tolakPengajuan" class="btn btn-danger">Tolak</a>
+                        <a href="#" id="tolakPengajuan" class="btn btn-danger">Tolak</a>
+                        <div id="modalPenolakan">
+                            <form action="" id="alasanPenolakanPengaduan" method="POST" class="form-horizontal">
+                                @csrf
+                                <div class="row mb-2">
+                                    <label class="col-12 control-label col-form-label">Masukan Alasan Penolakan : </label>
+                                    <div class="col-12">
+                                        <textarea class="form-control" name="alasan_penolakan" id="alasan_penolakan" cols="100" rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="kembaliModal">Kembali</button>
+                                    <button type="submit" class="btn btn-danger">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -71,9 +88,16 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $('#alasanPenolakanPengaduan').hide(); // Menggunakan .hide() untuk menyembunyikan elemen
+        });
+
         $('#submenu-kelola-bansos').addClass('show');
         $('#menu-kelola-bansos').removeClass('text-dark').addClass('text-primary');
         function showTambahBansos(idPengajuan) {
+            $('#alasanPenolakanPengaduan').hide();
+            $('#terimaPengajuan').show();
+            $('#tolakPengajuan').show();
             $.ajax({
                 url: '/admin/get-file/' + idPengajuan,
                 type: 'GET',
@@ -97,7 +121,19 @@
             $('.modal_bansos').modal('show');
 
             $('#terimaPengajuan').attr('href', '/admin/pengajuan/terima/' + idPengajuan);
-            $('#tolakPengajuan').attr('href', '/admin/pengajuan/tolak/' + idPengajuan);
+            $('#alasanPenolakanPengaduan').attr('action', '/admin/tolak-bansos/' + idPengajuan);
+
+            $('#tolakPengajuan').click(function(){
+                $('#alasanPenolakanPengaduan').show();
+                $('#terimaPengajuan').hide();
+                $('#tolakPengajuan').hide();
+            });
+
+            $('#kembaliModal').click(function(){
+                $('#alasanPenolakanPengaduan').hide();
+                $('#terimaPengajuan').show();
+                $('#tolakPengajuan').show();
+            });
         }
 
         function hideTambahBansos() {

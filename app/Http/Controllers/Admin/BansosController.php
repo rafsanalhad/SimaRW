@@ -32,11 +32,16 @@ class BansosController extends Controller
         return redirect('/admin/kelola-bansos');
     }
 
-    public function tolakPengajuan($id) {
-        PengajuanBansosModel::where('pengajuan_id', $id)->update([
-            'status_verif' => 'Ditolak'
+    public function tolakPengajuan(Request $request, $id) {
+        $request->validate([
+            'alasan_penolakan' => 'required'
         ]);
 
+        PengajuanBansosModel::where('pengajuan_id', $id)->update([
+            'status_verif' => 'Ditolak',
+            'alasan_tolak' => $request->alasan_penolakan
+        ]);
+        
         return redirect('/admin/kelola-bansos');
     }
 

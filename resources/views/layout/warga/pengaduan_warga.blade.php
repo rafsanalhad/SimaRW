@@ -18,7 +18,6 @@
                             <th>Alamat</th>
                             <th>Tanggal Pengaduan</th>
                             <th>Isi Pengaduan</th>
-                            <th>Alasan Penolakan</th>
                             <th>Status</th>
                         </thead>
                         <tbody>
@@ -28,14 +27,14 @@
                                     <td>{{ $pengaduan->user->kartuKeluarga->alamat_kk }}</td>
                                     <td>{{ $pengaduan->tanggal_pengaduan }}</td>
                                     <td>{{ $pengaduan->isi_pengaduan }}</td>
-                                    <td>{{ $pengaduan->alasan_tolak }}</td>
                                     <td>
                                         @if ($pengaduan->status_pengaduan == 'Diproses')
                                             <a href="#" class="btn btn-primary">Diproses</a>
                                         @elseif ($pengaduan->status_pengaduan == 'Selesai')
                                             <a href="#" class="btn btn-success">Diterima</a>
                                         @else
-                                            <a href="#" onclick="showTolak()" class="btn btn-danger">Ditolak</a>
+                                            <a href="#" onclick="showTolak('{{ $pengaduan->alasan_tolak }}')"
+                                                class="btn btn-danger">Ditolak</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -134,14 +133,10 @@
     <div class="modal modal_tolak" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Alasan penolakan</h5>
-                </div>
                 <div class="modal-body">
-                    <div class="row mb-5">
-                        Data yang dimasukan tidak valid
-                    </div>
-
+                    <h5 class="modal-title">Alasan penolakan</h5>
+                    <hr class="w-100">
+                    <p id="alasan_tolak_content"></p>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             onclick=hideTolak()>Tutup</button>
@@ -163,7 +158,8 @@
             $('.modal_tambah_pengaduan').modal('hide');
         }
 
-        function showTolak() {
+        function showTolak(alasanTolak) {
+            $('#alasan_tolak_content').text(alasanTolak);
             $('.modal_tolak').modal('show');
         }
 
