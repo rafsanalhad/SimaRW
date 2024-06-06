@@ -20,14 +20,14 @@ class HomeController extends Controller
     }
 
     public function index(){
-        $umkm = UmkmModel::inRandomOrder()->take(3)->get()->map(function($jam) {
+        $umkm = UmkmModel::all()->map(function($jam) {
             $jam->jam_operasional_awal = Carbon::parse($jam->jam_operasional_awal)->format('H:i');
             $jam->jam_operasional_akhir = Carbon::parse($jam->jam_operasional_akhir)->format('H:i');
 
             return $jam;
         });
 
-        $kegiatanWarga = KegiatanWargaModel::inRandomOrder()->take(3)->get()->map(function ($item) {
+        $kegiatanWarga = KegiatanWargaModel::all()->map(function ($item) {
             Carbon::setLocale('id');
             $item->jadwal_kegiatan = Carbon::parse($item->jadwal_kegiatan)->isoFormat('dddd');
             $item->jam_awal = Carbon::parse($item->jam_awal)->format('H:i');

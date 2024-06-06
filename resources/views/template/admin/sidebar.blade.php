@@ -52,10 +52,10 @@
                                 <a class="nav-link text-dark" id="menu-kelola-rt"
                                     href="{{ url('/admin/kelola-rt') }}">Kelola RT</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-kelola-rw"
                                     href="{{ url('/admin/kelola-rw') }}">Kelola RW</a>
-                            </li>
+                            </li> --}}
                             <!-- Add more submenu items as needed -->
                         </ul>
                     </div>
