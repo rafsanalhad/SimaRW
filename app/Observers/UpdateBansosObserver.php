@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\UserModel;
 use App\Services\UpdateSPKBansosService;
+use App\Services\UpdateSPKVikorService;
 
 class UpdateBansosObserver
 {
@@ -12,15 +13,18 @@ class UpdateBansosObserver
      */
 
     protected $updateSPKBansosService;
+    protected $updateSPKVikor;
 
-    public function __construct(UpdateSPKBansosService $updateSPKBansosService)
+    public function __construct(UpdateSPKBansosService $updateSPKBansosService, UpdateSPKVikorService $updateSPKVikor)
     {
         $this->updateSPKBansosService = $updateSPKBansosService;
+        $this->updateSPKVikor = $updateSPKVikor;
     }
 
     public function created(UserModel $userModel): void
     {
         $this->updateSPKBansosService->updateBansos();
+        $this->updateSPKVikor->updateBansos();
     }
 
     /**
@@ -29,6 +33,7 @@ class UpdateBansosObserver
     public function updated(UserModel $userModel): void
     {
         $this->updateSPKBansosService->updateBansos();
+        $this->updateSPKVikor->updateBansos();
     }
 
     /**
@@ -37,6 +42,7 @@ class UpdateBansosObserver
     public function deleted(UserModel $userModel): void
     {
         $this->updateSPKBansosService->updateBansos();
+        $this->updateSPKVikor->updateBansos();
     }
 
     /**

@@ -26,16 +26,18 @@
                             <th>NKK</th>
                             <th>Total Pendapatan Keluarga</th>
                             <th>Jumlah Anggota Keluarga</th>
+                            <th>Kondisi Rumah</th>
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
-                        @foreach ($bansosRekom as $bansos)
+                        @foreach ($bansosSAW as $bansos)
                             <tbody>
-                                <td>{{ $no++ }}</td>
+                                <td>{{ $noSAW++ }}</td>
                                 <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
                                 <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
                                 <td>Rp. {{ $bansos->total_gaji }}</td>
                                 <td>{{ $bansos->user_count }} Orang</td>
+                                <td>{{ $bansos->kartuKeluarga->kondisi_rumah }}</td>
                                 <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
                                 <td>
                                     @if ($bansos->status == 'Layak')
@@ -56,16 +58,18 @@
                             <th>NKK</th>
                             <th>Total Pendapatan Keluarga</th>
                             <th>Jumlah Anggota Keluarga</th>
+                            <th>Kondisi Rumah</th>
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
-                        @foreach ($bansosRekom as $bansos)
+                        @foreach ($bansosVikor as $bansos)
                             <tbody>
-                                <td>{{ $no++ }}</td>
+                                <td>{{ $noVikor++ }}</td>
                                 <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
                                 <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
                                 <td>Rp. {{ $bansos->total_gaji }}</td>
                                 <td>{{ $bansos->user_count }} Orang</td>
+                                <td>{{ $bansos->kartuKeluarga->kondisi_rumah }}</td>
                                 <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
                                 <td>
                                     @if ($bansos->status == 'Layak')

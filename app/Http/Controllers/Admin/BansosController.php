@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\RekomendasiBansosSPKVikorModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Models\KartuKeluargaModel;
@@ -41,7 +42,7 @@ class BansosController extends Controller
             'status_verif' => 'Ditolak',
             'alasan_tolak' => $request->alasan_penolakan
         ]);
-        
+
         return redirect('/admin/kelola-bansos');
     }
 
@@ -54,13 +55,20 @@ class BansosController extends Controller
 
     // Function show rekomendasi spk untuk bansos
     public function rekomendasiBansos(){
-        $rekomBansosSPK = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
+        $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;
             $user->user_count = $users->count();
             $user->total_gaji = $users->sum('gaji_user');
             return $user;
         });
 
-        return view('layout.admin.rekomendasi_bansos', ['bansosRekom' => $rekomBansosSPK, 'no' => 1]);
+        $rekomBansosSPKVikor = RekomendasiBansosSPKVikorModel::with('kartuKeluarga.user')->orderBy('rekomendasi_vikor_id', 'asc')->get()->map(function($user) {
+            $users = $user->kartuKeluarga->user;
+            $user->user_count = $users->count();
+            $user->total_gaji = $users->sum('gaji_user');
+            return $user;
+        });
+
+        return view('layout.admin.rekomendasi_bansos', ['bansosSAW' => $rekomBansosSPKSAW, 'bansosVikor' => $rekomBansosSPKVikor, 'noSAW' => 1, 'noVikor' => 1]);
     }
 }
