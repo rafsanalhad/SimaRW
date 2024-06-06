@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pengajuan_bansos', function (Blueprint $table) {
             $table->id('pengajuan_id');
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
-            $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga');
+            $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga')->cascadeOnDelete();
             $table->string('pendapatan_keluarga');
             $table->string('tanggungan_warga');
             $table->string('nomor_rt');

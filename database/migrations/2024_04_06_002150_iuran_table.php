@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('iuran', function (Blueprint $table) {
             $table->id('iuran_id');
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
-            $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga');
+            $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga')->cascadeOnDelete();
             $table->date('tanggal_iuran');
             $table->date('tanggal_bayar')->nullable();
             $table->text('snap_token')->nullable();

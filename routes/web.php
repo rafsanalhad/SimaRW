@@ -144,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-umkm/edit/{id}', [UMKMController::class, 'editUmkm']);
             Route::post('/kelola-umkm/update/{id}', [UMKMController::class, 'updateUmkm']);
             Route::get('/kelola-umkm/delete/{id}', [UMKMController::class, 'deleteUmkm']);
+            Route::get('/kelola-umkm/detail/{id}', [UMKMController::class, 'detailUmkm']);
 
             // Route Kelola Data Iuran
             Route::get('/kelola-iuran', [AdminIuranController::class, 'kelolaIuran']);

@@ -43,20 +43,11 @@ class DatabaseSeeder extends Seeder
         // Call factory for PengaduanWarga table
         PengaduanWargaModel::factory(10)->create();
 
-        // Call factory for Surat table
-        SuratModel::factory(10)->create();
-
-        // Call factory for DetailSurat table
-        DetailSuratModel::factory(10)->create();
-
         // Call factory for KegiatanWarga table
         KegiatanWargaModel::factory(10)->create();
 
         // Call factory for Umkm table
         UmkmModel::factory(10)->create();
-
-        // Call factory for LokasiUmkm table
-        LokasiUmkmModel::factory(10)->create();
 
         // Call factory for PengajuanBansos table
         // PengajuanBansosModel::factory(5)->create();

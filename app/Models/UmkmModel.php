@@ -28,8 +28,4 @@ class UmkmModel extends Model
     public function user(): HasOne {
         return $this->hasOne(UserModel::class, 'user_id', 'user_id');
     }
-
-    public function lokasi(): HasOne {
-        return $this->hasOne(LokasiUmkmModel::class, 'umkm_id', 'umkm_id');
-    }
 }
