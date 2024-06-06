@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id('rekomendasi_bansos_id');
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
             $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga');
-            $table->text('jumlah_anggota');
+            $table->text('usia');
+            $table->text('kondisi_rumah');
+            $table->text('pekerjaan');
             $table->text('jumlah_tanggungan');
             $table->text('total_gaji');
             $table->text('total_pembobotan');

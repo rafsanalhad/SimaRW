@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_kepala_keluarga', 255);
             $table->text('alamat_kk');
             $table->integer('jumlah_tanggungan');
+            $table->string('kondisi_rumah');
             $table->timestamps();
         });
     }

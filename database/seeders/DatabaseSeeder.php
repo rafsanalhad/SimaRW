@@ -32,13 +32,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Call factory for KartuKeluarga table
-        KartuKeluargaModel::factory(5)->create();
+        KartuKeluargaModel::factory(50)->create();
 
         // Call RoleSeeder to put in db
         $this->call(RoleSeeder::class);
 
         // Call UserFactory for user table
-        UserModel::factory(10)->create();
+        UserModel::factory(100)->create();
 
         // Call factory for PengaduanWarga table
         PengaduanWargaModel::factory(10)->create();
