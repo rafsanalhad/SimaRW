@@ -244,9 +244,12 @@ class UpdateSPKBansosService
         }
 
 
+        // Mencari Nilai Median dari hasil pembobotan
+        $median = collect(array_column($hasil, 'hasil'))->median();
+
         // Melakukan input pada database
         foreach ($hasil as $kriteria) {
-            if($kriteria['hasil'] <= 0.8) {
+            if($kriteria['hasil'] <= $median) {
                 RekomendasiBansosModel::create([
                     'kartu_keluarga_id' => $kriteria['kartu_keluarga_id'],
                     'usia' => $kriteria['usia'],
