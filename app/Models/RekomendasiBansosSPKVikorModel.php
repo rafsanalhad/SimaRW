@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class RekomendasiBansosSPKVikorModel extends Model
 {
@@ -18,4 +19,8 @@ class RekomendasiBansosSPKVikorModel extends Model
         'hasil_indeks',
         'status'
     ];
+
+    public function kartuKeluarga() : HasOne {
+        return $this->hasOne(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
 }

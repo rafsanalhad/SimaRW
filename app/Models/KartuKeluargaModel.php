@@ -34,4 +34,8 @@ class KartuKeluargaModel extends Model
     public function rekomendasiBansos(): BelongsTo {
         return $this->belongsTo(RekomendasiBansosModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
     }
+
+    public function rekomendasiVikor(): BelongsTo {
+        return $this->belongsTo(RekomendasiBansosSPKVikorModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
 }
