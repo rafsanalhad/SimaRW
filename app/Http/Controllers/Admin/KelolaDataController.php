@@ -74,14 +74,13 @@ class KelolaDataController extends Controller
             $validated['foto_user'] = $foto_user;
         }
 
-        if(KartuKeluargaModel::where('nama_kepala_keluarga', $request->nama_user)->where('kartu_keluarga_id', $request->kartu_keluarga_id)) {
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', $request->nama_kepala_keluarga)->where('kartu_keluarga_id', $request->kartu_keluarga_id)->first()->nama_kepala_keluarga == $request->nama_user_lama) {
             KartuKeluargaModel::where('kartu_keluarga_id', $request->kartu_keluarga_id)->update([
                 'nama_kepala_keluarga' => $request->nama_user
             ]);
         }
 
         UserModel::where('user_id', $id)->update($validated);
-
 
         return redirect('/admin/kelola-warga');
     }
