@@ -232,7 +232,7 @@ Route::middleware(['auth'])->group(function () {
 
             // iuran
             Route::get('/kelola-iuran', [RTKelolaIuranController::class, 'kelolaIuran']);
-            Route::post('kelola-iuran', [RTKelolaIuranController::class, 'createIuran']);
+            Route::post('kelola-iuran', [RTKelolaIuranController::class, 'createPengeluaranIuran']);
             Route::get('/laporan-iuran', [RTKelolaIuranController::class, 'laporanIuran']);
             Route::get('/download-iuran', [RTKelolaIuranController::class, 'downloadExcel']);
 
