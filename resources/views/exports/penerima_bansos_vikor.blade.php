@@ -24,8 +24,6 @@
                 <td style="border: 1px solid black;">
                     @if ($bansos->status == 'Layak')
                         Layak Menerima Bansos
-                    @else
-                        Tidak Layak Menerima Bansos
                     @endif
                 </td>
             </tr>

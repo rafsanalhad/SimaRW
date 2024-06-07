@@ -43,9 +43,10 @@ class UpdateSPKVikorService {
                 'Pegawai Swasta' => 1,
                 'Wiraswasta' => 2,
                 'Petani' => 4,
+                'Sopir' => 3,
                 'Buruh' => 4,
-                'Ibu Rumah Tangga' => 5,
-                'Tidak Bekerja' => 5
+                'Tidak Bekerja' => 5,
+                'Pekerjaan Lainnya' => 1
             ],
             'total_gaji' => [
                 '0' => 5,
@@ -63,9 +64,10 @@ class UpdateSPKVikorService {
             ]
         ];
 
+
         // Memasukkan kriteria ke dalam array
         foreach ($kartuKeluarga as $kk) {
-            $kepalaKeluarga = UserModel::where('nama_user', $kk->nama_kepala_keluarga)->where('kartu_keluarga_id', $kk->kartu_keluarga_id)->first();
+            $kepalaKeluarga = UserModel::where('nama_user', $kk->nama_kepala_keluarga)->where('kartu_keluarga_id', $kk->kartu_keluarga_id)->whereNotIn('pekerjaan_user', ['PNS', 'TNI'])->first();
 
             $kriteriaList[] = [
                 'kartu_keluarga_id' => $kk->kartu_keluarga_id,
@@ -91,10 +93,12 @@ class UpdateSPKVikorService {
                 $bobotPekerjaan = $bobotKriteria['pekerjaan']['Petani'];
             } else if($bobotPekerjaan == 'Buruh') {
                 $bobotPekerjaan = $bobotKriteria['pekerjaan']['Buruh'];
-            } else if($bobotPekerjaan == 'Ibu Rumah Tangga') {
-                $bobotPekerjaan = $bobotKriteria['pekerjaan']['Ibu Rumah Tangga'];
-            } else {
+            } else if($bobotPekerjaan == 'Sopir') {
+                $bobotPekerjaan = $bobotKriteria['pekerjaan']['Sopir'];
+            } else if($bobotPekerjaan == 'Tidak Bekerja') {
                 $bobotPekerjaan = $bobotKriteria['pekerjaan']['Tidak Bekerja'];
+            } else {
+                $bobotPekerjaan = $bobotKriteria['pekerjaan']['Pekerjaan Lainnya'];
             }
 
             // Pembobotan Kriteria Usia

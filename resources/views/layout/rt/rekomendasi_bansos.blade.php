@@ -30,7 +30,7 @@
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
-                        {{-- @foreach ($bansosSAW as $bansos)
+                        @foreach ($bansosSAW as $bansos)
                             <tbody>
                                 <td>{{ $noSAW++ }}</td>
                                 <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
@@ -42,19 +42,17 @@
                                 <td>
                                     @if ($bansos->status == 'Layak')
                                         <div class="btn btn-success">Layak Menerima Bansos</div>
-                                    @else
-                                        <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
                                     @endif
                                 </td>
                             </tbody>
-                        @endforeach --}}
+                        @endforeach
                     </table>
                 </div>
                 <div class="table-responsive" id="table_vikor">
                     <table class="table" id="table-bansos2">
                         <thead>
                             <th>No</th>
-                            <th>Nama Kepala Keluarga 2</th>
+                            <th>Nama Kepala Keluarga</th>
                             <th>NKK</th>
                             <th>Total Pendapatan Keluarga</th>
                             <th>Jumlah Anggota Keluarga</th>
@@ -62,7 +60,7 @@
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
-                        {{-- @foreach ($bansosVikor as $bansos)
+                        @foreach ($bansosVikor as $bansos)
                             <tbody>
                                 <td>{{ $noVikor++ }}</td>
                                 <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
@@ -74,12 +72,10 @@
                                 <td>
                                     @if ($bansos->status == 'Layak')
                                         <div class="btn btn-success">Layak Menerima Bansos</div>
-                                    @else
-                                        <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
                                     @endif
                                 </td>
                             </tbody>
-                        @endforeach --}}
+                        @endforeach
                     </table>
                 </div>
             </div>

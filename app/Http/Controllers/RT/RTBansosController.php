@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\RekomendasiBansosModel;
 use App\Exports\PenerimaBansosSAWExcel;
 use App\Exports\PenerimaBansosVikorExcel;
+use App\Models\RekomendasiBansosSPKVikorModel;
 
 class RTBansosController extends Controller
 {
@@ -50,14 +51,21 @@ class RTBansosController extends Controller
 
     // Function show rekomendasi spk untuk bansos
     public function rekomendasiBansos(){
-        $rekomBansosSPK = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
+        $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;
             $user->user_count = $users->count();
             $user->total_gaji = $users->sum('gaji_user');
             return $user;
         });
 
-        return view('layout.rt.rekomendasi_bansos', ['bansosRekom' => $rekomBansosSPK, 'no' => 1]);
+        $rekomBansosSPKVikor = RekomendasiBansosSPKVikorModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_vikor_id', 'asc')->get()->map(function($user) {
+            $users = $user->kartuKeluarga->user;
+            $user->user_count = $users->count();
+            $user->total_gaji = $users->sum('gaji_user');
+            return $user;
+        });
+
+        return view('layout.rt.rekomendasi_bansos', ['bansosSAW' => $rekomBansosSPKSAW, 'bansosVikor' => $rekomBansosSPKVikor, 'noSAW' => 1, 'noVikor' => 1]);
     }
 
     public function downloadExcelSAW() {

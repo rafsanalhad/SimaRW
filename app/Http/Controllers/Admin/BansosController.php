@@ -58,14 +58,14 @@ class BansosController extends Controller
 
     // Function show rekomendasi spk untuk bansos
     public function rekomendasiBansos(){
-        $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
+        $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;
             $user->user_count = $users->count();
             $user->total_gaji = $users->sum('gaji_user');
             return $user;
         });
 
-        $rekomBansosSPKVikor = RekomendasiBansosSPKVikorModel::with('kartuKeluarga.user')->orderBy('rekomendasi_vikor_id', 'asc')->get()->map(function($user) {
+        $rekomBansosSPKVikor = RekomendasiBansosSPKVikorModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_vikor_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;
             $user->user_count = $users->count();
             $user->total_gaji = $users->sum('gaji_user');
