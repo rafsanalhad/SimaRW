@@ -29,8 +29,9 @@
                         <th>Jumlah Tanggungan</th>
                         <th>Aksi</th>
                     </thead>
-                    @foreach ($dataKK as $kkPerKeluarga)
-                        <tbody>
+                    <tbody>
+                            @foreach ($dataKK as $kkPerKeluarga)
+                            <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $kkPerKeluarga->no_kartu_keluarga }}</td>
                             <td>{{ $kkPerKeluarga->nama_kepala_keluarga }}</td>
@@ -46,8 +47,9 @@
                                         class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </div>
                             </td>
-                        </tbody>
+                        </tr>
                     @endforeach
+                        </tbody>
                 </table>
             </div>
         </div>
