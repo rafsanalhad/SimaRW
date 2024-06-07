@@ -153,7 +153,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/download-iuran', [KelolaIuranController::class, 'downloadExcel']);
 
             // Route Kelola Data Surat
-            Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
+            // Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
 
 
             // Route Kelola Bansos
@@ -167,6 +167,8 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Rekomendasi SPK Bansos
             Route::get('/rekomendasi-bansos', [AdminBansos::class, 'rekomendasiBansos']);
+            Route::get('/rekomendasi-bansos/download-saw', [AdminBansos::class, 'downloadExcelSAW']);
+            Route::get('/rekomendasi-bansos/download-vikor', [AdminBansos::class, 'downloadExcelVikor']);
 
             // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
@@ -234,10 +236,14 @@ Route::middleware(['auth'])->group(function () {
             // Bansos
             Route::get('/kelola-bansos', [RTBansosController::class, 'kelolaBansos']);
             Route::get('/penerima-bansos', [RTBansosController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
             Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
             Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
             Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+
+            // Route Rekomendasi Bansos
+            Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
+            Route::get('/rekomendasi-bansos/download-saw', [RTBansosController::class, 'downloadExcelSAW']);
+            Route::get('/rekomendasi-bansos/download-vikor', [RTBansosController::class, 'downloadExcelVikor']);
 
             // Laporan Pengaduan
             Route::get('/laporan-pengaduan', [RTPengaduanController::class, 'laporanPengaduan']);

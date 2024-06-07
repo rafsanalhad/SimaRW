@@ -5,7 +5,7 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div style="position: absolute; top: 30px; right: 25px;" class="d-flex align-items-center">
-                <a href="#">
+                <a href="/rt/rekomendasi-bansos/download-saw">
                     <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png" alt="gambar convert excel">
                 </a>
             </div>
@@ -23,23 +23,25 @@
                             <th>Jumlah Tanggungan</th>
                             <th>Keterangan</th>
                         </thead>
-                        @foreach ($bansosRekom as $bansos)
-                            <tbody>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
-                                <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
-                                <td>Rp. {{ $bansos->total_gaji }}</td>
-                                <td>{{ $bansos->user_count }} Orang</td>
-                                <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
-                                <td>
-                                    @if ($bansos->status == 'Layak')
-                                        <div class="btn btn-success">Layak Menerima Bansos</div>
-                                    @else
-                                        <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
-                                    @endif
-                                </td>
-                            </tbody>
-                        @endforeach
+                        <tbody>
+                            @foreach ($bansosRekom as $bansos)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
+                                    <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
+                                    <td>Rp. {{ $bansos->total_gaji }}</td>
+                                    <td>{{ $bansos->user_count }} Orang</td>
+                                    <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
+                                    <td>
+                                        @if ($bansos->status == 'Layak')
+                                            <div class="btn btn-success">Layak Menerima Bansos</div>
+                                        @else
+                                            <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

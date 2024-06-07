@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\RekomendasiBansosSPKVikorModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Models\KartuKeluargaModel;
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanBansosModel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\RekomendasiBansosModel;
+use App\Exports\PenerimaBansosSAWExcel;
+use App\Exports\PenerimaBansosVikorExcel;
+use App\Models\RekomendasiBansosSPKVikorModel;
 
 class BansosController extends Controller
 {
@@ -70,5 +73,13 @@ class BansosController extends Controller
         });
 
         return view('layout.admin.rekomendasi_bansos', ['bansosSAW' => $rekomBansosSPKSAW, 'bansosVikor' => $rekomBansosSPKVikor, 'noSAW' => 1, 'noVikor' => 1]);
+    }
+
+    public function downloadExcelSAW() {
+        return Excel::download(new PenerimaBansosSAWExcel, 'rekap_rekomendasi_bansos_saw.xlsx');
+    }
+
+    public function downloadExcelVikor() {
+        return Excel::download(new PenerimaBansosVikorExcel, 'rekap_rekomendasi_bansos_vikor.xlsx');
     }
 }
