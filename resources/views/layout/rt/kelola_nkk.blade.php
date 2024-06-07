@@ -95,7 +95,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan"
+                                    <input type="number" class="form-control" id="jumlah_tanggungan"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -155,7 +155,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan_edit"
+                                    <input type="number" class="form-control" id="jumlah_tanggungan_edit"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>
