@@ -37,7 +37,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title"></div>
+                <div class="modal-title">Tambah UMKM</div>
             </div>
             <div class="modal-body">
                 <div class="card">
@@ -151,7 +151,22 @@
     </div>
 </div>
 <script>
-    la
+        function showModalUmkm(idUmkm) {
+            $.ajax({
+                url: '/admin/kelola-umkm/detail/' + idUmkm,
+                type: 'GET',
+                dataType: 'json',
+                success(data) {
+                    $('#nama_umkm_detail').text(data.nama_umkm);
+                    $('#kontak_umkm_detail').text(data.kontak_umkm);
+                    $('#jam_buka_detail').text(data.jam_operasional_awal + ' - ' + data.jam_operasional_akhir);
+                    $('#deskripsi_umkm_detail').text(data.deskripsi_umkm);
+                }
+            })
+
+            $('.modal_umkm').modal('show');
+        }
+
         function hideModalUmkm() {
             $('.modal_umkm').modal('hide');
         }
@@ -176,8 +191,6 @@
                     $('#nama_umkm_edit').val(data.nama_umkm);
                     $('#alamat_umkm_edit').val(data.alamat_umkm);
                     $('#kontak_umkm_edit').val(data.kontak_umkm);
-                    $('#latitude_umkm_edit').val(data.lokasi.latitude_umkm);
-                    $('#longitude_umkm_edit').val(data.lokasi.longitude_umkm);
                     $('#jam_operasional_awal_edit').val(data.jam_operasional_awal);
                     $('#jam_operasional_akhir_edit').val(data.jam_operasional_akhir);
                     $('#deskripsi_umkm_edit').val(data.deskripsi_umkm);
@@ -198,7 +211,7 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Hapus"
+                confirmButtonText: "Hapus!"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -217,6 +230,7 @@
                 }
             });
         }
+
         const hideModalTambahUmkm = () => {
             $('.modal_tambah_umkm').modal('hide');
         }

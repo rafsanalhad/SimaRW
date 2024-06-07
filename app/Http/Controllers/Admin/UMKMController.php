@@ -45,7 +45,7 @@ class UMKMController extends Controller
     }
 
     public function editUmkm($id) {
-        $umkm = UmkmModel::with('lokasi')->find($id);
+        $umkm = UmkmModel::find($id);
 
         return response()->json($umkm);
     }
