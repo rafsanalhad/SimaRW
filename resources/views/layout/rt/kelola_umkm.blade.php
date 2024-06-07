@@ -198,6 +198,7 @@
                 }
             });
 
+            $('.modal-title').html('Edit UMKM');
             $('#form_edit').attr('action', '/rt/kelola-umkm/update/' + idUmkm);
 
             $('.modal_tambah_umkm').modal('show');

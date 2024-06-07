@@ -37,7 +37,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Tambah UMKM</div>
+                <div class="modal-title"></div>
             </div>
             <div class="modal-body">
                 <div class="card">
@@ -151,21 +151,7 @@
     </div>
 </div>
 <script>
-    function showModalUmkm(idUmkm) {
-            $.ajax({
-                url: '/admin/kelola-umkm/detail/' + idUmkm,
-                type: 'GET',
-                dataType: 'json',
-                success(data) {
-                    $('#nama_umkm_detail').text(data.nama_umkm);
-                    $('#kontak_umkm_detail').text(data.kontak_umkm);
-                    $('#jam_buka_detail').text(data.jam_operasional_awal + ' - ' + data.jam_operasional_akhir);
-                    $('#deskripsi_umkm_detail').text(data.deskripsi_umkm);
-                }
-            })
-
-            $('.modal_umkm').modal('show');
-        }
+    la
         function hideModalUmkm() {
             $('.modal_umkm').modal('hide');
         }
@@ -198,6 +184,7 @@
                 }
             });
 
+            $('.modal-title').html('Edit UMKM');
             $('#form_edit').attr('action', '/admin/kelola-umkm/update/' + idUmkm);
 
             $('.modal_tambah_umkm').modal('show');
@@ -211,7 +198,7 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Hapus"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
