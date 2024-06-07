@@ -71,4 +71,8 @@ class BansosController extends Controller
 
         return view('layout.warga.rekomendasi_bansos', ['bansosSAW' => $rekomBansosSPKSAW, 'bansosVikor' => $rekomBansosSPKVikor, 'noSAW' => 1, 'noVikor' => 1]);
     }
+
+    public function historyPenerimaBansos(){
+        return view('layout.warga.transparansi_bansos');
+    }
 }
