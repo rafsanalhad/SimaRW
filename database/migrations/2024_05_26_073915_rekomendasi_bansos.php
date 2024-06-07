@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('rekomendasi_bansos', function (Blueprint $table) {
             $table->id('rekomendasi_bansos_id');
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
-            $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga');
-            $table->text('jumlah_anggota');
+            $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga')->cascadeOnDelete();
+            $table->text('usia');
+            $table->text('kondisi_rumah');
+            $table->text('pekerjaan');
             $table->text('jumlah_tanggungan');
             $table->text('total_gaji');
             $table->text('total_pembobotan');

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\RT;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanBansosModel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\RekomendasiBansosModel;
+use App\Exports\PenerimaBansosSAWExcel;
+use App\Exports\PenerimaBansosVikorExcel;
 
 class RTBansosController extends Controller
 {
@@ -55,5 +58,13 @@ class RTBansosController extends Controller
         });
 
         return view('layout.rt.rekomendasi_bansos', ['bansosRekom' => $rekomBansosSPK, 'no' => 1]);
+    }
+
+    public function downloadExcelSAW() {
+        return Excel::download(new PenerimaBansosSAWExcel, 'rekap_rekomendasi_bansos_saw.xlsx');
+    }
+
+    public function downloadExcelVikor() {
+        return Excel::download(new PenerimaBansosVikorExcel, 'rekap_rekomendasi_bansos_vikor.xlsx');
     }
 }

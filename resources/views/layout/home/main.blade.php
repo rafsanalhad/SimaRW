@@ -8,10 +8,41 @@
     <link rel="shortcut icon" type="image/png" href="../assets/images/logos/newlogoSima.png" />
     <link rel="stylesheet" href="{{ @asset('assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ @asset('assets/css/home.css') }}">
+    <style>
+        .owl-prev {
+            width: 15px;
+            height: 100px;
+            position: absolute;
+            top: 40%;
+            margin-left: -20px;
+            display: block !important;
+            border: 0px solid black;
+        }
+
+        .owl-next {
+            width: 15px;
+            height: 100px;
+            position: absolute;
+            top: 40%;
+            right: -25px;
+            display: block !important;
+            border: 0px solid black;
+        }
+
+        .owl-prev i,
+        .owl-next i {
+            transform: scale(1, 6);
+            color: #ccc;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css    ">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
@@ -20,8 +51,7 @@
         <nav class="navbar navbar-expand-lg navbar-light shadow-lg fixed-top z-100"
             style="background: linear-gradient(to left, var(--background-color), #cadeff);">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ @asset('assets/images/logos/logo.png') }}"
-                        alt=""></a>
+                <a class="navbar-brand" href="#"><img src="{{ @asset('assets/images/logos/logo.png') }}" alt=""></a>
                 <button class="navbar-toggler button_nav_mobile" type="button">
                     <span class="navbar_overlay_icon bi"></span>
                 </button>
@@ -43,22 +73,22 @@
                             <a class="nav-link" href="#contact">Kontak</a>
                         </li>
                         {{-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li> --}}
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li> --}}
                     </ul>
                     <form class="d-flex">
                         <a href="/login" class="btn btn-primary me-2">Login</a>
@@ -103,8 +133,7 @@
                 <div class="row">
                     <div data-aos="zoom-in" class="col-md-6 d-flex align-items-center">
                         <div class="wrapper_img_fitur">
-                            <img class="img_fitur" src="{{ @asset('assets/images/products/gambar1.jpg') }}"
-                                alt="">
+                            <img class="img_fitur" src="{{ @asset('assets/images/products/gambar1.jpg') }}" alt="">
                         </div>
                     </div>
                     <div class="col-md-6" data-aos="zoom-in">
@@ -150,24 +179,25 @@
                     <div class="umkm_main_header mt-3 mb-5 text-center">UMKM Kami</div>
                 </div>
             </div>
-            <div class="row">
+            <div class="owl-carousel">
                 @foreach ($umkm as $umkm)
-                    <div class="col-md-4">
-                        <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                            style="height: 500px;">
-                            <img src="{{ $umkm->gambar_umkm }}" class="card-img-top" style="height: 250px;"
-                                alt="Gambar UMKM">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
-                                <p class="">{{ $umkm->deskripsi_umkm }}</p>
-                                <div class="ketUmkm">
-                                    <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                    <p class="m-0 p-0 jamBuka">Jam Buka: {{ $umkm->jam_operasional_awal }} -
-                                        {{ $umkm->jam_operasional_akhir }}</p>
-                                </div>
+                <div class="">
+                    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
+                        style="height: 500px; width: 100%;">
+                        <img src="{{ $umkm->gambar_umkm }}" class="card-img-top" style="height: 250px;"
+                            alt="Gambar UMKM">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
+                            <p class="">{{ $umkm->deskripsi_umkm }}</p>
+                            <div class="ketUmkm">
+                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
+                                <p class="m-0 p-0 jamBuka">Jam Buka: {{ $umkm->jam_operasional_awal }} -
+                                    {{ $umkm->jam_operasional_akhir }}</p>
                             </div>
                         </div>
                     </div>
+                </div>
+
                 @endforeach
             </div>
         </div>
@@ -179,49 +209,24 @@
                     <h1 class="kegiatan_warga_main_header mb-5 text-center">Kegiatan Warga</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
+            <div class="owl-carousel">
+                @foreach ($kegiatanWarga as $kegiatan)
+                <div class="">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
                         style="height: 400px;">
                         <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
                             style="height: 200px;" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[0]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[0]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[0]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[0]->jam_awal }} s/d
-                                {{ $kegiatanWarga[0]->jam_akhir }}</p>
+                            <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
+                            <p class="">{{ $kegiatan->deskripsi_kegiatan }}</p>
+                            <p class="m-0 p-0">Hari : {{ $kegiatan->jadwal_kegiatan }}</p>
+                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatan->jam_awal }} s/d
+                                {{ $kegiatan->jam_akhir }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[1]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[1]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[1]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[1]->jam_awal }} s/d
-                                {{ $kegiatanWarga[1]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[2]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[2]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[2]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[2]->jam_awal }} s/d
-                                {{ $kegiatanWarga[2]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
+                 @endforeach
+
             </div>
         </div>
     </section>
@@ -240,22 +245,20 @@
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label for="nama" class="form-label m-1">Nama Anda</label>
-                                    <input type="text" name="nama" id="nama"
-                                        class="form-control bg-white">
+                                    <input type="text" name="nama" id="nama" class="form-control bg-white">
                                 </div>
                                 {{-- <div class="form-group mb-3">
                                     <label for="email" class="form-label m-1">Email Anda</label>
-                                    <input type="email" name="email" id="email"
-                                        class="form-control bg-white">
+                                    <input type="email" name="email" id="email" class="form-control bg-white">
                                 </div> --}}
                                 <div class="form-group mb-3">
                                     <label for="subjek" class="form-label m-1">Subjek Anda</label>
-                                    <input type="text" name="subjek" id="subjek"
-                                        class="form-control bg-white">
+                                    <input type="text" name="subjek" id="subjek" class="form-control bg-white">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="pesan" class="form-label m-1">Pesan Anda</label>
-                                    <textarea type="text" name="pesan" id="pesan" class="form-control bg-white" style="height: 80px;"></textarea>
+                                    <textarea type="text" name="pesan" id="pesan" class="form-control bg-white"
+                                        style="height: 80px;"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Kirim Pesan</button>
                             </form>
@@ -287,8 +290,30 @@
             duration: 3000
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
         let navbarOpen = false;
+        $(".owl-carousel").owlCarousel({
+            loop:false,
+    margin:20,
+   
+    autoplay:true,
+    autoplayTimeout:1000,
+    autoplayHoverPause:true,
+    animateOut: 'fadeOut',
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:3
+        }
+    }
+    
+        });
         $(document).ready(function() {
 
             function checkScreenWidth() {

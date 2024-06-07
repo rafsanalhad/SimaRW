@@ -15,28 +15,22 @@
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('assets/images/profile/user-1.jpg') }}" alt="" width="35"
-                                height="35" class="rounded-circle">
-                        </a>
-                        <div class="dropdown dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                            aria-labelledby="drop2">
+                        @include('components.profil')
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                <a href="{{ url('/warga/profil-warga') }}"
+                                    class="d-flex align-items-center gap-2 dropdown-item">
                                     <i class="ti ti-user fs-6"></i>
                                     <p class="mb-0 fs-3">My Profile</p>
                                 </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">My Account</p>
+                                <a href="{{ url('/warga/ubah-password') }}"
+                                    class="d-flex align-items-center gap-2 dropdown-item">
+                                    <i class="ti ti-lock fs-6"></i>
+                                    <p class="mb-0 fs-3">Ubah Password</p>
                                 </a>
-                                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-list-check fs-6"></i>
-                                    <p class="mb-0 fs-3">My Task</p>
-                                </a>
-                                <a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                <a href="{{ url('/logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
+                        </div>
         </nav>
     </header>
     <div class="container-fluid">
@@ -49,7 +43,7 @@
                 <div class="col-md-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" style="width: 18rem; height: 500px;">
                                 @if ($kegiatan->foto_kegiatan != null)
                                     <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}"
                                         alt="Card image cap">

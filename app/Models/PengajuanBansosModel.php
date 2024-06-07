@@ -23,6 +23,7 @@ class PengajuanBansosModel extends Model
         'alasan_warga',
         'tanggal_pengajuan',
         'file_sktm',
+        'alasan_tolak',
         'status_verif'
     ];
 

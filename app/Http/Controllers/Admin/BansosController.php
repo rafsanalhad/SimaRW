@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\KartuKeluargaModel;
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanBansosModel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\RekomendasiBansosModel;
+use App\Exports\PenerimaBansosSAWExcel;
+use App\Exports\PenerimaBansosVikorExcel;
+use App\Models\RekomendasiBansosSPKVikorModel;
 
 class BansosController extends Controller
 {
@@ -32,9 +36,14 @@ class BansosController extends Controller
         return redirect('/admin/kelola-bansos');
     }
 
-    public function tolakPengajuan($id) {
+    public function tolakPengajuan(Request $request, $id) {
+        $request->validate([
+            'alasan_penolakan' => 'required'
+        ]);
+
         PengajuanBansosModel::where('pengajuan_id', $id)->update([
-            'status_verif' => 'Ditolak'
+            'status_verif' => 'Ditolak',
+            'alasan_tolak' => $request->alasan_penolakan
         ]);
 
         return redirect('/admin/kelola-bansos');
@@ -49,13 +58,28 @@ class BansosController extends Controller
 
     // Function show rekomendasi spk untuk bansos
     public function rekomendasiBansos(){
-        $rekomBansosSPK = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
+        $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;
             $user->user_count = $users->count();
             $user->total_gaji = $users->sum('gaji_user');
             return $user;
         });
 
-        return view('layout.admin.rekomendasi_bansos', ['bansosRekom' => $rekomBansosSPK, 'no' => 1]);
+        $rekomBansosSPKVikor = RekomendasiBansosSPKVikorModel::with('kartuKeluarga.user')->orderBy('rekomendasi_vikor_id', 'asc')->get()->map(function($user) {
+            $users = $user->kartuKeluarga->user;
+            $user->user_count = $users->count();
+            $user->total_gaji = $users->sum('gaji_user');
+            return $user;
+        });
+
+        return view('layout.admin.rekomendasi_bansos', ['bansosSAW' => $rekomBansosSPKSAW, 'bansosVikor' => $rekomBansosSPKVikor, 'noSAW' => 1, 'noVikor' => 1]);
+    }
+
+    public function downloadExcelSAW() {
+        return Excel::download(new PenerimaBansosSAWExcel, 'rekap_rekomendasi_bansos_saw.xlsx');
+    }
+
+    public function downloadExcelVikor() {
+        return Excel::download(new PenerimaBansosVikorExcel, 'rekap_rekomendasi_bansos_vikor.xlsx');
     }
 }

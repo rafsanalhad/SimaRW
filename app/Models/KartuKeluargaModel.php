@@ -19,7 +19,8 @@ class KartuKeluargaModel extends Model
         'no_kartu_keluarga',
         'nama_kepala_keluarga',
         'alamat_kk',
-        'jumlah_tanggungan'
+        'jumlah_tanggungan',
+        'kondisi_rumah'
     ];
 
     public function user(): HasMany {
@@ -32,5 +33,9 @@ class KartuKeluargaModel extends Model
 
     public function rekomendasiBansos(): BelongsTo {
         return $this->belongsTo(RekomendasiBansosModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
+    }
+
+    public function rekomendasiVikor(): BelongsTo {
+        return $this->belongsTo(RekomendasiBansosSPKVikorModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
     }
 }

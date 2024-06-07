@@ -6,7 +6,7 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <h4 class="mb-4">Penerima Bansos</h4>
+                <h4 class="mb-4">History Pengajuan Bansos</h4>
                 <hr>
                 <div class="table-responsive">
                     <table class="table" id="table-warga">
@@ -38,7 +38,9 @@
                                         @elseif($bansos->status_verif == 'Belum Terverifikasi')
                                             <button class="btn btn-info">Menunggu Konfirmasi</button>
                                         @else
-                                            <button class="btn btn-danger">Pengajuan Ditolak</button>
+                                            <button class="btn btn-danger"
+                                                onclick="showTolak('{{ $bansos->alasan_tolak }}')">Pengajuan
+                                                Ditolak</button>
                                         @endif
                                     </td>
                                 </tr>
@@ -50,7 +52,21 @@
         </div>
     </div>
 
-
+    <div class="modal modal_tolak" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title">Alasan penolakan</h5>
+                    <hr class="w-100">
+                    <p id="alasan_tolak_content"></p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            onclick=hideTolak()>Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     </div>
@@ -59,5 +75,14 @@
         $('#submenu-kelola-bansos').addClass('show');
         $('#menu-history-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-warga');
+
+        function showTolak(alasanTolak) {
+            $('#alasan_tolak_content').text(alasanTolak);
+            $('.modal_tolak').modal('show');
+        }
+
+        function hideTolak() {
+            $('.modal_tolak').modal('hide');
+        }
     </script>
 @endsection

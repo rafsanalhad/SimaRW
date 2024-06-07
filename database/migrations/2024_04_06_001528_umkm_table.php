@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('umkm', function (Blueprint $table) {
             $table->id('umkm_id');
             $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('user_id')->references('user_id')->on('user')->cascadeOnDelete();
             $table->string('nama_umkm', 255);
             $table->text('alamat_umkm');
             $table->string('kontak_umkm', 255);

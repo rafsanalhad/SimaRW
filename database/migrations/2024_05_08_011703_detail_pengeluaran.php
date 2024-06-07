@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('detail_pengeluaran', function (Blueprint $table) {
             $table->id('detail_pengeluaran_id');
             $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('user_id')->references('user_id')->on('user')->cascadeOnDelete();
             $table->bigInteger('jumlah_pengeluaran');
             $table->text('bukti_pengeluaran');
             $table->text('detail_pengeluaran');

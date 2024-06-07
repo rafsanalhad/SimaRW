@@ -1,50 +1,51 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminIuranController;
-use App\Http\Controllers\Admin\AdminUbahPassword;
-use App\Http\Controllers\Admin\AdminUbahPasswordController;
-use App\Http\Controllers\Admin\PengumumanController;
-use App\Http\Controllers\Admin\ProfilAdminController;
-use App\Http\Controllers\RT\KelolaWargaController;
-use App\Http\Controllers\RT\RTBansosController;
-use App\Http\Controllers\RT\RTUMKMController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\RT\ProfileRTController;
-use App\Http\Controllers\RT\RTController;
-use App\Http\Controllers\RW\ProfileRWController;
-use App\Http\Controllers\RW\RWController;
-use App\Http\Controllers\Admin\BansosController as AdminBansos;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Warga\BansosController as WargaBansos;
-use App\Http\Controllers\Warga\IuranController;
-use App\Http\Controllers\Warga\KegiatanWargaController;
-use App\Http\Controllers\Warga\ProfilWargaController;
 use Illuminate\Support\Facades\Route;
+use App\Services\UpdateSPKVikorService;
 use App\Http\Controllers\HomeController;
+use App\Services\UpdateSPKBansosService;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RT\RTController;
+use App\Http\Controllers\RW\RWController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RT\RTUMKMController;
+use App\Http\Controllers\Warga\TemplateSurat;
 use App\Http\Controllers\Admin\UMKMController;
+use App\Http\Controllers\RT\RTBansosController;
+use App\Http\Controllers\Warga\IuranController;
+use App\Http\Controllers\RT\KelolaNKKController;
+use App\Http\Controllers\RT\ProfileRTController;
+use App\Http\Controllers\RW\ProfileRWController;
+use App\Http\Controllers\Admin\AdminUbahPassword;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\RT\KelolaWargaController;
+use App\Http\Controllers\RT\RTPengaduanController;
 use App\Http\Controllers\Admin\PengaduanController;
+use App\Http\Controllers\Warga\DashboardController;
+use App\Http\Controllers\Admin\AdminIuranController;
 use App\Http\Controllers\Admin\KelolaDataController;
-use App\Http\Controllers\Admin\KelolaIuranController;
-use App\Http\Controllers\Admin\KelolaSuratController;
-use App\Http\Controllers\RT\DashboardController as RTDashboardController;
+use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\RT\RTKelolaIuranController;
 use App\Http\Controllers\RT\RTKelolaSuratController;
-use App\Http\Controllers\RT\RTPengaduanController;
-use App\Http\Controllers\RT\KelolaNKKController;
-use App\Http\Controllers\Warga\TemplateSurat;
-use App\Http\Controllers\RT\RTKelolaKegiatanController;
+use App\Http\Controllers\Admin\KelolaIuranController;
+use App\Http\Controllers\Admin\KelolaSuratController;
+use App\Http\Controllers\Admin\ProfilAdminController;
 use App\Http\Controllers\RT\RTUbahPasswordController;
-use App\Http\Controllers\Warga\DashboardController;
-use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
+use App\Http\Controllers\Warga\ProfilWargaController;
+use App\Http\Controllers\RT\RTKelolaKegiatanController;
+use App\Http\Controllers\Warga\KegiatanWargaController;
 use App\Http\Controllers\Warga\PengajuanSuratController;
-use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
+use App\Http\Controllers\Admin\AdminUbahPasswordController;
 use App\Http\Controllers\Warga\WargaUbahPasswordController;
+use App\Http\Controllers\Admin\BansosController as AdminBansos;
+use App\Http\Controllers\Warga\BansosController as WargaBansos;
+use App\Http\Controllers\Warga\UMKMController as WargaUMKMController;
+use App\Http\Controllers\RT\DashboardController as RTDashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Warga\PengaduanController as WargaPengaduanController;
 use \App\Http\Controllers\Admin\KegiatanWargaController as AdminKegiatanWargaController;
-use App\Services\UpdateSPKBansosService;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kelola-umkm/edit/{id}', [UMKMController::class, 'editUmkm']);
             Route::post('/kelola-umkm/update/{id}', [UMKMController::class, 'updateUmkm']);
             Route::get('/kelola-umkm/delete/{id}', [UMKMController::class, 'deleteUmkm']);
+            Route::get('/kelola-umkm/detail/{id}', [UMKMController::class, 'detailUmkm']);
 
             // Route Kelola Data Iuran
             Route::get('/kelola-iuran', [AdminIuranController::class, 'kelolaIuran']);
@@ -151,20 +153,22 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/download-iuran', [KelolaIuranController::class, 'downloadExcel']);
 
             // Route Kelola Data Surat
-            Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
+            // Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
 
 
             // Route Kelola Bansos
             Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
             Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
-            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
-            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+            Route::get('/terima-bansos/{id}', [AdminBansos::class, 'terimaPengajuan']);
+            Route::post('/tolak-bansos/{id}', [AdminBansos::class, 'tolakPengajuan']);
 
             // Route History Bansos
             Route::get('/penerima-bansos', [AdminBansos::class, 'historyBansos']);
 
             // Route Rekomendasi SPK Bansos
             Route::get('/rekomendasi-bansos', [AdminBansos::class, 'rekomendasiBansos']);
+            Route::get('/rekomendasi-bansos/download-saw', [AdminBansos::class, 'downloadExcelSAW']);
+            Route::get('/rekomendasi-bansos/download-vikor', [AdminBansos::class, 'downloadExcelVikor']);
 
             // Route Pengaduan User
             Route::get('/laporan-pengaduan', [PengaduanController::class, 'laporanPengaduan']);
@@ -232,10 +236,14 @@ Route::middleware(['auth'])->group(function () {
             // Bansos
             Route::get('/kelola-bansos', [RTBansosController::class, 'kelolaBansos']);
             Route::get('/penerima-bansos', [RTBansosController::class, 'historyBansos']);
-            Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
             Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
             Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
             Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+
+            // Route Rekomendasi Bansos
+            Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
+            Route::get('/rekomendasi-bansos/download-saw', [RTBansosController::class, 'downloadExcelSAW']);
+            Route::get('/rekomendasi-bansos/download-vikor', [RTBansosController::class, 'downloadExcelVikor']);
 
             // Laporan Pengaduan
             Route::get('/laporan-pengaduan', [RTPengaduanController::class, 'laporanPengaduan']);

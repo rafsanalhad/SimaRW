@@ -6,26 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class RekomendasiBansosModel extends Model
+class RekomendasiBansosSPKVikorModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'rekomendasi_bansos';
+    protected $table = 'rekomendasi_bansos_vikor';
 
-    protected $primaryKey = 'rekomendasi_bansos_id';
+    protected $primaryKey = 'rekomendasi_vikor_id';
 
     protected $fillable = [
         'kartu_keluarga_id',
-        'usia',
-        'kondisi_rumah',
-        'pekerjaan',
-        'jumlah_tanggungan',
-        'total_gaji',
-        'total_pembobotan',
+        'hasil_indeks',
         'status'
     ];
 
-    public function kartuKeluarga(): HasOne {
+    public function kartuKeluarga() : HasOne {
         return $this->hasOne(KartuKeluargaModel::class, 'kartu_keluarga_id', 'kartu_keluarga_id');
     }
 }

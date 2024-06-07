@@ -11,19 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengajuan_bansos', function (Blueprint $table) {
-            $table->id('pengajuan_id');
+        Schema::create('rekomendasi_bansos_vikor', function (Blueprint $table) {
+            $table->id('rekomendasi_vikor_id');
             $table->unsignedBigInteger('kartu_keluarga_id')->index();
             $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga')->cascadeOnDelete();
-            $table->string('pendapatan_keluarga');
-            $table->string('tanggungan_warga');
-            $table->string('nomor_rt');
-            $table->string('nomor_rw');
-            $table->text('alasan_warga');
-            $table->date('tanggal_pengajuan');
-            $table->text('file_sktm');
-            $table->text('alasan_tolak')->nullable();
-            $table->string('status_verif', 20);
+            $table->text('hasil_indeks');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengajuan_bansos');
+        Schema::dropIfExists('rekomendasi_bansos_vikor');
     }
 };

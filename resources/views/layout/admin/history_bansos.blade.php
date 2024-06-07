@@ -5,7 +5,7 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
-                <h4 class="mb-4">Penerima Bansos</h4>
+                <h4 class="mb-4">History Pengajuan Bansos</h4>
                 <hr>
                 <div class="table-responsive">
                     <table class="table" id="table-warga">

@@ -22,7 +22,7 @@
                             <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
                             <p class="card-text">Jam Buka: {{ $umkm->jam_operasional_awal }} -
                                 {{ $umkm->jam_operasional_akhir }}</p>
-                                <a href="#" class="btn btn-primary" onclick="showModalUmkm()">Detail</a>
+                                <a href="#" class="btn btn-primary" onclick="showModalUmkm({{ $umkm->umkm_id }})">Detail</a>
                             <a href="#" class="btn btn-warning" onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
                             <a href="#" class="btn btn-danger" onclick="hapusData({{ $umkm->umkm_id }})">Hapus</a>
                         </div>
@@ -85,24 +85,6 @@
                             </div>
                             <div class="row d-flex align-items-center mt-3">
                                 <div class="col-4">
-                                    Latitude
-                                </div>
-                                <div class="col-6">
-                                    <input type="text" id="latitude_umkm_edit" name="latitude_umkm"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="row d-flex align-items-center mt-3">
-                                <div class="col-4">
-                                    Longitude
-                                </div>
-                                <div class="col-6">
-                                    <input type="text" id="longitude_umkm_edit" name="longitude_umkm"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="row d-flex align-items-center mt-3">
-                                <div class="col-4">
                                     Jam Operasional
                                 </div>
                                 <div class="col-6 d-flex">
@@ -146,34 +128,22 @@
 <div class="modal modal_umkm" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-            </div>
             <div class="modal-body">
-                <img src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
-                <h3>Toko Kelontong Pak Alhad</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut fringilla magna, non molestie
-                    enim.
-                    Donec convallis sagittis lacinia. Morbi eu semper erat, eget tempor libero. Sed ac risus vitae nulla
-                    semper
-                    imperdiet et non sem. Sed convallis viverra elit in varius. Integer non nisi ac eros ullamcorper
-                    finibus at
-                    pulvinar ex. Proin euismod tincidunt molestie. Fusce vestibulum elit aliquet placerat condimentum.
-                    Curabitur
-                    in libero nisi. Maecenas accumsan nec ipsum at vestibulum.</p>
+                <img id="gambar_umkm_detail" src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
+                <h3 id="nama_umkm_detail"></h3>
+                <p id="deskripsi_umkm_detail"></p>
                 <div class="row">
                     <div class="col-6">
                         <h3 class="fs-4">Jam Operasi:</h3>
-                        <p>Setiap Hari jam 08.00 - 19.00</p>
+                        <p id="jam_buka_detail"></p>
                     </div>
                     <div class="col-6">
                         <h3 class="fs-4">Kontak:</h3>
-                        <p>085763357188275</p>
+                        <p id="kontak_umkm_detail"></p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                     onclick=hideModalUmkm()>Close</button>
             </div>
@@ -181,7 +151,19 @@
     </div>
 </div>
 <script>
-    function showModalUmkm() {
+    function showModalUmkm(idUmkm) {
+            $.ajax({
+                url: '/admin/kelola-umkm/detail/' + idUmkm,
+                type: 'GET',
+                dataType: 'json',
+                success(data) {
+                    $('#nama_umkm_detail').text(data.nama_umkm);
+                    $('#kontak_umkm_detail').text(data.kontak_umkm);
+                    $('#jam_buka_detail').text(data.jam_operasional_awal + ' - ' + data.jam_operasional_akhir);
+                    $('#deskripsi_umkm_detail').text(data.deskripsi_umkm);
+                }
+            })
+
             $('.modal_umkm').modal('show');
         }
         function hideModalUmkm() {

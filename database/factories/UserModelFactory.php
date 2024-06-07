@@ -19,28 +19,56 @@ class UserModelFactory extends Factory
      */
     public function definition(): array
     {
+        static $count = 0;
         $nik_user = fake()->nik();
 
-        return [
-            'kartu_keluarga_id' => rand(1, count(KartuKeluargaModel::select('kartu_keluarga_id')->get())),
-            'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
-            'nik_user' => $nik_user,
-            'nama_user' => fake()->name(),
-            'email_user' => fake()->unique()->safeEmail(),
-            'password' => Hash::make($nik_user),
-            'gaji_user' => rand(1000000, 5000000),
-            'pekerjaan_user' => fake()->jobTitle(),
-            'nomor_rt' => rand(1, 5),
-            'nomor_rw' => rand(1, 5),
-            'masa_jabatan_awal' => fake()->date(),
-            'masa_jabatan_akhir' => fake()->date(),
-            'tempat' => fake()->city(),
-            'tanggal_lahir' => fake()->date(),
-            'gender' => fake()->randomElement(['Laki-laki', 'Perempuan']),
-            'status_kawin' => fake()->randomElement(['Kawin', 'Belum Kawin']),
-            'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']),
-            'alamat_user' => fake()->address(),
-            'foto_user' => 'User-Images/default.jpeg'
-        ];
+        $kartuKeluarga = KartuKeluargaModel::orderBy('kartu_keluarga_id', 'asc')->skip($count)->take(1)->first();
+        $count++;
+
+        if($count <= KartuKeluargaModel::count() && $kartuKeluarga) {
+            return [
+                'kartu_keluarga_id' => $kartuKeluarga->kartu_keluarga_id,
+                'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+                'nik_user' => $nik_user,
+                'nama_user' => $kartuKeluarga->nama_kepala_keluarga,
+                'email_user' => fake()->unique()->safeEmail(),
+                'password' => Hash::make($nik_user),
+                'gaji_user' => rand(1000000, 5000000),
+                'pekerjaan_user' => fake()->jobTitle(),
+                'nomor_rt' => rand(1, 5),
+                'nomor_rw' => rand(1, 5),
+                'masa_jabatan_awal' => fake()->date(),
+                'masa_jabatan_akhir' => fake()->date(),
+                'tempat' => fake()->city(),
+                'tanggal_lahir' => fake()->date(),
+                'gender' => fake()->randomElement(['Laki-laki', 'Perempuan']),
+                'status_kawin' => fake()->randomElement(['Kawin', 'Belum Kawin']),
+                'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']),
+                'alamat_user' => fake()->address(),
+                'foto_user' => 'User-Images/default.jpeg'
+            ];
+        } else {
+            return [
+                'kartu_keluarga_id' => rand(1, KartuKeluargaModel::count()),
+                'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+                'nik_user' => $nik_user,
+                'nama_user' => fake()->name(),
+                'email_user' => fake()->unique()->safeEmail(),
+                'password' => Hash::make($nik_user),
+                'gaji_user' => rand(1000000, 5000000),
+                'pekerjaan_user' => fake()->jobTitle(),
+                'nomor_rt' => rand(1, 5),
+                'nomor_rw' => rand(1, 5),
+                'masa_jabatan_awal' => fake()->date(),
+                'masa_jabatan_akhir' => fake()->date(),
+                'tempat' => fake()->city(),
+                'tanggal_lahir' => fake()->date(),
+                'gender' => fake()->randomElement(['Laki-laki', 'Perempuan']),
+                'status_kawin' => fake()->randomElement(['Kawin', 'Belum Kawin']),
+                'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']),
+                'alamat_user' => fake()->address(),
+                'foto_user' => 'User-Images/default.jpeg'
+            ];
+        }
     }
 }
