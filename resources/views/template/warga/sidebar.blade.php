@@ -75,6 +75,10 @@
                                     href="{{ url('/warga/penerima-bansos') }}">History Pengajuan Bansos</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-history-penerima-bansos"
+                                    href="{{ url('/warga/history-bansos') }}">History Penerima Bansos</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-penerima-bansos"
                                     href="{{ url('/warga/rekomendasi-bansos') }}">Penerima Bansos</a>
                             </li>
