@@ -11,7 +11,7 @@
                         <option value="2">VIKOR</option>
                       </select>
                 </form>
-                <a href="#">
+                <a id="downloadExcel" href="/admin/rekomendasi-bansos/download-saw">
                     <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png" alt="gambar convert excel">
                 </a>
             </div>
@@ -87,7 +87,7 @@
     </div>
     </div>
     <script>
-            $('#submenu-kelola-bansos').addClass('show');
+        $('#submenu-kelola-bansos').addClass('show');
         $('#menu-penerima-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-bansos');
         new DataTable('#table-bansos2');
@@ -97,10 +97,12 @@
                 console.log($('#selectOptionSpk').val());
                 if($('#selectOptionSpk').val() == 1){
                     $('#table_saw').show();
+                    $('#downloadExcel').attr('href', '/admin/rekomendasi-bansos/download-saw')
                     $('#table_vikor').hide();
                 }else{
                     $('#table_saw').hide();
                     $('#table_vikor').show();
+                    $('#downloadExcel').attr('href', '/admin/rekomendasi-bansos/download-vikor')
                 }
             })
         })
