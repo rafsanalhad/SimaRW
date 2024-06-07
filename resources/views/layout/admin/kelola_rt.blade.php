@@ -126,7 +126,7 @@
                         <h5 class="modal-title">Edit Data RT</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-rt/update" method="POST" class="form-horizontal">
+                        <form action="/admin/kelola-rt/update" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="hidden" id="rt_lama_edit" name="rt_lama" value="">
                             <div class="row mb-2">
@@ -173,6 +173,16 @@
                                         <input type="date" class="form-control" id="masa_jabatan_akhir_edit"
                                             name="masa_jabatan_akhir" value="{{ old('masa_jabatan_akhir') }}" required>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control" id="upload_foto" name="foto_user"
+                                        accept="image/*">
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">
