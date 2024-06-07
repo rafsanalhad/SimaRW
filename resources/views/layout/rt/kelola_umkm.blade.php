@@ -205,8 +205,8 @@
 
         const hapusData = (idUmkm) => {
             Swal.fire({
-                title: "Apakah Anda Yakin?",
-                text: "Menghapus data ini? Data yang dihapus tidak dapat dikembalikan!",
+                title: "Apakah Anda Yakin Menghapus Data ini?",
+                text: "Data yang dihapus tidak dapat dikembalikan!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",

@@ -205,8 +205,8 @@
 
         const hapusData = (idUmkm) => {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Apakah Anda Yakin Menghapus Data ini?",
+                text: "Data yang dihapus tidak dapat dikembalikan!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -219,8 +219,8 @@
                         type: 'GET',
                         success: function() {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                title: "Sudah Dihapus!",
+                                text: "Data UMKM Sudah Terhapus",
                                 icon: "success"
                             }).then((result) => {
                                 location.reload();
