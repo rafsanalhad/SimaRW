@@ -58,7 +58,7 @@ use \App\Http\Controllers\Admin\KegiatanWargaController as AdminKegiatanWargaCon
 |
 */
 
-// Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
+// Route::get('/test', [UpdateSPKVikorService::class, 'updateBansos']);
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -121,6 +121,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/kelola-warga', [KelolaDataController::class, 'createWarga'])->name('createWarga');
             Route::get('/kelola-warga/edit/{id}', [KelolaDataController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaDataController::class, 'deleteWarga']);
+            Route::get('/kelola-warga/check/{id}', [KelolaDataController::class, 'cekKepalaKeluarga']);
             Route::post('/kelola-warga/update/{id}', [KelolaDataController::class, 'updateWarga'])->name('updateWarga');
             Route::get('/download-warga', [KelolaDataController::class, 'downloadExcelWarga']);
 

@@ -65,7 +65,7 @@ class UpdateSPKVikorService {
 
         // Memasukkan kriteria ke dalam array
         foreach ($kartuKeluarga as $kk) {
-            $kepalaKeluarga = UserModel::where('nama_user', $kk->nama_kepala_keluarga)->first();
+            $kepalaKeluarga = UserModel::where('nama_user', $kk->nama_kepala_keluarga)->where('kartu_keluarga_id', $kk->kartu_keluarga_id)->first();
 
             $kriteriaList[] = [
                 'kartu_keluarga_id' => $kk->kartu_keluarga_id,
@@ -191,6 +191,7 @@ class UpdateSPKVikorService {
                 'max' => max(array_column($hasilPembobotan, 'jumlah_tanggungan'))
             ]
         ];
+
 
         // Melakukan Normalisasi Kriteria dan Alternatif
         foreach ($hasilPembobotan as $bobot) {

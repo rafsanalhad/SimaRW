@@ -393,6 +393,24 @@
             </div>
         </div>
     </div>
+
+    <div class="modal modal_delete_kepalaKeluarga" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data Warga</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Apakah anda yakin ingin menghapus data kepala keluarga ini?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="hapus_warga_id btn btn-secondary">Hapus</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick=hideDeleteKepalaKeluarga()>Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <script>
         $('#submenu-kelola-data').addClass('show');
@@ -437,12 +455,28 @@
         }
 
         function showDeleteWarga(idWarga) {
-            $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
-            $('.modal_delete_warga').modal('show')
+            $.ajax({
+                url: '/admin/kelola-warga/check/' + idWarga,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data == true) {
+                        $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+                        $('.modal_delete_kepalaKeluarga').modal('show')
+                    } else {
+                        $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+                        $('.modal_delete_warga').modal('show')
+                    }
+                }
+            })
         }
 
         function hideDeleteWarga() {
             $('.modal_delete_warga').modal('hide')
+        }
+
+        function hideDeleteKepalaKeluarga() {
+            $('.modal_delete_kepalaKeluarga').modal('hide')
         }
     </script>
     <script>

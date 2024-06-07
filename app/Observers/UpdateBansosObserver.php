@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\KartuKeluargaModel;
 use App\Models\UserModel;
 use App\Services\UpdateSPKBansosService;
 use App\Services\UpdateSPKVikorService;
@@ -23,8 +24,12 @@ class UpdateBansosObserver
 
     public function created(UserModel $userModel): void
     {
-        $this->updateSPKBansosService->updateBansos();
-        $this->updateSPKVikor->updateBansos();
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', $userModel->nama_user)->first()) {
+            //
+        } else {
+            $this->updateSPKBansosService->updateBansos();
+            $this->updateSPKVikor->updateBansos();
+        }
     }
 
     /**
@@ -41,8 +46,12 @@ class UpdateBansosObserver
      */
     public function deleted(UserModel $userModel): void
     {
-        $this->updateSPKBansosService->updateBansos();
-        $this->updateSPKVikor->updateBansos();
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', $userModel->nama_user)->first()) {
+            KartuKeluargaModel::destroy($userModel->kartu_keluarga_id);
+        } else {
+            $this->updateSPKBansosService->updateBansos();
+            $this->updateSPKVikor->updateBansos();
+        }
     }
 
     /**
