@@ -54,6 +54,12 @@ class BansosController extends Controller
         return view('layout.warga.penerima_bansos', ['bansos' => $bansos, 'no' => 1]);
     }
 
+    public function allHistoryPengajuanBansos() {
+        $bansos = PengajuanBansosModel::with('kartuKeluarga')->whereIn('status_verif', ['Terverifikasi', 'Ditolak'])->orderBy('pengajuan_id', 'asc')->get();
+
+        return view('layout.warga.transparansi_bansos', ['bansos' => $bansos, 'no' => 1]);
+    }
+
     public function rekomendasiBansos(){
         $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;

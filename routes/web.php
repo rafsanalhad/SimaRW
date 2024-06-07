@@ -312,7 +312,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/pengajuan-bansos', [WargaBansos::class, 'createPengajuanBansos']);
             Route::get('/penerima-bansos', [WargaBansos::class, 'historyBansos']);
             Route::get('/rekomendasi-bansos', [WargaBansos::class, 'rekomendasiBansos']);
-            Route::get('/history-bansos', [WargaBansos::class, 'historyPenerimaBansos']);
+            Route::get('/history-bansos', [WargaBansos::class, 'allHistoryPengajuanBansos']);
 
             // Route Pengaduan Warga
             Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);
