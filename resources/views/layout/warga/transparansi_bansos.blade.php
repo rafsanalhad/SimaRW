@@ -23,9 +23,9 @@
                                     <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
                                     <td>
                                         @if ($bansos->status_verif == 'Terverifikasi')
-                                            <div class="btn btn-success">Pengajuan Bansos Di Terima</div>
+                                            <div class="badge bg-success">Pengajuan Bansos Di Terima</div>
                                         @else
-                                            <div class="btn btn-danger">Pengajuan Bansos Di Tolak</div>
+                                            <div class="badge bg-danger">Pengajuan Bansos Di Tolak</div>
                                         @endif
                                     </td>
                                 </tr>
