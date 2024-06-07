@@ -58,7 +58,7 @@ use \App\Http\Controllers\Admin\KegiatanWargaController as AdminKegiatanWargaCon
 |
 */
 
-Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
+// Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
 
 Route::get('/', [HomeController::class, 'index']);
 

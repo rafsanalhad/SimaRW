@@ -12,12 +12,14 @@ class UpdateSPKBansosService
     {
         RekomendasiBansosModel::truncate();
 
-        $keluarga = KartuKeluargaModel::with('user')->get();
+        $keluarga = KartuKeluargaModel::whereHas('user', function($query) {
+            $query->whereNotIn('pekerjaan_user', ['PNS', 'TNI']);
+        })->get();
         $minMax = [];
 
         // Input data ke dalam array asosiatif
         foreach ($keluarga as $kriteriaBansos) {
-            $kepalaKeluarga = UserModel::where('nama_user', $kriteriaBansos->nama_kepala_keluarga)->where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->whereNotIn('pekerjaan_user', ['PNS', 'TNI'])->first();
+            $kepalaKeluarga = UserModel::where('nama_user', $kriteriaBansos->nama_kepala_keluarga)->where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->first();
 
             $kriteria = [
                 'kartu_keluarga_id' => $kriteriaBansos->kartu_keluarga_id,

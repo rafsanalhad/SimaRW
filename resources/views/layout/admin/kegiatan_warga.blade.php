@@ -159,7 +159,8 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Hapus"
+                confirmButtonText: "Hapus",
+                cancelButtonText: "Batal"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
