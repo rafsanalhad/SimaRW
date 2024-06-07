@@ -110,7 +110,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-history-bansos"
-                                    href="{{ url('/rt/penerima-bansos') }}">Laporan Pengeluaran</a>
+                                    href="{{ url('/rt/penerima-bansos') }}">History Pengajuan Bansos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-penerima-bansos"

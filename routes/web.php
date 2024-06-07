@@ -194,6 +194,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Profile RT
             Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
+            Route::post('/profil-rt', [ProfileRTController::class, 'updateProfil']);
 
             // Route Ubah Password
             Route::get('/ubah-password', [RTUbahPasswordController::class, 'ubahPassword']);
