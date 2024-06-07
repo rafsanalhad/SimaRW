@@ -19,6 +19,12 @@ class UMKMController extends Controller
         return view('layout.admin.kelola_umkm', ['umkm' => $umkm, 'warga' => $warga]);
     }
 
+    public function detailUMKM($id) {
+        $umkm = UmkmModel::find($id);
+
+        return response()->json($umkm);
+    }
+
     public function createUmkm(UmkmRequest $request) {
         $request->validated();
 
@@ -33,12 +39,6 @@ class UMKMController extends Controller
             'jam_operasional_akhir' => $request->jam_operasional_akhir,
             'deskripsi_umkm' => $request->deskripsi_umkm,
             'gambar_umkm' => $foto_umkm
-        ]);
-
-        LokasiUmkmModel::create([
-            'umkm_id' => $umkm->umkm_id,
-            'latitude_umkm' => $request->latitude_umkm,
-            'longitude_umkm' => $request->longitude_umkm
         ]);
 
         return redirect('/admin/kelola-umkm');

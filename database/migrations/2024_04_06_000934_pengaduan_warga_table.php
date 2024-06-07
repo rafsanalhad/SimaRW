@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pengaduan_warga', function (Blueprint $table) {
             $table->id('pengaduan_id');
             $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('user_id')->references('user_id')->on('user')->cascadeOnDelete();
             $table->date('tanggal_pengaduan');
             $table->text('isi_pengaduan');
             $table->string('nomor_rt');
