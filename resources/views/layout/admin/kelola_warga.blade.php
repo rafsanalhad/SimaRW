@@ -171,11 +171,18 @@
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Pekerjaan: </label>
                             <div class="col-10">
-                                <input type="text" class="form-control" id="pekerjaan_user" name="pekerjaan_user"
-                                    value="{{ old('pekerjaan_user') }}" required>
-                                @error('pekerjaan_user')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
+                                <select class="form-control" name="pekerjaan_user" id="pekerjaan_user">
+                                    <option value="">-- Pilih Pekerjaan Warga --</option>
+                                    <option value="PNS">PNS</option>
+                                    <option value="TNI">TNI</option>
+                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                    <option value="Wiraswasta">Wiraswasta</option>
+                                    <option value="Petani">Petani</option>
+                                    <option value="Sopir">Sopir</option>
+                                    <option value="Buruh">Buruh</option>
+                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option value="Pekerjaan Lainnya">Pekerjaan Lainnya</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -327,11 +334,18 @@
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Pekerjaan: </label>
                             <div class="col-10">
-                                <input type="text" class="form-control" id="pekerjaan_user_edit"
-                                    name="pekerjaan_user" value="{{ old('pekerjaan_user') }}" required>
-                                @error('pekerjaan_user')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
+                                <select class="form-control" name="pekerjaan_user" id="pekerjaan_user_edit">
+                                    <option value="">-- Pilih Pekerjaan Warga --</option>
+                                    <option value="PNS">PNS</option>
+                                    <option value="TNI">TNI</option>
+                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                    <option value="Wiraswasta">Wiraswasta</option>
+                                    <option value="Petani">Petani</option>
+                                    <option value="Sopir">Sopir</option>
+                                    <option value="Buruh">Buruh</option>
+                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option value="Pekerjaan Lainnya">Pekerjaan Lainnya</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -402,6 +416,7 @@
                 </div>
                 <div class="modal-body">
                     <h4>Apakah anda yakin ingin menghapus data kepala keluarga ini?</h4>
+                    <small>*Jika Anda menghapus data ini, semua data yang berkaitan dengan <br>kartu keluarga data ini akan terhapus</small>
                 </div>
                 <div class="modal-footer">
                     <a href="" class="hapus_warga_id btn btn-secondary">Hapus</a>

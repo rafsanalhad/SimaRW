@@ -42,8 +42,6 @@
                                 <td>
                                     @if ($bansos->status == 'Layak')
                                         <div class="btn btn-success">Layak Menerima Bansos</div>
-                                    @else
-                                        <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
                                     @endif
                                 </td>
                             </tbody>
@@ -74,8 +72,6 @@
                                 <td>
                                     @if ($bansos->status == 'Layak')
                                         <div class="btn btn-success">Layak Menerima Bansos</div>
-                                    @else
-                                        <div class="btn btn-danger">Tidak Layak Menerima Bansos</div>
                                     @endif
                                 </td>
                             </tbody>

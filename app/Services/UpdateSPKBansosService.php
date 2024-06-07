@@ -17,8 +17,8 @@ class UpdateSPKBansosService
 
         // Input data ke dalam array asosiatif
         foreach ($keluarga as $kriteriaBansos) {
-            $kepalaKeluarga = UserModel::where('nama_user', $kriteriaBansos->nama_kepala_keluarga)->where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->first();
-            
+            $kepalaKeluarga = UserModel::where('nama_user', $kriteriaBansos->nama_kepala_keluarga)->where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->whereNotIn('pekerjaan_user', ['PNS', 'TNI'])->first();
+
             $kriteria = [
                 'kartu_keluarga_id' => $kriteriaBansos->kartu_keluarga_id,
                 'pekerjaan_user' => $kepalaKeluarga->pekerjaan_user,
@@ -54,8 +54,9 @@ class UpdateSPKBansosService
                 'Wiraswasta' => 0.6,
                 'Petani' => 1,
                 'Buruh' => 0.8,
-                'Ibu Rumah Tangga' => 1,
-                'Tidak Bekerja' => 1
+                'Sopir' => 0.5,
+                'Tidak Bekerja' => 1,
+                'Pekerjaan Lainnya' => 0.1
             ],
             'total_gaji' => [
                 '0' => 1,
@@ -105,10 +106,12 @@ class UpdateSPKBansosService
                 $pekerjaanBobot = $bobotKriteria['pekerjaan']['Petani'];
             } else if($pekerjaanBobot == 'Buruh') {
                 $pekerjaanBobot = $bobotKriteria['pekerjaan']['Buruh'];
-            } else if($pekerjaanBobot == 'Ibu Rumah Tangga') {
-                $pekerjaanBobot = $bobotKriteria['pekerjaan']['Ibu Rumah Tangga'];
-            } else {
+            } else if($pekerjaanBobot == 'Sopir') {
+                $pekerjaanBobot = $bobotKriteria['pekerjaan']['Sopir'];
+            } else if($pekerjaanBobot == 'Tidak Bekerja') {
                 $pekerjaanBobot = $bobotKriteria['pekerjaan']['Tidak Bekerja'];
+            } else {
+                $pekerjaanBobot = $bobotKriteria['pekerjaan']['Pekerjaan Lainnya'];
             }
 
             // Pembobotan Kondisi Rumah
