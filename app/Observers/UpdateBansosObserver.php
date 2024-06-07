@@ -37,8 +37,7 @@ class UpdateBansosObserver
      */
     public function updated(UserModel $userModel): void
     {
-        $this->updateSPKBansosService->updateBansos();
-        $this->updateSPKVikor->updateBansos();
+        
     }
 
     /**
