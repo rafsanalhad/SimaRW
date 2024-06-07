@@ -239,9 +239,9 @@ Route::middleware(['auth'])->group(function () {
             // Bansos
             Route::get('/kelola-bansos', [RTBansosController::class, 'kelolaBansos']);
             Route::get('/penerima-bansos', [RTBansosController::class, 'historyBansos']);
-            Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
-            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
-            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+            Route::get('/get-file/{idPengajuan}', [RTBansosController::class, 'getPDFPengajuan']);
+            Route::get('/pengajuan/terima/{id}', [RTBansosController::class, 'terimaPengajuan']);
+            Route::get('/pengajuan/tolak/{id}', [RTBansosController::class, 'tolakPengajuan']);
 
             // Route Rekomendasi Bansos
             Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
