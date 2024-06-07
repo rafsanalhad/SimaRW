@@ -24,8 +24,8 @@
                             <td>1</td>
                             <td>Rizky Arifiansyah</td>
                             <td>
-                                <div class="btn btn-success">Bansos Di Terima</div>
-                                <div class="btn btn-danger">Bansos Di Tolak</div>
+                                <div class="badge bg-success">Bansos Di Terima</div>
+                                <div class="badge bg-danger">Bansos Di Tolak</div>
                             </td>
                         </tbody>
                         {{-- @endforeach --}}
