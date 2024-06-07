@@ -411,7 +411,6 @@
             </div>
         </div>
     </div>
-    </div>
     <script>
         $('#submenu-kelola-data').addClass('show');
         $('#menu-kelola-warga').removeClass('text-dark').addClass('text-primary');

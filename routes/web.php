@@ -210,6 +210,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/kelola-warga', [KelolaWargaController::class, 'createWarga'])->name('createWarga');
             Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
+            Route::get('/kelola-warga/check/{id}', [KelolaDataController::class, 'cekKepalaKeluarga']);
             Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
             Route::get('/download-warga', [KelolaWargaController::class, 'downloadExcelWarga']);
 

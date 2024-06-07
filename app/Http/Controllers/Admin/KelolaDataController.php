@@ -81,9 +81,11 @@ class KelolaDataController extends Controller
 
     // Function Cek Apakah Warga Merupakan Kepala Keluarga
     public function cekKepalaKeluarga($id) {
-        $kk = KartuKeluargaModel::where('nama_kepala_keluarga', UserModel::find($id)->nama_user)->get();
-
-        return response()->json(true);
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', UserModel::find($id)->nama_user)->count() == 0) {
+            return response()->json(false);
+        } else {
+            return response()->json(true);
+        }
     }
 
     // Function delete warga
