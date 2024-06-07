@@ -35,25 +35,25 @@
         </div>
     </div>
     </div>
-    {{-- <script>
+    <script>
         $('#submenu-kelola-bansos').addClass('show');
-        $('#menu-penerima-bansos').removeClass('text-dark').addClass('text-primary');
+        $('#menu-history-penerima-bansos').removeClass('text-dark').addClass('text-primary');
         new DataTable('#table-bansos');
-        new DataTable('#table-bansos2');
-        $('#table_vikor').hide();
-        $(document).ready(function(){
-            $('#selectSpk').on("change", function(){
-                console.log($('#selectOptionSpk').val());
-                if($('#selectOptionSpk').val() == 1){
-                    $('#table_saw').show();
-                    $('#downloadExcel').attr('href', '/admin/rekomendasi-bansos/download-saw')
-                    $('#table_vikor').hide();
-                }else{
-                    $('#table_saw').hide();
-                    $('#table_vikor').show();
-                    $('#downloadExcel').attr('href', '/admin/rekomendasi-bansos/download-vikor')
-                }
-            })
-        })
-    </script> --}}
+        // new DataTable('#table-bansos2');
+        // $('#table_vikor').hide();
+        // $(document).ready(function(){
+        //     $('#selectSpk').on("change", function(){
+        //         console.log($('#selectOptionSpk').val());
+        //         if($('#selectOptionSpk').val() == 1){
+        //             $('#table_saw').show();
+        //             $('#downloadExcel').attr('href', '/admin/rekomendasi-bansos/download-saw')
+        //             $('#table_vikor').hide();
+        //         }else{
+        //             $('#table_saw').hide();
+        //             $('#table_vikor').show();
+        //             $('#downloadExcel').attr('href', '/admin/rekomendasi-bansos/download-vikor')
+        //         }
+        //     })
+        // })
+    </script>
 @endsection
