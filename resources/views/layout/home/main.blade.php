@@ -119,7 +119,7 @@
                             <a href="/login" class="btn btn_hero">Mulai Sekarang</a>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div class="col-md-6 d-flex justify-content-center align-items-center mt-3">
 
                         <img style="width: 100%; height: 100%; border-radius: 36px;" class="img_hero"
                             src="{{ @asset('assets/images/content/fotoRTRW.jpg') }}" alt="">
@@ -197,38 +197,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                        style="height: 500px;">
-                        <img src="{{ $umkm->gambar_umkm }}" class="card-img-top" style="height: 250px;"
-                            alt="Gambar UMKM">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
-                            <p class="">{{ $umkm->deskripsi_umkm }}</p>
-                            <div class="ketUmkm">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: {{ $umkm->jam_operasional_awal }} -
-                                    {{ $umkm->jam_operasional_akhir }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                        style="height: 500px;">
-                        <img src="{{ $umkm->gambar_umkm }}" class="card-img-top" style="height: 250px;"
-                            alt="Gambar UMKM">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
-                            <p class="">{{ $umkm->deskripsi_umkm }}</p>
-                            <div class="ketUmkm">
-                                <p class="m-0 p-0 ketBuka">Buka: Setiap Hari</p>
-                                <p class="m-0 p-0 jamBuka">Jam Buka: {{ $umkm->jam_operasional_awal }} -
-                                    {{ $umkm->jam_operasional_akhir }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 @endforeach
             </div>
         </div>
@@ -241,90 +210,23 @@
                 </div>
             </div>
             <div class="owl-carousel">
+                @foreach ($kegiatanWarga as $kegiatan)
                 <div class="">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
                         style="height: 400px;">
                         <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
                             style="height: 200px;" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[0]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[0]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[0]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[0]->jam_awal }} s/d
-                                {{ $kegiatanWarga[0]->jam_akhir }}</p>
+                            <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
+                            <p class="">{{ $kegiatan->deskripsi_kegiatan }}</p>
+                            <p class="m-0 p-0">Hari : {{ $kegiatan->jadwal_kegiatan }}</p>
+                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatan->jam_awal }} s/d
+                                {{ $kegiatan->jam_akhir }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[1]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[1]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[1]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[1]->jam_awal }} s/d
-                                {{ $kegiatanWarga[1]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[2]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[2]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[2]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[2]->jam_awal }} s/d
-                                {{ $kegiatanWarga[2]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[2]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[2]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[2]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[2]->jam_awal }} s/d
-                                {{ $kegiatanWarga[2]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[2]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[2]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[2]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[2]->jam_awal }} s/d
-                                {{ $kegiatanWarga[2]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
-                        style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar4.jpeg') }}" class="card-img-top"
-                            style="height: 200px;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kegiatanWarga[2]->nama_kegiatan }}</h5>
-                            <p class="">{{ $kegiatanWarga[2]->deskripsi_kegiatan }}</p>
-                            <p class="m-0 p-0">Hari : {{ $kegiatanWarga[2]->jadwal_kegiatan }}</p>
-                            <p class="m-0 p-0">Jam Mulai s/d Jam Selesai : {{ $kegiatanWarga[2]->jam_awal }} s/d
-                                {{ $kegiatanWarga[2]->jam_akhir }}</p>
-                        </div>
-                    </div>
-                </div>
+                 @endforeach
+
             </div>
         </div>
     </section>
@@ -392,7 +294,7 @@
     <script>
         let navbarOpen = false;
         $(".owl-carousel").owlCarousel({
-            loop:true,
+            loop:false,
     margin:20,
    
     autoplay:true,

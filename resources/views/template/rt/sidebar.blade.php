@@ -57,7 +57,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/rt/kelola-umkm') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-file-description"></i>
+                            <i class="bi bi-shop-window"></i>
                         </span>
                         <span class="hide-menu">Kelola UMKM</span>
                     </a>
@@ -65,7 +65,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/rt/kegiatan-warga') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-cash-coin"></i>
+                            <i class="bi bi-person-lines-fill"></i>
                         </span>
                         <span class="hide-menu">Kelola Kegiatan Warga</span>
                     </a>
@@ -97,7 +97,7 @@
                     <a class="sidebar-link menu-kelola-bansos" href="#submenu-kelola-bansos" data-bs-toggle="collapse"
                         aria-expanded="false">
                         <span>
-                            <i class="ti ti-wallet"></i>
+                            <i class="bi bi-cash-stack"></i>
                         </span>
                         <span class="hide-menu">Bansos</span>
                         <i class="bi bi-chevron-down ms-auto"></i>
@@ -110,7 +110,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-history-bansos"
-                                    href="{{ url('/rt/penerima-bansos') }}">History Pengajuan Bansos</a>
+                                    href="{{ url('/rt/penerima-bansos') }}">Laporan Pengeluaran</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-penerima-bansos"
