@@ -1,6 +1,6 @@
 @extends('template.admin.main')
 @section('content')
-@include('template.admin.header')
+    @include('template.admin.header')
 
     <div class="container-fluid">
         <h1 style="font-size: 30px; font-weight: bold;">Profil Admin</h1>
@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </div>
+
                     {{-- <div class="col-md-4">
                         <div class="form-group row">
                             <label for="nomor_rt" class="col-form-label">RT:</label>
@@ -77,6 +78,16 @@
                                     value="{{ $profil->alamat_user }}" required>
                                 <small class="form-text text-danger"></small>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                        <div class="col-12 mt-1">
+                            <input type="file" class="form-control" id="upload_foto" name="foto_user" accept="image/*"
+                                required>
+                            @error('upload_foto')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
                 </form>

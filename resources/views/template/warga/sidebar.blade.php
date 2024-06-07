@@ -35,7 +35,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/warga/kegiatan-warga') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-people"></i>
+                            <i class="bi bi-person-lines-fill"></i>
                         </span>
                         <span class="hide-menu">Kegiatan Warga</span>
                     </a>
@@ -59,7 +59,7 @@
                     <a class="sidebar-link menu-kelola-bansos" href="#submenu-kelola-bansos" data-bs-toggle="collapse"
                         aria-expanded="false">
                         <span>
-                            <i class="ti ti-wallet"></i>
+                            <i class="bi bi-cash-stack"></i>
                         </span>
                         <span class="hide-menu">Bansos</span>
                         <i class="bi bi-chevron-down ms-auto"></i>

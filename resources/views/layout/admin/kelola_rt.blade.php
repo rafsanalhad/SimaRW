@@ -8,10 +8,6 @@
             <div class="card-body">
                 <div class="container d-flex justify-content-end align-items-center mb-2" style="position: relative;">
                     <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
-                        <a href="#">
-                            <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
-                                alt="gambar convert excel">
-                        </a>
                         <button class="btn btn-sm btn-primary ms-2" id="tambah-data-warga" onclick="showTambahRt()">
                             <i class="bi bi-plus-lg"></i> Tambah
                         </button>
