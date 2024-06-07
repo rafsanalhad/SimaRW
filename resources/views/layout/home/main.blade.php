@@ -184,7 +184,7 @@
                 <div class="">
                     <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
                         style="height: 500px; width: 100%;">
-                        <img src="{{ $umkm->gambar_umkm }}" class="card-img-top" style="height: 250px;"
+                        <img src="{{ asset('storage/' . $umkm->gambar_umkm) }}" class="card-img-top" style="height: 250px;"
                             alt="Gambar UMKM">
                         <div class="card-body">
                             <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
@@ -214,7 +214,7 @@
                 <div class="">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
                         style="height: 400px;">
-                        <img src="{{ @asset('assets/images/products/gambar2.jpeg') }}" class="card-img-top"
+                        <img src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}" class="card-img-top"
                             style="height: 200px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
@@ -296,7 +296,7 @@
         $(".owl-carousel").owlCarousel({
             loop:false,
     margin:20,
-   
+
     autoplay:true,
     autoplayTimeout:1000,
     autoplayHoverPause:true,
@@ -312,7 +312,7 @@
             items:3
         }
     }
-    
+
         });
         $(document).ready(function() {
 
