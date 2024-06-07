@@ -17,8 +17,8 @@ class UpdateSPKBansosService
 
         // Input data ke dalam array asosiatif
         foreach ($keluarga as $kriteriaBansos) {
-            $kepalaKeluarga = UserModel::where('nama_user', $kriteriaBansos->nama_kepala_keluarga)->first();
-
+            $kepalaKeluarga = UserModel::where('nama_user', $kriteriaBansos->nama_kepala_keluarga)->where('kartu_keluarga_id', $kriteriaBansos->kartu_keluarga_id)->first();
+            
             $kriteria = [
                 'kartu_keluarga_id' => $kriteriaBansos->kartu_keluarga_id,
                 'pekerjaan_user' => $kepalaKeluarga->pekerjaan_user,
