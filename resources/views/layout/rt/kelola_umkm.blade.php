@@ -14,7 +14,7 @@
 
                             <div class="card" style="width: 18rem; height: 540px;">
 
-                                <img class="card-img-top" src="{{ $umkm->gambar_umkm }}"
+                                <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
@@ -130,7 +130,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img id="gambar_umkm_detail" src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
+                    <img id="gambar_umkm_detail" src="{{ asset('storage/' . $umkm->gambar_umkm) }}" alt="" class="img_umkm">
                     <h3 id="nama_umkm_detail"></h3>
                     <p id="deskripsi_umkm_detail"></p>
                     <div class="row">

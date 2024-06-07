@@ -297,6 +297,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route UMKM
             Route::get('/umkm', [WargaUMKMController::class, 'index']);
+            Route::get('/umkm/detail/{id}', [WargaUMKMController::class, 'detailUmkm']);
 
             // Route Profil Warga
             Route::get('/profil-warga', [ProfilWargaController::class, 'profilWarga']);
