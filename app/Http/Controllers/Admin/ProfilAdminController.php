@@ -26,7 +26,7 @@ class ProfilAdminController extends Controller
         ]);
 
         if($request->file('foto_user')) {
-            Storage::disk('public')->delete(basename(Auth::user()->foto_user));
+            Storage::disk('public')->delete(Auth::user()->foto_user);
 
             $file = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
 

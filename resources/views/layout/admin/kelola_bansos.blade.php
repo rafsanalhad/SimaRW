@@ -120,7 +120,7 @@
 
             $('.modal_bansos').modal('show');
 
-            $('#terimaPengajuan').attr('href', '/admin/pengajuan/terima/' + idPengajuan);
+            $('#terimaPengajuan').attr('href', '/admin/terima-bansos/' + idPengajuan);
             $('#alasanPenolakanPengaduan').attr('action', '/admin/tolak-bansos/' + idPengajuan);
 
             $('#tolakPengajuan').click(function(){
