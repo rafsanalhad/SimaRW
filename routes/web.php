@@ -58,7 +58,7 @@ use \App\Http\Controllers\Admin\KegiatanWargaController as AdminKegiatanWargaCon
 |
 */
 
-// Route::get('/test', [UpdateSPKVikorService::class, 'updateBansos']);
+Route::get('/test', [UpdateSPKBansosService::class, 'updateBansos']);
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route profil admin
             Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
+            Route::post('/profil-admin', [ProfilAdminController::class, 'updateProfil']);
 
             // Route Ubah Password
             Route::get('/ubah-password', [AdminUbahPasswordController::class, 'ubahPassword']);
