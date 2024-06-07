@@ -266,7 +266,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kegiatan-warga', [RTKelolaKegiatanController::class, 'kelolaKegiatan']);
             Route::post('/kegiatan-warga', [RTKelolaKegiatanController::class, 'createKegiatan'])->name('createKegiatan');
             Route::get('/kegiatan-warga/edit/{id}', [RTKelolaKegiatanController::class, 'editKegiatan']);
-            Route::get('/kegiatan-warga/update/{id}', [RTKelolaKegiatanController::class, 'updateKegiatan']);
+            Route::post('/kegiatan-warga/update/{id}', [RTKelolaKegiatanController::class, 'updateKegiatan']);
             Route::get('/kegiatan-warga/delete/{id}', [RTKelolaKegiatanController::class, 'deleteKegiatan']);
         });
     });

@@ -42,7 +42,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ url('/rt/kegiatan-warga') }}" id="form_edit" method="POST" class="form"
+                            <form action="/rt/kegiatan" id="form_edit" method="POST" class="form"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
