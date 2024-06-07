@@ -140,14 +140,29 @@ class KelolaDataController extends Controller
         $request->validated();
 
         $rt_lama = $request->rt_lama;
+        $rt_baru = $request->rt_baru;
 
-        if(UserModel::where('user_id', $rt_lama)->get('user_id') == $rt_lama) {
-            UserModel::where('user_id', $rt_lama)->update([
-                'nomor_rw' => $request->nomor_rw,
-                'nomor_rt' => $request->nomor_rt,
-                'masa_jabatan_awal' => $request->masa_jabatan_awal,
-                'masa_jabatan_akhir' => $request->masa_jabatan_akhir
-            ]);
+        if(UserModel::where('user_id', $rt_lama)->first('user_id')->user_id == $rt_baru) {
+            if($request->file('foto_user')) {
+                Storage::disk('public')->delete(UserModel::find($rt_lama)->foto_user);
+
+                $file = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
+
+                UserModel::where('user_id', $rt_lama)->update([
+                    'nomor_rw' => $request->nomor_rw,
+                    'nomor_rt' => $request->nomor_rt,
+                    'masa_jabatan_awal' => $request->masa_jabatan_awal,
+                    'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
+                    'foto_user' => $file
+                ]);
+            } else {
+                UserModel::where('user_id', $rt_lama)->update([
+                    'nomor_rw' => $request->nomor_rw,
+                    'nomor_rt' => $request->nomor_rt,
+                    'masa_jabatan_awal' => $request->masa_jabatan_awal,
+                    'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
+                ]);
+            }
         } else {
             UserModel::where('user_id', $rt_lama)->update([
                 'role_id' => 4,
@@ -157,7 +172,7 @@ class KelolaDataController extends Controller
                 'masa_jabatan_akhir' => null
             ]);
 
-            UserModel::where('user_id', $request->rt_baru)->update([
+            UserModel::where('user_id', $rt_baru)->update([
                 'role_id' => 2,
                 'nomor_rt' => $request->nomor_rt,
                 'nomor_rw' => $request->nomor_rw,

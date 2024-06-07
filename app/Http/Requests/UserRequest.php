@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
             'kartu_keluarga_id' => 'required',
             'role_id' => 'required',
             'nama_user' => 'required',
-            'nik_user' => 'required',
+            'nik_user' => 'required|max:16',
             'tempat' => 'required',
             'tanggal_lahir' => 'required',
             'gender' => 'required',

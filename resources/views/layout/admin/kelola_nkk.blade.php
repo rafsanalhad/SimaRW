@@ -6,6 +6,15 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="container d-flex justify-content-end align-items-center mb-2" style="position: relative;">
                     <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
                         <a href="/admin/download-nkk">
@@ -31,27 +40,28 @@
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                            @foreach ($dataKK as $kkPerKeluarga)
+                        @foreach ($dataKK as $kkPerKeluarga)
                             <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $kkPerKeluarga->no_kartu_keluarga }}</td>
-                            <td>{{ $kkPerKeluarga->nama_kepala_keluarga }}</td>
-                            <td>{{ $kkPerKeluarga->alamat_kk }}</td>
-                            <td>{{ $kkPerKeluarga->user_count }} Orang</td>
-                            <td>{{ $kkPerKeluarga->kondisi_rumah }}</td>
-                            <td>{{ $kkPerKeluarga->jumlah_tanggungan }} Tanggungan</td>
-                            <td>
-                                <div style="display: flex;">
-                                    <button href="" onclick=showEditKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
-                                        class="btn btn-warning" style="margin-right: 5px;"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button href="" onclick=showDeleteKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
-                                        class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                        </tbody>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $kkPerKeluarga->no_kartu_keluarga }}</td>
+                                <td>{{ $kkPerKeluarga->nama_kepala_keluarga }}</td>
+                                <td>{{ $kkPerKeluarga->alamat_kk }}</td>
+                                <td>{{ $kkPerKeluarga->user_count }} Orang</td>
+                                <td>{{ $kkPerKeluarga->kondisi_rumah }}</td>
+                                <td>{{ $kkPerKeluarga->jumlah_tanggungan }} Tanggungan</td>
+                                <td>
+                                    <div style="display: flex;">
+                                        <button href="" onclick=showEditKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
+                                            class="btn btn-warning" style="margin-right: 5px;"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button href=""
+                                            onclick=showDeleteKK('{{ $kkPerKeluarga->kartu_keluarga_id }}')
+                                            class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -110,7 +120,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan"
+                                    <input type="number" class="form-control" id="jumlah_tanggungan"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -135,13 +145,14 @@
                         <h5 class="modal-title">Edit KK</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-nkk/update/" id="edit_kk_form" method="POST" class="form-horizontal">
+                        <form action="/admin/kelola-nkk/update/" id="edit_kk_form" method="POST"
+                            class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor NKK: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nomor_nkk_edit" name="no_kartu_keluarga"
-                                        value="{{ old('nomor_nkk') }}" required>
+                                    <input type="text" class="form-control" id="nomor_nkk_edit"
+                                        name="no_kartu_keluarga" value="{{ old('nomor_nkk') }}" required>
                                     @error('nomor_nkk')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -150,8 +161,8 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama Kepala Keluarga: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nama_kepala_edit" name="nama_kepala_keluarga"
-                                        value="{{ old('nama_kepala') }}" required>
+                                    <input type="text" class="form-control" id="nama_kepala_edit"
+                                        name="nama_kepala_keluarga" value="{{ old('nama_kepala') }}" required>
                                     @error('nama_kepala')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -183,7 +194,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan_edit"
+                                    <input type="number" class="form-control" id="jumlah_tanggungan_edit"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>

@@ -130,7 +130,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img id="gambar_umkm_detail" src="{{ asset('storage/' . $umkm->gambar_umkm) }}" alt="" class="img_umkm">
+                    <img id="gambar_umkm_detail" src="" alt="" class="img_umkm">
                     <h3 id="nama_umkm_detail"></h3>
                     <p id="deskripsi_umkm_detail"></p>
                     <div class="row">
@@ -161,6 +161,7 @@
                     console.log(data);
                     $('#nama_umkm_detail').text(data.nama_umkm);
                     $('#kontak_umkm_detail').text(data.kontak_umkm);
+                    $('#gambar_umkm_detail').attr('src', '/storage/' + data.gambar_umkm);
                     $('#jam_buka_detail').text(data.jam_operasional_awal + ' - ' + data.jam_operasional_akhir);
                     $('#deskripsi_umkm_detail').text(data.deskripsi_umkm);
                 }
@@ -212,7 +213,8 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Hapus"
+                confirmButtonText: "Hapus",
+                cancelButtonText: "Batal"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({

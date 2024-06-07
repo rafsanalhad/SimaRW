@@ -22,7 +22,7 @@ class NKKRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'no_kartu_keluarga' => 'required',
+            'no_kartu_keluarga' => 'required|max:16',
             'nama_kepala_keluarga' => 'required',
             'alamat_kk' => 'required',
             'jumlah_tanggungan' => 'required',
