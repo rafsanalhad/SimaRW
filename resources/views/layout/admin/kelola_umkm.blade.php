@@ -15,7 +15,7 @@
                     <div class="card" style="width: 18rem; height: 540px;">
 
 
-                        <img class="card-img-top" src="{{ $umkm->gambar_umkm }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
                             <p class="card-text ">{{ $umkm->deskripsi_umkm }}</p>
@@ -129,7 +129,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <img id="gambar_umkm_detail" src="{{ asset('assets/images/content/img_hero.png') }}" alt="" class="img_umkm">
+                <img id="gambar_umkm_detail" src="{{ asset('storage/' . $umkm->gambar_umkm) }}" alt="" class="img_umkm">
                 <h3 id="nama_umkm_detail"></h3>
                 <p id="deskripsi_umkm_detail"></p>
                 <div class="row">
@@ -205,8 +205,8 @@
 
         const hapusData = (idUmkm) => {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Apakah Anda Yakin Menghapus Data ini?",
+                text: "Data yang dihapus tidak dapat dikembalikan!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -219,8 +219,8 @@
                         type: 'GET',
                         success: function() {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                title: "Sudah Dihapus!",
+                                text: "Data UMKM Sudah Terhapus",
                                 icon: "success"
                             }).then((result) => {
                                 location.reload();
