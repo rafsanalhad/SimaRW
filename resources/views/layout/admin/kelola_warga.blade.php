@@ -263,6 +263,8 @@
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Nama: </label>
                             <div class="col-10">
+                                <input type="hidden" name="nama_user_lama" id="nama_user_lama">
+                                <input type="hidden" name="nama_kepala_keluarga" id="nama_kepala_keluarga">
                                 <input type="text" class="form-control" id="nama_user_edit" name="nama_user"
                                     value="{{ old('nama_user') }}" required>
                                 @error('nama_user')
@@ -455,6 +457,8 @@
                 success: function(data) {
                     $('#kartu_keluarga_id_edit').val(data.kartu_keluarga.kartu_keluarga_id);
                     $('#nama_user_edit').val(data.nama_user);
+                    $('#nama_user_lama').val(data.nama_user);
+                    $('#nama_kepala_keluarga').val(data.kartu_keluarga.nama_kepala_keluarga);
                     $('#email_user_edit').val(data.email_user);
                     $('#nik_user_edit').val(data.nik_user);
                     $('#tempat_edit').val(data.tempat);
