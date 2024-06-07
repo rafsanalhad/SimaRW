@@ -74,6 +74,15 @@ class KelolaWargaController extends Controller
         return redirect('/rt/kelola-warga');
     }
 
+    // Function Cek Apakah Warga Merupakan Kepala Keluarga
+    public function cekKepalaKeluarga($id) {
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', UserModel::find($id)->nama_user)->count() == 0) {
+            return response()->json(false);
+        } else {
+            return response()->json(true);
+        }
+    }
+
     // Function delete warga
     public function deleteWarga($id) {
         $foto_user = basename(UserModel::find($id)->foto_user);
