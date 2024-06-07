@@ -50,7 +50,7 @@
                     <table class="table" id="table-bansos2">
                         <thead>
                             <th>No</th>
-                            <th>Nama Kepala Keluarga</th>
+                            <th>Nama Kepala Keluarga 2</th>
                             <th>NKK</th>
                             <th>Total Pendapatan Keluarga</th>
                             <th>Jumlah Anggota Keluarga</th>
@@ -88,6 +88,7 @@
         $('#table_vikor').hide();
         $(document).ready(function() {
             $('#selectSpk').on("change", function(){
+               
                 console.log($('#selectOptionSpk').val());
                 if($('#selectOptionSpk').val() == 1){
                     $('#table_saw').show();
