@@ -160,7 +160,7 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Hapus"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -168,8 +168,8 @@
                         type: 'GET',
                         success: function() {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                title: "Sudah Terhapus!!",
+                                text: "Data Kegiatan Sudah Dihapus!",
                                 icon: "success"
                             }).then((result) => {
                                 location.reload();
