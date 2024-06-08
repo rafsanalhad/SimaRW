@@ -275,7 +275,7 @@
                 <div class="modal-body">
                     <div class="pengumumanSearchWrapper">
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <span class="input-group-text" id="basic-addon1">Filter(bulan) : </span>
                             <input type="month" class="form-control" id="searchPengumuman" aria-label="Username"
                                 aria-describedby="basic-addon1">
                         </div>
