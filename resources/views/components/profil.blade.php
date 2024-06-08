@@ -11,14 +11,15 @@ if($role_id == 1){
     $role = 'Warga';
 }
  ?>
-<div class="d-inline-block" style="">
-    <p style="font-size: 10px; display: inline; margin-top: 50px;">Selamat Datang,</p><br>
+     <div class="d-inline-block" style="">
+         <p style="font-size: 10px; margin-top: 50px;" class="sapaanRole">Selamat Datang,</p><br>
+     
+     
+     
+         <span style="font-size: 12px; font-weight: 700;" class="namaRole">{{ $role}} {{$nama}}</span>
+     </div>
+     <a style="display: inline;" class="nav-link nav-icon-hover" class="" href="javascript:void(0)" id="drop2"
+         data-bs-toggle="dropdown" aria-expanded="false">
+         <img src="{{ asset('storage/' . Auth::user()->foto_user) }}" alt="" class="rounded-circle fotoRole">
+     </a>
 
-
-
-    <span style="font-size: 12px; font-weight: 700;">{{ $role}} {{$nama}}</span>
-</div>
-<a style="display: inline;" class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-    data-bs-toggle="dropdown" aria-expanded="false">
-    <img src="{{ asset('storage/' . Auth::user()->foto_user) }}" alt="" width="50" height="50" class="rounded-circle">
-</a>
