@@ -12,7 +12,7 @@
                     <div class="card shadow-lg" onclick="showModalKegiatan()">
                         <div class="card-body">
                             <div class="card" style="width: 18rem; height: 540px;">
-                                <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}" alt="Card image cap">
+                                <img class="card-img-top" style="height: 250px;" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Nama Kegiatan : {{ $kegiatan->nama_kegiatan }}</h5>
                                     <p class="card-text ">Deskripsi Kegiatan : {{ $kegiatan->deskripsi_kegiatan }}</p>
