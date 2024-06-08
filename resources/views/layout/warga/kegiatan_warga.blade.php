@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <div class="card" style="width: 18rem; height: 500px;">
                                 @if ($kegiatan->foto_kegiatan != null)
-                                    <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}"
+                                    <img class="card-img-top" style="height: 250px;" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}"
                                         alt="Card image cap">
                                 @else
                                     <img class="card-img-top"
