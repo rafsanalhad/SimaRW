@@ -144,6 +144,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nama Kepala Keluarga: </label>
                                 <div class="col-10">
+                                    <input type="hidden" name="nama_kepala_keluarga_lama" id="nama_kepala_edit_lama">
                                     <input type="text" class="form-control" id="nama_kepala_edit" name="nama_kepala_keluarga"
                                         value="{{ old('nama_kepala') }}" required>
                                     @error('nama_kepala')
@@ -228,6 +229,7 @@
                 dataType: 'json',
                 success: function(data) {
                     $('#nomor_nkk_edit').val(data.no_kartu_keluarga)
+                    $('#nama_kepala_edit_lama').val(data.nama_kepala_keluarga)
                     $('#nama_kepala_edit').val(data.nama_kepala_keluarga)
                     $('#alamat_kk_edit').val(data.alamat_kk)
                     $('#jumlah_tanggungan_edit').val(data.jumlah_tanggungan)

@@ -311,6 +311,10 @@ class KelolaDataController extends Controller
             'jumlah_tanggungan' => $request->jumlah_tanggungan
         ]);
 
+        UserModel::where('kartu_keluarga_id', $id)->where('nama_user', $request->nama_kepala_keluarga_lama)->update([
+            'nama_user' => $request->nama_kepala_keluarga
+        ]);
+
         return redirect('/admin/kelola-nkk');
     }
 

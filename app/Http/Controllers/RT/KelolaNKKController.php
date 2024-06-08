@@ -7,6 +7,7 @@ use App\Exports\NKKExportExcel;
 use App\Http\Requests\NKKRequest;
 use App\Models\KartuKeluargaModel;
 use App\Http\Controllers\Controller;
+use App\Models\UserModel;
 use Maatwebsite\Excel\Facades\Excel;
 
 class KelolaNKKController extends Controller
@@ -46,6 +47,10 @@ class KelolaNKKController extends Controller
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
             'jumlah_tanggungan' => $request->jumlah_tanggungan
+        ]);
+
+        UserModel::where('kartu_keluarga_id', $id)->where('nama_user', $request->nama_kepala_keluarga_lama)->update([
+            'nama_user' => $request->nama_kepala_keluarga
         ]);
 
         return redirect('/rt/kelola-nkk');
