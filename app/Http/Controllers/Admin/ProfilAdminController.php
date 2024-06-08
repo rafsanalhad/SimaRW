@@ -25,6 +25,13 @@ class ProfilAdminController extends Controller
             'foto_user' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
 
+
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', Auth::user()->nama_user)->first()->nama_kepala_keluarga == Auth::user()->nama_user) {
+            KartuKeluargaModel::where('nama_kepala_keluarga', Auth::user()->nama_user)->update([
+                'nama_kepala_keluarga' => $request->nama_user,
+            ]);
+        }
+
         if($request->file('foto_user')) {
             Storage::disk('public')->delete(Auth::user()->foto_user);
 
