@@ -80,9 +80,9 @@ class RTUMKMController extends Controller
         }
 
         if($umkmSave) {
-            return redirect('/admin/kelola-umkm')->with('success', 'UMKM berhasil diedit!');
+            return redirect('/rt/kelola-umkm')->with('success', 'UMKM berhasil diedit!');
         } else {
-            return redirect('/admin/kelola-umkm')->with('error', 'UMKM gagal diedit!');
+            return redirect('/rt/kelola-umkm')->with('error', 'UMKM gagal diedit!');
         }
     }
 
