@@ -11,7 +11,9 @@ use App\Http\Controllers\RW\RWController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RT\RTUMKMController;
-use App\Http\Controllers\Warga\TemplateSurat;
+use App\Http\Controllers\Warga\TemplateSuratWarga;
+use App\Http\Controllers\RT\TemplateSuratRT;
+use App\Http\Controllers\Admin\TemplateSuratAdmin;
 use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\RT\RTBansosController;
 use App\Http\Controllers\Warga\IuranController;
@@ -156,7 +158,9 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Kelola Data Surat
             // Route::get('/kelola-surat', [KelolaSuratController::class, 'kelolaSurat']);
+            Route::get('/template-surat', [TemplateSuratAdmin::class, 'index']);
 
+            Route::get('/download-surat-kk', [TemplateSuratAdmin::class, 'downloadSuratKk'])->name('downloadSuratKkAdmin');
 
             // Route Kelola Bansos
             Route::get('/kelola-bansos', [AdminBansos::class, 'kelolaBansos']);
@@ -263,6 +267,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/pengumuman', [PengumumanController::class, 'show']);
             Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
 
+            Route::get('/template-surat', [TemplateSuratRT::class, 'index']);
+
+            Route::get('/download-surat-kk', [TemplateSuratRT::class, 'downloadSuratKk'])->name('downloadSuratKkRt');
+
             // kelola kegiatan warga
             Route::get('/kegiatan-warga', [RTKelolaKegiatanController::class, 'kelolaKegiatan']);
             Route::post('/kegiatan-warga', [RTKelolaKegiatanController::class, 'createKegiatan'])->name('createKegiatan');
@@ -321,9 +329,9 @@ Route::middleware(['auth'])->group(function () {
             // Route Pengajuan Surat
             Route::get('/pengajuan-surat', [PengajuanSuratController::class, 'index']);
             Route::post('/tambah-surat', [PengajuanSuratController::class, 'createSurat']);
-            Route::get('/template-surat', [TemplateSurat::class, 'index']);
+            Route::get('/template-surat', [TemplateSuratWarga::class, 'index']);
 
-            Route::get('/download-surat-kk', [TemplateSurat::class, 'downloadSuratKk'])->name('downloadSuratKk');
+            Route::get('/download-surat-kk', [TemplateSuratWarga::class, 'downloadSuratKk'])->name('downloadSuratKkWarga');
 
             // Route Laporan Iuran
             Route::get('/laporan-iuran', [WargaController::class, 'laporanIuran']);

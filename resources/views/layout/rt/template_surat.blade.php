@@ -1,6 +1,6 @@
-@extends('template.warga.main')
+@extends('template.rt.main')
 @section('content')
-    @include('template.warga.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
@@ -17,7 +17,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Surat Pengantar Buat KK</h5>
                                     <p class="card-text "> Template surat buat kk di desa mikuu </p>
-                                    <a href="{{ route('downloadSuratKkWarga', 1) }}" class="btn btn-primary">Download</a>
+                                    <a href="{{ route('downloadSuratKkRt', 1) }}" class="btn btn-primary">Download</a>
                                 </div>
                             </div>
                         </div>
