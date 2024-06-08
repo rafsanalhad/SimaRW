@@ -126,9 +126,9 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        onclick=hideModalTambahUmkm()>Close</button>
+                                        onclick=hideModalTambahUmkm()>Tutup</button>
                                 </div>
                             </form>
                         </div>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick=hideModalUmkm()>Close</button>
+                        onclick=hideModalUmkm()>Tutup</button>
                 </div>
             </div>
         </div>
