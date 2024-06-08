@@ -22,7 +22,7 @@ class KelolaNKKController extends Controller
         $request->validated;
         // dd($debug);
 
-        KartuKeluargaModel::create([
+        $kkSave = KartuKeluargaModel::create([
             'no_kartu_keluarga' => $request->no_kartu_keluarga,
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
@@ -30,7 +30,11 @@ class KelolaNKKController extends Controller
             'kondisi_rumah' => $request->kondisi_rumah
         ]);
 
-        return redirect('/rt/kelola-nkk');
+        if($kkSave) {
+            return redirect('/rt/kelola-nkk')->with('success', 'Data Warga Berhasil Ditambahkan!');
+        } else {
+            return redirect('/rt/kelola-nkk')->with('error', 'Data Warga Gagal Ditambahkan!');
+        }
     }
 
     public function editNKK($id) {
@@ -42,7 +46,7 @@ class KelolaNKKController extends Controller
     public function updateNKK(NKKRequest $request, $id) {
         $request->validated();
 
-        KartuKeluargaModel::where('kartu_keluarga_id', $id)->update([
+        $kkSave = KartuKeluargaModel::where('kartu_keluarga_id', $id)->update([
             'no_kartu_keluarga' => $request->no_kartu_keluarga,
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
@@ -54,13 +58,21 @@ class KelolaNKKController extends Controller
             'nama_user' => $request->nama_kepala_keluarga
         ]);
 
-        return redirect('/rt/kelola-nkk');
+        if($kkSave) {
+            return redirect('/rt/kelola-nkk')->with('success', 'Data Warga Berhasil Diedit!');
+        } else {
+            return redirect('/rt/kelola-nkk')->with('error', 'Data Warga Gagal Diedit!');
+        }
     }
 
     public function deleteNKK($id) {
-        KartuKeluargaModel::destroy($id);
+        $kkSave = KartuKeluargaModel::destroy($id);
 
-        return redirect('/rt/kelola-nkk');
+        if($kkSave) {
+            return redirect('/rt/kelola-nkk')->with('success', 'Data Warga Berhasil Dihapus!');
+        } else {
+            return redirect('/rt/kelola-nkk')->with('error', 'Data Warga Gagal Dihapus!');
+        }
     }
 
     // Function download nkk excel

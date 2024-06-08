@@ -4,6 +4,17 @@
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <h4>Kelola UMKM</h4>
         <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
         <div class="row">
@@ -11,10 +22,9 @@
                 <div class="col-md-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
+                        <div class="card" style="width: 18rem; height: 540px;">
 
                             <div class="card" style="width: 18rem; height: 540px;">
-
-
                                 <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
                                     alt="Card image cap">
                                 <div class="card-body">

@@ -28,7 +28,7 @@ class KelolaWargaController extends Controller
 
         $foto_user = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
 
-        UserModel::create([
+        $userSave = UserModel::create([
             'kartu_keluarga_id' => $request->kartu_keluarga_id,
             'role_id' => $request->role_id,
             'nama_user' => $request->nama_user,
@@ -46,7 +46,11 @@ class KelolaWargaController extends Controller
             'foto_user' => $foto_user
         ]);
 
-        return redirect('/rt/kelola-warga');
+        if($userSave) {
+            return redirect('/rt/kelola-warga')->with('success', 'Data Warga Berhasil Ditambahkan!');
+        } else {
+            return redirect('/rt/kelola-warga')->with('error', 'Data Warga Gagal Ditambahkan!');
+        }
     }
 
     // Function mengambil data warga dari database
@@ -69,9 +73,19 @@ class KelolaWargaController extends Controller
             $validated['foto_user'] = $foto_user;
         }
 
-        UserModel::where('user_id', $id)->update($validated);
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', $request->nama_kepala_keluarga)->where('kartu_keluarga_id', $request->kartu_keluarga_id)->first()->nama_kepala_keluarga == $request->nama_user_lama) {
+            KartuKeluargaModel::where('kartu_keluarga_id', $request->kartu_keluarga_id)->update([
+                'nama_kepala_keluarga' => $request->nama_user
+            ]);
+        }
 
-        return redirect('/rt/kelola-warga');
+        $userSave = UserModel::where('user_id', $id)->update($validated);
+
+        if($userSave) {
+            return redirect('/rt/kelola-warga')->with('success', 'Data Warga Berhasil Diedit!');
+        } else {
+            return redirect('/rt/kelola-warga')->with('error', 'Data Warga Gagal Diedit!');
+        }
     }
 
     // Function Cek Apakah Warga Merupakan Kepala Keluarga
@@ -89,8 +103,13 @@ class KelolaWargaController extends Controller
 
         Storage::disk('public')->delete('User-Images/' . $foto_user);
 
-        UserModel::destroy($id);
-        return redirect('/rt/kelola-warga');
+        $userSave = UserModel::destroy($id);
+
+        if($userSave) {
+            return redirect('/rt/kelola-warga')->with('success', 'Data Warga Berhasil Dihapus!');
+        } else {
+            return redirect('/rt/kelola-warga')->with('error', 'Data Warga Gagal Dihapus!');
+        }
     }
 
     // Function download excel

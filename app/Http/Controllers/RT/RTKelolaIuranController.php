@@ -35,7 +35,7 @@ class RTKelolaIuranController extends Controller
 
             $bukti_struk = Storage::disk('public')->put('bukti_pengeluaran', $request->file('bukti_struk'));
 
-            MigrasiIuran::create([
+            $iuranSave = MigrasiIuran::create([
                 'nama_pelapor' => $request->nama_pelapor,
                 'jabatan_pelapor' => $request->jabatan_pelapor,
                 'nomor_rt' => $request->nomor_rt,
@@ -48,7 +48,11 @@ class RTKelolaIuranController extends Controller
             ]);
         }
 
-        return redirect('/rt/kelola-iuran');
+        if($iuranSave) {
+            return redirect('/rt/kelola-iuran')->with('success', 'Laporan Keuangan berhasil ditambahkan!');
+        } else {
+            return redirect('/rt/kelola-iuran')->with('error', 'Laporan Keuangan gagal ditambahkan!');
+        }
     }
 
     // Function Download Excel

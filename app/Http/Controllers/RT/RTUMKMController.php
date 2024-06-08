@@ -24,7 +24,7 @@ class RTUMKMController extends Controller
 
         $foto_umkm = Storage::disk('public')->put('Umkm-Images', $request->file('foto_umkm'));
 
-        $umkm = UmkmModel::create([
+        $umkmSave = UmkmModel::create([
             'user_id' => $request->pemilik_umkm,
             'nama_umkm' => $request->nama_umkm,
             'alamat_umkm' => $request->alamat_umkm,
@@ -35,7 +35,11 @@ class RTUMKMController extends Controller
             'gambar_umkm' => $foto_umkm
         ]);
 
-        return redirect('/rt/kelola-umkm');
+        if($umkmSave) {
+            return redirect('/rt/kelola-umkm')->with('success', 'UMKM berhasil ditambahkan!');
+        } else {
+            return redirect('/rt/kelola-umkm')->with('error', 'UMKM gagal ditambahkan!');
+        }
     }
 
     public function editUmkm($id) {
@@ -53,7 +57,7 @@ class RTUMKMController extends Controller
 
             $foto_umkm = Storage::disk('public')->put('Umkm-Images', $request->file('foto_umkm'));
 
-            UmkmModel::where('umkm_id', $id)->update([
+            $umkmSave = UmkmModel::where('umkm_id', $id)->update([
                 'user_id' => $request->pemilik_umkm,
                 'nama_umkm' => $request->nama_umkm,
                 'alamat_umkm' => $request->alamat_umkm,
@@ -64,7 +68,7 @@ class RTUMKMController extends Controller
                 'gambar_umkm' => $foto_umkm
             ]);
         } else {
-            UmkmModel::where('umkm_id', $id)->update([
+            $umkmSave = UmkmModel::where('umkm_id', $id)->update([
                 'user_id' => $request->pemilik_umkm,
                 'nama_umkm' => $request->nama_umkm,
                 'alamat_umkm' => $request->alamat_umkm,
@@ -75,7 +79,11 @@ class RTUMKMController extends Controller
             ]);
         }
 
-        return redirect('/rt/kelola-umkm');
+        if($umkmSave) {
+            return redirect('/admin/kelola-umkm')->with('success', 'UMKM berhasil diedit!');
+        } else {
+            return redirect('/admin/kelola-umkm')->with('error', 'UMKM gagal diedit!');
+        }
     }
 
     public function deleteUmkm($id) {

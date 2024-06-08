@@ -3,6 +3,17 @@
     @include('template.admin.header')
 
     <div class="container-fluid">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
@@ -11,7 +22,8 @@
                         <img style="height: 30px; width: 30px; margin-right: 10px;" src="../assets/images/logos/excel.png"
                             alt="gambar convert excel">
                     </a>
-                    <span class="badge bg-light text-dark"><strong>Total Iuran:</strong> Rp. {{ $totalSaldo->sisa_saldo }}</span>
+                    <span class="badge bg-light text-dark"><strong>Total Iuran:</strong> Rp.
+                        {{ $totalSaldo->sisa_saldo }}</span>
                 </div>
             </div>
             <div class="card-body">

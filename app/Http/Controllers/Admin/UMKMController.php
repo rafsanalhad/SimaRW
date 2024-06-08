@@ -30,7 +30,7 @@ class UMKMController extends Controller
 
         $foto_umkm = Storage::disk('public')->put('Umkm-Images', $request->file('foto_umkm'));
 
-        $umkm = UmkmModel::create([
+        $umkmSave = UmkmModel::create([
             'user_id' => $request->pemilik_umkm,
             'nama_umkm' => $request->nama_umkm,
             'alamat_umkm' => $request->alamat_umkm,
@@ -41,7 +41,11 @@ class UMKMController extends Controller
             'gambar_umkm' => $foto_umkm
         ]);
 
-        return redirect('/admin/kelola-umkm');
+        if($umkmSave) {
+            return redirect('/admin/kelola-umkm')->with('success', 'UMKM berhasil ditambahkan!');
+        } else {
+            return redirect('/admin/kelola-umkm')->with('error', 'UMKM gagal ditambahkan!');
+        }
     }
 
     public function editUmkm($id) {
@@ -58,20 +62,35 @@ class UMKMController extends Controller
             Storage::disk('public')->delete('Umkm-Images/' . $old_foto);
 
             $foto_umkm = Storage::disk('public')->put('Umkm-Images', $request->file('foto_umkm'));
+
+            $umkmSave = UmkmModel::where('umkm_id', $id)->update([
+                'user_id' => $request->pemilik_umkm,
+                'nama_umkm' => $request->nama_umkm,
+                'alamat_umkm' => $request->alamat_umkm,
+                'kontak_umkm' => $request->kontak_umkm,
+                'jam_operasional_awal' => $request->jam_operasional_awal,
+                'jam_operasional_akhir' => $request->jam_operasional_akhir,
+                'deskripsi_umkm' => $request->deskripsi_umkm,
+                'gambar_umkm' => $foto_umkm
+            ]);
+        } else {
+            $umkmSave = UmkmModel::where('umkm_id', $id)->update([
+                'user_id' => $request->pemilik_umkm,
+                'nama_umkm' => $request->nama_umkm,
+                'alamat_umkm' => $request->alamat_umkm,
+                'kontak_umkm' => $request->kontak_umkm,
+                'jam_operasional_awal' => $request->jam_operasional_awal,
+                'jam_operasional_akhir' => $request->jam_operasional_akhir,
+                'deskripsi_umkm' => $request->deskripsi_umkm,
+            ]);
+
         }
 
-        UmkmModel::where('umkm_id', $id)->update([
-            'user_id' => $request->pemilik_umkm,
-            'nama_umkm' => $request->nama_umkm,
-            'alamat_umkm' => $request->alamat_umkm,
-            'kontak_umkm' => $request->kontak_umkm,
-            'jam_operasional_awal' => $request->jam_operasional_awal,
-            'jam_operasional_akhir' => $request->jam_operasional_akhir,
-            'deskripsi_umkm' => $request->deskripsi_umkm,
-            'gambar_umkm' => $foto_umkm
-        ]);
-
-        return redirect('/admin/kelola-umkm');
+        if($umkmSave) {
+            return redirect('/admin/kelola-umkm')->with('success', 'UMKM berhasil diedit!');
+        } else {
+            return redirect('/admin/kelola-umkm')->with('error', 'UMKM gagal diedit!');
+        }
     }
 
     public function deleteUmkm($id) {
