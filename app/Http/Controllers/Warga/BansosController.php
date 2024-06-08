@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Warga;
 
+use Carbon\Carbon;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Models\KartuKeluargaModel;
@@ -10,7 +11,7 @@ use App\Models\PengajuanBansosModel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RekomendasiBansosModel;
 use App\Http\Requests\PengajuanBansosRequest;
-use Carbon\Carbon;
+use App\Models\RekomendasiBansosSPKVikorModel;
 
 class BansosController extends Controller
 {
@@ -53,14 +54,31 @@ class BansosController extends Controller
         return view('layout.warga.penerima_bansos', ['bansos' => $bansos, 'no' => 1]);
     }
 
+    public function allHistoryPengajuanBansos() {
+        $bansos = PengajuanBansosModel::with('kartuKeluarga')->whereIn('status_verif', ['Terverifikasi', 'Ditolak'])->orderBy('pengajuan_id', 'asc')->get();
+
+        return view('layout.warga.transparansi_bansos', ['bansos' => $bansos, 'no' => 1]);
+    }
+
     public function rekomendasiBansos(){
-        $rekomBansosSPK = RekomendasiBansosModel::with('kartuKeluarga.user')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
+        $rekomBansosSPKSAW = RekomendasiBansosModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_bansos_id', 'asc')->get()->map(function($user) {
             $users = $user->kartuKeluarga->user;
             $user->user_count = $users->count();
             $user->total_gaji = $users->sum('gaji_user');
             return $user;
         });
 
-        return view('layout.warga.rekomendasi_bansos', ['rekomBansosSPK' => $rekomBansosSPK, 'no' => 1]);
+        $rekomBansosSPKVikor = RekomendasiBansosSPKVikorModel::with('kartuKeluarga.user')->where('status', 'Layak')->orderBy('rekomendasi_vikor_id', 'asc')->get()->map(function($user) {
+            $users = $user->kartuKeluarga->user;
+            $user->user_count = $users->count();
+            $user->total_gaji = $users->sum('gaji_user');
+            return $user;
+        });
+
+        return view('layout.warga.rekomendasi_bansos', ['bansosSAW' => $rekomBansosSPKSAW, 'bansosVikor' => $rekomBansosSPKVikor, 'noSAW' => 1, 'noVikor' => 1]);
+    }
+
+    public function historyPenerimaBansos(){
+        return view('layout.warga.transparansi_bansos');
     }
 }

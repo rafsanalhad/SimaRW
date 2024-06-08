@@ -5,6 +5,15 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
                     <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
                         <a href="/rt/download-warga">
@@ -391,7 +400,25 @@
             </div>
         </div>
     </div>
+
+    <div class="modal modal_delete_kepalaKeluarga" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data Warga</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Apakah anda yakin ingin menghapus data kepala keluarga ini?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="hapus_warga_id btn btn-secondary">Hapus</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick=hideDeleteKepalaKeluarga()>Tutup</button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script>
         $('#submenu-kelola-data').addClass('show');
         $('#menu-kelola-warga').removeClass('text-dark').addClass('text-primary');
@@ -435,12 +462,28 @@
         }
 
         function showDeleteWarga(idWarga) {
-            $('.hapus_warga_id').attr('href', '/rt/kelola-warga/delete/' + idWarga)
-            $('.modal_delete_warga').modal('show')
+            $.ajax({
+                url: '/rt/kelola-warga/check/' + idWarga,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data == true) {
+                        $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+                        $('.modal_delete_kepalaKeluarga').modal('show')
+                    } else {
+                        $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+                        $('.modal_delete_warga').modal('show')
+                    }
+                }
+            })
         }
 
         function hideDeleteWarga() {
             $('.modal_delete_warga').modal('hide')
+        }
+
+        function hideDeleteKepalaKeluarga() {
+            $('.modal_delete_kepalaKeluarga').modal('hide')
         }
     </script>
     <script>

@@ -6,12 +6,17 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="container d-flex justify-content-end align-items-center mb-2" style="position: relative;">
                     <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
-                        <a href="#">
-                            <img style="height: 30px; width: 30px;" src="../assets/images/logos/excel.png"
-                                alt="gambar convert excel">
-                        </a>
                         <button class="btn btn-sm btn-primary ms-2" id="tambah-data-warga" onclick="showTambahRt()">
                             <i class="bi bi-plus-lg"></i> Tambah
                         </button>
@@ -130,7 +135,7 @@
                         <h5 class="modal-title">Edit Data RT</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin/kelola-rt/update" method="POST" class="form-horizontal">
+                        <form action="/admin/kelola-rt/update" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="hidden" id="rt_lama_edit" name="rt_lama" value="">
                             <div class="row mb-2">
@@ -177,6 +182,16 @@
                                         <input type="date" class="form-control" id="masa_jabatan_akhir_edit"
                                             name="masa_jabatan_akhir" value="{{ old('masa_jabatan_akhir') }}" required>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                                <div class="col-10 mt-1">
+                                    <input type="file" class="form-control" id="upload_foto" name="foto_user"
+                                        accept="image/*">
+                                    @error('upload_foto')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">

@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route profil admin
             Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
+            Route::post('/profil-admin', [ProfilAdminController::class, 'updateProfil']);
 
             // Route Ubah Password
             Route::get('/ubah-password', [AdminUbahPasswordController::class, 'ubahPassword']);
@@ -121,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/kelola-warga', [KelolaDataController::class, 'createWarga'])->name('createWarga');
             Route::get('/kelola-warga/edit/{id}', [KelolaDataController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaDataController::class, 'deleteWarga']);
+            Route::get('/kelola-warga/check/{id}', [KelolaDataController::class, 'cekKepalaKeluarga']);
             Route::post('/kelola-warga/update/{id}', [KelolaDataController::class, 'updateWarga'])->name('updateWarga');
             Route::get('/download-warga', [KelolaDataController::class, 'downloadExcelWarga']);
 
@@ -192,6 +194,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route Profile RT
             Route::get('/profil-rt', [ProfileRTController::class, 'profileRt']);
+            Route::post('/profil-rt', [ProfileRTController::class, 'updateProfil']);
 
             // Route Ubah Password
             Route::get('/ubah-password', [RTUbahPasswordController::class, 'ubahPassword']);
@@ -209,6 +212,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/kelola-warga', [KelolaWargaController::class, 'createWarga'])->name('createWarga');
             Route::get('/kelola-warga/edit/{id}', [KelolaWargaController::class, 'editWarga']);
             Route::get('/kelola-warga/delete/{id}', [KelolaWargaController::class, 'deleteWarga']);
+            Route::get('/kelola-warga/check/{id}', [KelolaDataController::class, 'cekKepalaKeluarga']);
             Route::post('/kelola-warga/update/{id}', [KelolaWargaController::class, 'updateWarga'])->name('updateWarga');
             Route::get('/download-warga', [KelolaWargaController::class, 'downloadExcelWarga']);
 
@@ -229,16 +233,16 @@ Route::middleware(['auth'])->group(function () {
 
             // iuran
             Route::get('/kelola-iuran', [RTKelolaIuranController::class, 'kelolaIuran']);
-            Route::post('kelola-iuran', [RTKelolaIuranController::class, 'createIuran']);
+            Route::post('kelola-iuran', [RTKelolaIuranController::class, 'createPengeluaranIuran']);
             Route::get('/laporan-iuran', [RTKelolaIuranController::class, 'laporanIuran']);
             Route::get('/download-iuran', [RTKelolaIuranController::class, 'downloadExcel']);
 
             // Bansos
             Route::get('/kelola-bansos', [RTBansosController::class, 'kelolaBansos']);
             Route::get('/penerima-bansos', [RTBansosController::class, 'historyBansos']);
-            Route::get('/get-file/{idPengajuan}', [AdminBansos::class, 'getPDFPengajuan']);
-            Route::get('/pengajuan/terima/{id}', [AdminBansos::class, 'terimaPengajuan']);
-            Route::get('/pengajuan/tolak/{id}', [AdminBansos::class, 'tolakPengajuan']);
+            Route::get('/get-file/{idPengajuan}', [RTBansosController::class, 'getPDFPengajuan']);
+            Route::get('/pengajuan/terima/{id}', [RTBansosController::class, 'terimaPengajuan']);
+            Route::get('/pengajuan/tolak/{id}', [RTBansosController::class, 'tolakPengajuan']);
 
             // Route Rekomendasi Bansos
             Route::get('/rekomendasi-bansos', [RTBansosController::class, 'rekomendasiBansos']);
@@ -263,7 +267,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/kegiatan-warga', [RTKelolaKegiatanController::class, 'kelolaKegiatan']);
             Route::post('/kegiatan-warga', [RTKelolaKegiatanController::class, 'createKegiatan'])->name('createKegiatan');
             Route::get('/kegiatan-warga/edit/{id}', [RTKelolaKegiatanController::class, 'editKegiatan']);
-            Route::get('/kegiatan-warga/update/{id}', [RTKelolaKegiatanController::class, 'updateKegiatan']);
+            Route::post('/kegiatan-warga/update/{id}', [RTKelolaKegiatanController::class, 'updateKegiatan']);
             Route::get('/kegiatan-warga/delete/{id}', [RTKelolaKegiatanController::class, 'deleteKegiatan']);
         });
     });
@@ -294,6 +298,7 @@ Route::middleware(['auth'])->group(function () {
 
             // Route UMKM
             Route::get('/umkm', [WargaUMKMController::class, 'index']);
+            Route::get('/umkm/detail/{id}', [WargaUMKMController::class, 'detailUmkm']);
 
             // Route Profil Warga
             Route::get('/profil-warga', [ProfilWargaController::class, 'profilWarga']);
@@ -307,6 +312,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/pengajuan-bansos', [WargaBansos::class, 'createPengajuanBansos']);
             Route::get('/penerima-bansos', [WargaBansos::class, 'historyBansos']);
             Route::get('/rekomendasi-bansos', [WargaBansos::class, 'rekomendasiBansos']);
+            Route::get('/history-bansos', [WargaBansos::class, 'allHistoryPengajuanBansos']);
 
             // Route Pengaduan Warga
             Route::get('/pengaduan', [WargaPengaduanController::class, 'index']);

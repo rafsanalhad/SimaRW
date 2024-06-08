@@ -6,6 +6,15 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="container d-flex justify-content-end align-items-center mb-2" style="position: relative;">
                     <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
                         <a href="/rt/download-nkk">
@@ -29,8 +38,9 @@
                         <th>Jumlah Tanggungan</th>
                         <th>Aksi</th>
                     </thead>
-                    @foreach ($dataKK as $kkPerKeluarga)
-                        <tbody>
+                    <tbody>
+                            @foreach ($dataKK as $kkPerKeluarga)
+                            <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $kkPerKeluarga->no_kartu_keluarga }}</td>
                             <td>{{ $kkPerKeluarga->nama_kepala_keluarga }}</td>
@@ -46,8 +56,9 @@
                                         class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </div>
                             </td>
-                        </tbody>
+                        </tr>
                     @endforeach
+                        </tbody>
                 </table>
             </div>
         </div>
@@ -93,7 +104,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan"
+                                    <input type="number" class="form-control" id="jumlah_tanggungan"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -153,7 +164,7 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="jumlah_tanggungan_edit"
+                                    <input type="number" class="form-control" id="jumlah_tanggungan_edit"
                                         name="jumlah_tanggungan" value="{{ old('jumlah_tanggungan') }}" required>
                                     @error('jumlah_tanggungan')
                                         <small class="form-text text-danger">{{ $message }}</small>

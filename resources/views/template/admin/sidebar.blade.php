@@ -63,7 +63,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/admin/kelola-umkm') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-file-description"></i>
+                            <i class="bi bi-shop-window"></i>
                         </span>
                         <span class="hide-menu">Kelola UMKM</span>
                     </a>
@@ -71,7 +71,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href=" {{ url('/admin/kegiatan-warga') }}" aria-expanded="false">
                         <span>
-                            <i class="bi bi-cash-coin"></i>
+                            <i class="bi bi-person-lines-fill"></i>
                         </span>
                         <span class="hide-menu">Kelola Kegiatan Warga</span>
                     </a>
@@ -89,7 +89,7 @@
                         <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-kelola-iuran"
-                                    href=" {{ url('/admin/kelola-iuran') }}">Kelola Iuran</a>
+                                    href=" {{ url('/admin/kelola-iuran') }}">Laporan Pengeluaran</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-laporan-iuran"
@@ -103,7 +103,7 @@
                     <a class="sidebar-link menu-kelola-bansos" href="#submenu-kelola-bansos" data-bs-toggle="collapse"
                         aria-expanded="false">
                         <span>
-                            <i class="ti ti-wallet"></i>
+                            <i class="bi bi-cash-stack"></i>
                         </span>
                         <span class="hide-menu">Bansos</span>
                         <i class="bi bi-chevron-down ms-auto"></i>

@@ -28,13 +28,13 @@ class UserModelFactory extends Factory
         if($count <= KartuKeluargaModel::count() && $kartuKeluarga) {
             return [
                 'kartu_keluarga_id' => $kartuKeluarga->kartu_keluarga_id,
-                'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+                'role_id' => fake()->randomElement([1, 2, 4]),
                 'nik_user' => $nik_user,
                 'nama_user' => $kartuKeluarga->nama_kepala_keluarga,
                 'email_user' => fake()->unique()->safeEmail(),
                 'password' => Hash::make($nik_user),
                 'gaji_user' => rand(1000000, 5000000),
-                'pekerjaan_user' => fake()->jobTitle(),
+                'pekerjaan_user' => fake()->randomElement(['PNS', 'TNI', 'Pegawai Swasta', 'Wiraswasta', 'Petani', 'Buruh', 'Sopir', 'Tidak Bekerja', 'Pekerjaan Lainnya']),
                 'nomor_rt' => rand(1, 5),
                 'nomor_rw' => rand(1, 5),
                 'masa_jabatan_awal' => fake()->date(),
@@ -50,13 +50,13 @@ class UserModelFactory extends Factory
         } else {
             return [
                 'kartu_keluarga_id' => rand(1, KartuKeluargaModel::count()),
-                'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+                'role_id' => fake()->randomElement([1, 2, 4]),
                 'nik_user' => $nik_user,
                 'nama_user' => fake()->name(),
                 'email_user' => fake()->unique()->safeEmail(),
                 'password' => Hash::make($nik_user),
                 'gaji_user' => rand(1000000, 5000000),
-                'pekerjaan_user' => fake()->jobTitle(),
+                'pekerjaan_user' => fake()->randomElement(['PNS', 'TNI', 'Pegawai Swasta', 'Wiraswasta', 'Petani', 'Buruh', 'Sopir', 'Tidak Bekerja', 'Pekerjaan Lainnya']),
                 'nomor_rt' => rand(1, 5),
                 'nomor_rw' => rand(1, 5),
                 'masa_jabatan_awal' => fake()->date(),

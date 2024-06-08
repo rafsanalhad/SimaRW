@@ -34,7 +34,9 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         // Observer Update SPK Bansos
-        UserModel::observe(UpdateBansosObserver::class);
+        if(KartuKeluargaModel::all()->count() >= 10) {
+            UserModel::observe(UpdateBansosObserver::class);
+        }
 
         // Observer Update Migrasi Iuran Every Updated IuranModel
         IuranModel::observe(UpdateSisaSaldoIuran::class);

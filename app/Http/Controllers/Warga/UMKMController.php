@@ -13,4 +13,10 @@ class UMKMController extends Controller
 
         return view('layout.warga.umkm', ['umkm' => $umkm]);
     }
+
+    public function detailUmkm($id) {
+        $umkm = UmkmModel::find($id);
+
+        return response()->json($umkm);
+    }
 }

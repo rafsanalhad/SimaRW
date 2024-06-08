@@ -1,13 +1,14 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         <h1 style="font-size: 30px; font-weight: bold;">Profil RT</h1>
         <div class="card shadow-lg">
             <h5 class="mt-3 ms-3">Profil Detail</h5>
             <div class="card-body">
-                <form action="/warga/edit-profil" method="POST" class="form-horizontal row">
+                <form action="/rt/profil-rt" method="POST" class="form-horizontal row" enctype="multipart/form-data">
+                    @csrf
                     <div class="col-md-4">
                         <div class="form-group row">
                             <label for="nama_awal" class="col-form-label">Nama Lengkap:</label>
@@ -52,8 +53,8 @@
                         <div class="form-group row">
                             <label for="nomor_rt" class="col-form-label">RT:</label>
                             <div class="col-sm-12">
-                                <input placeholder="003" type="text" class="form-control" id="nama_awal"
-                                    name="nomor_rt" value="{{ $profil->rt_user }}" disabled>
+                                <input placeholder="003" type="text" class="form-control" id="nama_awal" name="nomor_rt"
+                                    value="{{ $profil->rt_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -62,8 +63,8 @@
                         <div class="form-group row">
                             <label for="nomor_rw" class="col-form-label">RW:</label>
                             <div class="col-sm-12">
-                                <input placeholder="005" type="nomor_rw" class="form-control" id="nomor_rw"
-                                    name="nomor_rw" value="{{ $profil->rw_user }}" disabled>
+                                <input placeholder="005" type="nomor_rw" class="form-control" id="nomor_rw" name="nomor_rw"
+                                    value="{{ $profil->rw_user }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -79,10 +80,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <label class="col-2 control-label col-form-label">Upload Foto: </label>
+                        <div class="col-12 mt-1">
+                            <input type="file" class="form-control" id="upload_foto" name="foto_user" accept="image/*">
+                            @error('upload_foto')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                    </div>
                 </form>
-                {{-- <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                </div> --}}
             </div>
         </div>
     </div>

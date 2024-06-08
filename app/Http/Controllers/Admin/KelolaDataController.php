@@ -74,9 +74,24 @@ class KelolaDataController extends Controller
             $validated['foto_user'] = $foto_user;
         }
 
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', $request->nama_kepala_keluarga)->where('kartu_keluarga_id', $request->kartu_keluarga_id)->first()->nama_kepala_keluarga == $request->nama_user_lama) {
+            KartuKeluargaModel::where('kartu_keluarga_id', $request->kartu_keluarga_id)->update([
+                'nama_kepala_keluarga' => $request->nama_user
+            ]);
+        }
+
         UserModel::where('user_id', $id)->update($validated);
 
         return redirect('/admin/kelola-warga');
+    }
+
+    // Function Cek Apakah Warga Merupakan Kepala Keluarga
+    public function cekKepalaKeluarga($id) {
+        if(KartuKeluargaModel::where('nama_kepala_keluarga', UserModel::find($id)->nama_user)->count() == 0) {
+            return response()->json(false);
+        } else {
+            return response()->json(true);
+        }
     }
 
     // Function delete warga
@@ -131,14 +146,29 @@ class KelolaDataController extends Controller
         $request->validated();
 
         $rt_lama = $request->rt_lama;
+        $rt_baru = $request->rt_baru;
 
-        if(UserModel::where('user_id', $rt_lama)->get('user_id') == $rt_lama) {
-            UserModel::where('user_id', $rt_lama)->update([
-                'nomor_rw' => $request->nomor_rw,
-                'nomor_rt' => $request->nomor_rt,
-                'masa_jabatan_awal' => $request->masa_jabatan_awal,
-                'masa_jabatan_akhir' => $request->masa_jabatan_akhir
-            ]);
+        if(UserModel::where('user_id', $rt_lama)->first('user_id')->user_id == $rt_baru) {
+            if($request->file('foto_user')) {
+                Storage::disk('public')->delete(UserModel::find($rt_lama)->foto_user);
+
+                $file = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
+
+                UserModel::where('user_id', $rt_lama)->update([
+                    'nomor_rw' => $request->nomor_rw,
+                    'nomor_rt' => $request->nomor_rt,
+                    'masa_jabatan_awal' => $request->masa_jabatan_awal,
+                    'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
+                    'foto_user' => $file
+                ]);
+            } else {
+                UserModel::where('user_id', $rt_lama)->update([
+                    'nomor_rw' => $request->nomor_rw,
+                    'nomor_rt' => $request->nomor_rt,
+                    'masa_jabatan_awal' => $request->masa_jabatan_awal,
+                    'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
+                ]);
+            }
         } else {
             UserModel::where('user_id', $rt_lama)->update([
                 'role_id' => 4,
@@ -148,7 +178,7 @@ class KelolaDataController extends Controller
                 'masa_jabatan_akhir' => null
             ]);
 
-            UserModel::where('user_id', $request->rt_baru)->update([
+            UserModel::where('user_id', $rt_baru)->update([
                 'role_id' => 2,
                 'nomor_rt' => $request->nomor_rt,
                 'nomor_rw' => $request->nomor_rw,
@@ -258,7 +288,8 @@ class KelolaDataController extends Controller
             'no_kartu_keluarga' => $request->no_kartu_keluarga,
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
-            'jumlah_tanggungan' => $request->jumlah_tanggungan
+            'jumlah_tanggungan' => $request->jumlah_tanggungan,
+            'kondisi_rumah' => $request->kondisi_rumah
         ]);
 
         return redirect('/admin/kelola-nkk');

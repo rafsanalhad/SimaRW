@@ -6,6 +6,15 @@
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
                     <div style="position: absolute; top: 10px; right: 10px;" class="d-flex align-items-center">
                         <a href="/admin/download-warga">
@@ -171,11 +180,18 @@
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Pekerjaan: </label>
                             <div class="col-10">
-                                <input type="text" class="form-control" id="pekerjaan_user" name="pekerjaan_user"
-                                    value="{{ old('pekerjaan_user') }}" required>
-                                @error('pekerjaan_user')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
+                                <select class="form-control" name="pekerjaan_user" id="pekerjaan_user">
+                                    <option value="">-- Pilih Pekerjaan Warga --</option>
+                                    <option value="PNS">PNS</option>
+                                    <option value="TNI">TNI</option>
+                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                    <option value="Wiraswasta">Wiraswasta</option>
+                                    <option value="Petani">Petani</option>
+                                    <option value="Sopir">Sopir</option>
+                                    <option value="Buruh">Buruh</option>
+                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option value="Pekerjaan Lainnya">Pekerjaan Lainnya</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -247,6 +263,8 @@
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Nama: </label>
                             <div class="col-10">
+                                <input type="hidden" name="nama_user_lama" id="nama_user_lama">
+                                <input type="hidden" name="nama_kepala_keluarga" id="nama_kepala_keluarga">
                                 <input type="text" class="form-control" id="nama_user_edit" name="nama_user"
                                     value="{{ old('nama_user') }}" required>
                                 @error('nama_user')
@@ -327,11 +345,18 @@
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Pekerjaan: </label>
                             <div class="col-10">
-                                <input type="text" class="form-control" id="pekerjaan_user_edit"
-                                    name="pekerjaan_user" value="{{ old('pekerjaan_user') }}" required>
-                                @error('pekerjaan_user')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
+                                <select class="form-control" name="pekerjaan_user" id="pekerjaan_user_edit">
+                                    <option value="">-- Pilih Pekerjaan Warga --</option>
+                                    <option value="PNS">PNS</option>
+                                    <option value="TNI">TNI</option>
+                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                    <option value="Wiraswasta">Wiraswasta</option>
+                                    <option value="Petani">Petani</option>
+                                    <option value="Sopir">Sopir</option>
+                                    <option value="Buruh">Buruh</option>
+                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option value="Pekerjaan Lainnya">Pekerjaan Lainnya</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -393,6 +418,24 @@
             </div>
         </div>
     </div>
+
+    <div class="modal modal_delete_kepalaKeluarga" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data Warga</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Apakah anda yakin ingin menghapus data kepala keluarga ini?</h4>
+                    <small>*Jika Anda menghapus data ini, semua data yang berkaitan dengan <br>kartu keluarga data ini akan terhapus</small>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="hapus_warga_id btn btn-secondary">Hapus</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick=hideDeleteKepalaKeluarga()>Tutup</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         $('#submenu-kelola-data').addClass('show');
@@ -414,6 +457,8 @@
                 success: function(data) {
                     $('#kartu_keluarga_id_edit').val(data.kartu_keluarga.kartu_keluarga_id);
                     $('#nama_user_edit').val(data.nama_user);
+                    $('#nama_user_lama').val(data.nama_user);
+                    $('#nama_kepala_keluarga').val(data.kartu_keluarga.nama_kepala_keluarga);
                     $('#email_user_edit').val(data.email_user);
                     $('#nik_user_edit').val(data.nik_user);
                     $('#tempat_edit').val(data.tempat);
@@ -437,12 +482,28 @@
         }
 
         function showDeleteWarga(idWarga) {
-            $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
-            $('.modal_delete_warga').modal('show')
+            $.ajax({
+                url: '/admin/kelola-warga/check/' + idWarga,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data == true) {
+                        $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+                        $('.modal_delete_kepalaKeluarga').modal('show')
+                    } else {
+                        $('.hapus_warga_id').attr('href', '/admin/kelola-warga/delete/' + idWarga)
+                        $('.modal_delete_warga').modal('show')
+                    }
+                }
+            })
         }
 
         function hideDeleteWarga() {
             $('.modal_delete_warga').modal('hide')
+        }
+
+        function hideDeleteKepalaKeluarga() {
+            $('.modal_delete_kepalaKeluarga').modal('hide')
         }
     </script>
     <script>
