@@ -102,6 +102,19 @@
                                 </div>
                             </div>
                             <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Kondisi Rumah: </label>
+                                <div class="col-10">
+                                    <select class="form-control" name="kondisi_rumah" id="kondisi_rumah">
+                                        <option value="">-- Pilih Kondisi Rumah Keluarga --</option>
+                                        <option value="Sangat Bagus">Sangat Bagus</option>
+                                        <option value="Bagus">Bagus</option>
+                                        <option value="Sedang">Cukup</option>
+                                        <option value="Buruk">Buruk</option>
+                                        <option value="Sangat Buruk">Sangat Buruk</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Jumlah Tanggungan: </label>
                                 <div class="col-10">
                                     <input type="number" class="form-control" id="jumlah_tanggungan"
@@ -160,6 +173,19 @@
                                     @error('alamat_kk')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-2 control-label col-form-label">Kondisi Rumah: </label>
+                                <div class="col-10">
+                                    <select class="form-control" name="kondisi_rumah" id="kondisi_rumah_edit">
+                                        <option value="">-- Pilih Kondisi Rumah Keluarga --</option>
+                                        <option value="Sangat Bagus">Sangat Bagus</option>
+                                        <option value="Bagus">Bagus</option>
+                                        <option value="Sedang">Cukup</option>
+                                        <option value="Buruk">Buruk</option>
+                                        <option value="Sangat Buruk">Sangat Buruk</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -233,6 +259,7 @@
                     $('#nama_kepala_edit').val(data.nama_kepala_keluarga)
                     $('#alamat_kk_edit').val(data.alamat_kk)
                     $('#jumlah_tanggungan_edit').val(data.jumlah_tanggungan)
+                    $('#kondisi_rumah_edit').val(data.kondisi_rumah)
                 }
             });
 

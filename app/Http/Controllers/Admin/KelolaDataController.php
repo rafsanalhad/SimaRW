@@ -308,7 +308,8 @@ class KelolaDataController extends Controller
             'no_kartu_keluarga' => $request->no_kartu_keluarga,
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
-            'jumlah_tanggungan' => $request->jumlah_tanggungan
+            'jumlah_tanggungan' => $request->jumlah_tanggungan,
+            'kondisi_rumah' => $request->kondisi_rumah
         ]);
 
         UserModel::where('kartu_keluarga_id', $id)->where('nama_user', $request->nama_kepala_keluarga_lama)->update([
