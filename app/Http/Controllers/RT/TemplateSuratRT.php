@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Warga;
+namespace App\Http\Controllers\RT;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 
-class TemplateSurat extends Controller
+class TemplateSuratRT extends Controller
 {
     public function index(){
-        return view('layout.warga.template_surat');
+        return view('layout.rt.template_surat');
     
     }
     public function downloadSuratKk(){

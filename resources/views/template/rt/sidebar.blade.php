@@ -152,6 +152,14 @@
                         <span class="hide-menu">Kelola Surat</span>
                     </a>
                 </li> --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href=" {{ url('/rt/template-surat') }}" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-envelope-arrow-up"></i>
+                        </span>
+                        <span class="hide-menu">Template Surat</span>
+                    </a>
+                </li>
 
         </nav>
         <!-- End Sidebar navigation -->
