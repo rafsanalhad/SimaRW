@@ -25,8 +25,7 @@
                         <div class="col-sm-12">
                             <select name="jabatan_pelapor" id="pilih_jabatan" class="form-control" required>
                                 <option value="">-- Pilih Jabatan Anda --</option>
-                                <option value="rt">RT</option>
-                                <option value="rw">RW</option>
+                                <option value="rt" selected>RT</option>
                             </select>
                         </div>
                     </div>
@@ -35,8 +34,9 @@
                     <div class="form-group row">
                         <label for="nomor_rt" class="col-form-label">RT:</label>
                         <div class="col-sm-12">
+                            <input type="hidden" name="nomor_rt" value="{{ Auth::user()->nomor_rt }}">
                             <input placeholder="Masukkan Nomor RT" type="text" class="form-control" id="nama_awal"
-                                name="nomor_rt" value="{{ old('nomor_rt') }}" required>
+                                name="" value="{{ Auth::user()->nomor_rt }}" disabled>
                             <small class="form-text text-danger"></small>
                         </div>
                     </div>
@@ -45,8 +45,9 @@
                     <div class="form-group row">
                         <label for="nomor_rw" class="col-form-label">RW:</label>
                         <div class="col-sm-12">
+                            <input type="hidden" name="nomor_rw" value="{{ Auth::user()->nomor_rw }}">
                             <input placeholder="Masukkan Nomor RW" type="text" class="form-control" id="nomor_rw"
-                                name="nomor_rw" value="{{ old('nomor_rw') }}" required>
+                                name="" value="{{ Auth::user()->nomor_rw }}" disabled>
                             <small class="form-text text-danger"></small>
                         </div>
                     </div>

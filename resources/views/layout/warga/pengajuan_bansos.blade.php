@@ -48,11 +48,17 @@
                             <div class="col-sm-12">
                                 <select class="form-control" name="nomor_rt" id="">
                                     <option value="">-- Masukkan RT --</option>
-                                    <option value="1">RT 1</option>
-                                    <option value="2">RT 2</option>
-                                    <option value="3">RT 3</option>
-                                    <option value="4">RT 4</option>
-                                    <option value="5">RT 5</option>
+                                    @if (Auth::user()->nomor_rt == 1)
+                                        <option value="1" selected>RT 1</option>
+                                    @elseif (Auth::user()->nomor_rt == 2)
+                                        <option value="2" selected>RT 2</option>
+                                    @elseif (Auth::user()->nomor_rt == 3)
+                                        <option value="3" selected>RT 3</option>
+                                    @elseif (Auth::user()->nomor_rt == 4)
+                                        <option value="4" selected>RT 4</option>
+                                    @elseif (Auth::user()->nomor_rt == 5)
+                                        <option value="5" selected>RT 5</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -61,8 +67,9 @@
                         <div class="form-group row">
                             <label for="nomor_rw" class="col-form-label">RW:</label>
                             <div class="col-sm-12">
+                                <input type="hidden" name="nomor_rw" value="{{ Auth::user()->nomor_rw }}">
                                 <input placeholder="Masukkan Nomor RW" type="text" class="form-control" id="nomor_rw"
-                                    name="nomor_rw" value="{{ old('nomor_rw') }}" required>
+                                    name="" value="{{ Auth::user()->nomor_rw }}" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
