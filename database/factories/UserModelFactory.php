@@ -28,7 +28,7 @@ class UserModelFactory extends Factory
         if($count <= KartuKeluargaModel::count() && $kartuKeluarga) {
             return [
                 'kartu_keluarga_id' => $kartuKeluarga->kartu_keluarga_id,
-                'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+                'role_id' => fake()->randomElement([1, 2, 4]),
                 'nik_user' => $nik_user,
                 'nama_user' => $kartuKeluarga->nama_kepala_keluarga,
                 'email_user' => fake()->unique()->safeEmail(),
@@ -50,7 +50,7 @@ class UserModelFactory extends Factory
         } else {
             return [
                 'kartu_keluarga_id' => rand(1, KartuKeluargaModel::count()),
-                'role_id' => rand(1, count(RoleModel::select('role_id')->get())),
+                'role_id' => fake()->randomElement([1, 2, 4]),
                 'nik_user' => $nik_user,
                 'nama_user' => fake()->name(),
                 'email_user' => fake()->unique()->safeEmail(),
