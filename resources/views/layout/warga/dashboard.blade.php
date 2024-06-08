@@ -266,82 +266,22 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Pengumuman</h5>
                 </div>
                 <div class="modal-body">
-                    <h3>Pengumuman </h3>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="pengumuman_item mt-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Bansos</h4>
-                                        <p>Silahkan mengambil bansos di Balai desa</p>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Hari/Tanggal
-                                            </div>
-                                            <div class="col-6">
-                                                : Rabu/ 27 Maret 2024
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Jam
-                                            </div>
-                                            <div class="col-6">
-                                                : 17.00 - 19.00
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Tempat
-                                            </div>
-                                            <div class="col-6">
-                                                : Balai Desa
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="pengumuman_item mt-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Bansos</h4>
-                                        <p>Silahkan mengambil bansos di Balai desa</p>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Hari/Tanggal
-                                            </div>
-                                            <div class="col-6">
-                                                : Rabu/ 27 Maret 2024
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Jam
-                                            </div>
-                                            <div class="col-6">
-                                                : 17.00 - 19.00
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                Tempat
-                                            </div>
-                                            <div class="col-6">
-                                                : Balai Desa
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="pengumumanSearchWrapper">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="month" class="form-control" id="searchPengumuman" aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
+                    </div>
+                    <div class="pengumuman_item mt-3" id="pengumuman_alert">
+
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
+
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         onclick="hideModalPengumuman()">Close</button>
                 </div>
@@ -358,6 +298,68 @@
         }
 
         function showModalPengumuman() {
+            $.ajax({
+                url: '/warga/pengumuman',
+                type: 'GET',
+                dataType: 'json',
+                success(data) {
+                    $('#searchPengumuman').on("change", function(e) {
+                        let value = $(this).val();
+                        const [year, month] = value.split('-');
+                        console.log(month)
+                        const filteredData = data.filter(function(item) {
+                            const itemMonth = item.tanggal_pengumuman.split('-')[1];
+                            return itemMonth === month;
+                        });
+                        console.log(data)
+                        console.log(filteredData)
+                        let pengumumanHTML = '';
+                        for (let i = 0; i < filteredData.length; i++) {
+                            pengumumanHTML += '<div class="card"> <div class="card-body">'
+                            pengumumanHTML += '<h4>' + filteredData[i].judul_pengumuman + '</h4>';
+                            pengumumanHTML += '<p>' + filteredData[i].isi_pengumuman + '</p>';
+                            pengumumanHTML +=
+                                '<div class="row"> <div class="col-4"> Tanggal </div> <div class="col-6"> : ' +
+                                filteredData[i]
+                                .tanggal_pengumuman + '</div> </div>';
+                            pengumumanHTML +=
+                                '<div class="row"> <div class="col-4"> Jam </div> <div class="col-6"> : ' +
+                                filteredData[i]
+                                .jam_pengumuman + '</div> </div>';
+                            pengumumanHTML +=
+                                '<div class="row"> <div class="col-4"> Tempat </div> <div class="col-6"> : ' +
+                                filteredData[i]
+                                .tempat_pengumuman + '</div> </div>';
+                            pengumumanHTML += '</div> </div>'
+                        }
+                        $('#pengumuman_alert').html(pengumumanHTML);
+
+
+
+                    })
+
+
+
+                    let pengumumanHTML = '';
+                    for (let i = 0; i < data.length; i++) {
+                        pengumumanHTML += '<div class="card"> <div class="card-body">'
+                        pengumumanHTML += '<h4>' + data[i].judul_pengumuman + '</h4>';
+                        pengumumanHTML += '<p>' + data[i].isi_pengumuman + '</p>';
+                        pengumumanHTML +=
+                            '<div class="row"> <div class="col-4"> Tanggal </div> <div class="col-6"> : ' + data[i]
+                            .tanggal_pengumuman + '</div> </div>';
+                        pengumumanHTML +=
+                            '<div class="row"> <div class="col-4"> Jam </div> <div class="col-6"> : ' + data[i]
+                            .jam_pengumuman + '</div> </div>';
+                        pengumumanHTML +=
+                            '<div class="row"> <div class="col-4"> Tempat </div> <div class="col-6"> : ' + data[i]
+                            .tempat_pengumuman + '</div> </div>';
+                        pengumumanHTML += '</div> </div>'
+                    }
+                    $('#pengumuman_alert').html(pengumumanHTML);
+                }
+            });
+
             $('.modal_pengumuman').modal('show');
         }
 
