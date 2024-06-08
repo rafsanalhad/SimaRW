@@ -1,6 +1,6 @@
 <?php
-   $role_id = session('role_id');
-   $nama = session('nama');
+   $role_id = Auth::user()->role_id;
+   $nama = Auth::user()->nama_user;
 if($role_id == 1){
     $role = 'Admin';
 }else if($role_id == 2){
