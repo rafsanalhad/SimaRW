@@ -13,8 +13,11 @@
                         <div class="form-group row">
                             <label for="nama_kepala_keluarga" class="col-form-label">Nama Kepala Keluarga:</label>
                             <div class="col-sm-12">
-                                <input type="hidden" name="kartu_keluarga_id" value="{{ $kepalaKeluarga->kartu_keluarga_id }}">
-                                <input type="text" class="form-control" value="{{ $kepalaKeluarga->no_kartu_keluarga }} - {{ $kepalaKeluarga->nama_kepala_keluarga }}" disabled>
+                                <input type="hidden" name="kartu_keluarga_id"
+                                    value="{{ $kepalaKeluarga->kartu_keluarga_id }}">
+                                <input type="text" class="form-control"
+                                    value="{{ $kepalaKeluarga->no_kartu_keluarga }} - {{ $kepalaKeluarga->nama_kepala_keluarga }}"
+                                    disabled>
                             </div>
                         </div>
                     </div>
@@ -46,20 +49,9 @@
                         <div class="form-group row">
                             <label for="nomor_rt" class="col-form-label">RT:</label>
                             <div class="col-sm-12">
-                                <select class="form-control" name="nomor_rt" id="">
-                                    <option value="">-- Masukkan RT --</option>
-                                    @if (Auth::user()->nomor_rt == 1)
-                                        <option value="1" selected>RT 1</option>
-                                    @elseif (Auth::user()->nomor_rt == 2)
-                                        <option value="2" selected>RT 2</option>
-                                    @elseif (Auth::user()->nomor_rt == 3)
-                                        <option value="3" selected>RT 3</option>
-                                    @elseif (Auth::user()->nomor_rt == 4)
-                                        <option value="4" selected>RT 4</option>
-                                    @elseif (Auth::user()->nomor_rt == 5)
-                                        <option value="5" selected>RT 5</option>
-                                    @endif
-                                </select>
+                                <input type="hidden" name="nomor_rt" value="1">
+                                <input type="text" class="form-control" id="level_nama" name="" value="1"
+                                    disabled>
                             </div>
                         </div>
                     </div>
@@ -67,9 +59,9 @@
                         <div class="form-group row">
                             <label for="nomor_rw" class="col-form-label">RW:</label>
                             <div class="col-sm-12">
-                                <input type="hidden" name="nomor_rw" value="{{ Auth::user()->nomor_rw }}">
-                                <input placeholder="Masukkan Nomor RW" type="text" class="form-control" id="nomor_rw"
-                                    name="" value="{{ Auth::user()->nomor_rw }}" disabled>
+                                <input type="hidden" name="nomor_rw" value="5">
+                                <input type="text" class="form-control" id="level_nama" name="" value="5"
+                                    disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -115,7 +107,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-          $('#submenu-kelola-bansos').addClass('show');
+        $('#submenu-kelola-bansos').addClass('show');
         $('#menu-pengajuan-bansos').removeClass('text-dark').addClass('text-primary');
         document.getElementById("btnAjukanBansos").addEventListener("click", function() {
             Swal.fire({

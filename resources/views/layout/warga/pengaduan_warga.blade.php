@@ -72,9 +72,9 @@
                             <div class="form-group row">
                                 <label for="nomor_rt" class="col-form-label">RT:</label>
                                 <div class="col-sm-12">
-                                    <input type="hidden" name="nomor_rt" value="{{ Auth::user()->nomor_rt }}">
+                                    <input type="hidden" name="nomor_rt" value="1">
                                     <input placeholder="Masukkan Nomor RT" type="text" class="form-control"
-                                        id="nama_awal" name="" value="{{ Auth::user()->nomor_rt }}" disabled>
+                                        id="nama_awal" name="" value="1" disabled>
                                     <small class="form-text text-danger"></small>
                                 </div>
                             </div>
@@ -83,9 +83,9 @@
                             <div class="form-group row">
                                 <label for="nomor_rw" class="col-form-label">RW:</label>
                                 <div class="col-sm-12">
-                                    <input type="hidden" name="nomor_rw" value="{{ Auth::user()->nomor_rw }}">
+                                    <input type="hidden" name="nomor_rw" value="5">
                                     <input placeholder="Masukkan Nomor RT" type="text" class="form-control"
-                                        id="nama_awal" name="" value="{{ Auth::user()->nomor_rw }}" disabled>
+                                        id="nama_awal" name="" value="5" disabled>
                                     <small class="form-text text-danger"></small>
                                 </div>
                             </div>
