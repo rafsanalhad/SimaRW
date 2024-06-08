@@ -22,10 +22,9 @@
                 <div class="col-md-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
+                        <div class="card" style="width: 18rem; height: 540px;">
 
                             <div class="card" style="width: 18rem; height: 540px;">
-
-
                                 <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
                                     alt="Card image cap">
                                 <div class="card-body">
@@ -49,7 +48,7 @@
         </div>
     </div>
     <div class="modal modal_tambah_umkm" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">Tambah UMKM</div>
@@ -141,7 +140,7 @@
         </div>
     </div>
     <div class="modal modal_umkm" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-body">
                     <img id="gambar_umkm_detail" src="" alt="" class="img_umkm">

@@ -7,6 +7,7 @@
     <title>SIMA</title>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logos/newlogoSima.png" />
     <link rel="stylesheet" href="{{ @asset('assets/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ @asset('assets/css/dashboard_admin.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
