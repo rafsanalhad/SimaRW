@@ -12,7 +12,7 @@
                         <i class="ti ti-menu-2"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
                     <i class="ti ti-bell-ringing me-3" onclick="showModalPengumuman()"></i>
                     <a href="#" class="btn btn-primary" onclick="showModalTambahPengumuman()">
                         <div class="fs-1">Tambah Pengumuman</div>
