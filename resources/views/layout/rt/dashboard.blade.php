@@ -120,14 +120,14 @@
                             @foreach ($pengeluaranTerbaru as $pt)
                                 <li class="timeline-item d-flex position-relative overflow-hidden">
                                     <div class="timeline-time text-dark flex-shrink-0 text-end">
-                                        {{ Carbon::parse($pt->created_at)->format('d/m/Y') }}</div>
+                                        {{ Carbon::parse($pt->tanggal_migrasi)->format('d/m/Y') }}</div>
                                     <div class="timeline-badge-wrap d-flex flex-column align-items-center">
                                         <span
                                             class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                                         <span class="timeline-badge-border d-block flex-shrink-0"></span>
                                     </div>
                                     <div class="timeline-desc fs-3 text-dark mt-n1" id="pengeluaran">
-                                        {{ Str::of($pt->detail_pengeluaran)->limit(30) }}</div>
+                                        {{ Str::of($pt->keterangan_pengeluaran)->limit(30) }}</div>
                                 </li>
                             @endforeach
                         </ul>
@@ -164,22 +164,14 @@
                                                 <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1">{{ $p->user->nama_user }}</h6>
+                                                <h6 class="fw-semibold mb-1">{{ $p->nama_pelapor }}</h6>
 
                                             </td>
                                             <td class="border-bottom-0">
-                                                @if ($p->user->role_id == 1)
-                                                    <p class="mb-0 fw-normal">Admin</p>
-                                                @elseif ($p->user->role_id == 2)
-                                                    <p class="mb-0 fw-normal">RT</p>
-                                                @elseif ($p->user->role_id == 3)
-                                                    <p class="mb-0 fw-normal">RW</p>
-                                                @else
-                                                    <p class="mb-0 fw-normal">Warga</p>
-                                                @endif
+                                                <p class="mb-0 fw-normal">{{ $p->jabatan_pelapor }}</p>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0 fs-4">RP. {{ $p->jumlah_pengeluaran }}</h6>
+                                                <h6 class="fw-semibold mb-0 fs-4">RP. {{ $p->dana_keluar }}</h6>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -233,6 +225,7 @@
             </div>
         </div>
         @endif
+
     </div>
     <div class="modal modal_umkm" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
