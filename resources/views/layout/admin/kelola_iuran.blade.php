@@ -3,6 +3,17 @@
 @include('template.admin.header')
 
 <div class="container-fluid">
+    @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
     <h1 style="font-size: 30px; font-weight: bold;">Form Lapor Keuangan</h1>
     <div class="card shadow-lg">
         <h5 class="mt-3 ms-3">Isi Data Pengeluaran</h5>

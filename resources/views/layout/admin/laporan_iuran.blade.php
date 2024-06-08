@@ -3,17 +3,6 @@
     @include('template.admin.header')
 
     <div class="container-fluid">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
         {{-- <h3>Data Warga</h3> --}}
         <div class="card shadow-lg">
             <div class="container d-flex justify-content-end align-items-center" style="position: relative;">
