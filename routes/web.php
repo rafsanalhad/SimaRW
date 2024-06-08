@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RT\RTPengumumanController;
+use App\Http\Controllers\WargaPengumumanController;
 use Illuminate\Support\Facades\Route;
 use App\Services\UpdateSPKVikorService;
 use App\Http\Controllers\HomeController;
@@ -207,9 +209,9 @@ Route::middleware(['auth'])->group(function () {
 
             // Route::get('/profil-admin', [ProfilAdminController::class, 'profilAdmin']);
 
-            // // Route get pengumuman
-            // Route::get('/pengumuman', [PengumumanController::class, 'show']);
-            // Route::post('/tambah-pengumuman', [PengumumanController::class, 'create']);
+            // Route get pengumuman
+            Route::get('/pengumuman', [RTPengumumanController::class, 'show']);
+            Route::post('/tambah-pengumuman', [RTPengumumanController::class, 'create']);
 
             // kelola data Warga
             Route::get('/kelola-warga', [KelolaWargaController::class, 'kelolaWarga']);
@@ -296,6 +298,9 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['CekLogin:4']], function() {
         Route::prefix('warga')->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboardWarga');
+
+            // Route Pengumuman
+            Route::get('/pengumuman', [WargaPengumumanController::class, 'show']);
 
             // Route Bayar Iuran
             Route::get('/bayar-iuran', [IuranController::class, 'index']);
