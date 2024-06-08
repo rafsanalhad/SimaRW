@@ -41,12 +41,12 @@
                     <div class="collapse" id="submenu-kelola-data">
                         <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="menu-kelola-warga"
-                                    href=" {{ url('/rt/kelola-warga') }}">Kelola Warga</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-kelola-nkk"
                                     href="{{ url('/rt/kelola-nkk') }}">Kelola NKK</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="menu-kelola-warga"
+                                    href=" {{ url('/rt/kelola-warga') }}">Kelola Warga</a>
                             </li>
 
                             <!-- Add more submenu items as needed -->
@@ -83,7 +83,7 @@
                         <ul class="nav flex-column sub-menu" style="margin-left: 40px;">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-kelola-iuran"
-                                    href=" {{ url('/rt/kelola-iuran') }}">Kelola Iuran</a>
+                                    href=" {{ url('/rt/kelola-iuran') }}">Laporan Pengeluaran</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" id="menu-laporan-iuran"
