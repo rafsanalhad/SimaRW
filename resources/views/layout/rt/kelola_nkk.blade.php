@@ -234,7 +234,7 @@
                 }
             });
 
-            $('#edit_kk_form').attr('action', '/admin/kelola-nkk/update/' + idKK)
+            $('#edit_kk_form').attr('action', '/rt/kelola-nkk/update/' + idKK)
 
             $('.modal_edit_kk').modal('show');
         }
@@ -244,7 +244,7 @@
         }
 
         function showDeleteKK(idKK) {
-            $('.hapus_kk_id').attr('href', '/admin/kelola-nkk/delete/' + idKK);
+            $('.hapus_kk_id').attr('href', '/rt/kelola-nkk/delete/' + idKK);
             $('.modal_delete_kk').modal('show');
         }
 
