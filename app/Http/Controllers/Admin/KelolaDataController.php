@@ -33,7 +33,7 @@ class KelolaDataController extends Controller
 
         $foto_user = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
 
-        UserModel::create([
+        $userSave = UserModel::create([
             'kartu_keluarga_id' => $request->kartu_keluarga_id,
             'role_id' => $request->role_id,
             'nama_user' => $request->nama_user,
@@ -51,7 +51,11 @@ class KelolaDataController extends Controller
             'foto_user' => $foto_user
         ]);
 
-        return redirect('/admin/kelola-warga');
+        if($userSave) {
+            return redirect('/admin/kelola-warga')->with('success', 'Data Warga Berhasil Ditambahkan');
+        } else {
+            return redirect('/admin/kelola-warga')->with('error', 'Data Warga Gagal Ditambahkan');
+        }
     }
 
     // Function mengambil data warga dari database
@@ -80,9 +84,13 @@ class KelolaDataController extends Controller
             ]);
         }
 
-        UserModel::where('user_id', $id)->update($validated);
+        $userSave = UserModel::where('user_id', $id)->update($validated);
 
-        return redirect('/admin/kelola-warga');
+        if($userSave) {
+            return redirect('/admin/kelola-warga')->with('success', 'Data Warga Berhasil Diedit!');
+        } else {
+            return redirect('/admin/kelola-warga')->with('error', 'Data Warga Gagal Diedit!');
+        }
     }
 
     // Function Cek Apakah Warga Merupakan Kepala Keluarga
@@ -100,8 +108,13 @@ class KelolaDataController extends Controller
 
         Storage::disk('public')->delete('User-Images/' . $foto_user);
 
-        UserModel::destroy($id);
-        return redirect('/admin/kelola-warga');
+        $userSave = UserModel::destroy($id);
+
+        if($userSave) {
+            return redirect('/admin/kelola-warga')->with('success', 'Data Warga Berhasil Dihapus!');
+        } else {
+            return redirect('/admin/kelola-warga')->with('error', 'Data Warga Gagal Dihapus!');
+        }
     }
 
     // Function download rekap excel Warga
@@ -123,7 +136,7 @@ class KelolaDataController extends Controller
     public function createRt(RTRequest $request) {
         $request->validated();
 
-        UserModel::where('user_id', $request->rt_baru)->update([
+        $userSave = UserModel::where('user_id', $request->rt_baru)->update([
             'role_id' => $request->role_id,
             'masa_jabatan_awal' => $request->masa_jabatan_awal,
             'masa_jabatan_akhir' => $request->masa_jabatan_akhir,
@@ -131,7 +144,11 @@ class KelolaDataController extends Controller
             'nomor_rt' => $request->nomor_rt
         ]);
 
-        return redirect('/admin/kelola-rt');
+        if($userSave) {
+            return redirect('/admin/kelola-rt')->with('success', 'Data RT Berhasil Ditambahkan!');
+        } else {
+            return redirect('/admin/kelola-rt')->with('error', 'Data RT Gagal Ditambahkan!');
+        }
     }
 
     // function menampilkan data untuk edit RT
@@ -154,7 +171,7 @@ class KelolaDataController extends Controller
 
                 $file = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
 
-                UserModel::where('user_id', $rt_lama)->update([
+                $userSave = UserModel::where('user_id', $rt_lama)->update([
                     'nomor_rw' => $request->nomor_rw,
                     'nomor_rt' => $request->nomor_rt,
                     'masa_jabatan_awal' => $request->masa_jabatan_awal,
@@ -162,7 +179,7 @@ class KelolaDataController extends Controller
                     'foto_user' => $file
                 ]);
             } else {
-                UserModel::where('user_id', $rt_lama)->update([
+                $userSave = UserModel::where('user_id', $rt_lama)->update([
                     'nomor_rw' => $request->nomor_rw,
                     'nomor_rt' => $request->nomor_rt,
                     'masa_jabatan_awal' => $request->masa_jabatan_awal,
@@ -170,7 +187,7 @@ class KelolaDataController extends Controller
                 ]);
             }
         } else {
-            UserModel::where('user_id', $rt_lama)->update([
+            $userSave = UserModel::where('user_id', $rt_lama)->update([
                 'role_id' => 4,
                 'nomor_rt' => null,
                 'nomor_rw' => null,
@@ -178,7 +195,7 @@ class KelolaDataController extends Controller
                 'masa_jabatan_akhir' => null
             ]);
 
-            UserModel::where('user_id', $rt_baru)->update([
+            $userSave = UserModel::where('user_id', $rt_baru)->update([
                 'role_id' => 2,
                 'nomor_rt' => $request->nomor_rt,
                 'nomor_rw' => $request->nomor_rw,
@@ -187,12 +204,16 @@ class KelolaDataController extends Controller
             ]);
         }
 
-        return redirect('/admin/kelola-rt');
+        if($userSave) {
+            return redirect('/admin/kelola-rt')->with('success', 'Data RT Berhasil Diedit!');
+        } else {
+            return redirect('/admin/kelola-rt')->with('error', 'Data RT Gagal Diedit!');
+        }
     }
 
     // Function delete data RT
     public function deleteRt($id) {
-        UserModel::find($id)->update([
+        $userSave = UserModel::find($id)->update([
             'role_id' => 4,
             'nomor_rw' => null,
             'nomor_rt' => null,
@@ -200,7 +221,11 @@ class KelolaDataController extends Controller
             'masa_jabatan_akhir' => null
         ]);
 
-        return redirect('/admin/kelola-rt');
+        if($userSave) {
+            return redirect('/admin/kelola-rt')->with('success', 'Data RT Berhasil Dihapus!');
+        } else {
+            return redirect('/admin/kelola-rt')->with('error', 'Data RT Gagal Dihapus!');
+        }
     }
 
     // Function menampilkan data RW
@@ -284,7 +309,7 @@ class KelolaDataController extends Controller
         $request->validated;
         // dd($debug);
 
-        KartuKeluargaModel::create([
+        $kkSave = KartuKeluargaModel::create([
             'no_kartu_keluarga' => $request->no_kartu_keluarga,
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
@@ -292,7 +317,12 @@ class KelolaDataController extends Controller
             'kondisi_rumah' => $request->kondisi_rumah
         ]);
 
-        return redirect('/admin/kelola-nkk');
+
+        if($kkSave) {
+            return redirect('/admin/kelola-nkk')->with('success', 'Data NKK Berhasil Ditambahkan!');
+        } else {
+            return redirect('/admin/kelola-nkk')->with('error', 'Data NKK Gagal Ditambahkan!');
+        }
     }
 
     public function editNKK($id) {
@@ -304,7 +334,7 @@ class KelolaDataController extends Controller
     public function updateNKK(NKKRequest $request, $id) {
         $request->validated();
 
-        KartuKeluargaModel::where('kartu_keluarga_id', $id)->update([
+        $kkSave = KartuKeluargaModel::where('kartu_keluarga_id', $id)->update([
             'no_kartu_keluarga' => $request->no_kartu_keluarga,
             'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat_kk' => $request->alamat_kk,
@@ -316,13 +346,21 @@ class KelolaDataController extends Controller
             'nama_user' => $request->nama_kepala_keluarga
         ]);
 
-        return redirect('/admin/kelola-nkk');
+        if($kkSave) {
+            return redirect('/admin/kelola-nkk')->with('success', 'Data NKK Berhasil Diedit!');
+        } else {
+            return redirect('/admin/kelola-nkk')->with('error', 'Data NKK Gagal Diedit!');
+        }
     }
 
     public function deleteNKK($id) {
-        KartuKeluargaModel::destroy($id);
+        $kkSave = KartuKeluargaModel::destroy($id);
 
-        return redirect('/admin/kelola-nkk');
+        if($kkSave) {
+            return redirect('/admin/kelola-nkk')->with('success', 'Data NKK Berhasil Dihapus!');
+        } else {
+            return redirect('/admin/kelola-nkk')->with('error', 'Data NKK Gagal Dihapus!');
+        }
     }
 
     // Function download rekap excel NKK

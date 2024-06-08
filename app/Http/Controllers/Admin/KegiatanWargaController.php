@@ -13,7 +13,7 @@ class KegiatanWargaController extends Controller
 {
     public function kelolaKegiatan(){
         Carbon::setLocale('id');
-        
+
         $kegiatan = KegiatanWargaModel::all()->map(function($kegiatan) {
             $kegiatan->hari_kegiatan = Carbon::parse($kegiatan->jadwal_kegiatan)->isoFormat('dddd');
             $kegiatan->jam_awal = Carbon::parse($kegiatan->jam_awal)->format('H:i');
@@ -31,7 +31,7 @@ class KegiatanWargaController extends Controller
         if($request->hasFile('foto_kegiatan')) {
             $foto_kegiatan = Storage::disk('public')->put('kegiatan_warga', $request->file('foto_kegiatan'));
 
-            KegiatanWargaModel::create([
+            $kegiatanSave = KegiatanWargaModel::create([
                 'nama_kegiatan' => $request->nama_kegiatan,
                 'tempat_kegiatan' => $request->tempat_kegiatan,
                 'jadwal_kegiatan' => $request->jadwal_kegiatan,
@@ -42,7 +42,11 @@ class KegiatanWargaController extends Controller
             ]);
         }
 
-        return redirect('/admin/kegiatan-warga');
+        if($kegiatanSave) {
+            return redirect('/admin/kegiatan-warga')->with('success', 'Kegiatan berhasil ditambahkan!');
+        } else {
+            return redirect('/admin/kegiatan-warga')->with('error', 'Kegiatan gagal ditambahkan!');
+        }
     }
 
     public function editKegiatan($id) {
@@ -61,7 +65,7 @@ class KegiatanWargaController extends Controller
 
             $foto_kegiatan = Storage::disk('public')->put('kegiatan_warga', $request->file('foto_kegiatan'));
 
-            KegiatanWargaModel::where('kegiatan_id', $id)->update([
+            $kegiatanSave = KegiatanWargaModel::where('kegiatan_id', $id)->update([
                 'nama_kegiatan' => $request->nama_kegiatan,
                 'tempat_kegiatan' => $request->tempat_kegiatan,
                 'jadwal_kegiatan' => $request->jadwal_kegiatan,
@@ -71,7 +75,7 @@ class KegiatanWargaController extends Controller
                 'foto_kegiatan' => $foto_kegiatan,
             ]);
         } else {
-            KegiatanWargaModel::where('id', $id)->update([
+            $kegiatanSave = KegiatanWargaModel::where('id', $id)->update([
                 'nama_kegiatan' => $request->nama_kegiatan,
                 'tempat_kegiatan' => $request->tempat_kegiatan,
                 'jadwal_kegiatan' => $request->jadwal_kegiatan,
@@ -81,7 +85,11 @@ class KegiatanWargaController extends Controller
             ]);
         }
 
-        return redirect('/admin/kegiatan-warga');
+        if($kegiatanSave) {
+            return redirect('/admin/kegiatan-warga')->with('success', 'Kegiatan berhasil diedit!');
+        } else {
+            return redirect('/admin/kegiatan-warga')->with('error', 'Kegiatan gagal diedit!');
+        }
     }
 
     public function deleteKegiatan($id) {

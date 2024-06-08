@@ -1,9 +1,20 @@
 @extends('template.rt.main')
 @section('content')
-@include('template.rt.header')
+    @include('template.rt.header')
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <h4>Kelola UMKM</h4>
         <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahUmkm()">Tambah Baru</a>
         <div class="row">
@@ -20,7 +31,8 @@
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
                                     <p class="card-text">{{ $umkm->deskripsi_umkm }}</p>
                                     <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
-                                    <a href="#" class="btn btn-primary" onclick="showModalUmkm({{ $umkm->umkm_id }})">Detail</a>
+                                    <a href="#" class="btn btn-primary"
+                                        onclick="showModalUmkm({{ $umkm->umkm_id }})">Detail</a>
                                     <a href="#" class="btn btn-warning"
                                         onclick="modalEditUmkm({{ $umkm->umkm_id }})">Edit</a>
                                     <a href="#" class="btn btn-danger"
@@ -81,8 +93,7 @@
                                         Kontak
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm"
-                                            class="form-control">
+                                        <input type="text" id="kontak_umkm_edit" name="kontak_umkm" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -93,8 +104,8 @@
                                         <input type="time" id="jam_operasional_awal_edit" name="jam_operasional_awal"
                                             class="form-control">
                                         <span class="mx-2 my-2">s/d</span>
-                                        <input type="time" id="jam_operasional_akhir_edit"
-                                            name="jam_operasional_akhir" class="form-control">
+                                        <input type="time" id="jam_operasional_akhir_edit" name="jam_operasional_akhir"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -169,10 +180,11 @@
 
             $('.modal_umkm').modal('show');
         }
+
         function hideModalUmkm() {
             $('.modal_umkm').modal('hide');
         }
-        </script>
+    </script>
     <script>
         const modalTambahUmkm = () => {
             $('input:not([name="_token"]), textarea, select, time').val('');

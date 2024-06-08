@@ -4,6 +4,17 @@
 
     <div class="container-fluid">
         {{-- <h3>Data Warga</h3> --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <h4>Kelola Kegiatan Warga</h4>
         <a href="#" id="test" class="btn btn-success mb-3" onclick="modalTambahKegiatan()">Tambah Baru</a>
         <div class="row">
@@ -12,12 +23,14 @@
                     <div class="card shadow-lg" onclick="showModalKegiatan()">
                         <div class="card-body">
                             <div class="card" style="width: 18rem; height: 540px;">
-                                <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}" alt="Card image cap">
+                                <img class="card-img-top" src="{{ asset('storage/' . $kegiatan->foto_kegiatan) }}"
+                                    alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Nama Kegiatan : {{ $kegiatan->nama_kegiatan }}</h5>
                                     <p class="card-text ">Deskripsi Kegiatan : {{ $kegiatan->deskripsi_kegiatan }}</p>
                                     <p class="card-text ">Tempat Kegiatan : {{ $kegiatan->tempat_kegiatan }}</p>
-                                    <p class="card-text">Hari/Tanggal : {{ $kegiatan->hari_kegiatan }}/{{ $kegiatan->jadwal_kegiatan }}</p>
+                                    <p class="card-text">Hari/Tanggal :
+                                        {{ $kegiatan->hari_kegiatan }}/{{ $kegiatan->jadwal_kegiatan }}</p>
                                     <p class="card-text">Jam : {{ $kegiatan->jam_awal }} -
                                         {{ $kegiatan->jam_akhir }}</p>
                                     <a href="#" class="btn btn-warning"
@@ -51,7 +64,8 @@
                                         Nama Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="nama_kegiatan_edit" name="nama_kegiatan" class="form-control">
+                                        <input type="text" id="nama_kegiatan_edit" name="nama_kegiatan"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -59,7 +73,8 @@
                                         Tempat Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="tempat_kegiatan_edit" name="tempat_kegiatan" class="form-control">
+                                        <input type="text" id="tempat_kegiatan_edit" name="tempat_kegiatan"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -67,7 +82,8 @@
                                         Jadwal Kegiatan
                                     </div>
                                     <div class="col-6">
-                                        <input type="date" id="jadwal_kegiatan_edit" name="jadwal_kegiatan" class="form-control">
+                                        <input type="date" id="jadwal_kegiatan_edit" name="jadwal_kegiatan"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">
@@ -75,11 +91,9 @@
                                         Jam Kegiatan
                                     </div>
                                     <div class="col-6 d-flex">
-                                        <input type="time" id="jam_awal_edit" name="jam_awal"
-                                            class="form-control">
+                                        <input type="time" id="jam_awal_edit" name="jam_awal" class="form-control">
                                         <span class="mx-2 my-2">s/d</span>
-                                        <input type="time" id="jam_akhir_edit" name="jam_akhir"
-                                            class="form-control">
+                                        <input type="time" id="jam_akhir_edit" name="jam_akhir" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center mt-3">

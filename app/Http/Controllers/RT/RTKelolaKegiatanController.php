@@ -31,7 +31,7 @@ class RTKelolaKegiatanController extends Controller
         if($request->hasFile('foto_kegiatan')) {
             $foto_kegiatan = Storage::disk('public')->put('kegiatan_warga', $request->file('foto_kegiatan'));
 
-            KegiatanWargaModel::create([
+            $kegiatanSave = KegiatanWargaModel::create([
                 'nama_kegiatan' => $request->nama_kegiatan,
                 'tempat_kegiatan' => $request->tempat_kegiatan,
                 'jadwal_kegiatan' => $request->jadwal_kegiatan,
@@ -42,7 +42,11 @@ class RTKelolaKegiatanController extends Controller
             ]);
         }
 
-        return redirect('/rt/kegiatan-warga');
+        if($kegiatanSave) {
+            return redirect('/rt/kegiatan-warga')->with('success', 'Kegiatan berhasil ditambahkan!');
+        } else {
+            return redirect('/rt/kegiatan-warga')->with('error', 'Kegiatan gagal ditambahkan!');
+        }
     }
 
     public function editKegiatan($id) {
@@ -61,7 +65,7 @@ class RTKelolaKegiatanController extends Controller
 
             $foto_kegiatan = Storage::disk('public')->put('kegiatan_warga', $request->file('foto_kegiatan'));
 
-            KegiatanWargaModel::where('kegiatan_id', $id)->update([
+            $kegiatanSave = KegiatanWargaModel::where('kegiatan_id', $id)->update([
                 'nama_kegiatan' => $request->nama_kegiatan,
                 'tempat_kegiatan' => $request->tempat_kegiatan,
                 'jadwal_kegiatan' => $request->jadwal_kegiatan,
@@ -71,7 +75,7 @@ class RTKelolaKegiatanController extends Controller
                 'foto_kegiatan' => $foto_kegiatan,
             ]);
         } else {
-            KegiatanWargaModel::where('id', $id)->update([
+            $kegiatanSave = KegiatanWargaModel::where('id', $id)->update([
                 'nama_kegiatan' => $request->nama_kegiatan,
                 'tempat_kegiatan' => $request->tempat_kegiatan,
                 'jadwal_kegiatan' => $request->jadwal_kegiatan,
@@ -81,7 +85,11 @@ class RTKelolaKegiatanController extends Controller
             ]);
         }
 
-        return redirect('/rt/kegiatan-warga');
+        if($kegiatanSave) {
+            return redirect('/rt/kegiatan-warga')->with('success', 'Kegiatan berhasil diedit!');
+        } else {
+            return redirect('/rt/kegiatan-warga')->with('error', 'Kegiatan gagal diedit!');
+        }
     }
 
     public function deleteKegiatan($id) {

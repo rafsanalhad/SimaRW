@@ -24,7 +24,7 @@ class AdminIuranController extends Controller
 
             $bukti_struk = Storage::disk('public')->put('bukti_pengeluaran', $request->file('bukti_struk'));
 
-            MigrasiIuran::create([
+            $iuranSave = MigrasiIuran::create([
                 'nama_pelapor' => $request->nama_pelapor,
                 'jabatan_pelapor' => $request->jabatan_pelapor,
                 'nomor_rt' => $request->nomor_rt,
@@ -37,6 +37,10 @@ class AdminIuranController extends Controller
             ]);
         }
 
-        return redirect('/admin/kelola-iuran');
+        if($iuranSave) {
+            return redirect('/admin/kelola-iuran')->with('success', 'Laporan Keuangan berhasil ditambahkan!');
+        } else {
+            return redirect('/admin/kelola-iuran')->with('error', 'Laporan Keuangan gagal ditambahkan!');
+        }
     }
 }
