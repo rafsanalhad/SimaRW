@@ -150,8 +150,9 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor RT : </label>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" id="nomor_rt_edit" name="nomor_rt"
-                                        value="{{ old('nomor_rt') }}" required>
+                                    <input type="hidden" name="nomor_rt" value="1">
+                                    <input type="text" class="form-control" id="level_nama" name=""
+                                        value="1" disabled>
                                     @error('nomor_rt')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -160,13 +161,9 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor RW : </label>
                                 <div class="col-10">
-                                    <select name="nomor_rw" id="nomor_rw_edit" class="form-control" required>
-                                        <option name="nomor_rw" value="">-- Pilih RW --</option>
-                                        @foreach ($dataRW as $rw)
-                                            <option name="nomor_rw" value="{{ $rw->nomor_rw }}">
-                                                {{ $rw->nomor_rw }} - {{ $rw->nama_user }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="hidden" name="nomor_rw" value="5">
+                                    <input type="text" class="form-control" id="level_nama" name=""
+                                        value="5" disabled>
                                 </div>
                             </div>
                             <div class="row mb-2">
