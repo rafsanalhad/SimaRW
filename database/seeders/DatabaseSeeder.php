@@ -41,13 +41,13 @@ class DatabaseSeeder extends Seeder
         UserModel::factory(100)->create();
 
         // Call factory for PengaduanWarga table
-        PengaduanWargaModel::factory(10)->create();
+        $this->call(PengaduanWargaSeeder::class);
 
         // Call factory for KegiatanWarga table
-        KegiatanWargaModel::factory(10)->create();
+        $this->call(KegiatanWargaSeeder::class);
 
         // Call factory for Umkm table
-        UmkmModel::factory(10)->create();
+        $this->call(UMKMSeeder::class);
 
         // Call factory for PengajuanBansos table
         // PengajuanBansosModel::factory(5)->create();
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
         // PenerimaanBansosModel::factory(5)->create();
 
         // Call factory for Pengumuman
-        PengumumanModel::factory(3)->create();
+        $this->call(PengumumanSeeder::class);
 
         // Call factory for Detail Pengeluaran table
         // DetailPengeluaranModel::factory(5)->create();
