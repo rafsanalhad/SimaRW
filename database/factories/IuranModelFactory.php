@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\KartuKeluargaModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,11 +17,17 @@ class IuranModelFactory extends Factory
      */
     public function definition(): array
     {
+        static $number = 1;
+
+        if($number > KartuKeluargaModel::count()) {
+            $number = 1;
+        }
+
         return [
-            'kartu_keluarga_id' => rand(1, count(\App\Models\KartuKeluargaModel::select('kartu_keluarga_id')->get())),
+            'kartu_keluarga_id' => $number++,
             'tanggal_iuran' => fake()->date(),
             'tanggal_bayar' => fake()->date(),
-            'status' => fake()->randomElement(['Lunas', 'Belum Lunas'])
+            'status' => 'Lunas'
         ];
     }
 }
