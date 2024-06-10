@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use App\Models\KartuKeluargaModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,15 +19,20 @@ class IuranModelFactory extends Factory
     public function definition(): array
     {
         static $number = 1;
+        static $date = new DateTime('2024-01-01');
 
         if($number > KartuKeluargaModel::count()) {
             $number = 1;
+
+            if ($date) {
+                $date->modify('+1 month');
+            }
         }
 
         return [
             'kartu_keluarga_id' => $number++,
-            'tanggal_iuran' => fake()->date(),
-            'tanggal_bayar' => fake()->date(),
+            'tanggal_iuran' => $date->format('Y-m-d'),
+            'tanggal_bayar' => fake()->dateTimeBetween('2024-01-01', '2024-03-01')->format('Y-m-d'),
             'status' => 'Lunas'
         ];
     }
