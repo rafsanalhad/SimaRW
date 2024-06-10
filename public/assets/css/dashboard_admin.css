@@ -2,3 +2,40 @@
     width: 100%;
     height: 240px;
 }
+.sapaanRole{
+    font-size: 10px !important;
+    display: inline;
+    margin-top: 50px;
+}
+.namaRole{
+    font-size: 10px !important;
+    font-weight: 700;
+}
+.sapaanRoleMobile{
+    font-size: 10px !important;
+    display: inline;
+    margin-top: 50px;
+}
+.namaRoleMobile{
+    font-size: 10px !important;
+    font-weight: 700;
+}
+.roleMobile{
+    display: none;
+}
+@media (max-width: 768px) {
+    .sapaanRole{
+        display: none;
+    }
+    .namaRole{
+        display: none !important;
+    }
+    .roleMobile{
+        display: inline;
+    }
+}
+.fotoRole{
+    width: 50px !important;
+    height: 50px !important;
+    display: inline;
+}
