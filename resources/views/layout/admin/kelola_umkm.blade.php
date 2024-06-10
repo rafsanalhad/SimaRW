@@ -22,17 +22,15 @@
                 <div class="col-md-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
-                        <div class="card" style="width: 18rem; height: 540px;">
 
                             <div class="card" style="width: 18rem; height: 540px;">
+
                                 <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $umkm->nama_umkm }}</h5>
-                                    <p class="card-text ">{{ $umkm->deskripsi_umkm }}</p>
+                                    <p class="card-text">{{ $umkm->deskripsi_umkm }}</p>
                                     <p class="card-text">Pemilik: {{ $umkm->user->nama_user }}</p>
-                                    <p class="card-text">Jam Buka: {{ $umkm->jam_operasional_awal }} -
-                                        {{ $umkm->jam_operasional_akhir }}</p>
                                     <a href="#" class="btn btn-primary"
                                         onclick="showModalUmkm({{ $umkm->umkm_id }})">Detail</a>
                                     <a href="#" class="btn btn-warning"
@@ -48,7 +46,7 @@
         </div>
     </div>
     <div class="modal modal_tambah_umkm" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">Tambah UMKM</div>

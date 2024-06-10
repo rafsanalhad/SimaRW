@@ -12,7 +12,7 @@
                         <i class="ti ti-menu-2"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
                     <i class="ti ti-bell-ringing me-3" onclick="showModalPengumuman()"></i>
                     <a href="#" class="btn btn-primary" onclick="showModalTambahPengumuman()">
                         <div class="fs-1">Tambah Pengumuman</div>
@@ -43,9 +43,29 @@
         </nav>
     </header>
     <!--  Header End -->
+    <?php
+   $role_id = Auth::user()->role_id;
+   $nama = Auth::user()->nama_user;
+if($role_id == 1){
+    $role = 'Admin';
+}else if($role_id == 2){
+    $role = 'RT';
+}else if($role_id == 3){
+    $role = 'RW';
+}else if($role_id == 4){
+    $role = 'Warga';
+}
+ ?>
     <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
+            <div class="roleMobile mb-3" style="">
+                <p style="font-size: 10px;" class="sapaanRoleMobile">Selamat Datang,</p><br>
+            
+            
+            
+                <span style="font-size: 12px; font-weight: 700; d-inline" class="namaRoleMobile">{{ $role}} {{$nama}}</span>
+            </div>
             <div class="col-lg-8 d-flex align-items-strech">
                 <div class="card w-100">
                     <div class="card-body">
