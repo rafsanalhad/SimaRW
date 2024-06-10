@@ -20,6 +20,7 @@
                 <hr>
                 <table class="table" id="table-iuran">
                     <thead>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Tanggal Bayar</th>
                         <th>Nominal</th>
@@ -28,6 +29,7 @@
                     <tbody>
                         @foreach ($dataIuran as $i)
                             <tr>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $i->kartuKeluarga->nama_kepala_keluarga }}</td>
                                 <td>{{ $i->tanggal_iuran }}</td>
                                 <td>Rp. 30.000</td>
