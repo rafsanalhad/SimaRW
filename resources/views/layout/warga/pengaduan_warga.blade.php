@@ -72,9 +72,9 @@
                             <div class="form-group row">
                                 <label for="nomor_rt" class="col-form-label">RT:</label>
                                 <div class="col-sm-12">
-                                    <input type="hidden" name="nomor_rt" value="1">
+                                    <input type="hidden" name="nomor_rt" value="{{ Auth::user()->nomor_rt }}">
                                     <input placeholder="Masukkan Nomor RT" type="text" class="form-control"
-                                        id="nama_awal" name="" value="1" disabled>
+                                        id="nama_awal" name="" value="{{ Auth::user()->nomor_rt }}" disabled>
                                     <small class="form-text text-danger"></small>
                                 </div>
                             </div>

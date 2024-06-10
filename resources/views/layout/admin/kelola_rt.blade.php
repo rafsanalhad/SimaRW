@@ -98,9 +98,14 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor RT : </label>
                                 <div class="col-10">
-                                    <input type="hidden" name="nomor_rt" value="1">
-                                    <input type="text" class="form-control" id="level_nama" name=""
-                                        value="1" disabled>
+                                    <select class="form-control" name="nomor_rt" id="nomor_rt">
+                                        <option value="">-- Pilih Nomor RT --</option>
+                                        <option value="1">RT 01</option>
+                                        <option value="2">RT 02</option>
+                                        <option value="3">RT 03</option>
+                                        <option value="4">RT 04</option>
+                                        <option value="5">RT 05</option>
+                                    </select>
                                     @error('nomor_rt')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -162,9 +167,14 @@
                             <div class="row mb-2">
                                 <label class="col-2 control-label col-form-label">Nomor RT : </label>
                                 <div class="col-10">
-                                    <input type="hidden" name="nomor_rt" value="1">
-                                    <input type="text" class="form-control" id="level_nama" name=""
-                                        value="1" disabled>
+                                    <select class="form-control" name="nomor_rt" id="nomor_rt_edit">
+                                        <option value="">-- Pilih Nomor RT --</option>
+                                        <option value="1">RT 01</option>
+                                        <option value="2">RT 02</option>
+                                        <option value="3">RT 03</option>
+                                        <option value="4">RT 04</option>
+                                        <option value="5">RT 05</option>
+                                    </select>
                                     @error('nomor_rt')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror

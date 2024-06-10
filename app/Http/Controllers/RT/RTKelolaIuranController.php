@@ -23,7 +23,7 @@ class RTKelolaIuranController extends Controller
         $iuran = IuranModel::with('kartuKeluarga')->get();
         $totalSaldo = MigrasiIuran::orderBy('migrasi_iuran_id', 'desc')->first();
 
-        return view('layout.rt.laporan_iuran', ['dataIuran' => $iuran, 'totalSaldo' => $totalSaldo]);
+        return view('layout.rt.laporan_iuran', ['dataIuran' => $iuran, 'totalSaldo' => $totalSaldo, 'no' => 1]);
     }
 
     public function createPengeluaranIuran(PengeluaranKasRequest $request) {

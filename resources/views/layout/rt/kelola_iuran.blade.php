@@ -45,9 +45,14 @@
                         <div class="form-group row">
                             <label for="nomor_rt" class="col-form-label">RT:</label>
                             <div class="col-sm-12">
-                                <input type="hidden" name="nomor_rt" value="{{ Auth::user()->nomor_rt }}">
-                                <input placeholder="Masukkan Nomor RT" type="text" class="form-control" id="nama_awal"
-                                    name="" value="{{ Auth::user()->nomor_rt }}" disabled>
+                                <select class="form-control" name="nomor_rt" id="nomor_rt">
+                                    <option value="">-- Pilih Nomor RT --</option>
+                                    <option value="1">RT 01</option>
+                                    <option value="2">RT 02</option>
+                                    <option value="3">RT 03</option>
+                                    <option value="4">RT 04</option>
+                                    <option value="5">RT 05</option>
+                                </select>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>
@@ -56,9 +61,9 @@
                         <div class="form-group row">
                             <label for="nomor_rw" class="col-form-label">RW:</label>
                             <div class="col-sm-12">
-                                <input type="hidden" name="nomor_rw" value="{{ Auth::user()->nomor_rw }}">
+                                <input type="hidden" name="nomor_rw" value="5">
                                 <input placeholder="Masukkan Nomor RW" type="text" class="form-control" id="nomor_rw"
-                                    name="" value="{{ Auth::user()->nomor_rw }}" disabled>
+                                    name="" value="5" disabled>
                                 <small class="form-text text-danger"></small>
                             </div>
                         </div>

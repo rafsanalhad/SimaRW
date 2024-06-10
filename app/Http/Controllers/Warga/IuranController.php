@@ -23,10 +23,6 @@ class IuranController extends Controller
     }
 
     public function bayarIuran($id) {
-        // IuranModel::where('iuran_id', $id)->update([
-        //     'tanggal_bayar' => Carbon::now(),
-        //     'status' => 'Lunas'
-        // ]);
         $iuran = IuranModel::where('iuran_id', $id)->first();
         if ($iuran) {
             $iuran->tanggal_bayar = Carbon::now();
@@ -36,17 +32,6 @@ class IuranController extends Controller
 
         return redirect('/warga/bayar-iuran');
     }
-
-    // public function callback(Request $request) {
-    //     $serverKey = config('midtrans.serverKey');
-    //     $hashed = hash('sha_512', $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
-
-    //     if($hashed == $request->signature_key) {
-    //         if($request->transaction_status == 'capture') {
-
-    //         }
-    //     }
-    // }
 
     public function iuranCreateMonthly() {
 
