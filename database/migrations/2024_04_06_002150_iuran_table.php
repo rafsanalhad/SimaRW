@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('kartu_keluarga_id')->references('kartu_keluarga_id')->on('kartu_keluarga')->cascadeOnDelete();
             $table->date('tanggal_iuran');
             $table->date('tanggal_bayar')->nullable();
+            $table->integer('jumlah_iuran')->nullable();
             $table->text('snap_token')->nullable();
             $table->string('status', 20);
             $table->timestamps();
