@@ -226,6 +226,33 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-2">
+                            <label class="col-2 control-label col-form-label">Nomor RT: </label>
+                            <div class="col-10">
+                                <select class="form-control" name="nomor_rt" id="nomor_rt">
+                                    <option value="">-- Pilih Nomor RT --</option>
+                                    <option value="1">RT 01</option>
+                                    <option value="2">RT 02</option>
+                                    <option value="3">RT 03</option>
+                                    <option value="4">RT 04</option>
+                                    <option value="5">RT 05</option>
+                                </select>
+                                @error('nomor_rt')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 control-label col-form-label">Nomor RW: </label>
+                            <div class="col-10">
+                                <input type="hidden" name="nomor_rw" value="5">
+                                <input type="text" class="form-control" id="nomor_rw" name=""
+                                    value="5" disabled>
+                                @error('nomor_rw')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                         <input type="hidden" value="4" name="role_id">
 
                         <div class="row mb-2">
@@ -391,6 +418,33 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-2">
+                            <label class="col-2 control-label col-form-label">Nomor RT: </label>
+                            <div class="col-10">
+                                <select class="form-control" name="nomor_rt" id="nomor_rt_edit">
+                                    <option value="">-- Pilih Nomor RT --</option>
+                                    <option value="1">RT 01</option>
+                                    <option value="2">RT 02</option>
+                                    <option value="3">RT 03</option>
+                                    <option value="4">RT 04</option>
+                                    <option value="5">RT 05</option>
+                                </select>
+                                @error('nomor_rt')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 control-label col-form-label">Nomor RW: </label>
+                            <div class="col-10">
+                                <input type="hidden" name="nomor_rw" value="5">
+                                <input type="text" class="form-control" id="nomor_rw_edit" name=""
+                                    value="5" disabled>
+                                @error('nomor_rw')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                         <input type="hidden" value="4" name="role_id">
                         <div class="row mb-2">
                             <label class="col-2 control-label col-form-label">Upload Foto: </label>
@@ -474,6 +528,7 @@
                     $('#email_user_edit').val(data.email_user);
                     $('#nik_user_edit').val(data.nik_user);
                     $('#tempat_edit').val(data.tempat);
+                    $('#nomor_rt_edit').val(data.nomor_rt);
                     $('#tanggal_lahir_edit').val(data.tanggal_lahir);
                     $('#gender_edit').val(data.gender);
                     $('#agama_edit').val(data.agama);

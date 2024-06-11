@@ -29,7 +29,6 @@ class KelolaDataController extends Controller
     // Membuat function tambah data warga
     public function createWarga(UserRequest $request) {
         $request->validated();
-        // dd($request->validated());
 
         $foto_user = Storage::disk('public')->put('User-Images', $request->file('foto_user'));
 
@@ -47,6 +46,8 @@ class KelolaDataController extends Controller
             'alamat_user' => $request->alamat_user,
             'email_user' => $request->email_user,
             'gaji_user' => $request->gaji_user,
+            'nomor_rt' => $request->nomor_rt,
+            'nomor_rw' => $request->nomor_rw,
             'password' => Hash::make($request->nik_user),
             'foto_user' => $foto_user
         ]);

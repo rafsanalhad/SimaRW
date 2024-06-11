@@ -10,7 +10,7 @@
             {{-- @foreach ($umkm as $umkm) --}}
             @foreach ($umkm as $umkm)
                 <div class="col-md-4">
-                    <div class="card shadow-lg" onclick="showModalUmkm()">
+                    <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="card" style="width: 18rem; height: 540px;">
                                 <img class="card-img-top" src="{{ asset('storage/' . $umkm->gambar_umkm) }}"
@@ -36,8 +36,7 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img id="gambar_umkm_detail" src="{{ asset('storage/' . $umkm->gambar_umkm) }}" alt=""
-                        class="img_umkm">
+                    <img id="gambar_umkm_detail" src="" alt="" class="img_umkm">
                     <h3 id="nama_umkm_detail"></h3>
                     <p id="deskripsi_umkm_detail"></p>
                     <div class="row">
@@ -67,6 +66,7 @@
                 success(data) {
                     $('#nama_umkm_detail').text(data.nama_umkm);
                     $('#kontak_umkm_detail').text(data.kontak_umkm);
+                    $('#gambar_umkm_detail').attr('src', '/storage/' + data.gambar_umkm);
                     $('#jam_buka_detail').text(data.jam_operasional_awal + ' - ' + data.jam_operasional_akhir);
                     $('#deskripsi_umkm_detail').text(data.deskripsi_umkm);
                 }
