@@ -52,7 +52,7 @@
                 <table class="table" id="table-bansos2">
                     <thead>
                         <th>No</th>
-                        <th>Nama Kepala Keluarga 2</th>
+                        <th>Nama Kepala Keluarga</th>
                         <th>NKK</th>
                         <th>Total Pendapatan Keluarga</th>
                         <th>Jumlah Anggota Keluarga</th>
