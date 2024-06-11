@@ -27,6 +27,7 @@ class IuranController extends Controller
         if ($iuran) {
             $iuran->tanggal_bayar = Carbon::now();
             $iuran->status = 'Lunas';
+            $iuran->jumlah_iuran = 30000;
             $iuran->save();
         }
 

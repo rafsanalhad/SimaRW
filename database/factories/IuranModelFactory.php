@@ -33,6 +33,7 @@ class IuranModelFactory extends Factory
             'kartu_keluarga_id' => $number++,
             'tanggal_iuran' => $date->format('Y-m-d'),
             'tanggal_bayar' => fake()->dateTimeBetween('2024-01-01', '2024-03-01')->format('Y-m-d'),
+            'jumlah_iuran' => 30000,
             'status' => 'Lunas'
         ];
     }

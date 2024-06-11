@@ -18,6 +18,7 @@ class IuranModel extends Model
         'kartu_keluarga_id',
         'tanggal_iuran',
         'tanggal_bayar',
+        'jumlah_iuran',
         'status',
         'snap_token'
     ];
