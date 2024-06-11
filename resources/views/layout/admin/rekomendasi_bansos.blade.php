@@ -64,8 +64,9 @@
                         <th>Jumlah Tanggungan</th>
                         <th>Keterangan</th>
                     </thead>
-                    @foreach ($bansosVikor as $bansos)
                     <tbody>
+                        @foreach ($bansosVikor as $bansos)
+                        <tr>
                         <td>{{ $noVikor++ }}</td>
                         <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
                         <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
@@ -78,8 +79,9 @@
                             <div class="btn btn-success">Layak Menerima Bansos</div>
                             @endif
                         </td>
-                    </tbody>
+                    </tr>
                     @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
