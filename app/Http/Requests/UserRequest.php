@@ -35,6 +35,8 @@ class UserRequest extends FormRequest
             'alamat_user' => 'required',
             'email_user' => 'required',
             'gaji_user' => 'required',
+            'nomor_rt' => 'required',
+            'nomor_rw' => 'required',
             'foto_user' => ''
         ];
     }

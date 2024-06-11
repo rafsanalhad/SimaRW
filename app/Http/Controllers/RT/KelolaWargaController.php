@@ -40,6 +40,8 @@ class KelolaWargaController extends Controller
             'status_kawin' => $request->status_kawin,
             'pekerjaan_user' => $request->pekerjaan_user,
             'alamat_user' => $request->alamat_user,
+            'nomor_rt' => $request->nomor_rt,
+            'nomor_rw' => $request->nomor_rw,
             'email_user' => $request->email_user,
             'gaji_user' => $request->gaji_user,
             'password' => Hash::make($request->nik_user),
