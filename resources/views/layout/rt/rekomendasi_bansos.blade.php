@@ -65,22 +65,24 @@
                         <th>Jumlah Tanggungan</th>
                         <th>Keterangan</th>
                     </thead>
-                    @foreach ($bansosVikor as $bansos)
                     <tbody>
-                        <td>{{ $noVikor++ }}</td>
-                        <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
-                        <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
-                        <td>Rp. {{ $bansos->total_gaji }}</td>
-                        <td>{{ $bansos->user_count }} Orang</td>
-                        <td>{{ $bansos->kartuKeluarga->kondisi_rumah }}</td>
-                        <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
-                        <td>
-                            @if ($bansos->status == 'Layak')
-                            <div class="btn btn-success">Layak Menerima Bansos</div>
-                            @endif
-                        </td>
+                        @foreach ($bansosVikor as $bansos)
+                        <tr>
+                            <td>{{ $noVikor++ }}</td>
+                            <td>{{ $bansos->kartuKeluarga->nama_kepala_keluarga }}</td>
+                            <td>{{ $bansos->kartuKeluarga->no_kartu_keluarga }}</td>
+                            <td>Rp. {{ $bansos->total_gaji }}</td>
+                            <td>{{ $bansos->user_count }} Orang</td>
+                            <td>{{ $bansos->kartuKeluarga->kondisi_rumah }}</td>
+                            <td>{{ $bansos->kartuKeluarga->jumlah_tanggungan }}</td>
+                            <td>
+                                @if ($bansos->status == 'Layak')
+                                <div class="btn btn-success">Layak Menerima Bansos</div>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
-                    @endforeach
                 </table>
             </div>
         </div>
